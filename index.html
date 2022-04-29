@@ -1,42 +1,120 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Our Funky HTML Page</title>
+    <title>Art Dealer | Shop Local Canberra Artists</title>
     <meta name="description" content="Art Dealer Home page">
     <style>
         body {
             font-family: Arial;
             margin: 0;
+            background-color:#ccc1ba;
         }
 
         h1{
-            font-size:1.5cm;
-            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            font-size:7vw;
+            font-weight: bold;
+            font-family: 'Didot', serif;
+            color: rgb(230, 230, 230);
+        }
+
+        h2{
+            text-align: center;
+            font-size:5vw;
+            font-weight: bold;
+            font-family: 'Didot', serif;
+            color: rgb(68, 68, 68);
         }
 
         .header {
-            text-align: center;
-            color: white;
             background-image: url('frontPageImage.jpeg');
-            background-attachment: fixed;
-            background-size: 100%, 100%;
+            background-size: 100%;
             background-repeat: no-repeat;
-            padding-top: 60px;
+            padding: 4vw;
             padding-bottom: 500px;
         }
 
         .navbar {
-            display: flex;
-            text-align: justify;
-            justify-content: center;
+            text-align: center;
         }
 
         .navbar a {
             font-family: 'Times New Roman', Times, serif;
-            font-size:0.5cm;
-            color: white;
-            padding: 30px;
+            font-size:2vw;
+            color: rgb(230, 230, 230);
+            padding: 14px 20px;
             text-decoration: none;
+            text-align: center;
+        }
+
+        .navbar a:hover {
+            opacity: 0.8;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar h1{
+            font-size:5vw;
+        }
+
+        .sidebar button {
+            font-size: 2vw;
+            color:rgb(230, 230, 230);
+            border: 1px solid #818181;
+            background-color:transparent;
+            cursor: pointer;
+            padding:3vw;
+        }
+
+        /**
+         *  When an element is added to the cart
+         **/
+        .sidebar a {
+            padding: 8px;
+            text-decoration: none;
+            font-size: 2vw;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            opacity: 0.8;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 5vw;
+            margin-left: 50px;
+        }
+
+        .openbtn {
+            font-size:2vw;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+        }      
+
+        .openbtn:hover {
+            opacity: 0.8;
+        }
+
+        #cart {
+            transition: margin-left .5s;
+            padding: 16px;
         }
     </style>  
 </head>
@@ -44,17 +122,45 @@
 <body>
     <!-- Header -->
     <div class="header">
+
+        <!--Cart-->
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <h1>Cart<h1>
+            <a>Item 1 x quantity</a>
+            <a>Item 1 x quantity</a>
+            <div style="padding-top:5vw;">
+                <button onclick="">Checkout</button> 
+            </div> 
+        </div>
+        <div id="cart">
+            <button class="openbtn" onclick="openNav()"> <img src="cart.jpeg" style="width:5vw"/></button>  
+        </div>
+
+        <!--Title-->
         <h1>Art Dealer</h1>
-            <!-- Navigation-->
+
+        <!-- Navigation-->
         <nav>
             <div class="navbar">
-                <a href="#">Link</a>
-                <a href="#">Link</a>
-                <a href="#">Link</a>
-                <a href="#">Link</a>
+                <a href="#">Artists</a>
+                <a href="#">Best Sellers</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact Us</a>
             </div>
         </nav>
     </div>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "20vw";
+        }
+        
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+    </script>
+
+    <h2>Shop By Artist</h2>
     
 </body>
 </html>
