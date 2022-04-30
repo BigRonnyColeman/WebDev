@@ -4,26 +4,85 @@
     <title>Art Dealer | Shop Local Canberra Artists</title>
     <meta name="description" content="Art Dealer Home page">
     <style>
+         
+         *{
+            box-sizing: border-box;
+            margin:0;
+            padding:0;
+        }
+
+        li,a,button{
+            font-family: 'Times New Roman', Times, serif;
+            font-size:1.7vw;
+            color: rgb(230, 230, 230);
+            text-decoration: none;
+        }
+
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items:center;
+            padding:5%;
+        }
+
         body {
             font-family: Arial;
             margin: 0;
+            font-size:1.5vw;
             background-color:#ccc1ba;
         }
 
-        h1{
-            text-align: center;
-            font-size:7vw;
-            font-weight: bold;
-            font-family: 'Didot', serif;
-            color: rgb(230, 230, 230);
-        }
-
+        
         h2{
             text-align: center;
-            font-size:5vw;
-            font-weight: bold;
+            font-size:3vw;
+            font-weight:100;
             font-family: 'Didot', serif;
             color: rgb(68, 68, 68);
+        }
+
+        p{
+            color: rgb(68, 68, 68);
+            text-align:center;
+        }
+
+        nav{
+            order:1;
+        }
+
+        .backgroundImage{
+            background-image: url("frontPageImage.jpeg");
+            height:70vw;
+            background-repeat: no-repeat;
+            width:100%;
+            background-size:cover;
+        }
+
+        .logo{
+            width:21vw;
+            padding-right:1vw;
+            height:4vw;
+            cursor:pointer;
+            order:3;
+            margin-left:auto;
+        }
+
+        .navLinks{
+            list-style:none;
+            padding-left:5vw;
+        }
+
+        .navLinks li{
+            display:inline-block;
+            padding: 0px 2vw;
+        }
+
+        .navLinks li:nth-child(1){
+            padding: 0 20px 0 0;
+        }
+
+        .navLinks li a:hover{
+            opacity:80%;
         }
 
         .header {
@@ -31,11 +90,16 @@
             background-size: 100%;
             background-repeat: no-repeat;
             padding: 4vw;
-            padding-bottom: 500px;
+            padding-bottom: 40vw;
+            display:inline-block;
+            width:100%;
         }
-
+        .cta{
+            order:2;
+        }
+/**
         .navbar {
-            text-align: center;
+            float:right;
         }
 
         .navbar a {
@@ -51,6 +115,17 @@
             opacity: 0.8;
         }
 
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .sticky + .content {
+            padding-top: 60px;
+        }
+        
+**/
         .sidebar {
             height: 100%;
             width: 0;
@@ -68,13 +143,17 @@
             font-size:5vw;
         }
 
-        .sidebar button {
+        .checkoutbtn {
             font-size: 2vw;
             color:rgb(230, 230, 230);
             border: 1px solid #818181;
             background-color:transparent;
             cursor: pointer;
             padding:3vw;
+        }
+
+        .checkoutbtn:hover {
+            opacity: 0.8;
         }
 
         /**
@@ -91,6 +170,7 @@
 
         .sidebar a:hover {
             opacity: 0.8;
+            cursor: pointer;
         }
 
         .sidebar .closebtn {
@@ -102,10 +182,8 @@
         }
 
         .openbtn {
-            font-size:2vw;
-            cursor: pointer;
-            border: none;
             background-color: transparent;
+            border: none;
         }      
 
         .openbtn:hover {
@@ -116,39 +194,106 @@
             transition: margin-left .5s;
             padding: 16px;
         }
+
+        /**
+         * Artist Grid styling
+         **/ 
+        .row {
+            display: -ms-flexbox; /* IE10 */
+            display: flex;
+            -ms-flex-wrap: wrap; /* IE10 */
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        /* Create four equal columns that sits next to each other */
+        .column {
+            -ms-flex: 25%; /* IE10 */
+            flex: 25%;
+            max-width: 25%;
+            padding: 0 4px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+            width: 100%;
+        }
+
+        /* Responsive layout - makes a two column-layout instead of four columns */
+        @media screen and (max-width: 800px) {
+            .column {
+                -ms-flex: 50%;
+                flex: 50%;
+                max-width: 50%;
+            }
+        }
+        
+        .artistText {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Times New Roman', Times, serif;
+            font-size:2.5vw;
+            font-weight:100;
+            color: rgb(230, 230, 230);
+        }
+
+        .artistGroup {
+            position: relative;
+        }
+         
+        .artistGroup:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+        .bestSellersbtn{
+            font-size: 2vw;
+            color: rgb(68, 68, 68);
+            border: 1px solid #818181;
+            background-color:transparent;
+            cursor: pointer;
+            text-decoration:none;
+            padding:3vw;
+        }
+
+        .paragraph{
+            padding-left:5vw;
+            padding-right:5vw;
+            padding-bottom:5vw;
+
+        }
+
     </style>  
 </head>
 
 <body>
     <!-- Header -->
-    <div class="header">
-
-        <!--Cart-->
-        <div id="mySidebar" class="sidebar">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-            <h1>Cart<h1>
-            <a>Item 1 x quantity</a>
-            <a>Item 1 x quantity</a>
-            <div style="padding-top:5vw;">
-                <button onclick="">Checkout</button> 
-            </div> 
-        </div>
-        <div id="cart">
-            <button class="openbtn" onclick="openNav()"> <img src="cart.jpeg" style="width:5vw"/></button>  
-        </div>
-
-        <!--Title-->
-        <h1>Art Dealer</h1>
-
-        <!-- Navigation-->
-        <nav>
-            <div class="navbar">
-                <a href="#">Artists</a>
-                <a href="#">Best Sellers</a>
-                <a href="#">About Us</a>
-                <a href="#">Contact Us</a>
+    <div class ="backgroundImage">
+        <header>
+            <img class ="logo" src ="logoWhite.png" alt = "logo">
+            <nav>
+                <ul class = "navLinks">
+                    <li><a href="#">Artists</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            <!--Cart-->
+            <button class="openbtn" onclick="openNav()"> <img src="cart.jpeg" style="width:3vw; height:3vw;"/></button>  
+            <div id="mySidebar" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                <h2 style="color: rgb(230, 230, 230);">Cart<h2>
+                <a>Item 1 x quantity</a>
+                <a>Item 1 x quantity</a>
+                <div style="padding-top:5vw;">
+                    <button class ="checkoutbtn" onclick="">Checkout</button> 
+                </div> 
             </div>
-        </nav>
+        </header>
     </div>
     <script>
         function openNav() {
@@ -160,7 +305,72 @@
         }
     </script>
 
-    <h2>Shop By Artist</h2>
+    <h2 style = "padding-top:4vw; padding-bottom: 2vw;">Shop By Artist</h2>
+    <div class="row">
+        <div class="column">
+            <div class =artistGroup>
+                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <div class="artistText"> Artist1</div>
+            </div>
+            <div class =artistGroup>
+                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <div class="artistText"> Artist2</div>
+            </div>
+            <div class =artistGroup>
+                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <div class="artistText"> Artist3</div>
+            </div>
+        </div>
+        <div class="column">
+            <div class =artistGroup>
+                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <div class="artistText"> Artist4</div>
+            </div>
+            <div class =artistGroup>
+                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <div class="artistText"> Artist5</div>
+            </div>
+            <div class =artistGroup>
+                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <div class="artistText"> Artist6</div>
+            </div>
+        </div>
+        <div class="column">
+            <div class =artistGroup>
+                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <div class="artistText"> Artist7</div>
+            </div>
+            <div class =artistGroup>
+                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <div class="artistText"> Artist8</div>
+            </div>
+            <div class =artistGroup>
+                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <div class="artistText"> Artist9</div>
+            </div>
+        </div>
+        <div class="column">
+            <div class =artistGroup>
+                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <div class="artistText"> Artist10</div>
+            </div>
+            <div class =artistGroup>
+                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <div class="artistText"> Artist11</div>
+            </div>
+            <div class =artistGroup>
+                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <div class="artistText"> Artist12</div>
+            </div>
+        </div>
+        <div style="padding:8vw; margin:0 auto">
+            <a class = "bestSellersbtn" href="#">View Best Sellers</a>
+        </div>
+    </div>
     
+    <h2 style = "padding-bottom:1vw;"padding-bottom: 2vw;">About Us</h2>
+    <div class ="paragraph">
+        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+    </div>
 </body>
 </html>
