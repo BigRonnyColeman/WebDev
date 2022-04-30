@@ -236,7 +236,7 @@
             cursor: pointer;
         }
 
-        .bestSellersbtn{
+        .btnStyle{
             font-size: 2vw;
             color: rgb(68, 68, 68);
             border: 1px solid #818181;
@@ -251,6 +251,37 @@
             padding-right:5vw;
             padding-bottom:5vw;
 
+        }
+
+        .column2 {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        /* Clear floats after image containers */
+        .row2::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .infoText {
+            text-align:center;
+
+        }
+
+        .infoGroup {
+            position: relative;
+            z-index: -1;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 75%;
+        }
+
+        .signUpAndSave{
+            text-align: center;
         }
 
     </style>  
@@ -283,7 +314,10 @@
                 </div>
             </header>
         </div>
+    
+    <!--Artists-->
     </div>
+    <hr></hr>
     <h2 style = "padding-top:7vw; padding-bottom: 2vw;">Shop By Artist</h2>
     <div class="row">
         <div class="column">
@@ -343,18 +377,45 @@
             </div>
         </div>
         <div style="padding:8vw; margin:0 auto">
-            <a class = "bestSellersbtn" href="#">View Best Sellers</a>
+            <a class = "btnStyle" href="#">View Best Sellers</a>
         </div>
     </div>
-    
-    <h2 style = "padding-bottom:1vw;"padding-bottom: 2vw;">About Us</h2>
+
+    <!--About Us-->
+    <hr></hr>
+    <h2 style = "padding-bottom:1vw; padding-top:3vw;">About Us</h2>
     <div class ="paragraph">
-        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.<br><br>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
     </div>
 
+    <div class="row2" style="padding-bottom: 5vw;">
+        <div class="column2">
+            <div class =infoGroup>
+                <img src="infoImage.webp" style= "width:100%; opacity: 75%;"/>
+                <div class="infoText"> <h2>Premium Quality</h2><br><p>Printed using water-based inks and professional 12-colour giclée printers, giving it colour vibrancy that’s protected for 80+ years.</p></div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class =infoGroup>
+                <img src="infoImage2.webp" style= "width:100%; opacity: 75%;"/>
+                <div class="infoText"> <h2>We're Local</h2><br><p>Run and born out of Canbera, we launched our premium giclee art print line to promote and sell local talent to the nations capital.</p></div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class =infoGroup>
+                <img src="infoImage3.webp" style= "width:100%; opacity: 75%;"/>
+                <div class="infoText"><h2>Quick Delivery</h2><br><p>Fast & reliable delivery through our own employees.</p></div>
+            </div>
+        </div>
+    </div>
 
-
-
+    <!--End-->
+    <hr></hr>
+    <h2 style = "padding-bottom:1vw; padding-top:3vw;">Sign Up and Save</h2>
+    <div class="signUpAndSave" style="padding:5vw;">
+        <a class = "btnStyle" href="#">My Profile</a>
+        <a class = "btnStyle" style="padding-right: 4vw;padding-left: 4vw;" href="#">Sign Up </a>
+    </div>
 
     <footer style ="text-align:center; opacity:50%; font-size:1vw; padding:3vw;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
     <script>
@@ -369,7 +430,7 @@
         window.addEventListener('scroll',function(){
             let header = document.querySelector('header');
 
-            header.classList.toggle('scrollingActive', window.scrollY > 50);
+            header.classList.toggle('scrollingActive', window.scrollY > 660);
         })
 
         window.onscroll = function() {myFunction()};
@@ -378,11 +439,11 @@
         var sticky = navbar.offsetTop;
 
         function myFunction() {
-        if (window.pageYOffset >= sticky) {
-            navbar.classList.add("sticky")
-        } else {
-            navbar.classList.remove("sticky");
-        }
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
         }
     </script>
 </body>
