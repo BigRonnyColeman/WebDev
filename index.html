@@ -23,6 +23,8 @@
             justify-content: space-between;
             align-items:center;
             padding:5%;
+            transition: background-color .5s ease;
+            height:5vw;
         }
 
         body {
@@ -94,27 +96,12 @@
             display:inline-block;
             width:100%;
         }
-        .cta{
-            order:2;
-        }
-/**
-        .navbar {
-            float:right;
-        }
 
-        .navbar a {
-            font-family: 'Times New Roman', Times, serif;
-            font-size:2vw;
-            color: rgb(230, 230, 230);
-            padding: 14px 20px;
-            text-decoration: none;
-            text-align: center;
+        .scrollingActive{
+            background-color:#111;
+            box-shadow: 0 3px 1rem rgba(0,0,0,.1);
         }
-
-        .navbar a:hover {
-            opacity: 0.8;
-        }
-
+        
         .sticky {
             position: fixed;
             top: 0;
@@ -124,8 +111,7 @@
         .sticky + .content {
             padding-top: 60px;
         }
-        
-**/
+
         .sidebar {
             height: 100%;
             width: 0;
@@ -212,6 +198,7 @@
             flex: 25%;
             max-width: 25%;
             padding: 0 4px;
+            z-index:-1;
         }
 
         .column img {
@@ -272,40 +259,32 @@
 <body>
     <!-- Header -->
     <div class ="backgroundImage">
-        <header>
-            <img class ="logo" src ="logoWhite.png" alt = "logo">
-            <nav>
-                <ul class = "navLinks">
-                    <li><a href="#">Artists</a></li>
-                    <li><a href="#">Best Sellers</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </nav>
-            <!--Cart-->
-            <button class="openbtn" onclick="openNav()"> <img src="cart.jpeg" style="width:3vw; height:3vw;"/></button>  
-            <div id="mySidebar" class="sidebar">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-                <h2 style="color: rgb(230, 230, 230);">Cart<h2>
-                <a>Item 1 x quantity</a>
-                <a>Item 1 x quantity</a>
-                <div style="padding-top:5vw;">
-                    <button class ="checkoutbtn" onclick="">Checkout</button> 
-                </div> 
-            </div>
-        </header>
+        <div id="navbar">
+            <header>
+                <img class ="logo" src ="logoWhite.png" alt = "logo">
+                <nav>
+                    <ul class = "navLinks">
+                        <li><a href="#">Artists</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <!--Cart-->
+                <button class="openbtn" onclick="openNav()"> <img src="cart.jpeg" style="width:3.2vw; height:3vw;"/></button>  
+                <div id="mySidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                    <h2 style="color: rgb(230, 230, 230);">Cart<h2>
+                    <a>Item 1 x quantity</a>
+                    <a>Item 1 x quantity</a>
+                    <div style="padding-top:5vw;">
+                        <button class ="checkoutbtn" onclick="">Checkout</button> 
+                    </div> 
+                </div>
+            </header>
+        </div>
     </div>
-    <script>
-        function openNav() {
-            document.getElementById("mySidebar").style.width = "20vw";
-        }
-        
-        function closeNav() {
-            document.getElementById("mySidebar").style.width = "0";
-        }
-    </script>
-
-    <h2 style = "padding-top:4vw; padding-bottom: 2vw;">Shop By Artist</h2>
+    <h2 style = "padding-top:7vw; padding-bottom: 2vw;">Shop By Artist</h2>
     <div class="row">
         <div class="column">
             <div class =artistGroup>
@@ -372,5 +351,34 @@
     <div class ="paragraph">
         <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
     </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "20vw";
+        }
+        
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+
+        window.addEventListener('scroll',function(){
+            let header = document.querySelector('header');
+
+            header.classList.toggle('scrollingActive', window.scrollY > 50);
+        })
+
+        window.onscroll = function() {myFunction()};
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+        }
+    </script>
 </body>
 </html>
