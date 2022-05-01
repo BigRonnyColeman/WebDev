@@ -1,0 +1,152 @@
+/*Body Colouring and Structure*/
+body {
+    font-family: Arial;
+    margin: 0;
+    font-size:1.5vw;
+    background-color:#ccc1ba;
+}
+
+/*Header Items*/
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    padding:5%;
+    transition: background-color .5s ease;
+    height:5vw;
+}
+
+ li,a,button{
+    font-family: 'Times New Roman', Times, serif;
+    font-size:1.7vw;
+    color: rgb(230, 230, 230);
+    text-decoration: none;
+}
+
+nav{
+    order:1;
+}
+
+h2{
+    text-align: center;
+    font-size:3vw;
+    font-weight:100;
+    font-family: 'Didot', serif;
+    color: rgb(68, 68, 68);
+}
+
+p{
+    color: rgb(68, 68, 68);
+    text-align:center;
+}
+
+.logo{
+    width:21vw;
+    padding-right:1vw;
+    height:4vw;
+    cursor:pointer;
+    order:3;
+    margin-left:auto;
+}
+
+.navLinks{
+    list-style:none;
+    padding-left:5vw;
+}
+
+.navLinks li{
+    display:inline-block;
+    padding: 0px 2vw;
+}
+
+.navLinks li:nth-child(1){
+    padding: 0 20px 0 0;
+}
+
+.navLinks li a:hover{
+    opacity:80%;
+}
+
+.scrollingActive{
+    background-color:#111;
+    box-shadow: 0 3px 1rem rgba(0,0,0,.1);
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index:999;
+}
+
+.sticky + .content {
+    padding-top: 60px;
+}
+
+/*Header Cart Styling*/
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    border-right:solid 1px;
+    border-color: #818181;
+}
+
+.sidebar h1{
+    font-size:5vw;
+}
+
+.checkoutbtn {
+    font-size: 2vw;
+    color:rgb(230, 230, 230);
+    border: 1px solid #818181;
+    background-color:transparent;
+    cursor: pointer;
+    padding:3vw;
+}
+
+.checkoutbtn:hover {
+    opacity: 0.8;
+}
+
+.sidebar a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 2vw;
+    color: #818181;
+    display: block;
+    white-space: nowrap;
+}
+
+.sidebar a:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 0.5vw;
+    font-size: 5vw;
+    margin-left: 50px;
+}
+
+.openbtn {
+    background-color: transparent;
+    border: none;
+}      
+
+.openbtn:hover {
+    opacity: 0.8;
+}
+
+/*...*/
+
+

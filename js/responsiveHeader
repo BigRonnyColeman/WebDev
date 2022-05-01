@@ -1,0 +1,28 @@
+//Responsive Cart button
+function openNav() {
+    document.getElementById("mySidebar").style.width = "20vw";
+}
+        
+function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+}
+
+//Header Follows scroll
+window.addEventListener('scroll',function(){
+    let header = document.querySelector('header');
+
+    header.classList.toggle('scrollingActive', window.scrollY > 330);
+})
+
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+    if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+    } else {
+        navbar.classList.remove("sticky");
+    }
+}

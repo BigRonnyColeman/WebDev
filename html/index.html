@@ -1,204 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel ="stylesheet" href="../css/siteStyling.css">
     <title>Art Dealer | Shop Local Canberra Artists</title>
     <meta name="description" content="Art Dealer Home page">
     <style>
-         
+         /*General Page Styling*/
          *{
             box-sizing: border-box;
             margin:0;
             padding:0;
-        }
+        }   
 
-        li,a,button{
-            font-family: 'Times New Roman', Times, serif;
-            font-size:1.7vw;
-            color: rgb(230, 230, 230);
-            text-decoration: none;
-        }
-
-        header{
-            display: flex;
-            justify-content: space-between;
-            align-items:center;
-            padding:5%;
-            transition: background-color .5s ease;
-            height:5vw;
-        }
-
-        body {
-            font-family: Arial;
-            margin: 0;
-            font-size:1.5vw;
-            background-color:#ccc1ba;
-        }
-
-        
-        h2{
-            text-align: center;
-            font-size:3vw;
-            font-weight:100;
-            font-family: 'Didot', serif;
-            color: rgb(68, 68, 68);
-        }
-
-        p{
-            color: rgb(68, 68, 68);
-            text-align:center;
-        }
-
-        nav{
-            order:1;
-        }
-
+        /*Background Image at beginning of page + Fade In*/
         .backgroundImage{
-            background-image: url("frontPageImage.jpeg");
+            background-image: url("../images/frontPageImage.jpeg");
             height:70vw;
             background-repeat: no-repeat;
             width:100%;
             background-size:cover;
+            animation: fadeIn 1s;
+            -webkit-animation: fadeIn 1s;
+            -moz-animation: fadeIn 1s;
+            -o-animation: fadeIn 1s;
+            -ms-animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            0% {opacity:0;}
+            100% {opacity:1;}
         }
 
-        .logo{
-            width:21vw;
-            padding-right:1vw;
-            height:4vw;
-            cursor:pointer;
-            order:3;
-            margin-left:auto;
+        @-moz-keyframes fadeIn {
+            0% {opacity:0;}
+            100% {opacity:1;}
         }
 
-        .navLinks{
-            list-style:none;
-            padding-left:5vw;
+        @-webkit-keyframes fadeIn {
+            0% {opacity:0;}
+            100% {opacity:1;}
         }
 
-        .navLinks li{
-            display:inline-block;
-            padding: 0px 2vw;
+        @-o-keyframes fadeIn {
+            0% {opacity:0;}
+            100% {opacity:1;}
         }
 
-        .navLinks li:nth-child(1){
-            padding: 0 20px 0 0;
+        @-ms-keyframes fadeIn {
+            0% {opacity:0;}
+            100% {opacity:1;}
         }
 
-        .navLinks li a:hover{
-            opacity:80%;
-        }
-
-        .header {
-            background-image: url('frontPageImage.jpeg');
-            background-size: 100%;
-            background-repeat: no-repeat;
-            padding: 4vw;
-            padding-bottom: 40vw;
-            display:inline-block;
-            width:100%;
-        }
-
-        .scrollingActive{
-            background-color:#111;
-            box-shadow: 0 3px 1rem rgba(0,0,0,.1);
-        }
-        
-        .sticky {
-            position: fixed;
-            top: 0;
-            width: 100%;
-        }
-
-        .sticky + .content {
-            padding-top: 60px;
-        }
-
-        .sidebar {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .sidebar h1{
-            font-size:5vw;
-        }
-
-        .checkoutbtn {
-            font-size: 2vw;
-            color:rgb(230, 230, 230);
-            border: 1px solid #818181;
-            background-color:transparent;
-            cursor: pointer;
-            padding:3vw;
-        }
-
-        .checkoutbtn:hover {
-            opacity: 0.8;
-        }
-
-        /**
-         *  When an element is added to the cart
-         **/
-        .sidebar a {
-            padding: 8px;
-            text-decoration: none;
-            font-size: 2vw;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .sidebar a:hover {
-            opacity: 0.8;
-            cursor: pointer;
-        }
-
-        .sidebar .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 5vw;
-            margin-left: 50px;
-        }
-
-        .openbtn {
-            background-color: transparent;
-            border: none;
-        }      
-
-        .openbtn:hover {
-            opacity: 0.8;
-        }
-
-        #cart {
-            transition: margin-left .5s;
-            padding: 16px;
-        }
-
-        /**
-         * Artist Grid styling
-         **/ 
+        /*Artist Grid styling*/ 
         .row {
             display: -ms-flexbox; /* IE10 */
             display: flex;
             -ms-flex-wrap: wrap; /* IE10 */
             flex-wrap: wrap;
             padding: 0 4px;
+            
         }
-
-        /* Create four equal columns that sits next to each other */
-        .column {
+       
+        .column { /* Create four equal columns that sits next to each other */
             -ms-flex: 25%; /* IE10 */
             flex: 25%;
             max-width: 25%;
             padding: 0 4px;
-            z-index:-1;
         }
 
         .column img {
@@ -207,8 +73,8 @@
             width: 100%;
         }
 
-        /* Responsive layout - makes a two column-layout instead of four columns */
-        @media screen and (max-width: 800px) {
+       
+        @media screen and (max-width: 800px) { /* Responsive layout - makes a two column-layout instead of four columns */
             .column {
                 -ms-flex: 50%;
                 flex: 50%;
@@ -229,11 +95,11 @@
 
         .artistGroup {
             position: relative;
+            cursor:pointer;
         }
          
         .artistGroup:hover {
             opacity: 0.8;
-            cursor: pointer;
         }
 
         .btnStyle{
@@ -246,11 +112,11 @@
             padding:3vw;
         }
 
+        /*About Us Styling*/
         .paragraph{
             padding-left:5vw;
             padding-right:5vw;
             padding-bottom:5vw;
-
         }
 
         .column2 {
@@ -259,7 +125,6 @@
             padding: 5px;
         }
 
-        /* Clear floats after image containers */
         .row2::after {
             content: "";
             clear: both;
@@ -268,7 +133,6 @@
 
         .infoText {
             text-align:center;
-
         }
 
         .infoGroup {
@@ -280,10 +144,10 @@
             width: 75%;
         }
 
+        /*Footer Styling*/
         .signUpAndSave{
             text-align: center;
         }
-
     </style>  
 </head>
 
@@ -292,7 +156,7 @@
     <div class ="backgroundImage">
         <div id="navbar">
             <header>
-                <img class ="logo" src ="logoWhite.png" alt = "logo">
+                <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
                 <nav>
                     <ul class = "navLinks">
                         <li><a href="#">Artists</a></li>
@@ -302,10 +166,11 @@
                     </ul>
                 </nav>
                 <!--Cart-->
-                <button class="openbtn" onclick="openNav()"> <img src="cart.jpeg" style="width:3.2vw; height:3vw;"/></button>  
+                <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;r"/></button>  
                 <div id="mySidebar" class="sidebar">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-                    <h2 style="color: rgb(230, 230, 230);">Cart<h2>
+                    <h2 style="color:rgb(230, 230, 230); padding-bottom:1vw;">Cart<h2>
+                    <hr style="border-color: rgb(158, 158, 158);"></hr><br>
                     <a>Item 1 x quantity</a>
                     <a>Item 1 x quantity</a>
                     <div style="padding-top:5vw;">
@@ -322,57 +187,57 @@
     <div class="row">
         <div class="column">
             <div class =artistGroup>
-                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                 <div class="artistText"> Artist1</div>
             </div>
             <div class =artistGroup>
-                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                 <div class="artistText"> Artist2</div>
             </div>
             <div class =artistGroup>
-                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                 <div class="artistText"> Artist3</div>
             </div>
         </div>
         <div class="column">
             <div class =artistGroup>
-                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid;"/>
                 <div class="artistText"> Artist4</div>
             </div>
-            <div class =artistGroup>
-                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+            <div href="#" class =artistGroup>
+                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                 <div class="artistText"> Artist5</div>
             </div>
             <div class =artistGroup>
-                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                 <div class="artistText"> Artist6</div>
             </div>
         </div>
         <div class="column">
             <div class =artistGroup>
-                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                 <div class="artistText"> Artist7</div>
             </div>
             <div class =artistGroup>
-                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                 <div class="artistText"> Artist8</div>
             </div>
             <div class =artistGroup>
-                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                 <div class="artistText"> Artist9</div>
             </div>
         </div>
         <div class="column">
             <div class =artistGroup>
-                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                 <div class="artistText"> Artist10</div>
             </div>
             <div class =artistGroup>
-                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                 <div class="artistText"> Artist11</div>
             </div>
             <div class =artistGroup>
-                <img src="artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                 <div class="artistText"> Artist12</div>
             </div>
         </div>
@@ -391,19 +256,19 @@
     <div class="row2" style="padding-bottom: 5vw;">
         <div class="column2">
             <div class =infoGroup>
-                <img src="infoImage.webp" style= "width:100%; opacity: 75%;"/>
+                <img src="../images/infoImage.webp" style= "width:100%; opacity: 75%;"/>
                 <div class="infoText"> <h2>Premium Quality</h2><br><p>Printed using water-based inks and professional 12-colour giclée printers, giving it colour vibrancy that’s protected for 80+ years.</p></div>
             </div>
         </div>
         <div class="column2">
             <div class =infoGroup>
-                <img src="infoImage2.webp" style= "width:100%; opacity: 75%;"/>
+                <img src="../images/infoImage2.webp" style= "width:100%; opacity: 75%;"/>
                 <div class="infoText"> <h2>We're Local</h2><br><p>Run and born out of Canbera, we launched our premium giclee art print line to promote and sell local talent to the nations capital.</p></div>
             </div>
         </div>
         <div class="column2">
             <div class =infoGroup>
-                <img src="infoImage3.webp" style= "width:100%; opacity: 75%;"/>
+                <img src="../images/infoImage3.webp" style= "width:100%; opacity: 75%;"/>
                 <div class="infoText"><h2>Quick Delivery</h2><br><p>Fast & reliable delivery through our own employees.</p></div>
             </div>
         </div>
@@ -418,33 +283,8 @@
     </div>
 
     <footer style ="text-align:center; opacity:50%; font-size:1vw; padding:3vw;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
-    <script>
-        function openNav() {
-            document.getElementById("mySidebar").style.width = "20vw";
-        }
-        
-        function closeNav() {
-            document.getElementById("mySidebar").style.width = "0";
-        }
-
-        window.addEventListener('scroll',function(){
-            let header = document.querySelector('header');
-
-            header.classList.toggle('scrollingActive', window.scrollY > 660);
-        })
-
-        window.onscroll = function() {myFunction()};
-
-        var navbar = document.getElementById("navbar");
-        var sticky = navbar.offsetTop;
-
-        function myFunction() {
-            if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky")
-            } else {
-                navbar.classList.remove("sticky");
-            }
-        }
-    </script>
+    
+    <!--JavaScript-->
+    <script src ="../js/responsiveHeader"></script>
 </body>
 </html>
