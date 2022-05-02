@@ -11,7 +11,12 @@ function closeNav() {
 window.addEventListener('scroll',function(){
     let header = document.querySelector('header');
 
-    header.classList.toggle('scrollingActive', window.scrollY > 330);
+    if(document.URL.indexOf("index.html") >= 0){ 
+        header.classList.toggle('scrollingActive', window.scrollY > 330);
+    }
+    else{
+        header.classList.toggle('scrollingActive', window.scrollY > -100);
+    }
 })
 
 window.onscroll = function() {myFunction()};
