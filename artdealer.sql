@@ -1,3 +1,9 @@
+/* Import into your own MAMP/WAMP server using phpMyAdmin */
+/* Not fully populated yet */
+
+
+
+
 -- phpMyAdmin SQL Dump
 -- version 5.1.0
 -- https://www.phpmyadmin.net/

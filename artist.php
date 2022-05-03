@@ -128,6 +128,12 @@
             opacity: 0.8;
         }
     </style>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const artistvalue = urlParams.get('artist');
+        const artistint = parseInt(artistvalue);
+        console.log(artistvalue);
+    </script>
 
 </head>
 <body>
@@ -160,13 +166,15 @@
     </div>
     <hr></hr>
 
+    
+    
+
     <div class="section">
         <div class="artistbox">
             <div class="content">
-                <h2 style = " padding-bottom: 2vw;">Sophie Lawrence</h2>
                 <!--do SQL statement to get name etc off artsit number 1,2, etc -->
-                <h2 style = " padding-bottom: 2vw;"><?php echo $name; ?></h2>
-                <p class="paragraph" style="text-align: left;font-family:'Roboto',sans-serif;">Any frequent collectors on Bluethumb will be well familiar with the work of Sophie Lawrence. As our bestselling artist of 2020, this local Canberra artist is on track towards smashing her own record again this year. Her large-scale paintings are reliably bold and vibrant pieces, displaying abstraction and pops of colour. In more recent months, Sophie Lawrence has been exploring various degrees within her style. Described as an ‘intoxicating kaleidoscope of colour and energy’, she has quickly become a favourite with Australia’s collectors since joining the platform in January 2019.</p>
+                <h2 style = "padding-bottom: 2vw;"><?php include 'getName.php';?></h2>
+                <p class="paragraph" style="text-align: left;font-family:'Roboto',sans-serif;"><?php include 'getInfo.php';?></p>
             </div>
         </div>
     </div>
@@ -176,28 +184,36 @@
             <div class="column">
                 <div class =artistGroup>
                     <a href="...">
-                    <img src="../images/artist1/artist1_1.png" style= "border:rgb(68, 68, 68) solid;"/>
+                        <script language="javascript">
+                            document.write('<img src="../images/artist' + artistvalue + '/artist' + artistvalue + '_1.png" style= "border:rgb(68, 68, 68) solid"; />')
+                        </script>
                     </a>
                 </div>
             </div>
             <div class="column">
                 <div class =artistGroup>
-                    <a href="...">
-                    <img src="../images/artist1/artist1_2.png" style= "border:rgb(68, 68, 68) solid;"/>
+                <a href="...">
+                        <script language="javascript">
+                            document.write('<img src="../images/artist' + artistvalue + '/artist' + artistvalue + '_2.png" style= "border:rgb(68, 68, 68) solid"; />')
+                        </script>
                     </a>
                 </div>
             </div>
             <div class="column">
                 <div class =artistGroup>
-                    <a href="...">
-                    <img src="../images/artist1/artist1_3.png" style= "border:rgb(68, 68, 68) solid"/>
+                <a href="...">
+                        <script language="javascript">
+                            document.write('<img src="../images/artist' + artistvalue + '/artist' + artistvalue + '_3.png" style= "border:rgb(68, 68, 68) solid"; />')
+                        </script>
                     </a>
                 </div>
             </div>
             <div class="column">
                 <div class =artistGroup>
-                    <a href="...">
-                    <img src="../images/artist1/artist1_4.png" style= "border:rgb(68, 68, 68) solid"/>
+                <a href="...">
+                        <script language="javascript">
+                            document.write('<img src="../images/artist' + artistvalue + '/artist' + artistvalue + '_4.png" style= "border:rgb(68, 68, 68) solid"; />')
+                        </script>
                     </a>
                 </div>
             </div>
@@ -211,38 +227,8 @@
     
     <footer style ="text-align:center; opacity:50%; font-size:1vw; padding:3vw;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
     <script src ="../js/responsiveHeader"></script>
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const artistvalue = urlParams.get('artist');
-        console.log(artistvalue);
-    </script> 
-    <?php
-                $artistval = $_GET['artist'];
-                $artist = (int) $artistval;
-                $db_host = 'localhost';
-                $db_user = 'root';
-                $db_password = 'root';
-                $db_db = 'artdealer';
-                
-                $mysqli = new mysqli(
-                    $db_host,
-                    $db_user,
-                    $db_password,
-                    $db_db
-                );
 
-                if ($mysqli->connect_error) {
-                    echo 'Errno: '.$mysqli->connect_errno;
-                    echo '<br>';
-                    echo 'Error: '.$mysqli->connect_error;
-                    exit();
-                  }
-                  
-                $sql = "SELECT name FROM artist WHERE artistID = " . $artist;
-                $result = $mysqli->query($sql);
-                echo $result;
-                $name = $result["name"];
-                $mysqli->close();
-                ?>
+    
+    
 </body>
 </html>
