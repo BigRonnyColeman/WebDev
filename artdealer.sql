@@ -1,17 +1,11 @@
-/* Import into your own MAMP/WAMP server using phpMyAdmin */
-/* Not fully populated yet */
-
-
-
-
 -- phpMyAdmin SQL Dump
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 02, 2022 at 01:21 PM
+-- Generation Time: May 05, 2022 at 06:29 AM
 -- Server version: 5.7.34
--- PHP Version: 7.4.21
+-- PHP Version: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,8 +54,16 @@ CREATE TABLE `artpiece` (
   `artpieceID` int(11) NOT NULL,
   `name` varchar(128) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
-  `artistID` int(11) DEFAULT NULL
+  `artistID` int(11) DEFAULT NULL,
+  `artpieceNumber` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `artpiece`
+--
+
+INSERT INTO `artpiece` (`artpieceID`, `name`, `price`, `artistID`, `artpieceNumber`) VALUES
+(1, 'Over the Hill', '3400.00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -125,13 +127,13 @@ ALTER TABLE `orderItem`
 -- AUTO_INCREMENT for table `artist`
 --
 ALTER TABLE `artist`
-  MODIFY `artistID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `artistID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `artpiece`
 --
 ALTER TABLE `artpiece`
-  MODIFY `artpieceID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `artpieceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `customerOrder`
