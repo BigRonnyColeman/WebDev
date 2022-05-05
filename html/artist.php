@@ -155,7 +155,7 @@
             <nav>
                 <ul class = "navLinks">
                     <li><a href="index.html">HOME</u></a></li>
-                    <li><a href="artists.php"><u style="text-underline-offset: 0.7em";>ARTISTS</a></li>
+                    <li><a href="artists.php"><u style="text-underline-offset: 0.7em";>ARTISTS</u></a></li>
                     <li><a href="best.php">BEST SELLERS</a></li>
                     <li><a href="about2.html">ABOUT US</a></li>
                     <li><a href="contact.php">CONTACT US</a></li>
