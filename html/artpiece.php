@@ -183,14 +183,17 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
                 <h2 style="color: rgb(230, 230, 230); padding-bottom:1vw;">Cart<h2>
                 <hr style="border-color: rgb(158, 158, 158);"></hr><br>
-                <a>Item 1 x quantity</a>
                 <a><p>
                     <?php 
                         foreach($_COOKIE as $key=>$value)
                         {
+                        echo '<br>';
                         global $var;
                         $var = $value;
                         include '../php/getcartName.php';
+                        echo ' x $';
+                        include '../php/getPrice.php';
+                        echo '<br>';
                         };
                     ?>
                 </p></a>
