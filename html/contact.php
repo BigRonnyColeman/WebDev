@@ -162,9 +162,6 @@
 
             </div>
         </form>
-
-</form>
-        
     </div>
 
     <p><a href='https://www.freepik.com/vectors/human-avatar'>Human avatar vector created by freepik - www.freepik.com</a></p>
