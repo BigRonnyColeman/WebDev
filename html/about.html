@@ -136,36 +136,6 @@
             margin-right: auto;
             width: 50%;
         }
-
-        .column2 {
-            float: left;
-            width: 33.33%;
-            padding: 5px;
-        }
-
-        .row2::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        .infoText {
-            text-align:center;
-        }
-
-        .infoGroup {
-            position: relative;
-            z-index: -1;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 75%;
-        }
-
-        /*Footer Styling*/
-        .signUpAndSave{
-            text-align: center;
-        }
     </style>  
 </head>
 
@@ -184,10 +154,10 @@
                 </ul>
             </nav>
             <!--Cart-->
-            <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;r"/></button>  
+            <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
             <div id="mySidebar" class="sidebar">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-                <h2 style="color: rgb(230, 230, 230); padding-bottom:1vw;">Cart<h2>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-family: Arial, Helvetica, sans-serif; font-size:3vw">x</a>
+                <h2 style="color: rgb(230, 230, 230); padding-bottom:1vw;">CART<h2>
                 <hr style="border-color: rgb(158, 158, 158);"></hr><br>
                 <a>Item 1 x quantity</a>
                 <a>Item 1 x quantity</a>
@@ -201,30 +171,9 @@
 
     <!--About Us-->
     <hr></hr>
-    <h2 style = "padding-top:7vw; padding-bottom: 2vw;">About Us</h2>
+    <h2 style = "padding-top:4vw; padding-bottom: 2vw;">ABOUT US</h2>
     <div class ="paragraph">
         <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.<br>
-    </div>
-
-    <div class="row2" style="padding-bottom: 5vw;">
-        <div class="column2">
-            <div class =infoGroup>
-                <img src="../images/infoImage.webp" style= "width:100%; opacity: 75%;"/>
-                <div class="infoText"> <h2>Premium Quality</h2><br><p>Printed using water-based inks and professional 12-colour giclée printers, giving it colour vibrancy that’s protected for 80+ years.</p></div>
-            </div>
-        </div>
-        <div class="column2">
-            <div class =infoGroup>
-                <img src="../images/infoImage2.webp" style= "width:100%; opacity: 75%;"/>
-                <div class="infoText"> <h2>We're Local</h2><br><p>Run and born out of Canbera, we launched our premium giclee art print line to promote and sell local talent to the nations capital.</p></div>
-            </div>
-        </div>
-        <div class="column2">
-            <div class =infoGroup>
-                <img src="../images/infoImage3.webp" style= "width:100%; opacity: 75%;"/>
-                <div class="infoText"><h2>Quick Delivery</h2><br><p>Fast & reliable delivery through our own employees.</p></div>
-            </div>
-        </div>
     </div>
 
     <div class = paragraph>
@@ -240,17 +189,38 @@
         </div>
     </div>
     
-
-    <!--End-->
     <hr></hr>
+    <!--
     <h2 style = "padding-bottom:1vw; padding-top:3vw;">Sign Up and Save</h2>
     <div class="signUpAndSave" style="padding:5vw;">
         <a class = "btnStyle" href="#">My Profile</a>
         <a class = "btnStyle" style="padding-right: 4vw;padding-left: 4vw;" href="#">Sign Up </a>
     </div>
-
-    <footer style ="text-align:center; opacity:50%; font-size:1vw; padding:3vw;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
-    
+    -->
+    <hr></hr>
+    <footer style ="text-align:center;font-size:1vw; padding:3vw;">
+        <div class="row2" style="padding-bottom: 3vw;">
+            <div class="column2">
+                <div class =infoGroup>
+                    <img src="../images/infoImage.webp" style= "width:100%; opacity: 75%;"/>
+                    <div class="infoText"><h2 style="font-size:2.8vw">Premium Quality</h2><br><p>Printed using water-based inks and professional 12-colour giclée printers, giving it colour vibrancy that’s protected for 80+ years.</p></div>
+                </div>
+            </div>
+            <div class="column2">
+                <div class =infoGroup>
+                    <img src="../images/infoImage2.webp" style= "width:100%; opacity: 75%;"/>
+                    <div class="infoText"> <h2>We're Local</h2><br><p>Run and born out of Canbera, we launched our premium giclee art print line to promote and sell local talent to the nations capital.</p></div>
+                </div>
+            </div>
+            <div class="column2">
+                <div class =infoGroup>
+                    <img src="../images/infoImage3.webp" style= "width:100%; opacity: 75%;"/>
+                    <div class="infoText"><h2>Quick Delivery</h2><br><p>Fast & reliable delivery through our own employees.</p></div>
+                </div>
+            </div>
+        </div>
+        <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
+    </footer>
     <!--JavaScript-->
     <script src ="../js/responsiveHeader"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

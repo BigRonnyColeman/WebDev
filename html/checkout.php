@@ -15,21 +15,12 @@
             padding:0;
         }
 
-        .sticky {
-            top: 0;
-            width: 100%;
-            z-index:999;
-        }
-
-        .section {
-            padding: 20px;
+         .section {
+            padding: 3vw;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            margin: 50px;
-            background-color:rgba(255, 255, 255, 0.5)
-        }
-
-        header{
-            background-color:black;
+            margin: 5vw;
+            background-color:rgba(255, 255, 255, 0.5);
+            width:40vw;
         }
 
         body {font-family: Arial, Helvetica, sans-serif;}
@@ -37,12 +28,12 @@
 
         input[type=text], select, textarea {
             width: 100%;
-            padding: 12px;
+            padding: 1vw;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
             margin-top: 6px;
-            margin-bottom: 16px;
+            margin-bottom: 3vw;
             resize: vertical;
         }
 
@@ -62,159 +53,130 @@
         .container {
             border-radius: 5px;
             background-color: #f2f2f2;
-            padding: 20px;
+            padding: 7vw;
         }
 
-        /* The Modal (background) */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            padding-top: 100px; /* Location of the box */
-            left: 0;
+        /* Split the screen in half */
+        .split {
+            height: 100%;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
             top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            overflow-x: hidden;
         }
 
-        /* Modal Content */
-        .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
+        /* Control the left side */
+        .left {
+            left: 0;
         }
 
-        /* The Close Button */
-        .close {
-            color: #aaaaaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
+        /* Control the right side */
+        .right {
+            right: 0;
+            background-color:hsl(21, 12%, 72%);
         }
 
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
+        /* If you want the content centered horizontally and vertically */
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
         }
+
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <div id="navbar">
-        <header>
-            <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
-            <nav>
-                <ul class = "navLinks">
-                    <li><a href="index.php">HOME</a></li>
-                    <li><a href="artists.php">ARTISTS</a></li>
-                    <li><a href="best.php">BEST SELLERS</a></li>
-                    <li><a href="about2.html">ABOUT US</a></li>
-                    <li><a href="#"><u style="text-underline-offset: 0.7em";>CONTACT US</u></a></li>
-                </ul>
-            </nav>
-            <!--Cart-->
-            <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
-            <div id="mySidebar" class="sidebar">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-                <h2 style="color:rgb(230, 230, 230); padding-bottom:1vw;">Cart<h2>
-                <hr style="border-color: rgb(158, 158, 158);"></hr><br>
-                <a>Item 1 x quantity</a>
-                <a>Item 1 x quantity</a>
-                <div style="padding-top:5vw;">
-                    <button class ="checkoutbtn" onclick="">Checkout</button> 
-                </div> 
-            </div>
-        </header>
-    </div>
 
-    
-    <h2 style = "padding-top:7vw; padding-bottom: 2vw;">Get in Touch</h2>
-    <p>We will get back to you as soon as we can.</p>
-    <div class="section">
-        <p>
-        <?php 
-                        foreach($_COOKIE as $key=>$value)
-                        {
-                        echo '<br>';
-                        global $var;
-                        $var = $value;
-                        include '../php/getcartName.php';
-                        echo ' x $';
-                        include '../php/getPrice.php';
-                        echo '<br>';
-                        };
-                    ?>
-        </p>
-        <form>
-
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Your name..">
-
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" placeholder="Your email..">
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>
-
-            <input type="submit" id = "myBtn" value="Submit">
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
-            </div>
-
-            </div>
-        </form>
-
-</form>
+    <div class="split left">
         
+    <div class="centered">
+        <header></header>
+        <img class ="logo" style = "height:3vw;" src ="../images/logoBlack.png" alt = "logo">
+        <div class="section">
+        <form style="text-align: left;">
+            <label for="contact">Contact Information</label>
+            <div style="display:flex;">
+                <input type="text" id="shipping" name="fname" placeholder="First Name.." style="font-size:1vw;">
+                <input type="text" id="shipping" name="lname" placeholder="Last Name.." style="font-size:1vw;">
+            </div>
+            <input type="text" id="contact" name="contactinfo" placeholder="Email or Mobile Phone Number.." style="font-size:1vw;">
+
+            <label for="shipping">Mailing Address</label>
+
+            <input type="text" id="shipping" name="address" placeholder="Address.." style="font-size:1vw;">
+            <div style="display:flex;">
+                <select id="shipping" name="State" style="font-size:1vw;">
+                    <option value="act">ACT</option>
+                    <option value="nsw">NSW</option>
+                    <option value="vic">VIC</option>
+                    <option value="qld">QLD</option>
+                    <option value="nt">NT</option>
+                    <option value="sa">SA</option>
+                    <option value="wa">WA</option>
+                </select>
+                <input type="text" id="shipping" name="suburb" placeholder="Suburb.." style="font-size:1vw;">
+                <input type="text" id="shipping" name="postcode" placeholder="Postcode.." style="font-size:1vw;">
+            </div>
+
+            <input type="submit" id = "myBtn" value="Submit" style="font-size:1vw;">
+            <a href = "artists.php" style="color:black; font-size:1vw; text-decoration: underline; padding-left:1vw;">Return to Artists...</a>
+            <!-- The Modal -->
+        </form>
+    </div>
+    </div>
     </div>
 
-    <p><a href='https://www.freepik.com/vectors/human-avatar'>Human avatar vector created by freepik - www.freepik.com</a></p>
-    <p><a href='https://bluethumb.com.au/sophie-lawrence/Artwork/green-farm-106x106-framed-large-textured-abstract-landscape'>Artwork</a></p>
-    
-    <footer style ="text-align:center; opacity:50%; font-size:1vw; padding:3vw;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
-    <script src ="../js/responsiveHeader"></script>
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
+    <div class="split right">
+    <div class="centered">
 
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
+    <div class="section">
+        <label">Mailing Address</label><br>
+        <?php 
+            foreach($_COOKIE as $key=>$value)
+            {
+            global $var;
+            $var = $value;
+            include '../php/getcartName.php';
+        };
+        ?>
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+        <!-- Replace "test" with your own sandbox Business account app client ID -->
+        <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+        <!-- Set up a container element for the button -->
+        <div style = "padding-top: 8vw;" id="paypal-button-container"></div>
+        <script>
+            paypal.Buttons({
+                // Sets up the transaction when a payment button is clicked
+                createOrder: (data, actions) => {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: '77.44' // Can also reference a variable or function
+                            }
+                        }]
+                    });
+                },
+                // Finalize the transaction after payer approval
+                onApprove: (data, actions) => {
+                    return actions.order.capture().then(function(orderData) {
+                        // Successful capture! For dev/demo purposes:
+                        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                        const transaction = orderData.purchase_units[0].payments.captures[0];
+                        alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+                        // When ready to go live, remove the alert and show a success message within this page. For example:
+                        // const element = document.getElementById('paypal-button-container');
+                        // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                        // Or go to another URL:  actions.redirect('thank_you.html');
+                    });
+                }
+            }).render('#paypal-button-container');
+        </script>
+    </div>
 
-        // When the user clicks the button, open the modal 
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
+    <footer style ="text-align:center; opacity:50%; font-size:1vw;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
 
 </body>
 </html>
