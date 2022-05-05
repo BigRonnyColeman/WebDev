@@ -90,14 +90,13 @@
             display: flex;
             -ms-flex-wrap: wrap; /* IE10 */
             flex-wrap: wrap;
-            padding: 0;
-            
+            padding: 0; 
         }
 
         .column { /* Create four equal columns that sits next to each other */
-            -ms-flex: 25%; /* IE10 */
-            flex: 25%;
-            max-width: 25%;
+            -ms-flex: 50%; /* IE10 */
+            flex: 50%;
+            max-width: 50%;
             padding: 0 10px;
         }
 
@@ -134,17 +133,37 @@
         .artistGroup:hover {
             opacity: 0.8;
         }
+
+        .btnStyle{
+            font-size: 2vw;
+            color: rgb(68, 68, 68);
+            border: 1px solid #818181;
+            background-color:transparent;
+            cursor: pointer;
+            text-decoration:none;
+            padding:3vw;
+        }
+
     </style>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const artistvalue = urlParams.get('artist');
         const artistint = parseInt(artistvalue);
+        const artpiecenum = urlParams.get('artnumber');
+        const artpieceint = parseInt(artistvalue);
         console.log(artistvalue);
-    </script>
+        var cookiestring = "";
 
+        function addItem() {
+            <?php 
+                $xrand = strval(rand());
+                setcookie($xrand,include '../php/getartpieceID.php');
+            ?>
+        }
+    </script>
 </head>
 <body>
-
+    
     <!-- Header -->
     <div id="navbar">
         <header>
@@ -152,7 +171,7 @@
             <nav>
                 <ul class = "navLinks">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#"><u style="text-underline-offset: 0.7em";>Artists</u></a></li>
+                    <li><a href="artists.php">Artists</a></li>
                     <li><a href="best.php">Best Sellers</a></li>
                     <li><a href="about2.html">About Us</a></li>
                     <li><a href="contact.php">Contact Us</a></li>
@@ -165,7 +184,16 @@
                 <h2 style="color: rgb(230, 230, 230); padding-bottom:1vw;">Cart<h2>
                 <hr style="border-color: rgb(158, 158, 158);"></hr><br>
                 <a>Item 1 x quantity</a>
-                <a>Item 1 x quantity</a>
+                <a><p>
+                    <?php 
+                        foreach($_COOKIE as $key=>$value)
+                        {
+                        global $var;
+                        $var = $value;
+                        include '../php/getcartName.php';
+                        };
+                    ?>
+                </p></a>
                 <div style="padding-top:5vw;">
                     <button class ="checkoutbtn" onclick="">Checkout</button> 
                 </div> 
@@ -178,55 +206,24 @@
     
 
     <div class="section">
-        <div class="artistbox">
-            <div class="content">
-                <!--do SQL statement to get name etc off artsit number 1,2, etc -->
-                <h2 style = "padding-bottom: 2vw;"><?php include '../php/getName.php';?></h2>
-                <p class="paragraph" style="text-align: left;font-family:'Roboto',sans-serif;"><?php include '../php/getInfo.php';?></p>
-            </div>
-        </div>
-    </div>
-
-    <div class="section" >
+        <h2 style = "padding-bottom: 2vw;"><?php include '../php/getartName.php';?></h2>
         <div class="row">
             <div class="column">
-                <div class =artistGroup>
-                    <script language="javascript"> document.write('<a href="artpiece.php?artist='+artistvalue+'&artnumber=1">')</script>
-                        <script language="javascript">
-                            document.write('<img src="../images/artist' + artistvalue + '/artist' + artistvalue + '_1.png" style= "border:rgb(68, 68, 68) solid"; />')
-                        </script>
-                    </a>
-                </div>
+                <script language="javascript">
+                    document.write('<img src="../images/artist' + artistvalue + '/artist' + artistvalue + '_'+artpieceint+'.png" style= "border:rgb(68, 68, 68) solid; width:100%;"; />')
+                </script>   
             </div>
             <div class="column">
-                <div class =artistGroup>
-                <script language="javascript"> document.write('<a href="artpiece.php?artist='+artistvalue+'&artnumber=2">')</script>
-                    <script language="javascript">
-                            document.write('<img src="../images/artist' + artistvalue + '/artist' + artistvalue + '_2.png" style= "border:rgb(68, 68, 68) solid"; />')
-                    </script>
-                </a>
-                </div>
-            </div>
-            <div class="column">
-                <div class =artistGroup>
-                <script language="javascript"> document.write('<a href="artpiece.php?artist='+artistvalue+'&artnumber=3">')</script>
-                        <script language="javascript">
-                            document.write('<img src="../images/artist' + artistvalue + '/artist' + artistvalue + '_3.png" style= "border:rgb(68, 68, 68) solid"; />')
-                        </script>
-                    </a>
-                </div>
-            </div>
-            <div class="column">
-                <div class =artistGroup>
-                <script language="javascript"> document.write('<a href="artpiece.php?artist='+artistvalue+'&artnumber=4">')</script>
-                        <script language="javascript">
-                            document.write('<img src="../images/artist' + artistvalue + '/artist' + artistvalue + '_4.png" style= "border:rgb(68, 68, 68) solid"; />')
-                        </script>
-                    </a>
-                </div>
+                <h2 style="font-size:60%;"> <?php include '../php/getartpieceprice.php';?> </p>
+                <br>
+                <br>
+                <!-- add artpiece ID to global cookies?? Then Cart reads cookies and gets data from database -->
+                <!-- https://www.w3schools.com/js/js_cookies.asp -->
+                <button href="artpiece.php" type="button" onclick="addItem()">My Profile</button>
             </div>
         </div>
-    </div>    
+
+    </div>
 
         <!--Rest of Page-->
 

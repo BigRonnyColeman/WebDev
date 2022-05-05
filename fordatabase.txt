@@ -1,36 +1,172 @@
+Instructions:
+
+1. go to https://bluethumb.com.au/
+2. Find Random artist, try and get ones from Canberra
+3. Download and crop 4 artpieces into a square
+4. Save into required folders, as previously done
+        artsit6/artist6_1.png   etc
+5. Add artpiece data t each section. The first four that I have downloaded, don't have name/price. 
+        Could you pls either find them through the links or just make them up.
+6. Add artistID, artist name and speil to data below. The link should be store link for the individual artist.
+
+7. Import current artdealer.sql into PHPMyAdmin on MAMP/WAMP
+        Note: You need to create the artdealer databse first for this to work.
+8. Add Data into the table. No Need for Query, just copy paste data into the boxes.
+
+Note: We need 12 artists in total.
+Therefore 48 artpieces.
 
 
+
+ID = 1
 Sophie Lawrence
-
 Any frequent collectors on Bluethumb will be well familiar with the work of Sophie Lawrence. As our bestselling artist of 2020, this local Canberra artist is on track towards smashing her own record again this year. Her large-scale paintings are reliably bold and vibrant pieces, displaying abstraction and pops of colour. In more recent months, Sophie Lawrence has been exploring various degrees within her style. Described as an ‘intoxicating kaleidoscope of colour and energy’, she has quickly become a favourite with Australia’s collectors since joining the platform in January 2019.
-
 https://bluethumb.com.au/sophie-lawrence
 
+    artpieceID = 1
+    artpieceNumber = 1
+    artistID = 1
+    price = ...
+    name = ...
+
+    artpieceID = 2
+    artpieceNumber = 2
+    artistID = 1
+    price = ...
+    name = ...
+
+    artpieceID = 3
+    artpieceNumber = 3
+    artistID = 1
+    price = ...
+    name = ...
+
+    artpieceID = 4
+    artpieceNumber = 4
+    artistID = 1
+    price = ...
+    name = ...
 
 
+
+ID = 2
 Susan Trudinger
-
 One of Bluethumb’s most successful landscape artists, Susan Trudinger paints vivid, high-spirited landscapes that emphasise the incredible colours and shapes in the natural world around us. Her abstract approach to various scenes offers a new perspective to traditional settings to the viewer. Her work has been influenced by many years and life experiences, including parenthood, career changes and travelling through the Middle East. It was during these travels Susan found herself “in awe of the landscape, the culture and the fine intricate designs on mosques and other buildings”.
-
 https://bluethumb.com.au/susan-trudinger
 
+    artpieceID = 5
+    artpieceNumber = 1
+    artistID = 2
+    price = ...
+    name = ...
 
+    artpieceID = 6
+    artpieceNumber = 2
+    artistID = 2
+    price = ...
+    name = ...
+
+    artpieceID = 7
+    artpieceNumber = 3
+    artistID = 2
+    price = ...
+    name = ...
+
+    artpieceID = 8
+    artpieceNumber = 4
+    artistID = 2
+    price = ...
+    name = ...
+
+ID = 3
 Sally Dunbar
-
 With an impressive array of exhibitions already under her belt, Sally Dunbar has been climbing the ranks in popularity since she first joined Bluethumb in 2017. Sally Dunbar is currently living and working in Canberra and sees art as a sustaining part of her life. Her two-dimensional characters range from Australia’s native animals to classic pet friends at home. Sally’s simplified approach to the canvas provides a sense of candour and ease, much like naïve art so often does.
-
 https://bluethumb.com.au/sally-dunbar
 
+    artpieceID = 9
+    artpieceNumber = 1
+    artistID = 3
+    price = ...
+    name = ...
+
+    artpieceID = 10
+    artpieceNumber = 2
+    artistID = 3
+    price = ...
+    name = ...
+
+    artpieceID = 11
+    artpieceNumber = 3
+    artistID = 3
+    price = ...
+    name = ...
+
+    artpieceID = 12
+    artpieceNumber = 4
+    artistID = 3
+    price = ...
+    name = ...
 
 
+ID = 4
 Valentyna Crane
-
-Light, movement and colour are all prime decisive factors in Valentyna’s contemporary impressionist landscapes. Committed to fostering atmosphere throughout her work, Valentyna Crane comes from a classical artistic background and uses her deep knowledge of art history to permeate her art. All of this creates a strong sense of  freedom and vibrancy, and carries the crispness of Canberra air.
-         
+Light, movement and colour are all prime decisive factors in Valentyna’s contemporary impressionist landscapes. Committed to fostering atmosphere throughout her work, Valentyna Crane comes from a classical artistic background and uses her deep knowledge of art history to permeate her art. All of this creates a strong sense of  freedom and vibrancy, and carries the crispness of Canberra air.       
 https://bluethumb.com.au/val-crane
 
+    artpieceID = 13
+    artpieceNumber = 1
+    artistID = 4
+    price = ...
+    name = ...
+
+    artpieceID = 14
+    artpieceNumber = 2
+    artistID = 4
+    price = ...
+    name = ...
+
+    artpieceID = 15
+    artpieceNumber = 3
+    artistID = 4
+    price = ...
+    name = ...
+
+    artpieceID = 16
+    artpieceNumber = 4
+    artistID = 4
+    price = ...
+    name = ...
 
 
+ID = 5
+...
+...
+...
 
+    artpieceID = 17
+    artpieceNumber = 1
+    artistID = 5
+    price = ...
+    name = ...
+
+    artpieceID = 18
+    artpieceNumber = 2
+    artistID = 5
+    price = ...
+    name = ...
+
+    artpieceID = 19
+    artpieceNumber = 3
+    artistID = 5
+    price = ...
+    name = ...
+
+    artpieceID = 20
+    artpieceNumber = 4
+    artistID = 5
+    price = ...
+    name = ...
+
+...ETC
            
          
