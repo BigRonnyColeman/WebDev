@@ -19,7 +19,10 @@
             top: 0;
             width: 100%;
             z-index:999;
-            position:fixed;
+        }
+
+        header{
+            background-color:black;
         }
 
         .artistbox {
@@ -170,18 +173,18 @@
             <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
             <nav>
                 <ul class = "navLinks">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="artists.php">Artists</a></li>
-                    <li><a href="best.php">Best Sellers</a></li>
-                    <li><a href="about2.html">About Us</a></li>
-                    <li><a href="contact.php">Contact Us</a></li>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="artists.php">ARTISTS</a></li>
+                    <li><a href="best.php">BEST SELLERS</a></li>
+                    <li><a href="about.html">ABOUT US</a></li>
+                    <li><a href="contact.php">CONTACT US</a></li>
                 </ul>
             </nav>
             <!--Cart-->
             <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;r"/></button>  
             <div id="mySidebar" class="sidebar">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-                <h2 style="color: rgb(230, 230, 230); padding-bottom:1vw;">Cart<h2>
+                <h2 style="color: rgb(230, 230, 230); padding-bottom:1vw;">CART<h2>
                 <hr style="border-color: rgb(158, 158, 158);"></hr><br>
                 <a><p>
                     <?php 
@@ -227,16 +230,30 @@
         </div>
 
     </div>
-
-        <!--Rest of Page-->
-
-    <p><a href='https://www.freepik.com/vectors/human-avatar'>Human avatar vector created by freepik - www.freepik.com</a></p>
-    <p><a href='https://bluethumb.com.au/sophie-lawrence/Artwork/green-farm-106x106-framed-large-textured-abstract-landscape'>Artwork</a></p>
-    
-    <footer style ="text-align:center; opacity:50%; font-size:1vw; padding:3vw;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
+    <hr></hr>
+    <footer style ="text-align:center;font-size:1vw; padding:3vw;">
+        <div class="row2" style="padding-bottom: 3vw;">
+            <div class="column2">
+                <div class =infoGroup>
+                    <img src="../images/infoImage.webp" style= "width:100%; opacity: 75%;"/>
+                    <div class="infoText"><h2 style="font-size:2.8vw">Premium Quality</h2><br><p>Printed using water-based inks and professional 12-colour giclée printers, giving it colour vibrancy that’s protected for 80+ years.</p></div>
+                </div>
+            </div>
+            <div class="column2">
+                <div class =infoGroup>
+                    <img src="../images/infoImage2.webp" style= "width:100%; opacity: 75%;"/>
+                    <div class="infoText"> <h2>We're Local</h2><br><p>Run and born out of Canbera, we launched our premium giclee art print line to promote and sell local talent to the nations capital.</p></div>
+                </div>
+            </div>
+            <div class="column2">
+                <div class =infoGroup>
+                    <img src="../images/infoImage3.webp" style= "width:100%; opacity: 75%;"/>
+                    <div class="infoText"><h2>Quick Delivery</h2><br><p>Fast & reliable delivery through our own employees.</p></div>
+                </div>
+            </div>
+        </div>
+        <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
+    </footer>
     <script src ="../js/responsiveHeader"></script>
-
-    
-    
 </body>
 </html>
