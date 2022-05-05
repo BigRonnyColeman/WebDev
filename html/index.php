@@ -139,6 +139,13 @@
                     </ul>
                 </nav>
                 <!--Cart-->
+
+                <!--Cart-->
+                <!-- Read Link https://phppot.com/php/simple-php-shopping-cart/ -->
+                <!-- Run testing_shop/index.php , Needs database/tables imported -->
+                <!-- Does not have a checkout, but uses sessions instead cookies -->
+                <!-- Try This Next -->
+
                 <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
                 <div id="mySidebar" class="sidebar">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-family: Arial, Helvetica, sans-serif; font-size:3vw">x</a>
