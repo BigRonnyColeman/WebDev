@@ -147,7 +147,7 @@
                     <a>Item 1 x quantity</a>
                     <a>Item 1 x quantity</a>
                     <div style="padding-top:5vw;">
-                        <button class ="checkoutbtn" onclick="">Checkout</button> 
+                        <button class ="checkoutbtn"><a href="checkout.php">Checkout</a></button> 
                     </div> 
                 </div>
             </header>
