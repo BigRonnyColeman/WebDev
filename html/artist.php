@@ -15,6 +15,13 @@
             padding:0;
         }
 
+        .sticky {
+            top: 0;
+            width: 100%;
+            z-index:999;
+            position:fixed;
+        }
+
         .artistbox {
 
         display: flex;
@@ -144,17 +151,18 @@
             <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
             <nav>
                 <ul class = "navLinks">
-                    <li><a href="#">Artists</a></li>
-                    <li><a href="#">Best Sellers</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#"><u style="text-underline-offset: 0.7em";>Artists</u></a></li>
+                    <li><a href="best.php">Best Sellers</a></li>
+                    <li><a href="about2.html">About Us</a></li>
+                    <li><a href="contact.php">Contact Us</a></li>
                 </ul>
             </nav>
             <!--Cart-->
             <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;r"/></button>  
             <div id="mySidebar" class="sidebar">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-                <h2 style="color:rgb(230, 230, 230); padding-bottom:1vw;">Cart<h2>
+                <h2 style="color: rgb(230, 230, 230); padding-bottom:1vw;">Cart<h2>
                 <hr style="border-color: rgb(158, 158, 158);"></hr><br>
                 <a>Item 1 x quantity</a>
                 <a>Item 1 x quantity</a>
@@ -173,8 +181,8 @@
         <div class="artistbox">
             <div class="content">
                 <!--do SQL statement to get name etc off artsit number 1,2, etc -->
-                <h2 style = "padding-bottom: 2vw;"><?php include 'getName.php';?></h2>
-                <p class="paragraph" style="text-align: left;font-family:'Roboto',sans-serif;"><?php include 'getInfo.php';?></p>
+                <h2 style = "padding-bottom: 2vw;"><?php include '../php/getName.php';?></h2>
+                <p class="paragraph" style="text-align: left;font-family:'Roboto',sans-serif;"><?php include '../php/getInfo.php';?></p>
             </div>
         </div>
     </div>

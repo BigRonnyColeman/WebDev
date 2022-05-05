@@ -127,6 +127,13 @@
             padding-bottom:5vw;
         }
 
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
         .column2 {
             float: left;
             width: 33.33%;
@@ -161,107 +168,33 @@
 
 <body>
     <!-- Header -->
-    <div class ="backgroundImage">
-        <div id="navbar">
-            <header>
-                <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
-                <nav>
-                    <ul class = "navLinks">
-                        <li><a href="index.html"><u style="text-underline-offset: 0.7em";>Home</u></a></li>
-                        <li><a href="artists.php">Artists</a></li>
-                        <li><a href="best.php">Best Sellers</a></li>
-                        <li><a href="about2.html">About Us</a></li>
-                        <li><a href="contact.php">Contact Us</a></li>
-                    </ul>
-                </nav>
-                <!--Cart-->
-                <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
-                <div id="mySidebar" class="sidebar">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-                    <h2 style="color:rgb(230, 230, 230); padding-bottom:1vw;">Cart<h2>
-                    <hr style="border-color: rgb(158, 158, 158);"></hr><br>
-                    <a>Item 1 x quantity</a>
-                    <a>Item 1 x quantity</a>
-                    <div style="padding-top:5vw;">
-                        <button class ="checkoutbtn" onclick="">Checkout</button> 
-                    </div> 
-                </div>
-            </header>
-        </div>
-    
-    <!--Artists-->
+    <div id="navbar">
+        <header>
+            <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
+            <nav>
+                <ul class = "navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="artists.php">Artists</a></li>
+                    <li><a href="best.php">Best Sellers</a></li>
+                    <li><a href="#" ><u style="text-underline-offset: 0.7em";>About Us</u></a></li>
+                    <li><a href="contact.php">Contact Us</a></li>
+                </ul>
+            </nav>
+            <!--Cart-->
+            <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;r"/></button>  
+            <div id="mySidebar" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                <h2 style="color: rgb(230, 230, 230); padding-bottom:1vw;">Cart<h2>
+                <hr style="border-color: rgb(158, 158, 158);"></hr><br>
+                <a>Item 1 x quantity</a>
+                <a>Item 1 x quantity</a>
+                <div style="padding-top:5vw;">
+                    <button class ="checkoutbtn" onclick="">Checkout</button> 
+                </div> 
+            </div>
+        </header>
     </div>
     <hr></hr>
-    <h2 style = "padding-top:7vw; padding-bottom: 2vw;">Shop By Artist</h2>
-    <div class="row">
-        <div class="column">
-            <a href="artist.php?artist=1">
-                <div class =artistGroup>
-                    <img src="../images/artist1/artist1_overview.png" style= "border:rgb(68, 68, 68) solid"/>
-                    <div class="artistText"> Artist1</div>
-                </div>
-            </a>
-            <div class =artistGroup>
-                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                <div class="artistText"> Artist2</div>
-            </div>
-            <div class =artistGroup>
-                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                <div class="artistText"> Artist3</div>
-            </div>
-        </div>
-        <div class="column">
-            <a href="artist.php?artist=2">
-                <div class =artistGroup>
-                    <img src="../images/artist2/artist2_overview.png" style= "border:rgb(68, 68, 68) solid;"/>
-                    <div class="artistText"> Artist2</div>
-                </div>
-            </a>
-            <div href="#" class =artistGroup>
-                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                <div class="artistText"> Artist5</div>
-            </div>
-            <div class =artistGroup>
-                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                <div class="artistText"> Artist6</div>
-            </div>
-        </div>
-        <div class="column">
-            <a href="artist.php?artist=3">
-                <div class =artistGroup>
-                    <img src="../images/artist3/artist3_overview.png" style= "border:rgb(68, 68, 68) solid"/>
-                    <div class="artistText"> Artist3</div>
-                </div>
-            </a>
-            <div class =artistGroup>
-                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                <div class="artistText"> Artist8</div>
-            </div>
-            <div class =artistGroup>
-                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                <div class="artistText"> Artist9</div>
-            </div>
-        </div>
-        <div class="column">
-            <a href="artist.php?artist=4">
-                <div class =artistGroup>
-                    <img src="../images/artist4/artist4_overview.png" style= "border:rgb(68, 68, 68) solid"/>
-                    <div class="artistText"> Artist4</div>
-                </div>
-            </a>
-            <div class =artistGroup>
-                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                <div class="artistText"> Artist11</div>
-            </div>
-            <div class =artistGroup>
-                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                <div class="artistText"> Artist12</div>
-            </div>
-        </div>
-        <div style="padding:8vw; margin:0 auto">
-            <a class = "btnStyle" href="#">View Best Sellers</a>
-        </div>
-    </div>
 
     <!--About Us-->
     <hr></hr>
@@ -290,6 +223,20 @@
             </div>
         </div>
     </div>
+
+    <div class = paragraph>
+        <div class =infoGroup>
+            <br>
+            <h2>Meet The Team</h2><br>
+            <img src="../images/CEO.jpg" alt="CEO" class="center">
+            <div class="infoText"> 
+                <h2>CEO - Ronnie</h2><br>
+                <p>Founder of Art Dealer Australia, Ronnie is an exhibiting artist and Art Educator with over 20 years experience. After training for many years and bringing his ideas to a centralised mindset, Ronnie fell in love with the nation's capital passion for art. </p></br>
+                <p>"Even after over 20 years in Art Education, I still tine unto this asme instinct to find beauty. There is a lot of art theory but really it about feeling. What makes your heart sing? What sparks your interest? It's as simply and complex as falling in love."</p>
+            </div>
+        </div>
+    </div>
+    
 
     <!--End-->
     <hr></hr>
