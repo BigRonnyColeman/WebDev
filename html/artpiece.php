@@ -146,6 +146,7 @@
 
     </style>
     <script>
+
         const urlParams = new URLSearchParams(window.location.search);
         const artistvalue = urlParams.get('artist');
         const artistint = parseInt(artistvalue);
@@ -153,24 +154,16 @@
         const artpieceint = parseInt(artistvalue);
         console.log(artistvalue);
         var cookiestring = "";
-
-        function addItem() {
-            <?php 
-                $xrand = strval(rand());
-                setcookie($xrand,include '../php/getartpieceID.php');
-            ?>
-        }
     </script>
 </head>
 <body>
-    
     <!-- Header -->
     <div id="navbar">
         <header>
             <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
             <nav>
                 <ul class = "navLinks">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li><a href="artists.php">Artists</a></li>
                     <li><a href="best.php">Best Sellers</a></li>
                     <li><a href="about2.html">About Us</a></li>
@@ -183,31 +176,15 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
                 <h2 style="color: rgb(230, 230, 230); padding-bottom:1vw;">Cart<h2>
                 <hr style="border-color: rgb(158, 158, 158);"></hr><br>
-                <a><p>
-                    <?php 
-                        foreach($_COOKIE as $key=>$value)
-                        {
-                        echo '<br>';
-                        global $var;
-                        $var = $value;
-                        include '../php/getcartName.php';
-                        echo ' x $';
-                        include '../php/getPrice.php';
-                        echo '<br>';
-                        };
-                    ?>
-                </p></a>
+                <a><p id="cart2" style="color:rgb(158, 158, 158)"></p></a>
                 <div style="padding-top:5vw;">
-                    <button class ="checkoutbtn" onclick=""><a href="checkout.php">Checkout</a></button> 
+                    <button class ="checkoutbtn">Checkout</button> 
                 </div> 
             </div>
         </header>
     </div>
     <hr></hr>
-
     
-    
-
     <div class="section">
         <h2 style = "padding-bottom: 2vw;"><?php include '../php/getartName.php';?></h2>
         <div class="row">
@@ -222,20 +199,19 @@
                 <br>
                 <!-- add artpiece ID to global cookies?? Then Cart reads cookies and gets data from database -->
                 <!-- https://www.w3schools.com/js/js_cookies.asp -->
-                <button href="artpiece.php" type="button" onclick="addItem()">My Profile</button>
+                
             </div>
         </div>
 
-    </div>
-
-        <!--Rest of Page-->
+    </div>    
+    <!--Rest of Page-->
 
     <p><a href='https://www.freepik.com/vectors/human-avatar'>Human avatar vector created by freepik - www.freepik.com</a></p>
     <p><a href='https://bluethumb.com.au/sophie-lawrence/Artwork/green-farm-106x106-framed-large-textured-abstract-landscape'>Artwork</a></p>
     
     <footer style ="text-align:center; opacity:50%; font-size:1vw; padding:3vw;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
     <script src ="../js/responsiveHeader"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     
 </body>

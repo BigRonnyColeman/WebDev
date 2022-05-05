@@ -154,7 +154,7 @@
             <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
             <nav>
                 <ul class = "navLinks">
-                    <li><a href="index.html">HOME</u></a></li>
+                    <li><a href="index.index.php">HOME</u></a></li>
                     <li><a href="artists.php">ARTISTS</a></li>
                     <li><a href="best.php"><u style="text-underline-offset: 0.7em";>BEST SELLERS</u></a></li>
                     <li><a href="about2.html">ABOUT US</a></li>

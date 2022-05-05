@@ -156,7 +156,7 @@
         .signUpAndSave{
             text-align: center;
         }
-    </style>  
+    </style> 
 </head>
 
 <body>
@@ -167,7 +167,7 @@
                 <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
                 <nav>
                     <ul class = "navLinks">
-                        <li><a href="index.html"><u style="text-underline-offset: 0.7em";>HOME</u></a></li>
+                        <li><a href="index.php"><u style="text-underline-offset: 0.7em";>HOME</u></a></li>
                         <li><a href="artists.php">ARTISTS</a></li>
                         <li><a href="best.php">BEST SELLERS</a></li>
                         <li><a href="about2.html">ABOUT US</a></li>
@@ -175,17 +175,16 @@
                     </ul>
                 </nav>
                 <!--Cart-->
-                <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
-                <div id="mySidebar" class="sidebar">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-family: Arial, Helvetica, sans-serif; font-size:3vw">x</a>
-                    <h2 style="color:rgb(230, 230, 230); padding-bottom:1vw;">Cart<h2>
-                    <hr style="border-color: rgb(158, 158, 158);"></hr><br>
-                    <a>Item 1 x quantity</a>
-                    <a>Item 1 x quantity</a>
-                    <div style="padding-top:5vw;">
-                        <button class ="checkoutbtn" onclick="">Checkout</button> 
-                    </div> 
-                </div>
+                <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;r"/></button>  
+            <div id="mySidebar" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                <h2 style="color: rgb(230, 230, 230); padding-bottom:1vw;">Cart<h2>
+                <hr style="border-color: rgb(158, 158, 158);"></hr><br>
+                <a>item...</a>
+                <div style="padding-top:5vw;">
+                    <button class ="checkoutbtn">Checkout</button> 
+                </div> 
+            </div>
             </header>
         </div>
     
@@ -300,6 +299,7 @@
         <a class = "btnStyle" style="padding-right: 4vw;padding-left: 4vw;" href="#">Sign Up </a>
     </div>
     -->
+    <button type="button"><a href="javascript:window.location.reload(true)">CLear Cookies</a></button>
     <footer style ="text-align:center; opacity:50%; font-size:1vw; padding:3vw;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
     
     <!--JavaScript-->

@@ -112,7 +112,7 @@
             <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
             <nav>
                 <ul class = "navLinks">
-                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="index.php">HOME</a></li>
                     <li><a href="artists.php">ARTISTS</a></li>
                     <li><a href="best.php">BEST SELLERS</a></li>
                     <li><a href="about2.html">ABOUT US</a></li>

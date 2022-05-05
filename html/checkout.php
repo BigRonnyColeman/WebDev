@@ -112,7 +112,7 @@
             <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
             <nav>
                 <ul class = "navLinks">
-                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="index.php">HOME</a></li>
                     <li><a href="artists.php">ARTISTS</a></li>
                     <li><a href="best.php">BEST SELLERS</a></li>
                     <li><a href="about2.html">ABOUT US</a></li>
@@ -134,18 +134,26 @@
         </header>
     </div>
 
-    <?php 
-                        foreach($_COOKIE as $key=>$value)
-                        {
-                        global $var;
-                        $var = $value;
-                        include '../php/getcartName.php';
-                        };
-    ?>
+    
     <h2 style = "padding-top:7vw; padding-bottom: 2vw;">Get in Touch</h2>
     <p>We will get back to you as soon as we can.</p>
     <div class="section">
+        <p>
+        <?php 
+                        foreach($_COOKIE as $key=>$value)
+                        {
+                        echo '<br>';
+                        global $var;
+                        $var = $value;
+                        include '../php/getcartName.php';
+                        echo ' x $';
+                        include '../php/getPrice.php';
+                        echo '<br>';
+                        };
+                    ?>
+        </p>
         <form>
+
             <label for="fname">First Name</label>
             <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
