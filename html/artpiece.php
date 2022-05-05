@@ -195,7 +195,7 @@
                     ?>
                 </p></a>
                 <div style="padding-top:5vw;">
-                    <button class ="checkoutbtn" onclick="">Checkout</button> 
+                    <button class ="checkoutbtn" onclick=""><a href="checkout.php">Checkout</a></button> 
                 </div> 
             </div>
         </header>
