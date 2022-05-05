@@ -19,7 +19,10 @@
             top: 0;
             width: 100%;
             z-index:999;
-            position:fixed;
+        }
+
+        header{
+            background-color:black;
         }
 
         .artistbox {
@@ -151,11 +154,11 @@
             <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
             <nav>
                 <ul class = "navLinks">
-                <li><a href="index.html">Home</a></li>
-                    <li><a href="artists.php">Artists</a></li>
-                    <li><a href="#"><u style="text-underline-offset: 0.7em";>Best Sellers</u></a></li>
-                    <li><a href="about2.html">About Us</a></li>
-                    <li><a href="contact.php">Contact Us</a></li>
+                    <li><a href="index.html">HOME</u></a></li>
+                    <li><a href="artists.php">ARTISTS</a></li>
+                    <li><a href="best.php"><u style="text-underline-offset: 0.7em";>BEST SELLERS</u></a></li>
+                    <li><a href="about2.html">ABOUT US</a></li>
+                    <li><a href="contact.php">CONTACT US</a></li>
                 </ul>
             </nav>
             <!--Cart-->
