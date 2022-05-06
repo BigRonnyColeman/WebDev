@@ -1,3 +1,47 @@
+<?php
+session_start();
+require_once("../php/dbcontroller.php");
+$db_handle = new DBController();
+if(!empty($_GET["action"])) {
+switch($_GET["action"]) {
+	case "add":
+		if(!empty($_POST["quantity"])) {
+			$productByCode = $db_handle->runQuery("SELECT * FROM artpiece WHERE artpieceID='" . $_GET["code"] . "'");
+			$itemArray = array($productByCode[0]["artpieceID"]=>array('name'=>$productByCode[0]["name"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"]));
+			if(!empty($_SESSION["cart_item"])) {
+				if(in_array($productByCode[0]["artpieceID"],array_keys($_SESSION["cart_item"]))) {
+					foreach($_SESSION["cart_item"] as $k => $v) {
+							if($productByCode[0]["artpieceID"] == $k) {
+								if(empty($_SESSION["cart_item"][$k]["quantity"])) {
+									$_SESSION["cart_item"][$k]["quantity"] = 0;
+								}
+								$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+							}
+					}
+				} else {
+					$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
+				}
+			} else {
+				$_SESSION["cart_item"] = $itemArray;
+			}
+		}
+	break;
+	case "remove":
+		if(!empty($_SESSION["cart_item"])) {
+			foreach($_SESSION["cart_item"] as $k => $v) {
+					if($_GET["artpieceID"] == $k)
+						unset($_SESSION["cart_item"][$k]);				
+					if(empty($_SESSION["cart_item"]))
+						unset($_SESSION["cart_item"]);
+			}
+		}
+	break;
+	case "empty":
+		unset($_SESSION["cart_item"]);
+	break;	
+}
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -154,7 +198,7 @@
         const artistvalue = urlParams.get('artist');
         const artistint = parseInt(artistvalue);
         const artpiecenum = urlParams.get('artnumber');
-        const artpieceint = parseInt(artistvalue);
+        const artpieceint = parseInt(artpiecenum);
         console.log(artistvalue);
         var cookiestring = "";
     </script>
@@ -173,17 +217,75 @@
                     <li><a href="contact.php">CONTACT US</a></li>
                 </ul>
             </nav>
-            <!--Cart-->
-            <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;r"/></button>  
-            <div id="mySidebar" class="sidebar">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-                <h2 style="color: rgb(230, 230, 230); padding-bottom:1vw;">CART<h2>
-                <hr style="border-color: rgb(158, 158, 158);"></hr><br>
-                <a><p id="cart2" style="color:rgb(158, 158, 158)"></p></a>
-                <div style="padding-top:5vw;">
-                    <button class ="checkoutbtn">Checkout</button> 
-                </div> 
-            </div>
+                            <!--Cart-->
+                <!-- Read Link https://phppot.com/php/simple-php-shopping-cart/ -->
+                <!-- Run testing_shop/index.php , Needs database/tables imported -->
+                <!-- Does not have a checkout, but uses sessions instead cookies -->
+                <!-- Try This Next -->
+
+                <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
+                <div id="mySidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-family: Arial, Helvetica, sans-serif; font-size:3vw">x</a>
+                    <h2 style="color:rgb(230, 230, 230); padding-bottom:1vw;">CART<h2>
+                    <hr style="border-color: rgb(158, 158, 158);"></hr><br>
+                    
+
+                    
+                    
+                    <?php
+                    if(isset($_SESSION["cart_item"])){
+                        $total_quantity = 0;
+                        $total_price = 0;
+                    ?>	
+                    <table class="tbl-cart" cellpadding="10" cellspacing="1">
+                    <tbody>
+                    <tr>
+                    <th style="text-align:left;">Name</th>
+                    <th style="text-align:left;">Code</th>
+                    <th style="text-align:right;" width="5%">Quantity</th>
+                    <th style="text-align:right;" width="10%">Unit Price</th>
+                    <th style="text-align:right;" width="10%">Price</th>
+                    <th style="text-align:center;" width="5%">Remove</th>
+                    </tr>	
+                    <?php		
+                        foreach ($_SESSION["cart_item"] as $item){
+                            $item_price = $item["quantity"]*$item["price"];
+                            ?>
+                                    <tr>
+                                    <td><?php echo $item["name"]; ?></td>
+                                    <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
+                                    <td  style="text-align:right;"><?php echo "$ ".$item["price"]; ?></td>
+                                    <td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
+                                    <td style="text-align:center;"><a href="index.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Remove Item" /></a></td>
+                                    </tr>
+                                    <?php
+                                    $total_quantity += $item["quantity"];
+                                    $total_price += ($item["price"]*$item["quantity"]);
+                            }
+                            ?>
+
+                        <tr>
+                        <td colspan="2" align="right">Total:</td>
+                        <td align="right"><?php echo $total_quantity; ?></td>
+                        <td align="right" colspan="2"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
+                        <div style="padding-top:5vw;">
+                        <button class ="checkoutbtn"><a href="checkout.php">Checkout</a></button> 
+                        </div> 
+                        <a id="btnEmpty" href="index.php?action=empty">Empty Cart</a>
+                        <td></td>
+                        </tr>
+                        </tbody>
+                        </table>		
+                        <?php
+                        } else {
+                        ?>
+                        <div class="no-records">Your Cart is Empty</div>
+                        <?php 
+                        }
+                        ?>
+                    
+                    </div>
+                </div>
         </header>
     </div>
     <hr></hr>
@@ -203,6 +305,15 @@
                 <!-- add artpiece ID to global cookies?? Then Cart reads cookies and gets data from database -->
                 <!-- https://www.w3schools.com/js/js_cookies.asp -->
                 
+                <form action="index.php?action=add&artpieceID=<?php include '../php/getartpieceID.php';?>" method="post">
+                        <div class="cart-action">
+                            <input type="text" class="product-quantity" name="quantity" value="1" size="2" />
+                            <input type="submit" value="Add to Cart" class="btnAddAction" />
+                        </div>
+                </form>
+
+
+                <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>
             </div>
         </div>
 
