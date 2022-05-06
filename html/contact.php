@@ -134,7 +134,7 @@
     <h2 style = "padding-top:4vw;">GET IN TOUCH</h2>
     <p>We will get back to you as soon as we can.</p>
     <div class="section">
-        <form>
+        <form id = "mainForm" method="post"  action="xxx/**" onsubmit="return confirmfinish();">
             <label for="fname">First Name</label>
             <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
@@ -148,18 +148,34 @@
             <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>
 
             <input type="submit" id = "myBtn" value="Submit">
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
+                <div id="confirmationDiv" style="display:none; border:1px solid black; background-color:rgba(255, 255, 255, 0.5); padding:10px; margin-top:10px; width:500px;">
+                Are you sure you want to submit the form?<br>
+                <input type="button" value="Yes" onclick="confirmed = true; document.getElementById('mainForm').submit();">
+                <input type="button" value="No" onclick="document.getElementById('confirmationDiv').style.display='none'; return false;">
+            </div>
         </form>
-    <!-- Modal content -->
-    <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
-            </div>
-
-            </div>
     </div>
-    
+
+    <script type="text/javascript">     
+        var confirmed = false;
+
+        function confirmfinish(){
+            if(!confirmed){
+                document.getElementById('confirmationDiv').style.display='block';
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+    <!-- Modal content
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Your information has been recieved, we will be in touch shortly!</p>
+        </div>
+    </div>
+    -->
     <hr></hr>
     <footer style ="text-align:center;font-size:1vw; padding:3vw;">
         <div class="row2" style="padding-bottom: 3vw;">
@@ -184,34 +200,5 @@
         </div>
         <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
     </footer>
-    <script src ="../js/responsiveHeader"></script>
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks the button, open the modal 
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-
 </body>
 </html>
