@@ -161,7 +161,14 @@
                     <li><a href="contact.php">CONTACT US</a></li>
                 </ul>
             </nav>
+
+            
             <!--Cart-->
+            <!-- Read Link https://phppot.com/php/simple-php-shopping-cart/ -->
+            <!-- Run testing_shop/index.php -->
+            <!-- Does not have a checkout, but uses sessions instead cookies -->
+            <!-- Try This Next -->
+
             <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;r"/></button>  
             <div id="mySidebar" class="sidebar">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
