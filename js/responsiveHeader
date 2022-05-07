@@ -1,6 +1,6 @@
 //Responsive Cart button
 function openNav() {
-    document.getElementById("mySidebar").style.width = "20vw";
+    document.getElementById("mySidebar").style.width = "25vw";
 }
         
 function closeNav() {
@@ -11,7 +11,7 @@ function closeNav() {
 window.addEventListener('scroll',function(){
     let header = document.querySelector('header');
 
-    if(document.URL.indexOf("index.html") >= 0){ 
+    if(document.URL.indexOf("index.php") >= 0){ 
         header.classList.toggle('scrollingActive', window.scrollY > 330);
     }
     else{
@@ -25,7 +25,7 @@ var navbar = document.getElementById("navbar");
 var sticky = navbar.offsetTop;
 
 function stickyFunction() {
-    if(document.URL.indexOf("index.html") >= 0){ 
+    if(document.URL.indexOf("index.php") >= 0){ 
         if (window.pageYOffset >= sticky) {
             navbar.classList.add("sticky");
         } else {

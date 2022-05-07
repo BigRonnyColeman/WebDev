@@ -307,13 +307,11 @@ switch($_GET["action"]) {
                 
                 <form action="index.php?action=add&artpieceID=<?php include '../php/getartpieceID.php';?>" method="post">
                         <div class="cart-action">
-                            <input type="text" class="product-quantity" name="quantity" value="1" size="2" />
+                            <input type="number" class="product-quantity" name="quantity" min="1" max="2" />
                             <input type="submit" value="Add to Cart" class="btnAddAction" />
                         </div>
                 </form>
-
-
-                <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>
+                <!--<div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>-->
             </div>
         </div>
 
