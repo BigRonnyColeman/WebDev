@@ -165,10 +165,15 @@ switch($_GET["action"]) {
             padding:3vw;
         }
 
-        td{
-            width:0.1%;
-            white-space: nowrap;
-            font-size:10px;
+        input[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
         }
     </style>  
 </head>

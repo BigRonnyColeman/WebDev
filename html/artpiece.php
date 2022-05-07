@@ -191,6 +191,33 @@ switch($_GET["action"]) {
             padding:3vw;
         }
 
+        input[type=number], select, textarea {
+            width: 80%;
+            padding: 1vw;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+        input[type=submit], select, textarea {
+            width: 80%;
+            padding: 1vw;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+            background-color: rgb(68, 68, 68);
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            opacity:0.8;
+        }
     </style>
     <script>
 
@@ -287,11 +314,11 @@ switch($_GET["action"]) {
                     </div>
                 </div>
         </header>
+        
     </div>
     <hr></hr>
     
     <div class="section">
-        <h2 style = "padding-bottom: 2vw;"><?php include '../php/getartName.php';?></h2>
         <div class="row">
             <div class="column">
                 <script language="javascript">
@@ -299,18 +326,22 @@ switch($_GET["action"]) {
                 </script>   
             </div>
             <div class="column">
-                <h2 style="font-size:60%;"> <?php include '../php/getartpieceprice.php';?> </p>
+                <h2 style = "padding-top:3vw;"><?php include '../php/getartName.php';?></h2>
+                <h2 style="font-size:90%;opacity:0.7;"> <?php include '../php/getartpieceprice.php';?></h2>
                 <br>
                 <br>
                 <!-- add artpiece ID to global cookies?? Then Cart reads cookies and gets data from database -->
                 <!-- https://www.w3schools.com/js/js_cookies.asp -->
                 
-                <form action="index.php?action=add&artpieceID=<?php include '../php/getartpieceID.php';?>" method="post">
-                        <div class="cart-action">
-                            <input type="number" class="product-quantity" name="quantity" min="1" max="2" />
-                            <input type="submit" value="Add to Cart" class="btnAddAction" />
-                        </div>
+                <form action="index.php?action=add&artpieceID=<?php include '../php/getartpieceID.php';?>" method="post" style="text-align:center;">
+                    <input type="number" class="product-quantity" name="quantity" min="1" max="2"/>
+                    <input type="submit" value="Add to Cart" class="btnAddAction" />
                 </form>
+                
+                <br>
+                <h3 style="padding-left:5vw; padding-bottom:1vw;">Description</h3>
+                <p style="padding-left:5vw; font-size:1vw; text-align:left;">description here</p>
+
                 <!--<div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>-->
             </div>
         </div>
