@@ -29,7 +29,7 @@ switch($_GET["action"]) {
 	case "remove":
 		if(!empty($_SESSION["cart_item"])) {
 			foreach($_SESSION["cart_item"] as $k => $v) {
-					if($_GET["artpieceID"] == $k)
+					if($_GET["code"] == $k)
 						unset($_SESSION["cart_item"][$k]);				
 					if(empty($_SESSION["cart_item"]))
 						unset($_SESSION["cart_item"]);
@@ -240,7 +240,7 @@ switch($_GET["action"]) {
                     <li><a href="index.php">HOME</a></li>
                     <li><a href="artists.php"><u style="text-underline-offset: 0.7em";>ARTISTS</u></a></li>
                     <li><a href="best.php">BEST SELLERS</a></li>
-                    <li><a href="about2.html">ABOUT US</a></li>
+                    <li><a href="about.html">ABOUT US</a></li>
                     <li><a href="contact.php">CONTACT US</a></li>
                 </ul>
             </nav>
@@ -272,7 +272,6 @@ switch($_GET["action"]) {
                     <th style="text-align:right;" width="5%">Quantity</th>
                     <th style="text-align:right;" width="10%">Unit Price</th>
                     <th style="text-align:right;" width="10%">Price</th>
-                    <th style="text-align:center;" width="5%">Remove</th>
                     </tr>	
                     <?php		
                         foreach ($_SESSION["cart_item"] as $item){
