@@ -29,8 +29,14 @@ switch($_GET["action"]) {
 	case "remove":
 		if(!empty($_SESSION["cart_item"])) {
 			foreach($_SESSION["cart_item"] as $k => $v) {
-					if($_GET["code"] == $k)
-						unset($_SESSION["cart_item"][$k]);				
+					if($_GET["code"] == $k) {
+                        if($_SESSION["cart_item"][$k]["quantity"] == 1) {
+                            unset($_SESSION["cart_item"][$k]);
+                        }
+                        else {
+                            $_SESSION["cart_item"][$k]["quantity"] = $_SESSION["cart_item"][$k]["quantity"] - 1;
+                        }
+					}				
 					if(empty($_SESSION["cart_item"]))
 						unset($_SESSION["cart_item"]);
 			}
