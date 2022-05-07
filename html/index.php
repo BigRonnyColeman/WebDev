@@ -10,8 +10,8 @@ switch($_GET["action"]) {
 			$itemArray = array($productByCode[0]["artpieceID"]=>array('artpieceID'=>$productByCode[0]["artpieceID"], 'name'=>$productByCode[0]["name"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"]));
 			if(!empty($_SESSION["cart_item"])) {
 				if(in_array($productByCode[0]["artpieceID"],array_keys($_SESSION["cart_item"]))) {
-					foreach($_SESSION["cart_item"] as $k => $v) {
-							if($productByCode[0]["artpieceID"] == $k) {
+                    foreach($_SESSION["cart_item"] as $k => $v) {
+							if($productByCode[0]["artpieceID"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
 								if(empty($_SESSION["cart_item"][$k]["quantity"])) {
 									$_SESSION["cart_item"][$k]["quantity"] = 0;
 								}
@@ -29,16 +29,16 @@ switch($_GET["action"]) {
 	case "remove":
 		if(!empty($_SESSION["cart_item"])) {
 			foreach($_SESSION["cart_item"] as $k => $v) {
-					if($_GET["code"] == $k) {
+					if($_GET["code"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
                         if($_SESSION["cart_item"][$k]["quantity"] == 1) {
                             unset($_SESSION["cart_item"][$k]);
                         }
-                        else {
+                        else if ($_SESSION["cart_item"][$k]["quantity"] > 1) {
                             $_SESSION["cart_item"][$k]["quantity"] = $_SESSION["cart_item"][$k]["quantity"] - 1;
                         }
-					}				
-					if(empty($_SESSION["cart_item"]))
-						unset($_SESSION["cart_item"]);
+					}
+                    if(empty($_SESSION["cart_item"]))
+						unset($_SESSION["cart_item"]);				
 			}
 		}
 	break;
