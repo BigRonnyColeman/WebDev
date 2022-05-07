@@ -7,7 +7,7 @@ switch($_GET["action"]) {
 	case "add":
 		if(!empty($_POST["quantity"])) {
 			$productByCode = $db_handle->runQuery("SELECT * FROM artpiece WHERE artpieceID='" . $_GET["artpieceID"] . "'");
-			$itemArray = array($productByCode[0]["artpieceID"]=>array('name'=>$productByCode[0]["name"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"]));
+			$itemArray = array($productByCode[0]["artpieceID"]=>array('artpieceID'=>$productByCode[0]["artpieceID"], 'name'=>$productByCode[0]["name"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"]));
 			if(!empty($_SESSION["cart_item"])) {
 				if(in_array($productByCode[0]["artpieceID"],array_keys($_SESSION["cart_item"]))) {
 					foreach($_SESSION["cart_item"] as $k => $v) {
@@ -211,9 +211,8 @@ switch($_GET["action"]) {
                     <tbody>
                         <tr>
                             <th style="text-align:left;" name="Name"></th>
-                            <th style="text-align:right;" width="5%" name = "Quantity"></th>
-                            <th style="text-align:right;" width="10%" name = "Price"></th>
-                            <th style="text-align:center;" width="2%" name = "Remove"></th>
+                            <th style="text-align:right;" name = "Quantity"></th>
+                            <th style="text-align:right;" name = "Price"></th>
                         </tr>	
                         <?php		
                             foreach ($_SESSION["cart_item"] as $item){
@@ -222,8 +221,8 @@ switch($_GET["action"]) {
                         <tr>
                             <td><?php echo $item["name"]; ?></td>
                             <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
-                            <td  style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?></td>
-                            <td style="text-align:center; "><a href="index.php?action=remove&artpieceID=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; font-size:1vw">x</a></td>
+                            <td  style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?><a href="index.php?action=remove&artpieceID=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; font-size:1vw; colour:white;"><img src="../images/delete.png" height="10"/></a></td>
+                            <td style="text-align:center; "></td>
                         </tr>
                         <?php
                             $total_quantity += $item["quantity"];
