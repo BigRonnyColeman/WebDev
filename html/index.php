@@ -29,7 +29,7 @@ switch($_GET["action"]) {
 	case "remove":
 		if(!empty($_SESSION["cart_item"])) {
 			foreach($_SESSION["cart_item"] as $k => $v) {
-					if($_GET["artpieceID"] == $k)
+					if($_GET["code"] == $k)
 						unset($_SESSION["cart_item"][$k]);				
 					if(empty($_SESSION["cart_item"]))
 						unset($_SESSION["cart_item"]);
@@ -226,7 +226,7 @@ switch($_GET["action"]) {
                         <tr>
                             <td><?php echo $item["name"]; ?></td>
                             <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
-                            <td  style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?><a href="index.php?action=remove&artpieceID=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; font-size:1vw; colour:white;"><img src="../images/delete.png" height="10"/></a></td>
+                            <td  style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?><a href="index.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; font-size:1vw; colour:white;"><img src="../images/delete.png" height="10"/></a></td>
                             <td style="text-align:center; "></td>
                         </tr>
                         <?php
