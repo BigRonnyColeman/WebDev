@@ -184,30 +184,30 @@
     <div class="section">
     <div class="row">
         <div class="column">
-            <a href="artpiece.php?artpiece=3">
+            <a href="artpiece.php?artist=1&artnumber=3">
                 <div class =artistGroup>
                     <img src="../images/artist1/artist1_3.png" style= "border:rgb(68, 68, 68) solid"/>
                 </div>
             </a>
         </div>
         <div class="column">
-            <a href="artpiece.php?artpiece=5">
+            <a href="artpiece.php?artist=2&artnumber=1">
                 <div class =artistGroup>
                     <img src="../images/artist2/artist2_1.png" style= "border:rgb(68, 68, 68) solid;"/>
                 </div>
             </a>
         </div>
         <div class="column">
-            <a href="artpiece.php?artpiece=7">
+            <a href="artpiece.php?artist=8&artnumber=1">
                 <div class =artistGroup>
-                    <img src="../images/artist2/artist2_3.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <img src="../images/artist8/artist8_1.png" style= "border:rgb(68, 68, 68) solid"/>
                 </div>
             </a>
         </div>
         <div class="column">
-            <a href="artpiece.php?artpiece=10">
+            <a href="artpiece.php?artist=11&artnumber=1">
                 <div class =artistGroup>
-                    <img src="../images/artist3/artist3_2.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <img src="../images/artist11/artist11_1.png" style= "border:rgb(68, 68, 68) solid"/>
                 </div>
             </a>
         </div>

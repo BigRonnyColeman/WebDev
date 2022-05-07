@@ -127,6 +127,7 @@
             font-size:2.5vw;
             font-weight:100;
             color: rgb(230, 230, 230);
+            text-align: center;
         }
 
         .artistGroup {
@@ -183,58 +184,85 @@
     <h2 style = "padding-top:4vw;">SHOP BY ARTIST</h2>
     <div class="section">
     <div class="row">
-        <div class="column">
+    <div class="column">
             <a href="artist.php?artist=1">
                 <div class =artistGroup>
                     <img src="../images/artist1/artist1_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <div class="artistText">SOPHIE LAWRENCE</div>
                 </div>
             </a>
-            <div class =artistGroup>
-                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-            </div>
-            <div class =artistGroup>
-                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-            </div>
+            <a href="artist.php?artist=5">
+                <div class =artistGroup>
+                    <img src="../images/artist5/artist5_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <div class="artistText">KATE ROGER</div>
+                </div>
+            </a>
+            <a href="artist.php?artist=9">
+                <div class =artistGroup>
+                    <img src="../images/artist9/artist9_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <div class="artistText">KAREN LEE MUNGARRJA</div>
+                </div>
+            </a>
         </div>
         <div class="column">
             <a href="artist.php?artist=2">
                 <div class =artistGroup>
                     <img src="../images/artist2/artist2_overview.png" style= "border:rgb(68, 68, 68) solid;"/>
+                    <div class="artistText"> SUSAN TRUDINGER</div>
                 </div>
             </a>
-            <div href="#" class =artistGroup>
-                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-            </div>
-            <div class =artistGroup>
-                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-            </div>
+            <a href="artist.php?artist=6">
+                <div class =artistGroup>
+                    <img src="../images/artist6/artist6_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <div class="artistText">LILIAN GIGOVIC</div>
+                </div>
+            </a>
+            <a href="artist.php?artist=10">
+                <div class =artistGroup>
+                    <img src="../images/artist10/artist10_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <div class="artistText">DINAH WAKEFIELD</div>
+                </div>
+            </a>
         </div>
         <div class="column">
             <a href="artist.php?artist=3">
                 <div class =artistGroup>
                     <img src="../images/artist3/artist3_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <div class="artistText">SALLY DUNBAR</div>
                 </div>
             </a>
-            <div class =artistGroup>
-                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-            </div>
-            <div class =artistGroup>
-                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-            </div>
+            <a href="artist.php?artist=7">
+                <div class =artistGroup>
+                    <img src="../images/artist7/artist7_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <div class="artistText">ANGELA HAWKEY</div>
+                </div>
+            </a>
+            <a href="artist.php?artist=11">
+                <div class =artistGroup>
+                    <img src="../images/artist11/artist11_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <div class="artistText">MICHELLE KEIGHLYEY</div>
+                </div>
+            </a>
         </div>
         <div class="column">
             <a href="artist.php?artist=4">
                 <div class =artistGroup>
                     <img src="../images/artist4/artist4_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <div class="artistText">VALENTYNA CRANE</div>
                 </div>
             </a>
-            <div class =artistGroup>
-                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-            </div>
-            <div class =artistGroup>
-                <img src="../images/artPlacement.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                <div class="artistText"> Artist12</div>
-            </div>
+            <a href="artist.php?artist=8">
+                <div class =artistGroup>
+                    <img src="../images/artist8/artist8_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <div class="artistText">PIP PHELPS</div>
+                </div>
+            </a>
+            <a href="artist.php?artist=12">
+                <div class =artistGroup>
+                    <img src="../images/artist12/artist12_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <div class="artistText">MARIA CROSS</div>
+                </div>
+            </a>
         </div>
     </div>
     </div>
