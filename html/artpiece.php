@@ -253,7 +253,7 @@ switch($_GET["action"]) {
             <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
                 <div id="mySidebar" class="sidebar">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-family: Arial, Helvetica, sans-serif; font-size:3vw">x</a>
-                    <h2 style="color:rgb(230, 230, 230); padding-bottom:1vw;">CART<h2>
+                    <h2 style="color:rgb(230, 230, 230); padding-bottom:1vw;">CART</h2>
                     <hr style="border-color: rgb(158, 158, 158);"></hr><br>
 
                     <?php
@@ -261,12 +261,13 @@ switch($_GET["action"]) {
                         $total_quantity = 0;
                         $total_price = 0;
                     ?>	
-                    <table class="tbl-cart" cellspacing="1" style="padding:1.5vw; padding-right:0">
+                    <table class="tbl-cart" cellspacing="7vw">
                     <tbody>
                         <tr>
-                            <th style="text-align:left;" name="Name"></th>
-                            <th style="text-align:right;" name = "Quantity"></th>
-                            <th style="text-align:right;" name = "Price"></th>
+                            <th style="text-align:left; padding = 1%" name="Name"></th>
+                            <th style="text-align:right; width = 0.8%" name = "Quantity"></th>
+                            <th style="text-align:right; width = 0.8%" name = "Price"></th>
+                            <th style="text-align:right; width = 0.2%" name = "Remove"></th>
                         </tr>	
                         <?php		
                             foreach ($_SESSION["cart_item"] as $item){
@@ -275,8 +276,8 @@ switch($_GET["action"]) {
                         <tr>
                             <td><?php echo $item["name"]; ?></td>
                             <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
-                            <td  style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?><a href="index.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; font-size:1vw; colour:white;"><img src="../images/delete.png" height="10"/></a></td>
-                            <td style="text-align:center; "></td>
+                            <td style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?></td>
+                            <td style="text-align:center; "><a href="index.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.png" height="9vw"/></a></td>
                         </tr>
                         <?php
                             $total_quantity += $item["quantity"];
@@ -285,10 +286,9 @@ switch($_GET["action"]) {
                         ?>
 
                         <tr>
-                            <td align="right">Total:</td>
+                            <td align="center" span="2">Total:</td>
                             <td align="right"><?php echo $total_quantity; ?></td>
                             <td align="right"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
-                            <td></td>
                         </tr>
                         </tbody>
                         </table>
@@ -299,7 +299,7 @@ switch($_GET["action"]) {
                         <?php
                         } else {
                         ?>
-                        <div class="no-records" style="font-size:2vw; white-space: nowrap;">Your Cart is Empty</div>
+                        <div class="no-records"><h2 style="font-size:2vw; white-space: nowrap; color:grey;">Your Cart is Empty</h2></div>
                         <?php 
                         }
                         ?>

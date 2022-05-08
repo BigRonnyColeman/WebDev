@@ -139,6 +139,7 @@ p{
 .tbl-cart td{
     font-size:1vw;
     color: white;
+    white-space: nowrap;
 }
 
 .checkoutbtn:hover {
