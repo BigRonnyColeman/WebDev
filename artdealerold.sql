@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: May 08, 2022 at 07:59 AM
--- Server version: 5.7.34
--- PHP Version: 8.0.8
+-- Host: 127.0.0.1:3306
+-- Generation Time: May 06, 2022 at 06:57 AM
+-- Server version: 5.7.36
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,12 +27,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `artist`
 --
 
-CREATE TABLE `artist` (
-  `artistID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `artist`;
+CREATE TABLE IF NOT EXISTS `artist` (
+  `artistID` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) DEFAULT NULL,
   `about` text NOT NULL,
-  `link` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `link` text NOT NULL,
+  PRIMARY KEY (`artistID`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `artist`
@@ -58,14 +60,17 @@ INSERT INTO `artist` (`artistID`, `name`, `about`, `link`) VALUES
 -- Table structure for table `artpiece`
 --
 
-CREATE TABLE `artpiece` (
-  `artpieceID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `artpiece`;
+CREATE TABLE IF NOT EXISTS `artpiece` (
+  `artpieceID` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) DEFAULT NULL,
   `description` varchar(128) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
   `artistID` int(11) DEFAULT NULL,
-  `artpieceNumber` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `artpieceNumber` int(11) NOT NULL,
+  PRIMARY KEY (`artpieceID`),
+  KEY `artistID` (`artistID`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `artpiece`
@@ -84,10 +89,10 @@ INSERT INTO `artpiece` (`artpieceID`, `name`, `description`, `price`, `artistID`
 (10, 'Pink Galahs', 'The subtle tones addresses the nature and beauty behind the birds on display.', '760.00', 3, 2),
 (11, 'There’s a visitor at the window!', 'Outlines and simplicity highlight the adventure in this piece.', '540.00', 3, 3),
 (12, 'Classic Canberra Controversial Sky Whale-Framed', 'Cool undertones help depict the sincerity of this piece and its view.', '2950.00', 3, 4),
-(13, 'Scattering of Light', 'The vibrant and bright colours of the piece bring it to life.', '4850.00', 4, 1),
+(13, 'Scattering of Light','The vibrant and bright colours of the piece bring it to life.', '4850.00', 4, 1),
 (14, 'Through the National Arboretum', 'Warm undertones with light and contrast show the viewer wonderful perspectives of the arboretum.', '2500.00', 4, 2),
-(15, 'Unspoken Question', 'The angles in this piece highlights the expressions of nature.', '3900.00', 4, 3),
-(16, 'Boundless Harmony', 'A beautiful landscape of Canberra and its scenery.', '4850.00', 4, 4),
+(15, 'Unspoken Question','The angles in this piece highlights the expressions of nature.', '3900.00', 4, 3),
+(16, 'Boundless Harmony','A beautiful landscape of Canberra and its scenery.', '4850.00', 4, 4),
 (17, 'Blue and Green Should Always Be Seen', 'A simple yet elegent design.', '790.00', 5, 1),
 (18, 'Catelina on Candy Pink', 'The outlines and contrast highlight a unique perspective.', '300.00', 5, 2),
 (19, 'Lurid Fruit on Plate', 'The dark background with colour choice creates mystery for the viewer.', '300.00', 5, 3),
@@ -100,15 +105,15 @@ INSERT INTO `artpiece` (`artpieceID`, `name`, `description`, `price`, `artistID`
 (26, 'Natures Palette', 'Simple yet artistic perspective on Australian landscape.', '400.00', 7, 2),
 (27, 'Symphony of Colour', 'A beautiful contrast of colours in a natural landscape.', '3900.00', 7, 3),
 (28, 'Torrent', 'Cool undertones and colours of some greenery.', '1980.00', 7, 4),
-(29, 'Boardwalk at Morning Light', 'A neat and artistic style of coast scenery.', '290.00', 8, 1),
+(29, 'Boardwalk at Morning Light', 'A neat and artistic style of coast scenery.','290.00', 8, 1),
 (30, 'Vogue 1974', 'A gorgeous piece showing a lady sitting by a pool reading.', '290.00', 8, 2),
 (31, 'Country Road', 'A simple view of a country road landscape.', '410.00', 8, 3),
 (32, 'Motley Crew', 'Fun and cute potrayal of cows clustering together.', '290.00', 8, 4),
 (33, 'Baayi', 'A vast display of colours highlighting natural beauty.', '610.00', 9, 1),
 (34, 'It Made Me Smile', 'A fine and delicate dot painting.', '750.00', 9, 2),
 (35, 'Bangal-buwu-rayi', 'Simplistic nature display with cool textures and colours.', '680.00', 9, 3),
-(36, 'Yadhaa', 'A wonderful piece highlighting the simple beauty at night time.', '650.00', 9, 4),
-(37, 'Erme', 'Stunning neutral colours showing a natural flow of beauty.', '3600.00', 10, 1),
+(36, 'Yadhaa','A wonderful piece highlighting the simple beauty at night time.', '650.00', 9, 4),
+(37, 'Erme','Stunning neutral colours showing a natural flow of beauty.', '3600.00', 10, 1),
 (38, 'Rainbow Sands 2', 'Warm undertoned colours to highlight the passion amongst sand.', '3400.00', 10, 2),
 (39, 'Oceans Reach 1', 'Cool undertones to display the effect oceans have on someone.', '3200.00', 10, 3),
 (40, 'Desert Trails', 'Light and warm texture highlighting the trails within a desert.', '3200.00', 10, 4),
@@ -124,111 +129,47 @@ INSERT INTO `artpiece` (`artpieceID`, `name`, `description`, `price`, `artistID`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contact`
---
-
-CREATE TABLE `contact` (
-  `contactID` int(11) NOT NULL,
-  `first` varchar(256) NOT NULL,
-  `last` varchar(256) NOT NULL,
-  `email` varchar(256) NOT NULL,
-  `message` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `customerorder`
 --
 
-CREATE TABLE `customerorder` (
-  `orderID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `customerorder`;
+CREATE TABLE IF NOT EXISTS `customerorder` (
+  `orderID` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) DEFAULT NULL,
   `mode` varchar(128) DEFAULT NULL,
   `address` varchar(256) DEFAULT NULL,
   `number` varchar(12) DEFAULT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  PRIMARY KEY (`orderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `customerorder`
---
-
-INSERT INTO `customerorder` (`orderID`, `name`, `mode`, `address`, `number`, `date`) VALUES
-(35, 'Jacqui Meacle', 'delivery', '1 Northcott Dr Campbell act 2612', '0456876453', '2022-05-07 20:19:03');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orderItem`
+-- Table structure for table `orderitem`
 --
 
-CREATE TABLE `orderItem` (
+DROP TABLE IF EXISTS `orderitem`;
+CREATE TABLE IF NOT EXISTS `orderitem` (
+  `itemID` int(11) NOT NULL AUTO_INCREMENT,
   `orderID` int(11) NOT NULL,
-  `artpieceID` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `orderItemID` varchar(256) NOT NULL
+  PRIMARY KEY (`itemID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `orderItem`
---
-
-INSERT INTO `orderItem` (`orderID`, `artpieceID`, `quantity`, `orderItemID`) VALUES
-(35, 1, 6, '2022-05-08 06:19:03'),
-(35, 5, 2, '2022-05-08 06:19:03'),
-(35, 29, 1, '2022-05-08 06:19:03');
-
---
--- Indexes for dumped tables
+-- Constraints for dumped tables
 --
 
 --
--- Indexes for table `artist`
---
-ALTER TABLE `artist`
-  ADD PRIMARY KEY (`artistID`);
-
---
--- Indexes for table `artpiece`
+-- Constraints for table `artpiece`
 --
 ALTER TABLE `artpiece`
-  ADD PRIMARY KEY (`artpieceID`),
-  ADD KEY `artistID` (`artistID`);
+  ADD CONSTRAINT `artpiece_ibfk_1` FOREIGN KEY (`artistID`) REFERENCES `artist` (`artistID`);
 
 --
--- Indexes for table `contact`
+-- Constraints for table `orderitem`
 --
-ALTER TABLE `contact`
-  ADD PRIMARY KEY (`contactID`);
-
---
--- Indexes for table `customerorder`
---
-ALTER TABLE `customerorder`
-  ADD PRIMARY KEY (`orderID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `artist`
---
-ALTER TABLE `artist`
-  MODIFY `artistID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `artpiece`
---
-ALTER TABLE `artpiece`
-  MODIFY `artpieceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
-
---
--- AUTO_INCREMENT for table `customerorder`
---
-ALTER TABLE `customerorder`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+ALTER TABLE `orderitem`
+  ADD CONSTRAINT `orderitem_ibfk_1` FOREIGN KEY (`itemID`) REFERENCES `artpiece` (`artpieceID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

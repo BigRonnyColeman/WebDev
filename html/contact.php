@@ -230,12 +230,12 @@ switch($_GET["action"]) {
     <h2 style = "padding-top:4vw;">GET IN TOUCH</h2>
     <p>We will get back to you as soon as we can.</p>
     <div class="section">
-        <form>
+        <form action="index.php?action=contact" method="post" >
             <label for="fname">First Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+            <input type="text" id="fname" name="fname" placeholder="Your name..">
 
             <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+            <input type="text" id="lname" name="lname" placeholder="Your last name..">
 
             <label for="email">Email</label>
             <input type="text" id="email" name="email" placeholder="Your email..">

@@ -76,6 +76,28 @@
                 
             }
 
-
+            $sql4 = "SELECT * FROM contact";
+            $result4 = $mysqli->query($sql4);
+          
+              // output data of each row
+              while($row4 = $result4->fetch_assoc()) {
+                 echo 
+                  " <table>
+                  <tr>
+                      <th>ContactID</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Email</th>
+                      <th>Message</th>
+                  </tr>
+                  <tr>
+                      <td> " . $row4["contactID"] . "</td>
+                      <td> " . $row4["first"] . "</td>
+                      <td> " . $row4["last"] . "</td>
+                      <td> " . $row4["email"] . "</td>
+                      <td> " . $row4["message"] . "</td>
+                  </tr>
+                  </table> ";
+              }
 
 ?>

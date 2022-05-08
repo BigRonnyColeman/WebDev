@@ -22,9 +22,7 @@
 	$sql = "INSERT INTO customerorder (name, mode, address, number, date) VALUES ('$name', '$mode', '$address','$number','$timestamp')";
 
 	if ($conn->query($sql) === TRUE) {
-		echo "New record created successfully 1";
 	  } else {
-		echo "Error: " . $sql . "<br>" . $conn->error;
 	  } 
 
 	$sql2 = "SELECT orderID FROM customerorder WHERE name = '$name' AND date = '$timestamp'";
@@ -37,14 +35,11 @@
 				echo "<br><br>";
 				$quantity = $_SESSION["cart_item"][$k]["quantity"];
 				$currentItem = $_SESSION["cart_item"][$k]["artpieceID"];
-				$currenttime = date("Y-m-d H:i:s") + rand();
-				echo $currenttime . " , " . $currentItem . " , " . $quantity . "<br>";
+				$currenttime = date("Y-m-d H:i:s");
 				$sql3 = "INSERT INTO orderItem (orderItemID,orderID,artpieceID,quantity) VALUES ('$currenttime','$r','$currentItem','$quantity')";
 				if ($conn->query($sql3) === TRUE) {
-					echo "New record created successfully 2";
 				} 
 				else {
-					echo "Error: " . "second" . "<br>" . $conn->error;
 				}
 			}
 		}

@@ -102,7 +102,11 @@ if(!empty($_GET["action"])) {
 
     <p> Thank you for Your Purchase </p>
         
-
+    <div style="padding-top:5vw; text-align:center">
+                            <button class ="checkoutbtn"><a href="index.php">HOME</a></button> 
+    </div> 
+    <br>
+    <br><br>
     <footer style ="text-align:center; opacity:50%; font-size:1vw;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
 
 </body>
