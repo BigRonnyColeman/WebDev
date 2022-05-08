@@ -24,13 +24,13 @@
     exit();
   }
 
-  $sql = "SELECT price FROM artpiece WHERE artistID = '$artistint' AND artpieceNumber = '$artistnumint'";
+  $sql = "SELECT description FROM artpiece WHERE artistID = '$artistint' AND artpieceNumber = '$artistnumint'";
   $result = $mysqli->query($sql);
 
   if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-      echo $row["price"];
+      echo $row["description"];
     }
   } else {
     echo "<br>NO RESULTS";
