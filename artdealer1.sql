@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 08, 2022 at 07:59 AM
+-- Generation Time: May 08, 2022 at 12:16 PM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -83,12 +83,12 @@ INSERT INTO `artpiece` (`artpieceID`, `name`, `description`, `price`, `artistID`
 (9, '\"I Wanna Hear You Roar\"', 'An extremely vibrant piece to show the true beauty and simplicity behind art.', '4400.00', 3, 1),
 (10, 'Pink Galahs', 'The subtle tones addresses the nature and beauty behind the birds on display.', '760.00', 3, 2),
 (11, 'There’s a visitor at the window!', 'Outlines and simplicity highlight the adventure in this piece.', '540.00', 3, 3),
-(12, 'Classic Canberra Controversial Sky Whale-Framed', 'Cool undertones help depict the sincerity of this piece and its view.', '2950.00', 3, 4),
+(12, 'Canberra Controversial Sky', 'Cool undertones help depict the sincerity of this piece and its view.', '2950.00', 3, 4),
 (13, 'Scattering of Light', 'The vibrant and bright colours of the piece bring it to life.', '4850.00', 4, 1),
 (14, 'Through the National Arboretum', 'Warm undertones with light and contrast show the viewer wonderful perspectives of the arboretum.', '2500.00', 4, 2),
 (15, 'Unspoken Question', 'The angles in this piece highlights the expressions of nature.', '3900.00', 4, 3),
 (16, 'Boundless Harmony', 'A beautiful landscape of Canberra and its scenery.', '4850.00', 4, 4),
-(17, 'Blue and Green Should Always Be Seen', 'A simple yet elegent design.', '790.00', 5, 1),
+(17, 'Blue and Green', 'A simple yet elegent design.', '790.00', 5, 1),
 (18, 'Catelina on Candy Pink', 'The outlines and contrast highlight a unique perspective.', '300.00', 5, 2),
 (19, 'Lurid Fruit on Plate', 'The dark background with colour choice creates mystery for the viewer.', '300.00', 5, 3),
 (20, 'Sara di Sienna', 'Warm and cool undertones bring this piece to life.', '250.00', 5, 4),
@@ -118,7 +118,7 @@ INSERT INTO `artpiece` (`artpieceID`, `name`, `description`, `price`, `artistID`
 (44, 'Poplar Plains', 'A mixture of neutral and cool tones to highlight the plains.', '1800.00', 11, 4),
 (45, 'Thank You', 'Natural and vibrant colours highlight the beauty of lilies in a body of water.', '3850.00', 12, 1),
 (46, 'Australian Rugged Outback', 'The mixture of scenery and colours depicts the beauty of Australian gorges.', '3450.00', 12, 2),
-(47, 'Sapphire Blue Clouds With The Sun Filtering Through', 'A contrast of colours to showcase natural sunlight filtering through some clouds.', '2690.00', 12, 3),
+(47, 'Sapphire Blue Clouds', 'A contrast of colours to showcase natural sunlight filtering through some clouds.', '2690.00', 12, 3),
 (48, 'Summer Breeze', 'An explosion of colours depicting paperbark trees amongst a landscape.', '2550.00', 12, 4);
 
 -- --------------------------------------------------------
@@ -128,12 +128,28 @@ INSERT INTO `artpiece` (`artpieceID`, `name`, `description`, `price`, `artistID`
 --
 
 CREATE TABLE `contact` (
-  `contactID` int(11) NOT NULL,
+  `contactID` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `first` varchar(256) NOT NULL,
   `last` varchar(256) NOT NULL,
   `email` varchar(256) NOT NULL,
   `message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`contactID`, `first`, `last`, `email`, `message`) VALUES
+('2022-05-08 08:14:51', 'J', 'N', 'M', 'we'),
+('2022-05-07 22:15:03', 'J', 'N', 'M', 'we'),
+('2022-05-07 22:16:04', '', '', '', ''),
+('2022-05-07 22:16:32', 'd', 'f', 'wer', 'af'),
+('2022-05-07 22:17:21', '', '', '', ''),
+('2022-05-07 22:17:48', 'J', 'M', 'erd', 'vft'),
+('2022-05-07 22:18:48', '', '', '', ''),
+('2022-05-07 22:18:51', '', '', '', ''),
+('2022-05-07 22:19:02', '', '', '', ''),
+('2022-05-07 22:19:11', 'k3ef', 'kldsfj', 'kljfb', 'jv');
 
 -- --------------------------------------------------------
 
@@ -155,7 +171,15 @@ CREATE TABLE `customerorder` (
 --
 
 INSERT INTO `customerorder` (`orderID`, `name`, `mode`, `address`, `number`, `date`) VALUES
-(35, 'Jacqui Meacle', 'delivery', '1 Northcott Dr Campbell act 2612', '0456876453', '2022-05-07 20:19:03');
+(35, 'Jacqui Meacle', 'delivery', '1 Northcott Dr Campbell act 2612', '0456876453', '2022-05-07 20:19:03'),
+(36, 'J K', 'pickup', '1 Northcott Dr Campbell act 2612', '045342', '2022-05-07 22:22:15'),
+(37, 'J K', 'pickup', '1 Northcott Dr Campbell act 2612', '045342', '2022-05-07 22:22:46'),
+(38, 'J K', 'pickup', '1 Northcott Dr Campbell act 2612', '045342', '2022-05-07 22:24:40'),
+(39, 'J K', 'pickup', '1 Northcott Dr Campbell act 2612', '045342', '2022-05-07 22:26:12'),
+(40, 'J K', 'pickup', '1 Northcott Dr Campbell act 2612', '045342', '2022-05-07 22:26:53'),
+(41, 'J K', 'pickup', '1 Northcott Dr Campbell act 2612', '045342', '2022-05-07 22:27:02'),
+(42, 'J K', 'pickup', '1 Northcott Dr Campbell act 2612', '045342', '2022-05-07 22:27:08'),
+(43, 'J K', 'pickup', '1 Northcott Dr Campbell act 2612', '045342', '2022-05-07 22:27:13');
 
 -- --------------------------------------------------------
 
@@ -177,7 +201,35 @@ CREATE TABLE `orderItem` (
 INSERT INTO `orderItem` (`orderID`, `artpieceID`, `quantity`, `orderItemID`) VALUES
 (35, 1, 6, '2022-05-08 06:19:03'),
 (35, 5, 2, '2022-05-08 06:19:03'),
-(35, 29, 1, '2022-05-08 06:19:03');
+(35, 29, 1, '2022-05-08 06:19:03'),
+(37, 1, 6, '1661505100'),
+(37, 5, 2, '890973088'),
+(37, 29, 1, '166424184'),
+(37, 14, 2, '1338319061'),
+(38, 1, 6, '2022-05-08 08:24:40'),
+(38, 5, 2, '2022-05-08 08:24:40'),
+(38, 29, 1, '2022-05-08 08:24:40'),
+(38, 14, 2, '2022-05-08 08:24:40'),
+(39, 1, 6, '2022-05-08 08:26:12'),
+(39, 5, 2, '2022-05-08 08:26:12'),
+(39, 29, 1, '2022-05-08 08:26:12'),
+(39, 14, 2, '2022-05-08 08:26:12'),
+(40, 1, 6, '2022-05-08 08:26:53'),
+(40, 5, 2, '2022-05-08 08:26:53'),
+(40, 29, 1, '2022-05-08 08:26:53'),
+(40, 14, 2, '2022-05-08 08:26:53'),
+(41, 1, 6, '2022-05-08 08:27:02'),
+(41, 5, 2, '2022-05-08 08:27:02'),
+(41, 29, 1, '2022-05-08 08:27:02'),
+(41, 14, 2, '2022-05-08 08:27:02'),
+(42, 1, 6, '2022-05-08 08:27:08'),
+(42, 5, 2, '2022-05-08 08:27:08'),
+(42, 29, 1, '2022-05-08 08:27:08'),
+(42, 14, 2, '2022-05-08 08:27:08'),
+(43, 1, 6, '2022-05-08 08:27:13'),
+(43, 5, 2, '2022-05-08 08:27:13'),
+(43, 29, 1, '2022-05-08 08:27:13'),
+(43, 14, 2, '2022-05-08 08:27:13');
 
 --
 -- Indexes for dumped tables
@@ -195,12 +247,6 @@ ALTER TABLE `artist`
 ALTER TABLE `artpiece`
   ADD PRIMARY KEY (`artpieceID`),
   ADD KEY `artistID` (`artistID`);
-
---
--- Indexes for table `contact`
---
-ALTER TABLE `contact`
-  ADD PRIMARY KEY (`contactID`);
 
 --
 -- Indexes for table `customerorder`
@@ -228,7 +274,7 @@ ALTER TABLE `artpiece`
 -- AUTO_INCREMENT for table `customerorder`
 --
 ALTER TABLE `customerorder`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
