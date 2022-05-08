@@ -252,19 +252,18 @@ switch($_GET["action"]) {
                             <td align="right"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
                         </tr>
                         </tbody>
-                        </table>
-                        <div style="padding-top:5vw;">
-                            <button class ="checkoutbtn"><a href="checkout.php">Checkout</a></button> 
-                        </div> 
-                        <a id="btnEmpty" href="index.php?action=empty" style = "font-size:1vw;"><u>Empty Cart</u></a>		
-                        <?php
-                        } else {
-                        ?>
-                        <div class="no-records"><h2 style="font-size:2vw; white-space: nowrap; color:grey;">Your Cart is Empty</h2></div>
-                        <?php 
-                        }
-                        ?>
-                    
+                    </table>
+                    <div style="padding-top:5vw;">
+                        <button class ="checkoutbtn"><a href="checkout.php">Checkout</a></button> 
+                    </div> 
+                    <a id="btnEmpty" href="index.php?action=empty" style = "font-size:1vw;"><u>Empty Cart</u></a>		
+                    <?php
+                    } else {
+                    ?>
+                    <div class="no-records"><h2 style="font-size:2vw; white-space: nowrap; color:grey;">Your Cart is Empty</h2></div>
+                    <?php 
+                    }
+                    ?>
                     </div>
                 </div>
             </header>

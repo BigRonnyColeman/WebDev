@@ -1,4 +1,53 @@
-
+<?php
+session_start();
+require_once("../php/dbcontroller.php");
+$db_handle = new DBController();
+if(!empty($_GET["action"])) {
+switch($_GET["action"]) {
+	case "add":
+		if(!empty($_POST["quantity"])) {
+			$productByCode = $db_handle->runQuery("SELECT * FROM artpiece WHERE artpieceID='" . $_GET["artpieceID"] . "'");
+			$itemArray = array($productByCode[0]["artpieceID"]=>array('artpieceID'=>$productByCode[0]["artpieceID"], 'name'=>$productByCode[0]["name"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"]));
+			if(!empty($_SESSION["cart_item"])) {
+				if(in_array($productByCode[0]["artpieceID"],array_keys($_SESSION["cart_item"]))) {
+                    foreach($_SESSION["cart_item"] as $k => $v) {
+							if($productByCode[0]["artpieceID"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
+								if(empty($_SESSION["cart_item"][$k]["quantity"])) {
+									$_SESSION["cart_item"][$k]["quantity"] = 0;
+								}
+								$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+							}
+					}
+				} else {
+					$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
+				}
+			} else {
+				$_SESSION["cart_item"] = $itemArray;
+			}
+		}
+	break;
+	case "remove":
+		if(!empty($_SESSION["cart_item"])) {
+			foreach($_SESSION["cart_item"] as $k => $v) {
+					if($_GET["code"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
+                        if($_SESSION["cart_item"][$k]["quantity"] == 1) {
+                            unset($_SESSION["cart_item"][$k]);
+                        }
+                        else if ($_SESSION["cart_item"][$k]["quantity"] > 1) {
+                            $_SESSION["cart_item"][$k]["quantity"] = $_SESSION["cart_item"][$k]["quantity"] - 1;
+                        }
+					}
+                    if(empty($_SESSION["cart_item"]))
+						unset($_SESSION["cart_item"]);				
+			}
+		}
+	break;
+	case "empty":
+		unset($_SESSION["cart_item"]);
+	break;	
+}
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -88,6 +137,14 @@
             text-align: center;
         }
 
+        .tbl-cart td{
+            color: rgb(68, 68, 68);
+            text-align:center;
+            font-family: Arial;
+            margin: 0;
+            font-size:1.5vw;
+        }
+
     </style>
 </head>
 <body>
@@ -139,11 +196,54 @@
     <div class="split right">
     <div class="centered">
 
-    <div class="section">
-        <?php
+    <div class="section" style="text-align:left">
+    
+                    <h2 style="padding-top:2vw;">CART</h2>
+
+                    <?php
+                    if(isset($_SESSION["cart_item"])){
+                        $total_quantity = 0;
+                        $total_price = 0;
+                    ?>	
+                    <table class="tbl-cart" cellspacing="7vw">
+                    <tbody>
+                        <tr>
+                            <th style="text-align:left; padding = 1%" name="Name"></th>
+                            <th style="text-align:right; width = 0.8%" name = "Quantity"></th>
+                            <th style="text-align:right; width = 0.8%" name = "Price"></th>
+                            <th style="text-align:right; width = 0.2%" name = "Remove"></th>
+                        </tr>	
+                        <?php		
+                            foreach ($_SESSION["cart_item"] as $item){
+                                $item_price = $item["quantity"]*$item["price"];
+                        ?>
+                        <tr>
+                            <td><?php echo $item["name"]; ?></td>
+                            <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
+                            <td style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?></td>
+                            <td style="text-align:center; "><a href="index.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.png" height="9vw"/></a></td>
+                        </tr>
+                        <?php
+                            $total_quantity += $item["quantity"];
+                            $total_price += ($item["price"]*$item["quantity"]);
+                            }
+                        ?>
+
+                        <tr>
+                            <td align="center" span="2">Total:</td>
+                            <td align="right"><?php echo $total_quantity; ?></td>
+                            <td align="right"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <?php 
+                    }
+                    ?>
+
+            <?php
             if (isset($_GET["fname"])) {
             echo
-            " <label>Address</label><br><br>" . 
+            " <h2>Address</h2>" . 
             "<p>" . $_GET["fname"] . " " . $_GET["lname"] . "<br>"
             . $_GET["email"] . "<br>"
             . $_GET["number"] . "<br>"
@@ -153,7 +253,6 @@
                 echo "Please Complete Customer Form ";
             }
         ?>
-
         <!-- Replace "test" with your own sandbox Business account app client ID -->
         <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
         <!-- Set up a container element for the button -->
@@ -191,14 +290,15 @@
             echo 
             ' <form action="checkoutcomplete.php?action=checkout&name=' . $_GET["fname"] . ' ' . $_GET["lname"] . '&mode=' . $_GET["mode"] . '&email=' . $_GET["email"] . '&number=' . $_GET["number"] . '&address=' . $_GET["address"] . ' ' . $_GET["suburb"] . ' ' . $_GET["State"] . ' ' . $_GET["postcode"] . '" method="post" style="text-align:center;"> 
                 <input type="submit" value="Checkout" style="font-size:1vw;>
-                <p></p>
             </form>';  
         }      
         ?>
         </div>
         
     </div>
-
+    </div>
+    </div>
+    
     <footer style ="text-align:center; opacity:50%; font-size:1vw;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
 
 </body>
