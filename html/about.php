@@ -50,19 +50,30 @@ switch($_GET["action"]) {
 ?>
 <!DOCTYPE html>
 <html>
-
-<!--USE THIS PAGE FOR REFERENCE TO BUILD OTHER PAGES-->
-
 <head>
     <link rel ="stylesheet" href="../css/siteStyling.css">
-    <title>Art Dealer | My Profile</title>
+    <title>Art Dealer | Shop Local Canberra Artists</title>
     <meta name="description" content="Art Dealer Home page">
     <style>
-        /*General Page Styling*/
-        *{
+         /*General Page Styling*/
+         *{
             box-sizing: border-box;
             margin:0;
             padding:0;
+        }   
+
+        /*Background Image at beginning of page + Fade In*/
+        .backgroundImage{
+            background-image: url("../images/frontPageImage.jpeg");
+            height:70vw;
+            background-repeat: no-repeat;
+            width:100%;
+            background-size:cover;
+            animation: fadeIn 1s;
+            -webkit-animation: fadeIn 1s;
+            -moz-animation: fadeIn 1s;
+            -o-animation: fadeIn 1s;
+            -ms-animation: fadeIn 1s;
         }
 
         .sticky {
@@ -75,67 +86,30 @@ switch($_GET["action"]) {
             background-color:black;
         }
 
-        .artistbox {
-
-        display: flex;
-        flex-direction: row;
-        font-family: sans-serif;
-        align-items:center;
+        @keyframes fadeIn {
+            0% {opacity:0;}
+            100% {opacity:1;}
         }
 
-        .section {
-            padding: 20px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            margin: 50px;
-            background-color:rgba(255, 255, 255, 0.5)
+        @-moz-keyframes fadeIn {
+            0% {opacity:0;}
+            100% {opacity:1;}
         }
 
-        .paragraph {
-        color: #555;
-        display: flex;
-        flex-direction: column;
+        @-webkit-keyframes fadeIn {
+            0% {opacity:0;}
+            100% {opacity:1;}
         }
 
-        .content {
-        padding: 20px;
+        @-o-keyframes fadeIn {
+            0% {opacity:0;}
+            100% {opacity:1;}
         }
 
-        .title {
-        font-size: 24px;
-        color: #222;
-        line-height: 24px;
+        @-ms-keyframes fadeIn {
+            0% {opacity:0;}
+            100% {opacity:1;}
         }
-
-        .image {
-            width: 25%;
-        }
-
-        a.button1{
-            width: 40%;
-            padding:0.35em 1.2em;
-            border:0.1em solid #ffffff;
-            margin:0 0.3em 0.3em 0;
-            border-radius:0.12em;
-            box-sizing: border-box;
-            text-decoration:none;
-            font-family:'Roboto',sans-serif;
-            font-weight:300;
-            color:#ffffff;
-            text-align:center;
-            transition: all 0.2s;
-            }
-            a.button1:hover{
-                border:0.1em solid rgb(68, 68, 68);
-                color:rgb(68, 68, 68);
-                
-            }
-            @media all and (max-width:30em){
-            a.button1{
-            display:block;
-            margin:0.4em auto;
-            }
-            }
-
 
         /*Artist Grid styling*/ 
         .row {
@@ -143,23 +117,24 @@ switch($_GET["action"]) {
             display: flex;
             -ms-flex-wrap: wrap; /* IE10 */
             flex-wrap: wrap;
-            padding: 0;
+            padding: 0 4px;
             
         }
-
+       
         .column { /* Create four equal columns that sits next to each other */
             -ms-flex: 25%; /* IE10 */
             flex: 25%;
             max-width: 25%;
-            padding: 0 10px;
+            padding: 0 4px;
         }
 
         .column img {
-            margin-top: 0px;
+            margin-top: 8px;
             vertical-align: middle;
             width: 100%;
         }
 
+       
         @media screen and (max-width: 800px) { /* Responsive layout - makes a two column-layout instead of four columns */
             .column {
                 -ms-flex: 50%;
@@ -167,7 +142,7 @@ switch($_GET["action"]) {
                 max-width: 50%;
             }
         }
-
+        
         .artistText {
             position: absolute;
             left: 50%;
@@ -183,21 +158,38 @@ switch($_GET["action"]) {
             position: relative;
             cursor:pointer;
         }
-        
+         
         .artistGroup:hover {
             opacity: 0.8;
         }
-    </style>
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const artistvalue = urlParams.get('artist');
-        const artistint = parseInt(artistvalue);
-        console.log(artistvalue);
-    </script>
 
+        .btnStyle{
+            font-size: 2vw;
+            color: rgb(68, 68, 68);
+            border: 1px solid #818181;
+            background-color:transparent;
+            cursor: pointer;
+            text-decoration:none;
+            padding:3vw;
+        }
+
+        /*About Us Styling*/
+        .paragraph{
+            padding-left:5vw;
+            padding-right:5vw;
+            padding-bottom:5vw;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+    </style>  
 </head>
-<body>
 
+<body>
     <!-- Header -->
     <div id="navbar">
         <header>
@@ -206,8 +198,8 @@ switch($_GET["action"]) {
                 <ul class = "navLinks">
                     <li><a href="index.php">HOME</u></a></li>
                     <li><a href="artists.php">ARTISTS</a></li>
-                    <li><a href="best.php"><u style="text-underline-offset: 0.7em";>BEST SELLERS</u></a></li>
-                    <li><a href="about.php">ABOUT US</a></li>
+                    <li><a href="best.php">BEST SELLERS</a></li>
+                    <li><a href="about.php"><u style="text-underline-offset: 0.7em";>ABOUT US</u></a></li>
                     <li><a href="contact.php">CONTACT US</a></li>
                 </ul>
             </nav>
@@ -272,46 +264,35 @@ switch($_GET["action"]) {
     </div>
     <hr></hr>
 
-    
-    </div>
+    <!--About Us-->
     <hr></hr>
-    <h2 style = "padding-top:4vw;">SHOP BEST SELLERS</h2>
-    <div class="section">
-    <div class="row">
-        <div class="column">
-            <a href="artpiece.php?artist=1&artnumber=3">
-                <div class =artistGroup>
-                    <img src="../images/artist1/artist1_3.png" style= "border:rgb(68, 68, 68) solid"/>
-                </div>
-            </a>
-        </div>
-        <div class="column">
-            <a href="artpiece.php?artist=2&artnumber=1">
-                <div class =artistGroup>
-                    <img src="../images/artist2/artist2_1.png" style= "border:rgb(68, 68, 68) solid;"/>
-                </div>
-            </a>
-        </div>
-        <div class="column">
-            <a href="artpiece.php?artist=8&artnumber=1">
-                <div class =artistGroup>
-                    <img src="../images/artist8/artist8_1.png" style= "border:rgb(68, 68, 68) solid"/>
-                </div>
-            </a>
-        </div>
-        <div class="column">
-            <a href="artpiece.php?artist=11&artnumber=1">
-                <div class =artistGroup>
-                    <img src="../images/artist11/artist11_1.png" style= "border:rgb(68, 68, 68) solid"/>
-                </div>
-            </a>
-        </div>
-    </div>
+    <h2 style = "padding-top:4vw; padding-bottom: 2vw;">ABOUT US</h2>
+    <div class ="paragraph">
+        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.<br>
     </div>
 
-        <!--Rest of Page-->
+    <div class = paragraph>
+        <div class =infoGroup>
+            <br>
+            <h2>Meet The Team</h2><br>
+            <img src="../images/CEO.jpg" alt="CEO" class="center">
+            <div class="infoText"> 
+                <h2>CEO - Ronnie</h2><br>
+                <p>Founder of Art Dealer Australia, Ronnie is an exhibiting artist and Art Educator with over 20 years experience. After training for many years and bringing his ideas to a centralised mindset, Ronnie fell in love with the nation's capital passion for art. </p></br>
+                <p>"Even after over 20 years in Art Education, I still tine unto this asme instinct to find beauty. There is a lot of art theory but really it about feeling. What makes your heart sing? What sparks your interest? It's as simply and complex as falling in love."</p>
+            </div>
+        </div>
+    </div>
     
-        <hr></hr>
+    <hr></hr>
+    <!--
+    <h2 style = "padding-bottom:1vw; padding-top:3vw;">Sign Up and Save</h2>
+    <div class="signUpAndSave" style="padding:5vw;">
+        <a class = "btnStyle" href="#">My Profile</a>
+        <a class = "btnStyle" style="padding-right: 4vw;padding-left: 4vw;" href="#">Sign Up </a>
+    </div>
+    -->
+    <hr></hr>
     <footer style ="text-align:center;font-size:1vw; padding:3vw;">
         <div class="row2" style="padding-bottom: 3vw;">
             <div class="column2">
@@ -335,6 +316,8 @@ switch($_GET["action"]) {
         </div>
         <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
     </footer>
-    <script src ="../js/responsiveHeader"></script>    
+    <!--JavaScript-->
+    <script src ="../js/responsiveHeader"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </body>
 </html>

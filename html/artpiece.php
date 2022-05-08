@@ -1,4 +1,53 @@
-
+<?php
+session_start();
+require_once("../php/dbcontroller.php");
+$db_handle = new DBController();
+if(!empty($_GET["action"])) {
+switch($_GET["action"]) {
+	case "add":
+		if(!empty($_POST["quantity"])) {
+			$productByCode = $db_handle->runQuery("SELECT * FROM artpiece WHERE artpieceID='" . $_GET["artpieceID"] . "'");
+			$itemArray = array($productByCode[0]["artpieceID"]=>array('artpieceID'=>$productByCode[0]["artpieceID"], 'name'=>$productByCode[0]["name"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"]));
+			if(!empty($_SESSION["cart_item"])) {
+				if(in_array($productByCode[0]["artpieceID"],array_keys($_SESSION["cart_item"]))) {
+                    foreach($_SESSION["cart_item"] as $k => $v) {
+							if($productByCode[0]["artpieceID"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
+								if(empty($_SESSION["cart_item"][$k]["quantity"])) {
+									$_SESSION["cart_item"][$k]["quantity"] = 0;
+								}
+								$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+							}
+					}
+				} else {
+					$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
+				}
+			} else {
+				$_SESSION["cart_item"] = $itemArray;
+			}
+		}
+	break;
+	case "remove":
+		if(!empty($_SESSION["cart_item"])) {
+			foreach($_SESSION["cart_item"] as $k => $v) {
+					if($_GET["code"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
+                        if($_SESSION["cart_item"][$k]["quantity"] == 1) {
+                            unset($_SESSION["cart_item"][$k]);
+                        }
+                        else if ($_SESSION["cart_item"][$k]["quantity"] > 1) {
+                            $_SESSION["cart_item"][$k]["quantity"] = $_SESSION["cart_item"][$k]["quantity"] - 1;
+                        }
+					}
+                    if(empty($_SESSION["cart_item"]))
+						unset($_SESSION["cart_item"]);				
+			}
+		}
+	break;
+	case "empty":
+		unset($_SESSION["cart_item"]);
+	break;	
+}
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -197,72 +246,60 @@
                     <li><a href="index.php">HOME</a></li>
                     <li><a href="artists.php"><u style="text-underline-offset: 0.7em";>ARTISTS</u></a></li>
                     <li><a href="best.php">BEST SELLERS</a></li>
-                    <li><a href="about.html">ABOUT US</a></li>
+                    <li><a href="about.php">ABOUT US</a></li>
                     <li><a href="contact.php">CONTACT US</a></li>
                 </ul>
             </nav>
-                            <!--Cart-->
-                <!-- Read Link https://phppot.com/php/simple-php-shopping-cart/ -->
-                <!-- Run testing_shop/index.php , Needs database/tables imported -->
-                <!-- Does not have a checkout, but uses sessions instead cookies -->
-                <!-- Try This Next -->
-
-                <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
+            <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
                 <div id="mySidebar" class="sidebar">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-family: Arial, Helvetica, sans-serif; font-size:3vw">x</a>
                     <h2 style="color:rgb(230, 230, 230); padding-bottom:1vw;">CART<h2>
                     <hr style="border-color: rgb(158, 158, 158);"></hr><br>
-                    
 
-                    
-                    
                     <?php
                     if(isset($_SESSION["cart_item"])){
                         $total_quantity = 0;
                         $total_price = 0;
                     ?>	
-                    <table class="tbl-cart" cellpadding="10" cellspacing="1">
+                    <table class="tbl-cart" cellspacing="1" style="padding:1.5vw; padding-right:0">
                     <tbody>
-                    <tr>
-                    <th style="text-align:left;">Name</th>
-                    <th style="text-align:left;">Code</th>
-                    <th style="text-align:right;" width="5%">Quantity</th>
-                    <th style="text-align:right;" width="10%">Unit Price</th>
-                    <th style="text-align:right;" width="10%">Price</th>
-                    </tr>	
-                    <?php		
-                        foreach ($_SESSION["cart_item"] as $item){
-                            $item_price = $item["quantity"]*$item["price"];
-                            ?>
-                                    <tr>
-                                    <td><?php echo $item["name"]; ?></td>
-                                    <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
-                                    <td  style="text-align:right;"><?php echo "$ ".$item["price"]; ?></td>
-                                    <td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
-                                    <td style="text-align:center;"><a href="index.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Remove Item" /></a></td>
-                                    </tr>
-                                    <?php
-                                    $total_quantity += $item["quantity"];
-                                    $total_price += ($item["price"]*$item["quantity"]);
+                        <tr>
+                            <th style="text-align:left;" name="Name"></th>
+                            <th style="text-align:right;" name = "Quantity"></th>
+                            <th style="text-align:right;" name = "Price"></th>
+                        </tr>	
+                        <?php		
+                            foreach ($_SESSION["cart_item"] as $item){
+                                $item_price = $item["quantity"]*$item["price"];
+                        ?>
+                        <tr>
+                            <td><?php echo $item["name"]; ?></td>
+                            <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
+                            <td  style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?><a href="index.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; font-size:1vw; colour:white;"><img src="../images/delete.png" height="10"/></a></td>
+                            <td style="text-align:center; "></td>
+                        </tr>
+                        <?php
+                            $total_quantity += $item["quantity"];
+                            $total_price += ($item["price"]*$item["quantity"]);
                             }
-                            ?>
+                        ?>
 
                         <tr>
-                        <td colspan="2" align="right">Total:</td>
-                        <td align="right"><?php echo $total_quantity; ?></td>
-                        <td align="right" colspan="2"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
-                        <div style="padding-top:5vw;">
-                        <button class ="checkoutbtn"><a href="checkout.php">Checkout</a></button> 
-                        </div> 
-                        <a id="btnEmpty" href="index.php?action=empty">Empty Cart</a>
-                        <td></td>
+                            <td align="right">Total:</td>
+                            <td align="right"><?php echo $total_quantity; ?></td>
+                            <td align="right"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
+                            <td></td>
                         </tr>
                         </tbody>
-                        </table>		
+                        </table>
+                        <div style="padding-top:5vw;">
+                            <button class ="checkoutbtn"><a href="checkout.php">Checkout</a></button> 
+                        </div> 
+                        <a id="btnEmpty" href="index.php?action=empty" style = "font-size:1vw;"><u>Empty Cart</u></a>		
                         <?php
                         } else {
                         ?>
-                        <div class="no-records">Your Cart is Empty</div>
+                        <div class="no-records" style="font-size:2vw; white-space: nowrap;">Your Cart is Empty</div>
                         <?php 
                         }
                         ?>

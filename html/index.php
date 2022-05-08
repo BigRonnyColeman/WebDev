@@ -195,7 +195,7 @@ switch($_GET["action"]) {
                         <li><a href="index.php"><u style="text-underline-offset: 0.7em";>HOME</u></a></li>
                         <li><a href="artists.php">ARTISTS</a></li>
                         <li><a href="best.php">BEST SELLERS</a></li>
-                        <li><a href="about.html">ABOUT US</a></li>
+                        <li><a href="about.php">ABOUT US</a></li>
                         <li><a href="contact.php">CONTACT US</a></li>
                     </ul>
                 </nav>
