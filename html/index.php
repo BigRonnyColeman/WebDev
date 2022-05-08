@@ -52,7 +52,8 @@ switch($_GET["action"]) {
 <html>
 <head>
     <link rel ="stylesheet" href="../css/siteStyling.css">
-    <title>Art Dealer | Shop Local Canberra Artists</title>
+    <link rel="icon" href="../images/icon.png"/>
+    <title>Art Dealer</title>
     <meta name="description" content="Art Dealer Home page">
     <style>
          /*General Page Styling*/

@@ -326,7 +326,7 @@ switch($_GET["action"]) {
                 <!-- add artpiece ID to global cookies?? Then Cart reads cookies and gets data from database -->
                 <!-- https://www.w3schools.com/js/js_cookies.asp -->
                 
-                <form action="index.php?action=add&artpieceID=<?php include '../php/getartpieceID.php';?>" method="post" style="text-align:center;">
+                <form action="artpiece.php?artist=<?php echo $_GET['artist'] ?>&artnumber=<?php echo $_GET['artnumber'] ?>&action=add&artpieceID=<?php include '../php/getartpieceID.php';?>" method="post" style="text-align:center;">
                     <input type="number" class="product-quantity" name="quantity" min="1" max="2"/>
                     <input type="submit" value="Add to Cart" class="btnAddAction" />
                 </form>

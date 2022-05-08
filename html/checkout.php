@@ -6,7 +6,8 @@
 
 <head>
     <link rel ="stylesheet" href="../css/siteStyling.css">
-    <title>Art Dealer | My Profile</title>
+    <link rel="icon" href="../images/icon.png"/>
+    <title>Checkout</title>
     <meta name="description" content="Art Dealer Home page">
     <style>
     /*General Page Styling*/
