@@ -104,9 +104,14 @@
                 <input type="text" id="shipping" name="fname" placeholder="First Name.." style="font-size:1vw;">
                 <input type="text" id="shipping" name="lname" placeholder="Last Name.." style="font-size:1vw;">
             </div>
-            <input type="text" id="contact" name="contactinfo" placeholder="Email or Mobile Phone Number.." style="font-size:1vw;">
+            <input type="text" id="contact" name="email" placeholder="Email.." style="font-size:1vw;">
+            <input type="text" id="contact" name="number" placeholder="Mobile Phone Number.." style="font-size:1vw;">
 
-            <label for="shipping">Mailing Address</label>
+            <select id="shipping" name="mode" style="font-size:1vw;">
+                    <option value="delivery">Delivery</option>
+                    <option value="pickup">Pickup</option>
+            </select>
+            <label for="shipping">Address</label>
 
             <input type="text" id="shipping" name="address" placeholder="Address.." style="font-size:1vw;">
             <div style="display:flex;">
@@ -123,7 +128,7 @@
                 <input type="text" id="shipping" name="postcode" placeholder="Postcode.." style="font-size:1vw;">
             </div>
 
-            <input type="submit" id = "myBtn" value="Submit" style="font-size:1vw;">
+            <input type="submit" id ="myBtn" value="Submit" style="font-size:1vw;">
             <a href = "artists.php" style="color:black; font-size:1vw; text-decoration: underline; padding-left:1vw;">Return to Artists...</a>
             <!-- The Modal -->
         </form>
@@ -135,14 +140,18 @@
     <div class="centered">
 
     <div class="section">
-        <label">Mailing Address</label><br>
-        <?php 
-            foreach($_COOKIE as $key=>$value)
-            {
-            global $var;
-            $var = $value;
-            include '../php/getcartName.php';
-        };
+        <?php
+            if (isset($_GET["fname"])) {
+            echo
+            " <label>Address</label><br><br>" . 
+            "<p>" . $_GET["fname"] . " " . $_GET["lname"] . "<br>"
+            . $_GET["email"] . "<br>"
+            . $_GET["number"] . "<br>"
+            . $_GET["address"] . " " . $_GET["suburb"] . " " . $_GET["State"] . " " . $_GET["postcode"] . "<br>";
+            }
+            else {
+                echo "Please Complete Customer Form ";
+            }
         ?>
 
         <!-- Replace "test" with your own sandbox Business account app client ID -->
@@ -176,6 +185,18 @@
                 }
             }).render('#paypal-button-container');
         </script>
+        <div>
+        <?php
+        if (isset($_GET["fname"])) {
+            echo 
+            ' <form action="checkoutcomplete.php?action=checkout&name=' . $_GET["fname"] . ' ' . $_GET["lname"] . '&mode=' . $_GET["mode"] . '&email=' . $_GET["email"] . '&number=' . $_GET["number"] . '&address=' . $_GET["address"] . ' ' . $_GET["suburb"] . ' ' . $_GET["State"] . ' ' . $_GET["postcode"] . '" method="post" style="text-align:center;"> 
+                <input type="submit" value="Checkout" style="font-size:1vw;>
+                <p></p>
+            </form>';  
+        }      
+        ?>
+        </div>
+        
     </div>
 
     <footer style ="text-align:center; opacity:50%; font-size:1vw;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
