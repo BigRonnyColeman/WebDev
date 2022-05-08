@@ -270,5 +270,6 @@ switch($_GET["action"]) {
         </div>
         <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
     </footer>
+    <script src ="../js/responsiveHeader"></script>   
 </body>
 </html>
