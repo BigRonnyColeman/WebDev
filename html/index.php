@@ -249,6 +249,9 @@ switch($_GET["action"]) {
         <div style="padding:8vw; margin:0 auto">
             <a class = "btnStyle" href="../html/best.php">View Best Sellers</a>
         </div>
+        <div style="padding:8vw; margin:0 auto">
+            <a class = "btnStyle" href="../html/find.php">Find Your Order</a>
+        </div>
     </div>
 
     <div class ="paragraph" style="padding-bottom:3vw">
