@@ -20,7 +20,7 @@ if(!empty($_GET["action"])) {
 </head>
 <body>
 
-    <p> Thank you for Your Purchase </p>
+    <p> Thank you <?php include('../php/getpurchasename.php') ?> for Your Purchase </p>
         
     <div style="padding-top:5vw; text-align:center">
         <button class ="btnStyle"><a href="index.php" style="color:black">HOME</a></button> 

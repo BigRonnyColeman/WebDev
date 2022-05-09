@@ -141,6 +141,7 @@ switch($_GET["action"]) {
     <h2 style = "padding-top:4vw; padding-bottom: 1vw;">ABOUT ART DEALER</h2>
     <div class ="paragraph">
         <p>Art Dealer is a Canberra-based online art-sharing emporium offering a unique selection of over 50+ handpicked high-quality posters and art prints from local underground artists. <br><br>With a strong focus on 20th-century modern style art, you'll be able to find historically rich art pieces that will transform the looks in your home. <br><br> Made to order & curated locally in Melbourne, Australia. We launched our premium giclee art print line in the hope to provide fellow humans looking to sprouce up their home the opportunity to do so at affordable pricing. <br><br>Here at Art Dealer we to focus mainly on high quality materials and sustainability. We're glad that you found us, and hope you’ll enjoy our unique art pieces as much as we do.</p>
+        <br><p>We have had a total of <?php include('../php/getsales.php') ?> sales, delivering quality Canberran Art to the Region.</p>                
     </div>
     <img src="../images/aboutusimage.jpeg" style= "width:75%; height:75%; margin-left:auto; display: block; margin-right:auto; opacity: 75%; border:rgb(68, 68, 68) solid"/>
     </div>
