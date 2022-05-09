@@ -15,7 +15,7 @@
         <link rel ="stylesheet" href="../css/siteStyling.css">
         <link rel="icon" href="../images/icon.png"/>
         <title>Checkout</title>
-        <meta name="description" content="Art Dealer Home page">
+        <meta name="description" content="Art Dealer Check Out Complete Page">
     </head>
     <body>
         <p> Thank you <?php include('../php/getpurchasename.php') ?> for Your Purchase </p>    

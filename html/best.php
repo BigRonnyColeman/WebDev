@@ -101,13 +101,14 @@ has been maniupalted, the rest of the page can load. -->
                     <li><a href="contact.php">CONTACT US</a></li>
                 </ul>
             </nav>
-            <!-- Cart Items and Navigation -->
-            <button class="openbtn" onclick="openNav()"> <img  style = "width:3.2vw; height:3vw;" src="../images/cart.jpeg"/></button>    
+            <!--Cart-->
+            <!-- Uses global variabl $_Session and stores all relevant data to 
+            each session in the array $_Session["cart_item"] -->
+            <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
             <div id="mySidebar" class="sidebar">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
-                <h2 class = "cartHeader">CART</h2>
-                <hr style="border-color: rgb(158, 158, 158);"></hr>
-                <br>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-family: Arial, Helvetica, sans-serif; font-size:3vw">x</a>
+                <h2 style="color:rgb(230, 230, 230); padding-bottom:1vw;">CART</h2>
+                <hr style="border-color: rgb(158, 158, 158);"></hr><br>
                 <?php
                     if(isset($_SESSION["cart_item"])){
                         $total_quantity = 0;

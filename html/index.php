@@ -115,6 +115,9 @@ has been maniupalted, the rest of the page can load. -->
                 100% {opacity:1;}
             }
         </style> 
+        <!--JavaScript-->
+        <script src ="../js/responsiveHeader"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     </head>
     <body>
         <!-- Header -->
@@ -131,7 +134,7 @@ has been maniupalted, the rest of the page can load. -->
                             <li><a href="contact.php">CONTACT US</a></li>
                         </ul>
                     </nav>
-                    <!--Cart-->
+                    <!-- Cart Items and Navigation -->
                     <!-- Uses global variabl $_Session and stores all relevant data to 
                     each session in the array $_Session["cart_item"] -->
                     <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
@@ -261,26 +264,12 @@ has been maniupalted, the rest of the page can load. -->
                 <a class = "btnStyle" href="../html/find.php">Find Your Order</a>
             </div>
         </div>
-        <hr></hr>
-        <br>
-        <h2 style = "padding-top:7vw; padding-bottom: 2vw;">ABOUT US</h2>
         <div class ="paragraph" style="padding-bottom:3vw">
             <p>Art Dealer is a Canberra-based online art-sharing emporium offering a unique selection of over 50+ handpicked high-quality posters and art prints from local underground artists. <br><br>With a strong focus on 20th-century modern style art, you'll be able to find historically rich art pieces that will transform the looks in your home. <br><br> Made to order & curated locally in Melbourne, Australia. We launched our premium giclee art print line in the hope to provide fellow humans looking to sprouce up their home the opportunity to do so at affordable pricing. <br><br>Here at Art Dealer we to focus mainly on high quality materials and sustainability. We're glad that you found us, and hope you’ll enjoy our unique art pieces as much as we do.</p>
         </div>
-
-        
-
-        <!--About Us-->
         <hr></hr>
-        <!--End-->
-        <!-- INSERT IN ASSIGNMENT 2
-        <h2 style = "padding-bottom:1vw; padding-top:3vw;">Sign Up and Save</h2>
-        <div class="signUpAndSave" style="padding:5vw;">
-            <a class = "btnStyle" href="#">My Profile</a>
-            <a class = "btnStyle" style="padding-right: 4vw;padding-left: 4vw;" href="#">Sign Up </a>
-        </div>
-        -->
-        <footer style ="text-align:center;font-size:1vw; padding:3vw;">
+        <!-- Footer -->
+        <footer class="mainFooter">
             <div class="row2" style="padding-bottom: 3vw;">
                 <div class="column2">
                     <div class =infoGroup>
@@ -303,9 +292,5 @@ has been maniupalted, the rest of the page can load. -->
             </div>
             <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
         </footer>
-        
-        <!--JavaScript-->
-        <script src ="../js/responsiveHeader"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     </body>
 </html>
