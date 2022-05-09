@@ -55,7 +55,7 @@ switch($_GET["action"]) {
 <html>
 <head>
     <link rel ="stylesheet" href="../css/siteStyling.css">
-    <link rel="icon" href="../images/icon.png"/>
+    <link rel="icon" href="../images/icon.jpeg"/>
     <title>Art Dealer</title>
     <meta name="description" content="Art Dealer Home page">
     <style>
@@ -193,7 +193,7 @@ switch($_GET["action"]) {
     <div class ="backgroundImage">
         <div id="navbar">
             <header>
-                <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
+                <img class ="logo" src ="../images/logoWhite.jpeg" alt = "logo">
                 <nav>
                     <ul class = "navLinks">
                         <li><a href="index.php"><u style="text-underline-offset: 0.7em";>HOME</u></a></li>
@@ -238,7 +238,7 @@ switch($_GET["action"]) {
                             <td><?php echo $item["name"]; ?></td>
                             <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
                             <td style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?></td>
-                            <td style="text-align:center; "><a href="index.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.png" height="9vw"/></a></td>
+                            <td style="text-align:center; "><a href="index.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.jpeg" height="9vw"/></a></td>
                         </tr>
                         <?php
                             $total_quantity += $item["quantity"];
@@ -277,19 +277,19 @@ switch($_GET["action"]) {
         <div class="column">
             <a href="artist.php?artist=1">
                 <div class =artistGroup>
-                    <img src="../images/artist1/artist1_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <img src="../images/artist1/artist1_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                     <div class="artistText">SOPHIE LAWRENCE</div>
                 </div>
             </a>
             <a href="artist.php?artist=5">
                 <div class =artistGroup>
-                    <img src="../images/artist5/artist5_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <img src="../images/artist5/artist5_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                     <div class="artistText">KATE ROGER</div>
                 </div>
             </a>
             <a href="artist.php?artist=9">
                 <div class =artistGroup>
-                    <img src="../images/artist9/artist9_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <img src="../images/artist9/artist9_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                     <div class="artistText">KAREN LEE MUNGARRJA</div>
                 </div>
             </a>
@@ -297,19 +297,19 @@ switch($_GET["action"]) {
         <div class="column">
             <a href="artist.php?artist=2">
                 <div class =artistGroup>
-                    <img src="../images/artist2/artist2_overview.png" style= "border:rgb(68, 68, 68) solid;"/>
+                    <img src="../images/artist2/artist2_overview.jpeg" style= "border:rgb(68, 68, 68) solid;"/>
                     <div class="artistText"> SUSAN TRUDINGER</div>
                 </div>
             </a>
             <a href="artist.php?artist=6">
                 <div class =artistGroup>
-                    <img src="../images/artist6/artist6_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <img src="../images/artist6/artist6_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                     <div class="artistText">LILIAN GIGOVIC</div>
                 </div>
             </a>
             <a href="artist.php?artist=10">
                 <div class =artistGroup>
-                    <img src="../images/artist10/artist10_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <img src="../images/artist10/artist10_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                     <div class="artistText">DINAH WAKEFIELD</div>
                 </div>
             </a>
@@ -317,19 +317,19 @@ switch($_GET["action"]) {
         <div class="column">
             <a href="artist.php?artist=3">
                 <div class =artistGroup>
-                    <img src="../images/artist3/artist3_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <img src="../images/artist3/artist3_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                     <div class="artistText">SALLY DUNBAR</div>
                 </div>
             </a>
             <a href="artist.php?artist=7">
                 <div class =artistGroup>
-                    <img src="../images/artist7/artist7_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <img src="../images/artist7/artist7_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                     <div class="artistText">ANGELA HAWKEY</div>
                 </div>
             </a>
             <a href="artist.php?artist=11">
                 <div class =artistGroup>
-                    <img src="../images/artist11/artist11_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <img src="../images/artist11/artist11_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                     <div class="artistText">MICHELLE KEIGHLYEY</div>
                 </div>
             </a>
@@ -337,19 +337,19 @@ switch($_GET["action"]) {
         <div class="column">
             <a href="artist.php?artist=4">
                 <div class =artistGroup>
-                    <img src="../images/artist4/artist4_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <img src="../images/artist4/artist4_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                     <div class="artistText">VALENTYNA CRANE</div>
                 </div>
             </a>
             <a href="artist.php?artist=8">
                 <div class =artistGroup>
-                    <img src="../images/artist8/artist8_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <img src="../images/artist8/artist8_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                     <div class="artistText">PIP PHELPS</div>
                 </div>
             </a>
             <a href="artist.php?artist=12">
                 <div class =artistGroup>
-                    <img src="../images/artist12/artist12_overview.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <img src="../images/artist12/artist12_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                     <div class="artistText">MARIA CROSS</div>
                 </div>
             </a>
