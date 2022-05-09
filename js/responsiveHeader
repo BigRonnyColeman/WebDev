@@ -1,6 +1,9 @@
 //Responsive Cart button
 function openNav() {
     document.getElementById("mySidebar").style.width = "25vw";
+    if (window.innerWidth < 750) {
+        document.getElementById("mySidebar").style.width = "35vw";
+    }
 }
         
 function closeNav() {

@@ -153,7 +153,6 @@ switch($_GET["action"]) {
         
     <div class="centered">
         <header></header>
-        <img class ="logo" style = "height:3vw;" src ="../images/logoBlack.png" alt = "logo">
         <div class="section">
         <form style="text-align: left;">
             <label for="contact">Contact Information</label>
@@ -173,13 +172,13 @@ switch($_GET["action"]) {
             <input type="text" id="shipping" name="address" placeholder="Address.." style="font-size:1vw;">
             <div style="display:flex;">
                 <select id="shipping" name="State" style="font-size:1vw;">
-                    <option value="act">ACT</option>
-                    <option value="nsw">NSW</option>
-                    <option value="vic">VIC</option>
-                    <option value="qld">QLD</option>
-                    <option value="nt">NT</option>
-                    <option value="sa">SA</option>
-                    <option value="wa">WA</option>
+                    <option value="ACT">ACT</option>
+                    <option value="NSW">NSW</option>
+                    <option value="VIC">VIC</option>
+                    <option value="QLD">QLD</option>
+                    <option value="NT">NT</option>
+                    <option value="SA">SA</option>
+                    <option value="WA">WA</option>
                 </select>
                 <input type="text" id="shipping" name="suburb" placeholder="Suburb.." style="font-size:1vw;">
                 <input type="text" id="shipping" name="postcode" placeholder="Postcode.." style="font-size:1vw;">
@@ -191,21 +190,19 @@ switch($_GET["action"]) {
         </form>
     </div>
     </div>
-    </div>
 
     <div class="split right">
     <div class="centered">
-
-    <div class="section" style="text-align:left">
-    
-                    <h2 style="padding-top:2vw;">CART</h2>
+    <img class ="logo" style = "height:3vw;" src ="../images/logoBlack.png" alt = "logo">
+    <div class="section" style="text-align:center">
+                    <h2 style="padding-top:1vw;">CART</h2>
 
                     <?php
                     if(isset($_SESSION["cart_item"])){
                         $total_quantity = 0;
                         $total_price = 0;
                     ?>	
-                    <table class="tbl-cart" cellspacing="7vw">
+                    <table class="tbl-cart" cellspacing="7vw" style="padding-bottom:3vw">
                     <tbody>
                         <tr>
                             <th style="text-align:left; padding = 1%" name="Name"></th>
@@ -250,56 +247,34 @@ switch($_GET["action"]) {
             . $_GET["address"] . " " . $_GET["suburb"] . " " . $_GET["State"] . " " . $_GET["postcode"] . "<br>";
             }
             else {
-                echo "Please Complete Customer Form ";
+                echo "<p> <b>Please Complete Customer Form</b> </p>";
             }
         ?>
-        <!-- Replace "test" with your own sandbox Business account app client ID -->
-        <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
-        <!-- Set up a container element for the button -->
-        <div style = "padding-top: 8vw;" id="paypal-button-container"></div>
-        <script>
-            paypal.Buttons({
-                // Sets up the transaction when a payment button is clicked
-                createOrder: (data, actions) => {
-                    return actions.order.create({
-                        purchase_units: [{
-                            amount: {
-                                value: '77.44' // Can also reference a variable or function
-                            }
-                        }]
-                    });
-                },
-                // Finalize the transaction after payer approval
-                onApprove: (data, actions) => {
-                    return actions.order.capture().then(function(orderData) {
-                        // Successful capture! For dev/demo purposes:
-                        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                        const transaction = orderData.purchase_units[0].payments.captures[0];
-                        alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
-                        // When ready to go live, remove the alert and show a success message within this page. For example:
-                        // const element = document.getElementById('paypal-button-container');
-                        // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-                        // Or go to another URL:  actions.redirect('thank_you.html');
-                    });
-                }
-            }).render('#paypal-button-container');
-        </script>
-        <div>
-        <?php
+        <br>
+   
+    <?php
         if (isset($_GET["fname"])) {
-            echo 
-            ' <form action="checkoutcomplete.php?action=checkout&name=' . $_GET["fname"] . ' ' . $_GET["lname"] . '&mode=' . $_GET["mode"] . '&email=' . $_GET["email"] . '&number=' . $_GET["number"] . '&address=' . $_GET["address"] . ' ' . $_GET["suburb"] . ' ' . $_GET["State"] . ' ' . $_GET["postcode"] . '" method="post" style="text-align:center;"> 
-                <input type="submit" value="Checkout" style="font-size:1vw;>
-            </form>';  
+            ?>
+            
+            <form action="checkoutcomplete.php?action=checkout&name='<?php $_GET["fname"] . "" . $_GET["lname"] . "&mode=" . $_GET["mode"] . "&email=" . $_GET["email"] . "&number=" . $_GET["number"] . "&address=" . $_GET["address"] . " " . $_GET["suburb"] . " " . $_GET["State"] . " " . $_GET["postcode"] ?>" method="post" style="text-align:center;"> 
+                <input type="submit" value="Checkout" style="font-size:1vw;"/>
+            </form>  
+        <?php
         }      
         ?>
-        </div>
-        
-    </div>
-    </div>
-    </div>
-    
-    <footer style ="text-align:center; opacity:50%; font-size:1vw;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
 
+        
+        </div>
+        <br>
+
+        
+
+
+        <footer style ="text-align:center; opacity:50%; font-size:1vw;display:block;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
+        
+        </div>
+    </div>
+    </div>
+            
 </body>
 </html>

@@ -333,7 +333,7 @@ switch($_GET["action"]) {
                 
                 <br>
                 <h3 style="padding-left:5vw; padding-bottom:1vw;">Description</h3>
-                <p style="padding-left:5vw; font-size:1vw; text-align:left;">description here</p>
+                <p style="padding-left:5vw; font-size:1vw; text-align:left;"><?php include '../php/getartpiecedesc.php';?></p>
 
                 <!--<div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>-->
             </div>

@@ -265,23 +265,31 @@ switch($_GET["action"]) {
     </div>
     <hr></hr>
 
-    <!--About Us-->
-    <hr></hr>
-    <h2 style = "padding-top:4vw; padding-bottom: 2vw;">ABOUT US</h2>
-    <div class ="paragraph">
-        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.<br>
-    </div>
-
     <div class = paragraph>
+    <h2 style = "padding-top:4vw; padding-bottom: 1vw;">ABOUT US</h2>
+    <div class ="paragraph">
+        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+    </div>
         <div class =infoGroup>
-            <br>
             <h2>Meet The Team</h2><br>
-            <img src="../images/CEO.jpg" alt="CEO" class="center">
             <div class="infoText"> 
-                <h2>CEO - Ronnie</h2><br>
+                <h3 style="font-size:2vw">CEO - Ronnie</h3>
                 <p>Founder of Art Dealer Australia, Ronnie is an exhibiting artist and Art Educator with over 20 years experience. After training for many years and bringing his ideas to a centralised mindset, Ronnie fell in love with the nation's capital passion for art. </p></br>
                 <p>"Even after over 20 years in Art Education, I still tine unto this asme instinct to find beauty. There is a lot of art theory but really it about feeling. What makes your heart sing? What sparks your interest? It's as simply and complex as falling in love."</p>
             </div>
+            <br>
+            <div class="infoText"> 
+                <h3 style="font-size:2vw">Art Curator - Arnnie</h3>
+                <p>Founder of Art Dealer Australia, Ronnie is an exhibiting artist and Art Educator with over 20 years experience. After training for many years and bringing his ideas to a centralised mindset, Ronnie fell in love with the nation's capital passion for art. </p></br>
+                <p>"Even after over 20 years in Art Education, I still tine unto this asme instinct to find beauty. There is a lot of art theory but really it about feeling. What makes your heart sing? What sparks your interest? It's as simply and complex as falling in love."</p>
+            </div>
+            <br>
+            <div class="infoText"> 
+                <h3 style="font-size:2vw">Administration - Chris</h3>
+                <p>Founder of Art Dealer Australia, Ronnie is an exhibiting artist and Art Educator with over 20 years experience. After training for many years and bringing his ideas to a centralised mindset, Ronnie fell in love with the nation's capital passion for art. </p></br>
+                <p>"Even after over 20 years in Art Education, I still tine unto this asme instinct to find beauty. There is a lot of art theory but really it about feeling. What makes your heart sing? What sparks your interest? It's as simply and complex as falling in love."</p>
+            </div>
+
         </div>
     </div>
     

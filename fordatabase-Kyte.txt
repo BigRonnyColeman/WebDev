@@ -5,7 +5,7 @@ Instructions:
 3. Download and crop 4 artpieces into a square
 4. Save into required folders, as previously done
         artsit6/artist6_1.png   etc
-5. Add artpiece data t each section. The first four that I have downloaded, don't have name/price. 
+5. Add artpiece data to each section. The first four that I have downloaded, don't have name/price. 
         Could you pls either find them through the links or just make them up.
 6. Add artistID, artist name and speil to data below. The link should be store link for the individual artist.
 
