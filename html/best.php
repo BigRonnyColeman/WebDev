@@ -152,34 +152,55 @@ switch($_GET["action"]) {
     <hr></hr>
     <h2 style = "padding-top:4vw;">SHOP BEST SELLERS</h2>
     <div class="section">
+    <?php include('../php/getbest.php');?>
     <div class="row">
         <div class="column">
-            <a href="artpiece.php?artist=1&artnumber=3">
-                <div class =artistGroup>
-                    <img src="../images/artist1/artist1_3.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                </div>
-            </a>
+            <?php
+            for ($k = 0 ; $k < 2; $k++) {
+                echo
+                ' <a href="artpiece.php?artist=' . $array[$k]["x"] . '&artnumber=' . $array[$k]["y"] . '">
+                    <div class =artistGroup>
+                        <img src="../images/artist' . $array[$k]["x"] . '/artist' . $array[$k]["x"] . '_' . $array[$k]["y"] . '.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                    </div> 
+                </a> ';
+            }
+            ?>
         </div>
         <div class="column">
-            <a href="artpiece.php?artist=2&artnumber=1">
-                <div class =artistGroup>
-                    <img src="../images/artist2/artist2_1.jpeg" style= "border:rgb(68, 68, 68) solid;"/>
-                </div>
-            </a>
+            <?php
+            for ($k = 2 ; $k < 4; $k++) {
+                echo
+                ' <a href="artpiece.php?artist=' . $array[$k]["x"] . '&artnumber=' . $array[$k]["y"] . '">
+                    <div class =artistGroup>
+                        <img src="../images/artist' . $array[$k]["x"] . '/artist' . $array[$k]["x"] . '_' . $array[$k]["y"] . '.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                    </div> 
+                </a> ';
+            }
+            ?>
         </div>
         <div class="column">
-            <a href="artpiece.php?artist=8&artnumber=1">
-                <div class =artistGroup>
-                    <img src="../images/artist8/artist8_1.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                </div>
-            </a>
+            <?php
+            for ($k = 4 ; $k < 6; $k++) {
+                echo
+                ' <a href="artpiece.php?artist=' . $array[$k]["x"] . '&artnumber=' . $array[$k]["y"] . '">
+                    <div class =artistGroup>
+                        <img src="../images/artist' . $array[$k]["x"] . '/artist' . $array[$k]["x"] . '_' . $array[$k]["y"] . '.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                    </div> 
+                </a> ';
+            }
+            ?>
         </div>
         <div class="column">
-            <a href="artpiece.php?artist=11&artnumber=1">
-                <div class =artistGroup>
-                    <img src="../images/artist11/artist11_1.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                </div>
-            </a>
+            <?php
+            for ($k = 6 ; $k < 8; $k++) {
+                echo
+                ' <a href="artpiece.php?artist=' . $array[$k]["x"] . '&artnumber=' . $array[$k]["y"] . '">
+                    <div class =artistGroup>
+                        <img src="../images/artist' . $array[$k]["x"] . '/artist' . $array[$k]["x"] . '_' . $array[$k]["y"] . '.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                    </div> 
+                </a> ';
+            }
+            ?>
         </div>
     </div>
     </div>
