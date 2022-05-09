@@ -283,20 +283,102 @@ has been maniupalted, the rest of the page can load. -->
                         <div class="infoText"><h2 style="font-size:2.8vw">Premium Quality</h2><br><p>Printed using water-based inks and professional 12-colour giclée printers, giving it colour vibrancy that’s protected for 80+ years.</p></div>
                     </div>
                 </div>
-                <div class="column2">
-                    <div class =infoGroup>
-                        <img src="../images/infoImage2.webp" style= "width:100%; opacity: 75%;"/>
-                        <div class="infoText"> <h2>We're Local</h2><br><p>Run and born out of Canbera, we launched our premium giclee art print line to promote and sell local talent to the nations capital.</p></div>
-                    </div>
-                </div>
-                <div class="column2">
-                    <div class =infoGroup>
-                        <img src="../images/infoImage3.webp" style= "width:100%; opacity: 75%;"/>
-                        <div class="infoText"><h2>Quick Delivery</h2><br><p>Fast & reliable delivery through our own employees.</p></div>
-                    </div>
-                </div>
+            </header>
+        </div>
+    
+        <!--Artists-->
+        </div>
+        <hr></hr>
+        <h2 style = "padding-top:7vw; padding-bottom: 2vw;">SHOP BY ARTIST</h2>
+        <div class="row">
+            <div class="column">
+                <?php
+                include('../php/getartistname.php');
+                for ($k = 0 ; $k < 3; $k++) {
+                    echo
+                    ' <a href="artist.php?artist=' . $k+1 . '">
+                        <div class="artistGroup">
+                            <img src="../images/artist' . $k+1 . '/artist' . $k+1 . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                            <div class="artistText"><p style="text-transform: uppercase; color:white">' . $array[$k] . '</p></div>
+                        </div> 
+                    </a> ';
+                }
+                ?>
             </div>
-            <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
+            <div class="column">
+                <?php
+                    include('../php/getartistname.php');
+                    for ($k = 3 ; $k < 6; $k++) {
+                        echo
+                        ' <a href="artist.php?artist=' . $k+1 . '">
+                            <div class = "artistGroup">
+                                <img src="../images/artist' . $k+1 . '/artist' . $k+1 . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                                <div class="artistText"><p style="text-transform: uppercase; color:white">' . $array[$k] . '</p></div>
+                            </div> 
+                        </a> ';
+                    }
+                ?>
+            </div>
+            <div class="column">
+                <?php
+                    include('../php/getartistname.php');
+                    for ($k = 6 ; $k < 9; $k++) {
+                        echo
+                        ' <a href="artist.php?artist=' . $k+1 . '">
+                            <div class = "artistGroup">
+                                <img src="../images/artist' . $k+1 . '/artist' . $k+1 . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                                <div class="artistText"><p style="text-transform: uppercase; color:white">' . $array[$k] . '</p></div>
+                            </div> 
+                        </a> ';
+                    }
+                ?>
+            </div>
+            <div class="column">
+                <?php
+                    include('../php/getartistname.php');
+                    for ($k = 9 ; $k < 12; $k++) {
+                        echo
+                        ' <a href="artist.php?artist=' . $k+1 . '">
+                            <div class = "artistGroup">
+                                <img src="../images/artist' . $k+1 . '/artist' . $k+1 . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                                <div class="artistText"><p style="text-transform: uppercase; color:white">' . $array[$k] . '</p></div>
+                            </div> 
+                        </a> ';
+                    }
+                ?>
+            </div>
+            <div style="padding:8vw; margin:0 auto">
+                <a class = "btnStyle" href="../html/best.php">View Best Sellers</a>
+            </div>
+            <div style="padding:8vw; margin:0 auto">
+                <a class = "btnStyle" href="../html/find.php">Find Your Order</a>
+            </div>
+        </div>
+
+        <div class ="paragraph" style="padding-bottom:3vw">
+            <p>Art Dealer is a Canberra-based online art-sharing emporium offering a unique selection of over 50+ handpicked high-quality posters and art prints from local underground artists. <br><br>With a strong focus on 20th-century modern style art, you'll be able to find historically rich art pieces that will transform the looks in your home. <br><br> Made to order & curated locally in Melbourne, Australia. We launched our premium giclee art print line in the hope to provide fellow humans looking to sprouce up their home the opportunity to do so at affordable pricing. <br><br>Here at Art Dealer we to focus mainly on high quality materials and sustainability. We're glad that you found us, and hope you’ll enjoy our unique art pieces as much as we do.</p>
+        </div>
+
+        <!--About Us-->
+        <hr></hr>
+        <!--End-->
+        <!-- INSERT IN ASSIGNMENT 2
+        <h2 style = "padding-bottom:1vw; padding-top:3vw;">Sign Up and Save</h2>
+        <div class="signUpAndSave" style="padding:5vw;">
+            <a class = "btnStyle" href="#">My Profile</a>
+            <a class = "btnStyle" style="padding-right: 4vw;padding-left: 4vw;" href="#">Sign Up </a>
+        </div>
+        -->
+        <footer style ="text-align:center;font-size:1vw; padding:3vw;">
+            <div class="row2" style="padding-bottom: 3vw;">
+                <div class="column2">
+                    <div class =infoGroup>
+                        <img src="../images/infoImage.webp" style= "width:100%; opacity: 75%;"/>
+                        <div class="infoText"><h2 style="font-size:2.8vw">Premium Quality</h2><br><p>Printed using water-based inks and professional 12-colour giclée printers, giving it colour vibrancy that’s protected for 80+ years.</p></div>
+                    </div>
+                </div>
+                <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
+            </div>
         </footer>
         
         <!--JavaScript-->
