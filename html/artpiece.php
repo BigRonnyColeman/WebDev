@@ -240,7 +240,7 @@ switch($_GET["action"]) {
     <!-- Header -->
     <div id="navbar">
         <header>
-            <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
+            <img class ="logo" src ="../images/logoWhite.jpeg" alt = "logo">
             <nav>
                 <ul class = "navLinks">
                     <li><a href="index.php">HOME</a></li>
@@ -277,7 +277,7 @@ switch($_GET["action"]) {
                             <td><?php echo $item["name"]; ?></td>
                             <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
                             <td style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?></td>
-                            <td style="text-align:center; "><a href="index.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.png" height="9vw"/></a></td>
+                            <td style="text-align:center; "><a href="artpiece.php?action=remove&code=<?php echo $item["artpieceID"] . "&artist=" . $_GET["artist"] . "&artnumber=" . $_GET["artnumber"] ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.jpeg" height="9vw"/></a></td>
                         </tr>
                         <?php
                             $total_quantity += $item["quantity"];
@@ -314,9 +314,7 @@ switch($_GET["action"]) {
     <div class="section">
         <div class="row">
             <div class="column">
-                <script language="javascript">
-                    document.write('<img src="../images/artist' + artistvalue + '/artist' + artistvalue + '_'+artpieceint+'.png" style= "border:rgb(68, 68, 68) solid; width:100%;"; />')
-                </script>   
+                <img src="../images/artist<?php echo $_GET["artist"] . "/artist" . $_GET["artist"] . "_" . $_GET["artnumber"] ?>.jpeg" style= "border:rgb(68, 68, 68) solid; width:100%;"; />')   
             </div>
             <div class="column">
                 <h2 style = "padding-top:3vw;"><?php include '../php/getartName.php';?></h2>
