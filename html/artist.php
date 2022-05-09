@@ -333,7 +333,11 @@ switch($_GET["action"]) {
                 </div>
             </div>
         </div>
-    </div>    
+    </div> 
+    <div>
+            <a href="<?php echo include('../php/getartistlink.php')?>"><p>Link to Artist Shop</p></a>
+            <br>
+    </div>   
    
     <hr></hr>
     <footer style ="text-align:center;font-size:1vw; padding:3vw;">

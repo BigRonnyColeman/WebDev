@@ -14,12 +14,12 @@ switch($_GET["action"]) {
 			if(!empty($_SESSION["cart_item"])) {
 				if(in_array($productByCode[0]["artpieceID"],array_keys($_SESSION["cart_item"]))) {
                     foreach($_SESSION["cart_item"] as $k => $v) {
-							if($productByCode[0]["artpieceID"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
-								if(empty($_SESSION["cart_item"][$k]["quantity"])) {
-									$_SESSION["cart_item"][$k]["quantity"] = 0;
-								}
-								$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+						if($productByCode[0]["artpieceID"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
+							if(empty($_SESSION["cart_item"][$k]["quantity"])) {
+								$_SESSION["cart_item"][$k]["quantity"] = 0;
 							}
+							$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+						}
 					}
 				} else {
 					$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
@@ -32,16 +32,16 @@ switch($_GET["action"]) {
 	case "remove":
 		if(!empty($_SESSION["cart_item"])) {
 			foreach($_SESSION["cart_item"] as $k => $v) {
-					if($_GET["code"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
-                        if($_SESSION["cart_item"][$k]["quantity"] == 1) {
-                            unset($_SESSION["cart_item"][$k]);
-                        }
-                        else if ($_SESSION["cart_item"][$k]["quantity"] > 1) {
-                            $_SESSION["cart_item"][$k]["quantity"] = $_SESSION["cart_item"][$k]["quantity"] - 1;
-                        }
-					}
-                    if(empty($_SESSION["cart_item"]))
-						unset($_SESSION["cart_item"]);				
+				if($_GET["code"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
+                    if($_SESSION["cart_item"][$k]["quantity"] == 1) {
+                        unset($_SESSION["cart_item"][$k]);
+                    }
+                    else if ($_SESSION["cart_item"][$k]["quantity"] > 1) {
+                        $_SESSION["cart_item"][$k]["quantity"] = $_SESSION["cart_item"][$k]["quantity"] - 1;
+                    }
+				}
+                if(empty($_SESSION["cart_item"]))
+					unset($_SESSION["cart_item"]);				
 			}
 		}
 	break;
@@ -60,14 +60,14 @@ switch($_GET["action"]) {
     <meta name="description" content="Art Dealer Home page">
     <style>
          /*General Page Styling*/
-         *{
+        * {
             box-sizing: border-box;
             margin:0;
             padding:0;
         }   
 
         /*Background Image at beginning of page + Fade In*/
-        .backgroundImage{
+        .backgroundImage {
             background-image: url("../images/frontPageImage.jpeg");
             height:70vw;
             background-repeat: no-repeat;
@@ -165,7 +165,7 @@ switch($_GET["action"]) {
             opacity: 0.8;
         }
 
-        .btnStyle{
+        .btnStyle {
             font-size: 2vw;
             color: rgb(68, 68, 68);
             border: 1px solid #818181;
@@ -205,52 +205,44 @@ switch($_GET["action"]) {
                 </nav>
                 <!--Cart-->
 
-                <!--Cart-->
-                <!-- Read Link https://phppot.com/php/simple-php-shopping-cart/ -->
-                <!-- Run testing_shop/index.php , Needs database/tables imported -->
-                <!-- Does not have a checkout, but uses sessions instead cookies -->
-                <!-- Try This Next -->
-
                 <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
                 <div id="mySidebar" class="sidebar">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-family: Arial, Helvetica, sans-serif; font-size:3vw">x</a>
                     <h2 style="color:rgb(230, 230, 230); padding-bottom:1vw;">CART</h2>
                     <hr style="border-color: rgb(158, 158, 158);"></hr><br>
-
                     <?php
-                    if(isset($_SESSION["cart_item"])){
-                        $total_quantity = 0;
-                        $total_price = 0;
+                        if(isset($_SESSION["cart_item"])){
+                            $total_quantity = 0;
+                            $total_price = 0;
                     ?>	
                     <table class="tbl-cart" cellspacing="7vw">
-                    <tbody>
-                        <tr>
-                            <th style="text-align:left; padding = 1%" name="Name"></th>
-                            <th style="text-align:right; width = 0.8%" name = "Quantity"></th>
-                            <th style="text-align:right; width = 0.8%" name = "Price"></th>
-                            <th style="text-align:right; width = 0.2%" name = "Remove"></th>
-                        </tr>	
-                        <?php		
-                            foreach ($_SESSION["cart_item"] as $item){
-                                $item_price = $item["quantity"]*$item["price"];
-                        ?>
-                        <tr>
-                            <td><?php echo $item["name"]; ?></td>
-                            <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
-                            <td style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?></td>
-                            <td style="text-align:center; "><a href="index.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.jpeg" height="9vw"/></a></td>
-                        </tr>
-                        <?php
-                            $total_quantity += $item["quantity"];
-                            $total_price += ($item["price"]*$item["quantity"]);
-                            }
-                        ?>
-
-                        <tr>
-                            <td align="center" span="2">Total:</td>
-                            <td align="right"><?php echo $total_quantity; ?></td>
-                            <td align="right"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <th style="text-align:left; padding = 1%" name="Name"></th>
+                                <th style="text-align:right; width = 0.8%" name = "Quantity"></th>
+                                <th style="text-align:right; width = 0.8%" name = "Price"></th>
+                                <th style="text-align:right; width = 0.2%" name = "Remove"></th>
+                            </tr>	
+                            <?php		
+                                foreach ($_SESSION["cart_item"] as $item){
+                                    $item_price = $item["quantity"]*$item["price"];
+                            ?>
+                            <tr>
+                                <td><?php echo $item["name"]; ?></td>
+                                <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
+                                <td style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?></td>
+                                <td style="text-align:center; "><a href="index.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.jpeg" height="9vw"/></a></td>
+                            </tr>
+                            <?php
+                                $total_quantity += $item["quantity"];
+                                $total_price += ($item["price"]*$item["quantity"]);
+                                }
+                            ?>
+                            <tr>
+                                <td align="center" span="2">Total:</td>
+                                <td align="right"><?php echo $total_quantity; ?></td>
+                                <td align="right"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
+                            </tr>
                         </tbody>
                     </table>
                     <div style="padding-top:5vw;">
@@ -258,19 +250,20 @@ switch($_GET["action"]) {
                     </div> 
                     <a id="btnEmpty" href="index.php?action=empty" style = "font-size:1vw;"><u>Empty Cart</u></a>		
                     <?php
-                    } else {
+                        } else {
                     ?>
                     <div class="no-records"><h2 style="font-size:2vw; white-space: nowrap; color:grey;">Your Cart is Empty</h2></div>
                     <?php 
-                    }
+                        }
                     ?>
                     </div>
                 </div>
             </header>
         </div>
-    
-    <!--Artists-->
     </div>
+
+
+    <!--Artists-->
     <hr></hr>
     <h2 style = "padding-top:7vw; padding-bottom: 2vw;">SHOP BY ARTIST</h2>
     <div class="row">
@@ -371,8 +364,7 @@ switch($_GET["action"]) {
     <div class="signUpAndSave" style="padding:5vw;">
         <a class = "btnStyle" href="#">My Profile</a>
         <a class = "btnStyle" style="padding-right: 4vw;padding-left: 4vw;" href="#">Sign Up </a>
-    </div>
-    -->
+    </div> -->
     <footer style ="text-align:center;font-size:1vw; padding:3vw;">
         <div class="row2" style="padding-bottom: 3vw;">
             <div class="column2">
