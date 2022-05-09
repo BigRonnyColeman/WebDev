@@ -1,62 +1,60 @@
 <?php
-session_start();
-require_once("../php/dbcontroller.php");
-$db_handle = new DBController();
-if(!empty($_GET["action"])) {
-switch($_GET["action"]) {
-	case "add":
-		if(!empty($_POST["quantity"])) {
-			$productByCode = $db_handle->runQuery("SELECT * FROM artpiece WHERE artpieceID='" . $_GET["artpieceID"] . "'");
-			$itemArray = array($productByCode[0]["artpieceID"]=>array('artpieceID'=>$productByCode[0]["artpieceID"], 'name'=>$productByCode[0]["name"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"]));
-			if(!empty($_SESSION["cart_item"])) {
-				if(in_array($productByCode[0]["artpieceID"],array_keys($_SESSION["cart_item"]))) {
+    session_start();
+    require_once("../php/dbcontroller.php");
+    $db_handle = new DBController();
+    if(!empty($_GET["action"])) {
+        switch($_GET["action"]) {
+            case "add":
+                if(!empty($_POST["quantity"])) {
+                    $productByCode = $db_handle->runQuery("SELECT * FROM artpiece WHERE artpieceID='" . $_GET["artpieceID"] . "'");
+                    $itemArray = array($productByCode[0]["artpieceID"]=>array('artpieceID'=>$productByCode[0]["artpieceID"], 'name'=>$productByCode[0]["name"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"]));
+                    if(!empty($_SESSION["cart_item"])) {
+                        if(in_array($productByCode[0]["artpieceID"],array_keys($_SESSION["cart_item"]))) {
+                            foreach($_SESSION["cart_item"] as $k => $v) {
+                                if($productByCode[0]["artpieceID"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
+                                    if(empty($_SESSION["cart_item"][$k]["quantity"])) {
+                                        $_SESSION["cart_item"][$k]["quantity"] = 0;
+                                    }
+                                    $_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+                                }
+                            }
+                        } else {
+                            $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
+                        }
+                    } else {
+                        $_SESSION["cart_item"] = $itemArray;
+                    }
+                }
+                break;
+            case "remove":
+                if(!empty($_SESSION["cart_item"])) {
                     foreach($_SESSION["cart_item"] as $k => $v) {
-							if($productByCode[0]["artpieceID"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
-								if(empty($_SESSION["cart_item"][$k]["quantity"])) {
-									$_SESSION["cart_item"][$k]["quantity"] = 0;
-								}
-								$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
-							}
-					}
-				} else {
-					$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
-				}
-			} else {
-				$_SESSION["cart_item"] = $itemArray;
-			}
-		}
-	break;
-	case "remove":
-		if(!empty($_SESSION["cart_item"])) {
-			foreach($_SESSION["cart_item"] as $k => $v) {
-					if($_GET["code"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
-                        if($_SESSION["cart_item"][$k]["quantity"] == 1) {
-                            unset($_SESSION["cart_item"][$k]);
+                        if($_GET["code"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
+                            if($_SESSION["cart_item"][$k]["quantity"] == 1) {
+                                unset($_SESSION["cart_item"][$k]);
+                            }
+                            else if ($_SESSION["cart_item"][$k]["quantity"] > 1) {
+                                $_SESSION["cart_item"][$k]["quantity"] = $_SESSION["cart_item"][$k]["quantity"] - 1;
+                            }
                         }
-                        else if ($_SESSION["cart_item"][$k]["quantity"] > 1) {
-                            $_SESSION["cart_item"][$k]["quantity"] = $_SESSION["cart_item"][$k]["quantity"] - 1;
-                        }
-					}
-                    if(empty($_SESSION["cart_item"]))
-						unset($_SESSION["cart_item"]);				
-			}
-		}
-	break;
-	case "empty":
-		unset($_SESSION["cart_item"]);
-	break;	
-}
-}
+                        if(empty($_SESSION["cart_item"]))
+                            unset($_SESSION["cart_item"]);				
+                    }
+                }
+                break;
+            case "empty":
+                unset($_SESSION["cart_item"]);
+            break;	
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html>
-
-<!--USE THIS PAGE FOR REFERENCE TO BUILD OTHER PAGES-->
-
 <head>
     <link rel ="stylesheet" href="../css/siteStyling.css">
-    <title>Art Dealer | My Profile</title>
-    <meta name="description" content="Art Dealer Home page">
+    <link rel="icon" href="../images/icon.jpeg"/>
+    <title><?php include '../php/getartName.php';?></title>
+    <meta name="description" content="Art Dealer Art Pieces">
     <style>
         header{
             background-color:black;
@@ -90,9 +88,24 @@ switch($_GET["action"]) {
         input[type=submit]:hover {
             opacity:0.8;
         }
+
+        /*Artist Grid styling*/ 
+        .row {
+            display: -ms-flexbox; /* IE10 */
+            display: flex;
+            -ms-flex-wrap: wrap; /* IE10 */
+            flex-wrap: wrap;
+            padding: 0; 
+        }
+
+        .column { /* Create four equal columns that sits next to each other */
+            -ms-flex: 50%; /* IE10 */
+            flex: 50%;
+            max-width: 50%;
+            padding: 0 10px;
+        }
     </style>
     <script>
-
         const urlParams = new URLSearchParams(window.location.search);
         const artistvalue = urlParams.get('artist');
         const artistint = parseInt(artistvalue);
@@ -100,12 +113,16 @@ switch($_GET["action"]) {
         const artpieceint = parseInt(artpiecenum);
         console.log(artistvalue);
         var cookiestring = "";
+
+        //Header Script
+        src ="../js/responsiveHeader" 
     </script>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Navigation Header -->
     <div id="navbar">
         <header>
+            <!-- Navigation Bar Items -->
             <img class ="logo" src ="../images/logoWhite.jpeg" alt = "logo">
             <nav>
                 <ul class = "navLinks">
@@ -116,19 +133,21 @@ switch($_GET["action"]) {
                     <li><a href="contact.php">CONTACT US</a></li>
                 </ul>
             </nav>
-            <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
-                <div id="mySidebar" class="sidebar">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-family: Arial, Helvetica, sans-serif; font-size:3vw">x</a>
-                    <h2 style="color:rgb(230, 230, 230); padding-bottom:1vw;">CART</h2>
-                    <hr style="border-color: rgb(158, 158, 158);"></hr><br>
-
-                    <?php
+            <!-- Cart Items and Navigation -->
+            <button class="openbtn" onclick="openNav()"> <img  style = "width:3.2vw; height:3vw;" src="../images/cart.jpeg"/></button>    
+            <div id="mySidebar" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
+                <h2 class = "cartHeader">CART</h2>
+                <hr style="border-color: rgb(158, 158, 158);"></hr>
+                <br>
+                <?php
                     if(isset($_SESSION["cart_item"])){
                         $total_quantity = 0;
                         $total_price = 0;
-                    ?>	
-                    <table class="tbl-cart" cellspacing="7vw">
+                ?>	
+                <table class="tbl-cart" cellspacing="7vw">
                     <tbody>
+                        <!-- Cart Headers -->
                         <tr>
                             <th style="text-align:left; padding = 1%" name="Name"></th>
                             <th style="text-align:right; width = 0.8%" name = "Quantity"></th>
@@ -139,6 +158,7 @@ switch($_GET["action"]) {
                             foreach ($_SESSION["cart_item"] as $item){
                                 $item_price = $item["quantity"]*$item["price"];
                         ?>
+                        <!-- Cart Items -->
                         <tr>
                             <td><?php echo $item["name"]; ?></td>
                             <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
@@ -150,61 +170,53 @@ switch($_GET["action"]) {
                             $total_price += ($item["price"]*$item["quantity"]);
                             }
                         ?>
-
+                        <!-- Total Price of Cart Items -->
                         <tr>
                             <td align="center" span="2">Total:</td>
                             <td align="right"><?php echo $total_quantity; ?></td>
                             <td align="right"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
                         </tr>
-                        </tbody>
-                        </table>
-                        <div style="padding-top:5vw;">
-                            <button class ="checkoutbtn"><a href="checkout.php">Checkout</a></button> 
-                        </div> 
-                        <a id="btnEmpty" href="index.php?action=empty" style = "font-size:1vw;"><u>Empty Cart</u></a>		
-                        <?php
-                        } else {
-                        ?>
-                        <div class="no-records"><h2 style="font-size:2vw; white-space: nowrap; color:grey;">Your Cart is Empty</h2></div>
-                        <?php 
-                        }
-                        ?>
-                    
-                    </div>
-                </div>
-        </header>
-        
+                    </tbody>
+                </table>
+                <div style="padding-top:5vw;">
+                    <button class ="checkoutbtn"><a href="checkout.php">Checkout</a></button> 
+                </div> 
+                <a id="btnEmpty" href="index.php?action=empty" style = "font-size:1vw;"><u>Empty Cart</u></a>		
+                <?php
+                    } else {
+                ?>
+                <div class="no-records"><h2 style="font-size:2vw; white-space: nowrap; color:grey;">Your Cart is Empty</h2></div>
+                <?php 
+                    }
+                ?>    
+            </div>
+        </header>  
     </div>
     <hr></hr>
-    
+    <!-- Art Piece Section -->
     <div class="section">
         <div class="row">
-            <div class="column">
-                <img src="../images/artist<?php echo $_GET["artist"] . "/artist" . $_GET["artist"] . "_" . $_GET["artnumber"] ?>.jpeg" style= "border:rgb(68, 68, 68) solid; width:100%;"; />')   
+            <div class="column" >
+                <img src="../images/artist<?php echo $_GET["artist"] . "/artist" . $_GET["artist"] . "_" . $_GET["artnumber"] ?>.jpeg" style= "border:rgb(68, 68, 68) solid; width:100%;"; />
             </div>
             <div class="column">
                 <h2 style = "padding-top:3vw;"><?php include '../php/getartName.php';?></h2>
                 <h2 style="font-size:90%;opacity:0.7;"> <?php include '../php/getartpieceprice.php';?></h2>
                 <br>
                 <br>
-                <!-- add artpiece ID to global cookies?? Then Cart reads cookies and gets data from database -->
-                <!-- https://www.w3schools.com/js/js_cookies.asp -->
-                
+                <!-- Add artpiece ID to global cookies?? Then Cart reads cookies and gets data from database -->
                 <form action="artpiece.php?artist=<?php echo $_GET['artist'] ?>&artnumber=<?php echo $_GET['artnumber'] ?>&action=add&artpieceID=<?php include '../php/getartpieceID.php';?>" method="post" style="text-align:center;">
                     <input type="number" class="product-quantity" name="quantity" min="1"/>
                     <input type="submit" value="Add to Cart" class="btnAddAction" />
                 </form>
-                
                 <br>
                 <h3 style="padding-left:5vw; padding-bottom:1vw;">Description</h3>
                 <p style="padding-left:5vw; font-size:1vw; text-align:left;"><?php include '../php/getartpiecedesc.php';?></p>
-
-                <!--<div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>-->
             </div>
-        </div>
-
+        </div>  
     </div>
     <hr></hr>
+    <!--Footer-->
     <footer style ="text-align:center;font-size:1vw; padding:3vw;">
         <div class="row2" style="padding-bottom: 3vw;">
             <div class="column2">

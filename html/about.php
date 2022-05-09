@@ -1,71 +1,73 @@
 <?php
-session_start();
-require_once("../php/dbcontroller.php");
-$db_handle = new DBController();
-if(!empty($_GET["action"])) {
-switch($_GET["action"]) {
-	case "add":
-		if(!empty($_POST["quantity"])) {
-			$productByCode = $db_handle->runQuery("SELECT * FROM artpiece WHERE artpieceID='" . $_GET["artpieceID"] . "'");
-			$itemArray = array($productByCode[0]["artpieceID"]=>array('artpieceID'=>$productByCode[0]["artpieceID"], 'name'=>$productByCode[0]["name"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"]));
-			if(!empty($_SESSION["cart_item"])) {
-				if(in_array($productByCode[0]["artpieceID"],array_keys($_SESSION["cart_item"]))) {
-                    foreach($_SESSION["cart_item"] as $k => $v) {
-							if($productByCode[0]["artpieceID"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
-								if(empty($_SESSION["cart_item"][$k]["quantity"])) {
-									$_SESSION["cart_item"][$k]["quantity"] = 0;
-								}
-								$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
-							}
-					}
-				} else {
-					$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
-				}
-			} else {
-				$_SESSION["cart_item"] = $itemArray;
-			}
-		}
-	break;
-	case "remove":
-		if(!empty($_SESSION["cart_item"])) {
-			foreach($_SESSION["cart_item"] as $k => $v) {
-					if($_GET["code"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
+    session_start();
+    require_once("../php/dbcontroller.php");
+    $db_handle = new DBController();
+    if(!empty($_GET["action"])) {
+    switch($_GET["action"]) {
+        case "add":
+            if(!empty($_POST["quantity"])) {
+                $productByCode = $db_handle->runQuery("SELECT * FROM artpiece WHERE artpieceID='" . $_GET["artpieceID"] . "'");
+                $itemArray = array($productByCode[0]["artpieceID"]=>array('artpieceID'=>$productByCode[0]["artpieceID"], 'name'=>$productByCode[0]["name"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"]));
+                if(!empty($_SESSION["cart_item"])) {
+                    if(in_array($productByCode[0]["artpieceID"],array_keys($_SESSION["cart_item"]))) {
+                        foreach($_SESSION["cart_item"] as $k => $v) {
+                            if($productByCode[0]["artpieceID"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
+                                if(empty($_SESSION["cart_item"][$k]["quantity"])) {
+                                    $_SESSION["cart_item"][$k]["quantity"] = 0;
+                                }
+                                $_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+                            }
+                        }
+                    } else {
+                        $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
+                    }
+                } else {
+                    $_SESSION["cart_item"] = $itemArray;
+                }
+            }
+            break;
+        case "remove":
+            if(!empty($_SESSION["cart_item"])) {
+                foreach($_SESSION["cart_item"] as $k => $v) {
+                    if($_GET["code"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
                         if($_SESSION["cart_item"][$k]["quantity"] == 1) {
                             unset($_SESSION["cart_item"][$k]);
                         }
                         else if ($_SESSION["cart_item"][$k]["quantity"] > 1) {
                             $_SESSION["cart_item"][$k]["quantity"] = $_SESSION["cart_item"][$k]["quantity"] - 1;
                         }
-					}
+                    }
                     if(empty($_SESSION["cart_item"]))
-						unset($_SESSION["cart_item"]);				
-			}
-		}
-	break;
-	case "empty":
-		unset($_SESSION["cart_item"]);
-	break;	
-}
-}
+                        unset($_SESSION["cart_item"]);				
+            }
+        }
+            break;
+        case "empty":
+            unset($_SESSION["cart_item"]);
+            break;	
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel ="stylesheet" href="../css/siteStyling.css">
+    <link rel ="stylesheet" href="../css/siteStyling.css">
     <link rel="icon" href="../images/icon.jpeg"/>
     <title>About Us</title>
-    <meta name="description" content="Art Dealer Home page">
+    <meta name="description" content="Art Dealer About Page">
     <style>
         header{
             background-color:black;
         }
     </style>  
+    <!--JavaScript-->
+    <script src ="../js/responsiveHeader"></script>
 </head>
-
 <body>
-    <!-- Header -->
+    <!-- Navigation Header -->
     <div id="navbar">
         <header>
+            <!-- Navigation Bar Items -->
             <img class ="logo" src ="../images/logoWhite.jpeg" alt = "logo">
             <nav>
                 <ul class = "navLinks">
@@ -76,20 +78,21 @@ switch($_GET["action"]) {
                     <li><a href="contact.php">CONTACT US</a></li>
                 </ul>
             </nav>
-            <!--Cart-->
-            <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
-                <div id="mySidebar" class="sidebar">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-family: Arial, Helvetica, sans-serif; font-size:3vw">x</a>
-                    <h2 style="color:rgb(230, 230, 230); padding-bottom:1vw;">CART</h2>
-                    <hr style="border-color: rgb(158, 158, 158);"></hr><br>
-
-                    <?php
+            <!-- Cart Items and Navigation -->
+            <button class="openbtn" onclick="openNav()"> <img  style = "width:3.2vw; height:3vw;" src="../images/cart.jpeg"/></button>  
+            <div id="mySidebar" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
+                <h2 class = "cartHeader">CART</h2>
+                <hr style="border-color: rgb(158, 158, 158);"></hr>
+                <br>
+                <?php
                     if(isset($_SESSION["cart_item"])){
                         $total_quantity = 0;
                         $total_price = 0;
-                    ?>	
-                    <table class="tbl-cart" cellspacing="7vw">
+                ?>	
+                <table class="tbl-cart" cellspacing="7vw">
                     <tbody>
+                        <!-- Cart Headers -->
                         <tr>
                             <th style="text-align:left; padding = 1%" name="Name"></th>
                             <th style="text-align:right; width = 0.8%" name = "Quantity"></th>
@@ -100,6 +103,7 @@ switch($_GET["action"]) {
                             foreach ($_SESSION["cart_item"] as $item){
                                 $item_price = $item["quantity"]*$item["price"];
                         ?>
+                        <!-- Cart Items -->
                         <tr>
                             <td><?php echo $item["name"]; ?></td>
                             <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
@@ -111,57 +115,46 @@ switch($_GET["action"]) {
                             $total_price += ($item["price"]*$item["quantity"]);
                             }
                         ?>
-
+                        <!-- Total Price of Cart Items -->
                         <tr>
                             <td align="center" span="2">Total:</td>
                             <td align="right"><?php echo $total_quantity; ?></td>
                             <td align="right"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
                         </tr>
-                        </tbody>
-                        </table>
-                        <div style="padding-top:5vw;">
-                            <button class ="checkoutbtn"><a href="checkout.php">Checkout</a></button> 
-                        </div> 
-                        <a id="btnEmpty" href="index.php?action=empty" style = "font-size:1vw;"><u>Empty Cart</u></a>		
-                        <?php
-                        } else {
-                        ?>
-                        <div class="no-records"><h2 style="font-size:2vw; white-space: nowrap; color:grey;">Your Cart is Empty</h2></div>
-                        <?php 
-                        }
-                        ?>
-                    
-                    </div>
-                </div>
+                    </tbody>
+                </table>
+                <div style="padding-top:5vw;">
+                    <button class ="checkoutbtn"><a href="checkout.php">Checkout</a></button> 
+                </div> 
+                <a id="btnEmpty" href="index.php?action=empty" style = "font-size:1vw;"><u>Empty Cart</u></a>		
+                <?php
+                    } else {
+                ?>
+                <div class="no-records"><h2 style="font-size:2vw; white-space: nowrap; color:grey;">Your Cart is Empty</h2></div>
+                <?php 
+                    }
+                ?>
+            </div>
         </header>
     </div>
     <hr></hr>
-
+    <!-- About Us Text -->
     <div class = paragraph>
-    <h2 style = "padding-top:4vw; padding-bottom: 1vw;">ABOUT ART DEALER</h2>
-    <div class ="paragraph">
-        <p>Art Dealer is a Canberra-based online art-sharing emporium offering a unique selection of over 50+ handpicked high-quality posters and art prints from local underground artists. <br><br>With a strong focus on 20th-century modern style art, you'll be able to find historically rich art pieces that will transform the looks in your home. <br><br> Made to order & curated locally in Melbourne, Australia. We launched our premium giclee art print line in the hope to provide fellow humans looking to sprouce up their home the opportunity to do so at affordable pricing. <br><br>Here at Art Dealer we to focus mainly on high quality materials and sustainability. We're glad that you found us, and hope you’ll enjoy our unique art pieces as much as we do.</p>
-        <br><p>We have had a total of <?php include('../php/getsales.php') ?> sales, delivering quality Canberran Art to the Region.</p>                
+        <h2 style = "padding-top:4vw; padding-bottom: 1vw;">ABOUT ART DEALER</h2>
+        <div class ="paragraph">
+            <p>Art Dealer is a Canberra-based online art-sharing emporium offering a unique selection of over 50+ handpicked high-quality posters and art prints from local underground artists. <br><br>With a strong focus on 20th-century modern style art, you'll be able to find historically rich art pieces that will transform the looks in your home. <br><br> Made to order & curated locally in Melbourne, Australia. We launched our premium giclee art print line in the hope to provide fellow humans looking to sprouce up their home the opportunity to do so at affordable pricing. <br><br>Here at Art Dealer we to focus mainly on high quality materials and sustainability. We're glad that you found us, and hope you’ll enjoy our unique art pieces as much as we do.</p><br>
+            <p>We have had a total of <?php include('../php/getsales.php') ?> sales, delivering quality Canberran Art to the Region.</p>                
+        </div>
+        <img src="../images/aboutusimage.jpeg" style= "width:75%; height:75%; margin-left:auto; display: block; margin-right:auto; opacity: 75%; border:rgb(68, 68, 68) solid"/>
     </div>
-    <img src="../images/aboutusimage.jpeg" style= "width:75%; height:75%; margin-left:auto; display: block; margin-right:auto; opacity: 75%; border:rgb(68, 68, 68) solid"/>
-    </div>
-
-    <h2 style = "padding-top:1vw; padding-bottom: 1vw;">Have any Questions?</h2>
+    <h2 style = "padding-bottom: 1vw;">Have any Questions?</h2>
     <p>Feel free to contact us and leave any questions, queries or doubtful points with our polite team!</p>
     <div style="padding:8vw;">
-            <a class = "btnStyle" href="../html/contact.php">Get in Touch</a>
+        <a class = "btnStyle" href="../html/contact.php">Get in Touch</a>
     </div>
-
- 
-    <!--
-    <h2 style = "padding-bottom:1vw; padding-top:3vw;">Sign Up and Save</h2>
-    <div class="signUpAndSave" style="padding:5vw;">
-        <a class = "btnStyle" href="#">My Profile</a>
-        <a class = "btnStyle" style="padding-right: 4vw;padding-left: 4vw;" href="#">Sign Up </a>
-    </div>
-    -->
     <hr></hr>
-    <footer style ="text-align:center;font-size:1vw; padding:3vw;">
+    <!-- Footer -->
+    <footer class="mainFooter">
         <div class="row2" style="padding-bottom: 3vw;">
             <div class="column2">
                 <div class =infoGroup>
@@ -184,7 +177,5 @@ switch($_GET["action"]) {
         </div>
         <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
     </footer>
-    <!--JavaScript-->
-    <script src ="../js/responsiveHeader"></script>
 </body>
 </html>
