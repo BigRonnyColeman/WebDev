@@ -256,7 +256,6 @@ switch($_GET["action"]) {
                     <?php 
                     }
                     ?>
-
             <?php
             if (isset($_GET["fname"])) {
             echo
