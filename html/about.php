@@ -172,6 +172,10 @@ switch($_GET["action"]) {
             cursor: pointer;
             text-decoration:none;
             padding:3vw;
+            margin-left:auto;
+            margin-right:auto;
+            text-align:center;
+            display:block;
         }
 
         /*About Us Styling*/
@@ -266,34 +270,20 @@ switch($_GET["action"]) {
     <hr></hr>
 
     <div class = paragraph>
-    <h2 style = "padding-top:4vw; padding-bottom: 1vw;">ABOUT US</h2>
+    <h2 style = "padding-top:4vw; padding-bottom: 1vw;">ABOUT ART DEALER</h2>
     <div class ="paragraph">
-        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+        <p>Art Dealer is a Canberra-based online art-sharing emporium offering a unique selection of over 50+ handpicked high-quality posters and art prints from local underground artists. <br><br>With a strong focus on 20th-century modern style art, you'll be able to find historically rich art pieces that will transform the looks in your home. <br><br> Made to order & curated locally in Melbourne, Australia. We launched our premium giclee art print line in the hope to provide fellow humans looking to sprouce up their home the opportunity to do so at affordable pricing. <br><br>Here at Art Dealer we to focus mainly on high quality materials and sustainability. We're glad that you found us, and hope you’ll enjoy our unique art pieces as much as we do.</p>
     </div>
-        <div class =infoGroup>
-            <h2>Meet The Team</h2><br>
-            <div class="infoText"> 
-                <h3 style="font-size:2vw">CEO - Ronnie</h3>
-                <p>Founder of Art Dealer Australia, Ronnie is an exhibiting artist and Art Educator with over 20 years experience. After training for many years and bringing his ideas to a centralised mindset, Ronnie fell in love with the nation's capital passion for art. </p></br>
-                <p>"Even after over 20 years in Art Education, I still tine unto this asme instinct to find beauty. There is a lot of art theory but really it about feeling. What makes your heart sing? What sparks your interest? It's as simply and complex as falling in love."</p>
-            </div>
-            <br>
-            <div class="infoText"> 
-                <h3 style="font-size:2vw">Art Curator - Arnnie</h3>
-                <p>Founder of Art Dealer Australia, Ronnie is an exhibiting artist and Art Educator with over 20 years experience. After training for many years and bringing his ideas to a centralised mindset, Ronnie fell in love with the nation's capital passion for art. </p></br>
-                <p>"Even after over 20 years in Art Education, I still tine unto this asme instinct to find beauty. There is a lot of art theory but really it about feeling. What makes your heart sing? What sparks your interest? It's as simply and complex as falling in love."</p>
-            </div>
-            <br>
-            <div class="infoText"> 
-                <h3 style="font-size:2vw">Administration - Chris</h3>
-                <p>Founder of Art Dealer Australia, Ronnie is an exhibiting artist and Art Educator with over 20 years experience. After training for many years and bringing his ideas to a centralised mindset, Ronnie fell in love with the nation's capital passion for art. </p></br>
-                <p>"Even after over 20 years in Art Education, I still tine unto this asme instinct to find beauty. There is a lot of art theory but really it about feeling. What makes your heart sing? What sparks your interest? It's as simply and complex as falling in love."</p>
-            </div>
+    <img src="../images/aboutusimage.jpeg" style= "width:75%; height:75%; margin-left:auto; display: block; margin-right:auto; opacity: 75%; border:rgb(68, 68, 68) solid"/>
+    </div>
 
-        </div>
+    <h2 style = "padding-top:1vw; padding-bottom: 1vw;">Have any Questions?</h2>
+    <p>Feel free to contact us and leave any questions, queries or doubtful points with our polite team!</p>
+    <div style="padding:8vw;">
+            <a class = "btnStyle" href="../html/contact.php">Get in Touch</a>
     </div>
-    
-    <hr></hr>
+
+ 
     <!--
     <h2 style = "padding-bottom:1vw; padding-top:3vw;">Sign Up and Save</h2>
     <div class="signUpAndSave" style="padding:5vw;">
