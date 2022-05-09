@@ -70,7 +70,7 @@ has been maniupalted, the rest of the page can load. -->
         <link rel ="stylesheet" href="../css/siteStyling.css">
         <link rel="icon" href="../images/icon.png"/>
         <title>Checkout</title>
-        <meta name="description" content="Art Dealer Home page">
+        <meta name="description" content="Art Dealer Checkout Page">
         <style>
 
             .section {
@@ -146,6 +146,7 @@ has been maniupalted, the rest of the page can load. -->
         </style>
     </head>
     <body>
+        <!-- Left Side of Page -->
         <div class="split left">
             <header style="padding-top:6vw"><img class ="logo" style = "height:3vw; margin-left:auto; margin-right:auto; display: block;" src ="../images/logoBlack.jpeg" alt = "logo"></header>
             <div class="section">
@@ -157,12 +158,10 @@ has been maniupalted, the rest of the page can load. -->
                     </div>
                     <input type="text" id="contact" name="email" placeholder="Email.." style="font-size:1vw;">
                     <input type="text" id="contact" name="number" placeholder="Mobile Phone Number.." style="font-size:1vw;">
-
                     <select id="shipping" name="mode" style="font-size:1vw;">
                             <option value="delivery">Delivery</option>
                             <option value="pickup">Pickup</option>
                     </select>
-
                     <label for="shipping">Address</label>
                     <input type="text" id="shipping" name="address" placeholder="Address.." style="font-size:1vw;">
                     <div style="display:flex;">
@@ -189,113 +188,111 @@ has been maniupalted, the rest of the page can load. -->
                     <a href = "artists.php" style="color:black; font-size:1vw; text-decoration: underline; padding-left:1vw;">Return to Artists...</a>
                 </form>
             </div>
-
-            <div class="split right">
-                <div class="centered">
-                    <div class="section" style="text-align:center">
-                        <h2 style="padding-top:1vw;">CART</h2>
-
-                        <?php
-                            if(isset($_SESSION["cart_item"])){
-                                $total_quantity = 0;
-                                $total_price = 0;
-                        ?>	
-                        <table class="tbl-cart" cellspacing="7vw" style="padding-bottom:3vw">
-                            <tbody>
-                                <tr>
-                                    <th style="text-align:left; padding = 1%" name="Name"></th>
-                                    <th style="text-align:right; width = 0.8%" name = "Quantity"></th>
-                                    <th style="text-align:right; width = 0.8%" name = "Price"></th>
-                                    <th style="text-align:right; width = 0.2%" name = "Remove"></th>
-                                </tr>	
-                                <?php		
-                                    foreach ($_SESSION["cart_item"] as $item){
-                                        $item_price = $item["quantity"]*$item["price"];
-                                ?>
-                                <tr>
-                                    <td><?php echo $item["name"]; ?></td>
-                                    <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
-                                    <td style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?></td>
-                                    <td style="text-align:center; "><a href="checkout.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.jpeg" height="9vw"/></a></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                    <p style="font-size:40%">Total Items Sold on Art Dealer: 
-                                    <?php
-                                        $db_host = 'localhost';
-                                        $db_user = 'root';
-                                        $db_password = 'root';
-                                        $db_db = 'artdealer';
-                                        $mysqli = @new mysqli(
-                                            $db_host,
-                                            $db_user,
-                                            $db_password,
-                                            $db_db
-                                        );
-                                        $tempItem = $item["artpieceID"];
-                                        $sql6 = "SELECT COUNT(*) FROM orderItem WHERE artpieceID = '$tempItem'";
-                                        $result6 = $mysqli->query($sql6);
-
-                                        if ($result6->num_rows > 0) {
-                                            // output data of each row
-                                            while($row6 = $result6->fetch_assoc()) {
-                                                echo $row6["COUNT(*)"];
-                                            }
-                                        } else {
-                                            echo "<br>NO RESULTS";
-                                        }
-                                        $mysqli->close();
-                                    ?> </p>
-                                    </td>
-                                </tr>
+        </div>
+        <!-- Right Side of Page -->
+        <div class="split right">
+            <div class="centered">
+                <div class="section" style="text-align:center">
+                    <h2 style="padding-top:1vw;">CART</h2>
+                    <?php
+                        if(isset($_SESSION["cart_item"])){
+                            $total_quantity = 0;
+                            $total_price = 0;
+                    ?>	
+                    <table class="tbl-cart" cellspacing="7vw" style="padding-bottom:3vw">
+                        <tbody>
+                            <!-- Cart Items -->
+                            <tr>
+                                <th style="text-align:left; padding = 1%" name="Name"></th>
+                                <th style="text-align:right; width = 0.8%" name = "Quantity"></th>
+                                <th style="text-align:right; width = 0.8%" name = "Price"></th>
+                                <th style="text-align:right; width = 0.2%" name = "Remove"></th>
+                            </tr>	
+                            <?php		
+                                foreach ($_SESSION["cart_item"] as $item){
+                                    $item_price = $item["quantity"]*$item["price"];
+                            ?>
+                            <tr>
+                                <td><?php echo $item["name"]; ?></td>
+                                <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
+                                <td style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?></td>
+                                <td style="text-align:center; "><a href="checkout.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.jpeg" height="9vw"/></a></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                <p style="font-size:40%">Total Items Sold on Art Dealer: 
                                 <?php
-                                    $total_quantity += $item["quantity"];
-                                    $total_price += ($item["price"]*$item["quantity"]);
+                                    $db_host = 'localhost';
+                                    $db_user = 'root';
+                                    $db_password = 'root';
+                                    $db_db = 'artdealer';
+                                    $mysqli = @new mysqli(
+                                        $db_host,
+                                        $db_user,
+                                        $db_password,
+                                        $db_db
+                                    );
+                                    $tempItem = $item["artpieceID"];
+                                    $sql6 = "SELECT COUNT(*) FROM orderItem WHERE artpieceID = '$tempItem'";
+                                    $result6 = $mysqli->query($sql6);
+                                    if ($result6->num_rows > 0) {
+                                        // output data of each row
+                                        while($row6 = $result6->fetch_assoc()) {
+                                            echo $row6["COUNT(*)"];
+                                        }
+                                    } else {
+                                        echo "<br>NO RESULTS";
                                     }
-                                ?>
-
-                                <tr>
-                                    <td align="center" span="2">Total:</td>
-                                    <td align="right"><?php echo $total_quantity; ?></td>
-                                    <td align="right"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <?php 
-                            }
-                        ?>
-                        <?php
-                        /* Only appears if user has inputed the required data */
+                                    $mysqli->close();
+                                ?> </p>
+                                </td>
+                            </tr>
+                            <?php
+                                $total_quantity += $item["quantity"];
+                                $total_price += ($item["price"]*$item["quantity"]);
+                                }
+                            ?>
+                            <tr>
+                                <td align="center" span="2">Total:</td>
+                                <td align="right"><?php echo $total_quantity; ?></td>
+                                <td align="right"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <?php 
+                        }
+                    ?>
+                    <?php
+                    /* Only appears if user has inputed the required data */
+                    if (isset($_GET["fname"])) {
+                        echo
+                        " <h2>Address</h2>" . 
+                        "<p>" . $_GET["fname"] . " " . $_GET["lname"] . "<br>"
+                        . $_GET["email"] . "<br>"
+                        . $_GET["number"] . "<br>"
+                        . $_GET["address"] . " " . $_GET["suburb"] . " " . $_GET["State"] . " " . $_GET["postcode"] . "<br>";
+                    }
+                    else {
+                        echo "<p> <b>Please Complete Customer Form</b> </p>";
+                    }
+                    ?>
+                    <br>
+                    <?php
                         if (isset($_GET["fname"])) {
-                            echo
-                            " <h2>Address</h2>" . 
-                            "<p>" . $_GET["fname"] . " " . $_GET["lname"] . "<br>"
-                            . $_GET["email"] . "<br>"
-                            . $_GET["number"] . "<br>"
-                            . $_GET["address"] . " " . $_GET["suburb"] . " " . $_GET["State"] . " " . $_GET["postcode"] . "<br>";
-                        }
-                        else {
-                            echo "<p> <b>Please Complete Customer Form</b> </p>";
-                        }
-                        ?>
-                        <br>
-                        <?php
-                            if (isset($_GET["fname"])) {
-                                ?>
-                                
-                                <form action="checkoutcomplete.php?action=checkout&name= <?php  echo $_GET["fname"] . " " . $_GET["lname"] . "&mode=" . $_GET["mode"] . "&email=" . $_GET["email"] . "&number=" . $_GET["number"] . "&address=" . $_GET["address"] . " " . $_GET["suburb"] . " " . $_GET["State"] . " " . $_GET["postcode"] ?>" method="post" style="text-align:center;"> 
-                                    <input type="submit" value="Checkout" style="font-size:1vw;"/>
-                                </form>  
-                        <?php
-                            }      
-                        ?>
-                    </div>
+                    ?>
+                    <form action="checkoutcomplete.php?action=checkout&name= <?php  echo $_GET["fname"] . " " . $_GET["lname"] . "&mode=" . $_GET["mode"] . "&email=" . $_GET["email"] . "&number=" . $_GET["number"] . "&address=" . $_GET["address"] . " " . $_GET["suburb"] . " " . $_GET["State"] . " " . $_GET["postcode"] ?>" method="post" style="text-align:center;"> 
+                        <input type="submit" value="Checkout" style="font-size:1vw;"/>
+                    </form>  
+                    <?php
+                        }      
+                    ?>
                 </div>
+                <!-- Footer -->
+                <footer style ="text-align:center; opacity:50%; font-size:1vw;display:block;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
             </div>
             <br>
-            <footer style ="text-align:center; opacity:50%; font-size:1vw;display:block;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
         </div>            
     </body>
 </html>

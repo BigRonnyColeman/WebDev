@@ -70,7 +70,7 @@ has been maniupalted, the rest of the page can load. -->
         <link rel ="stylesheet" href="../css/siteStyling.css">
         <link rel="icon" href="../images/icon.jpeg"/>
         <title>Find Your Order</title>
-        <meta name="description" content="Art Dealer Home page">
+        <meta name="description" content="Art Dealer Find Result Page">
         <style>
 
             header{
@@ -125,6 +125,8 @@ has been maniupalted, the rest of the page can load. -->
                 border-color: grey;
             }
         </style>
+        <!-- Javascript -->
+        <script src ="../js/responsiveHeader"></script>  
     </head>
     <body>
         <!-- Header -->
@@ -140,61 +142,60 @@ has been maniupalted, the rest of the page can load. -->
                         <li><a href="#"><u style="text-underline-offset: 0.7em";>CONTACT US</u></a></li>
                     </ul>
                 </nav>
-                <!--Cart-->
+               <!--Cart-->
                 <!-- Uses global variabl $_Session and stores all relevant data to 
                 each session in the array $_Session["cart_item"] -->
                 <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
-                    <div id="mySidebar" class="sidebar">
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-family: Arial, Helvetica, sans-serif; font-size:3vw">x</a>
-                        <h2 style="color:rgb(230, 230, 230); padding-bottom:1vw;">CART</h2>
-                        <hr style="border-color: rgb(158, 158, 158);"></hr><br>
-                        <?php
-                            if(isset($_SESSION["cart_item"])){
-                                $total_quantity = 0;
-                                $total_price = 0;
-                        ?>	
-                        <table class="tbl-cart" cellspacing="7vw">
-                            <tbody>
-                                <tr>
-                                    <th style="text-align:left; padding = 1%" name="Name"></th>
-                                    <th style="text-align:right; width = 0.8%" name = "Quantity"></th>
-                                    <th style="text-align:right; width = 0.8%" name = "Price"></th>
-                                    <th style="text-align:right; width = 0.2%" name = "Remove"></th>
-                                </tr>	
-                                <?php		
-                                    foreach ($_SESSION["cart_item"] as $item){
-                                        $item_price = $item["quantity"]*$item["price"];
-                                ?>
-                                <tr>
-                                    <td><?php echo $item["name"]; ?></td>
-                                    <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
-                                    <td style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?></td>
-                                    <td style="text-align:center; "><a href="index.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.jpeg" height="9vw"/></a></td>
-                                </tr>
-                                <?php
-                                    $total_quantity += $item["quantity"];
-                                    $total_price += ($item["price"]*$item["quantity"]);
-                                    }
-                                ?>
-                                <tr>
-                                    <td align="center" span="2">Total:</td>
-                                    <td align="right"><?php echo $total_quantity; ?></td>
-                                    <td align="right"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div style="padding-top:5vw;">
-                            <button class ="checkoutbtn"><a href="checkout.php">Checkout</a></button> 
-                        </div> 
-                        <a id="btnEmpty" href="index.php?action=empty" style = "font-size:1vw;"><u>Empty Cart</u></a>		
-                        <?php
-                            } else {
-                        ?>
-                        <div class="no-records"><h2 style="font-size:2vw; white-space: nowrap; color:grey;">Your Cart is Empty</h2></div>
-                        <?php 
-                            }
-                        ?>
-                    </div>
+                <div id="mySidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-family: Arial, Helvetica, sans-serif; font-size:3vw">x</a>
+                    <h2 style="color:rgb(230, 230, 230); padding-bottom:1vw;">CART</h2>
+                    <hr style="border-color: rgb(158, 158, 158);"></hr><br>
+                    <?php
+                        if(isset($_SESSION["cart_item"])){
+                            $total_quantity = 0;
+                            $total_price = 0;
+                    ?>	
+                    <table class="tbl-cart" cellspacing="7vw">
+                        <tbody>
+                            <tr>
+                                <th style="text-align:left; padding = 1%" name="Name"></th>
+                                <th style="text-align:right; width = 0.8%" name = "Quantity"></th>
+                                <th style="text-align:right; width = 0.8%" name = "Price"></th>
+                                <th style="text-align:right; width = 0.2%" name = "Remove"></th>
+                            </tr>	
+                            <?php		
+                                foreach ($_SESSION["cart_item"] as $item){
+                                    $item_price = $item["quantity"]*$item["price"];
+                            ?>
+                            <tr>
+                                <td><?php echo $item["name"]; ?></td>
+                                <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
+                                <td style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?></td>
+                                <td style="text-align:center; "><a href="index.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.jpeg" height="9vw"/></a></td>
+                            </tr>
+                            <?php
+                                $total_quantity += $item["quantity"];
+                                $total_price += ($item["price"]*$item["quantity"]);
+                                }
+                            ?>
+                            <tr>
+                                <td align="center" span="2">Total:</td>
+                                <td align="right"><?php echo $total_quantity; ?></td>
+                                <td align="right"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="padding-top:5vw;">
+                        <button class ="checkoutbtn"><a href="checkout.php">Checkout</a></button> 
+                    </div> 
+                    <a id="btnEmpty" href="index.php?action=empty" style = "font-size:1vw;"><u>Empty Cart</u></a>		
+                    <?php
+                        } else {
+                    ?>
+                    <div class="no-records"><h2 style="font-size:2vw; white-space: nowrap; color:grey;">Your Cart is Empty</h2></div>
+                    <?php 
+                        }
+                    ?>
                 </div>
             </header>
         </div>
@@ -281,8 +282,8 @@ has been maniupalted, the rest of the page can load. -->
                 } 
             echo "<br><br><br>";
         ?>
-
         <hr></hr>
+        <!-- Footer -->
         <footer style ="text-align:center;font-size:1vw; padding:3vw;">
             <div class="row2" style="padding-bottom: 3vw;">
                 <div class="column2">
@@ -305,9 +306,6 @@ has been maniupalted, the rest of the page can load. -->
                 </div>
             </div>
             <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
-        </footer>
-
-        <!-- Javascript -->
-        <script src ="../js/responsiveHeader"></script>   
+        </footer> 
     </body>
 </html>

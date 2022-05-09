@@ -150,6 +150,8 @@ has been maniupalted, the rest of the page can load. -->
                 </ul>
             </nav>
             <!-- Cart Items and Navigation -->
+            <!-- Uses global variabl $_Session and stores all relevant data to 
+            each session in the array $_Session["cart_item"] -->
             <button class="openbtn" onclick="openNav()"> <img  style = "width:3.2vw; height:3vw;" src="../images/cart.jpeg"/></button>    
             <div id="mySidebar" class="sidebar">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
