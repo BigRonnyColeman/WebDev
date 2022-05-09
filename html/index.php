@@ -196,7 +196,7 @@ switch($_GET["action"]) {
             for ($k = 0 ; $k < 3; $k++) {
                 echo
                 ' <a href="artist.php?artist=' . $k+1 . '">
-                    <div class =artistGroup>
+                    <div class="artistGroup">
                         <img src="../images/artist' . $k+1 . '/artist' . $k+1 . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                         <div class="artistText"><p style="text-transform: uppercase; color:white">' . $array[$k] . '</p></div>
                     </div> 
@@ -210,7 +210,7 @@ switch($_GET["action"]) {
             for ($k = 3 ; $k < 6; $k++) {
                 echo
                 ' <a href="artist.php?artist=' . $k+1 . '">
-                    <div class =artistGroup>
+                    <div class = "artistGroup">
                         <img src="../images/artist' . $k+1 . '/artist' . $k+1 . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                         <div class="artistText"><p style="text-transform: uppercase; color:white">' . $array[$k] . '</p></div>
                     </div> 
@@ -224,7 +224,7 @@ switch($_GET["action"]) {
             for ($k = 6 ; $k < 9; $k++) {
                 echo
                 ' <a href="artist.php?artist=' . $k+1 . '">
-                    <div class =artistGroup>
+                    <div class = "artistGroup">
                         <img src="../images/artist' . $k+1 . '/artist' . $k+1 . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                         <div class="artistText"><p style="text-transform: uppercase; color:white">' . $array[$k] . '</p></div>
                     </div> 
@@ -238,7 +238,7 @@ switch($_GET["action"]) {
             for ($k = 9 ; $k < 12; $k++) {
                 echo
                 ' <a href="artist.php?artist=' . $k+1 . '">
-                    <div class =artistGroup>
+                    <div class = "artistGroup">
                         <img src="../images/artist' . $k+1 . '/artist' . $k+1 . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                         <div class="artistText"><p style="text-transform: uppercase; color:white">' . $array[$k] . '</p></div>
                     </div> 
