@@ -161,7 +161,7 @@ switch($_GET["action"]) {
 <body>
 
     <div class="split left">
-        <header style="padding-top:6vw"><img class ="logo" style = "height:3vw; margin-left:auto; margin-right:auto; display: block;" src ="../images/logoBlack.png" alt = "logo"></header>
+        <header style="padding-top:6vw"><img class ="logo" style = "height:3vw; margin-left:auto; margin-right:auto; display: block;" src ="../images/logoBlack.jpeg" alt = "logo"></header>
         <div class="section">
         <form style="text-align: left;">
             <label for="contact">Contact Information</label>
@@ -232,7 +232,7 @@ switch($_GET["action"]) {
                             <td><?php echo $item["name"]; ?></td>
                             <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
                             <td style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?></td>
-                            <td style="text-align:center; "><a href="checkout.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.png" height="9vw"/></a></td>
+                            <td style="text-align:center; "><a href="checkout.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.jpeg" height="9vw"/></a></td>
                         </tr>
                         <?php
                             $total_quantity += $item["quantity"];
@@ -270,7 +270,7 @@ switch($_GET["action"]) {
         if (isset($_GET["fname"])) {
             ?>
             
-            <form action="checkoutcomplete.php?action=checkout&name= <?php  echo $_GET["fname"] . "" . $_GET["lname"] . "&mode=" . $_GET["mode"] . "&email=" . $_GET["email"] . "&number=" . $_GET["number"] . "&address=" . $_GET["address"] . " " . $_GET["suburb"] . " " . $_GET["State"] . " " . $_GET["postcode"] ?>" method="post" style="text-align:center;"> 
+            <form action="checkoutcomplete.php?action=checkout&name= <?php  echo $_GET["fname"] . " " . $_GET["lname"] . "&mode=" . $_GET["mode"] . "&email=" . $_GET["email"] . "&number=" . $_GET["number"] . "&address=" . $_GET["address"] . " " . $_GET["suburb"] . " " . $_GET["State"] . " " . $_GET["postcode"] ?>" method="post" style="text-align:center;"> 
                 <input type="submit" value="Checkout" style="font-size:1vw;"/>
             </form>  
         <?php
