@@ -50,14 +50,11 @@ switch($_GET["action"]) {
 ?>
 <!DOCTYPE html>
 <html>
-
-<!--USE THIS PAGE FOR REFERENCE TO BUILD OTHER PAGES-->
-
 <head>
     <link rel ="stylesheet" href="../css/siteStyling.css">
     <link rel="icon" href="../images/icon.jpeg"/>
     <title>Best Sellers</title>
-    <meta name="description" content="Art Dealer Home page">
+    <meta name="description" content="Art Dealer Best Sellers">
     <style>
         header{
             background-color:black;
@@ -68,14 +65,16 @@ switch($_GET["action"]) {
         const artistvalue = urlParams.get('artist');
         const artistint = parseInt(artistvalue);
         console.log(artistvalue);
-    </script>
 
+        //Header Script
+        src ="../js/responsiveHeader" 
+    </script>
 </head>
 <body>
-
-    <!-- Header -->
+    <!-- Navigation Header -->
     <div id="navbar">
         <header>
+            <!-- Navigation Bar Items -->
             <img class ="logo" src ="../images/logoWhite.jpeg" alt = "logo">
             <nav>
                 <ul class = "navLinks">
@@ -86,20 +85,21 @@ switch($_GET["action"]) {
                     <li><a href="contact.php">CONTACT US</a></li>
                 </ul>
             </nav>
-            <!--Cart-->
-            <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
-                <div id="mySidebar" class="sidebar">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-family: Arial, Helvetica, sans-serif; font-size:3vw">x</a>
-                    <h2 style="color:rgb(230, 230, 230); padding-bottom:1vw;">CART</h2>
-                    <hr style="border-color: rgb(158, 158, 158);"></hr><br>
-
-                    <?php
+            <!-- Cart Items and Navigation -->
+            <button class="openbtn" onclick="openNav()"> <img  style = "width:3.2vw; height:3vw;" src="../images/cart.jpeg"/></button>    
+            <div id="mySidebar" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
+                <h2 class = "cartHeader">CART</h2>
+                <hr style="border-color: rgb(158, 158, 158);"></hr>
+                <br>
+                <?php
                     if(isset($_SESSION["cart_item"])){
                         $total_quantity = 0;
                         $total_price = 0;
-                    ?>	
-                    <table class="tbl-cart" cellspacing="7vw">
+                ?>	
+                <table class="tbl-cart" cellspacing="7vw">
                     <tbody>
+                        <!-- Cart Headers -->
                         <tr>
                             <th style="text-align:left; padding = 1%" name="Name"></th>
                             <th style="text-align:right; width = 0.8%" name = "Quantity"></th>
@@ -110,6 +110,7 @@ switch($_GET["action"]) {
                             foreach ($_SESSION["cart_item"] as $item){
                                 $item_price = $item["quantity"]*$item["price"];
                         ?>
+                        <!-- Cart Items -->
                         <tr>
                             <td><?php echo $item["name"]; ?></td>
                             <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
@@ -121,93 +122,86 @@ switch($_GET["action"]) {
                             $total_price += ($item["price"]*$item["quantity"]);
                             }
                         ?>
-
+                        <!-- Total Price of Cart Items -->
                         <tr>
                             <td align="center" span="2">Total:</td>
                             <td align="right"><?php echo $total_quantity; ?></td>
                             <td align="right"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
                         </tr>
-                        </tbody>
-                        </table>
-                        <div style="padding-top:5vw;">
-                            <button class ="checkoutbtn"><a href="checkout.php">Checkout</a></button> 
-                        </div> 
-                        <a id="btnEmpty" href="index.php?action=empty" style = "font-size:1vw;"><u>Empty Cart</u></a>		
-                        <?php
-                        } else {
-                        ?>
-                        <div class="no-records"><h2 style="font-size:2vw; white-space: nowrap; color:grey;">Your Cart is Empty</h2></div>
-                        <?php 
-                        }
-                        ?>
-                    
-                    </div>
-                </div>
+                    </tbody>
+                </table>
+                <div style="padding-top:5vw;">
+                    <button class ="checkoutbtn"><a href="checkout.php">Checkout</a></button> 
+                </div> 
+                <a id="btnEmpty" href="index.php?action=empty" style = "font-size:1vw;"><u>Empty Cart</u></a>		
+                <?php
+                    } else {
+                ?>
+                <div class="no-records"><h2 style="font-size:2vw; white-space: nowrap; color:grey;">Your Cart is Empty</h2></div>
+                <?php 
+                    }
+                ?>
+            </div>
         </header>
     </div>
     <hr></hr>
-
-    
-    </div>
-    <hr></hr>
+    <!--Best Sellers Grid-->
     <h2 style = "padding-top:4vw;">SHOP BEST SELLERS</h2>
     <div class="section">
-    <?php include('../php/getbest.php');?>
-    <div class="row">
-        <div class="column">
-            <?php
-            for ($k = 0 ; $k < 2; $k++) {
-                echo
-                ' <a href="artpiece.php?artist=' . $array[$k]["x"] . '&artnumber=' . $array[$k]["y"] . '">
-                    <div class =artistGroup>
-                        <img src="../images/artist' . $array[$k]["x"] . '/artist' . $array[$k]["x"] . '_' . $array[$k]["y"] . '.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                    </div> 
-                </a> ';
-            }
-            ?>
-        </div>
-        <div class="column">
-            <?php
-            for ($k = 2 ; $k < 4; $k++) {
-                echo
-                ' <a href="artpiece.php?artist=' . $array[$k]["x"] . '&artnumber=' . $array[$k]["y"] . '">
-                    <div class =artistGroup>
-                        <img src="../images/artist' . $array[$k]["x"] . '/artist' . $array[$k]["x"] . '_' . $array[$k]["y"] . '.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                    </div> 
-                </a> ';
-            }
-            ?>
-        </div>
-        <div class="column">
-            <?php
-            for ($k = 4 ; $k < 6; $k++) {
-                echo
-                ' <a href="artpiece.php?artist=' . $array[$k]["x"] . '&artnumber=' . $array[$k]["y"] . '">
-                    <div class =artistGroup>
-                        <img src="../images/artist' . $array[$k]["x"] . '/artist' . $array[$k]["x"] . '_' . $array[$k]["y"] . '.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                    </div> 
-                </a> ';
-            }
-            ?>
-        </div>
-        <div class="column">
-            <?php
-            for ($k = 6 ; $k < 8; $k++) {
-                echo
-                ' <a href="artpiece.php?artist=' . $array[$k]["x"] . '&artnumber=' . $array[$k]["y"] . '">
-                    <div class =artistGroup>
-                        <img src="../images/artist' . $array[$k]["x"] . '/artist' . $array[$k]["x"] . '_' . $array[$k]["y"] . '.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                    </div> 
-                </a> ';
-            }
-            ?>
+        <?php include('../php/getbest.php');?>
+        <div class="row">
+            <div class="column">
+                <?php
+                    for ($k = 0 ; $k < 2; $k++) {
+                        echo
+                        ' <a href="artpiece.php?artist=' . $array[$k]["x"] . '&artnumber=' . $array[$k]["y"] . '">
+                            <div class =artistGroup>
+                                <img src="../images/artist' . $array[$k]["x"] . '/artist' . $array[$k]["x"] . '_' . $array[$k]["y"] . '.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                            </div> 
+                        </a> ';
+                    }
+                ?>
+            </div>
+            <div class="column">
+                <?php
+                    for ($k = 2 ; $k < 4; $k++) {
+                        echo
+                        ' <a href="artpiece.php?artist=' . $array[$k]["x"] . '&artnumber=' . $array[$k]["y"] . '">
+                            <div class =artistGroup>
+                                <img src="../images/artist' . $array[$k]["x"] . '/artist' . $array[$k]["x"] . '_' . $array[$k]["y"] . '.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                            </div> 
+                        </a> ';
+                    }
+                ?>
+            </div>
+            <div class="column">
+                <?php
+                    for ($k = 4 ; $k < 6; $k++) {
+                        echo
+                        ' <a href="artpiece.php?artist=' . $array[$k]["x"] . '&artnumber=' . $array[$k]["y"] . '">
+                            <div class =artistGroup>
+                                <img src="../images/artist' . $array[$k]["x"] . '/artist' . $array[$k]["x"] . '_' . $array[$k]["y"] . '.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                            </div> 
+                        </a> ';
+                    }
+                ?>
+            </div>
+            <div class="column">
+                <?php
+                    for ($k = 6 ; $k < 8; $k++) {
+                        echo
+                        ' <a href="artpiece.php?artist=' . $array[$k]["x"] . '&artnumber=' . $array[$k]["y"] . '">
+                            <div class =artistGroup>
+                                <img src="../images/artist' . $array[$k]["x"] . '/artist' . $array[$k]["x"] . '_' . $array[$k]["y"] . '.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                            </div> 
+                        </a> ';
+                    }
+                ?>
+            </div>
         </div>
     </div>
-    </div>
-
-        <!--Rest of Page-->
-    
-        <hr></hr>
+    <hr></hr>
+    <!-- Footer -->
     <footer style ="text-align:center;font-size:1vw; padding:3vw;">
         <div class="row2" style="padding-bottom: 3vw;">
             <div class="column2">
@@ -230,7 +224,6 @@ switch($_GET["action"]) {
             </div>
         </div>
         <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
-    </footer>
-    <script src ="../js/responsiveHeader"></script>    
+    </footer> 
 </body>
 </html>
