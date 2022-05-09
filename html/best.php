@@ -56,6 +56,7 @@ switch($_GET["action"]) {
 <head>
     <link rel ="stylesheet" href="../css/siteStyling.css">
     <link rel="icon" href="../images/icon.png"/>
+    <link rel="icon" href="../images/icon.jpeg"/>
     <title>Best Sellers</title>
     <meta name="description" content="Art Dealer Home page">
     <style>
@@ -202,7 +203,7 @@ switch($_GET["action"]) {
     <!-- Header -->
     <div id="navbar">
         <header>
-            <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
+            <img class ="logo" src ="../images/logoWhite.jpeg" alt = "logo">
             <nav>
                 <ul class = "navLinks">
                     <li><a href="index.php">HOME</u></a></li>
@@ -240,7 +241,7 @@ switch($_GET["action"]) {
                             <td><?php echo $item["name"]; ?></td>
                             <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
                             <td style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?></td>
-                            <td style="text-align:center; "><a href="index.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.png" height="9vw"/></a></td>
+                            <td style="text-align:center; "><a href="best.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.jpeg" height="9vw"/></a></td>
                         </tr>
                         <?php
                             $total_quantity += $item["quantity"];
@@ -282,28 +283,28 @@ switch($_GET["action"]) {
         <div class="column">
             <a href="artpiece.php?artist=1&artnumber=3">
                 <div class =artistGroup>
-                    <img src="../images/artist1/artist1_3.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <img src="../images/artist1/artist1_3.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                 </div>
             </a>
         </div>
         <div class="column">
             <a href="artpiece.php?artist=2&artnumber=1">
                 <div class =artistGroup>
-                    <img src="../images/artist2/artist2_1.png" style= "border:rgb(68, 68, 68) solid;"/>
+                    <img src="../images/artist2/artist2_1.jpeg" style= "border:rgb(68, 68, 68) solid;"/>
                 </div>
             </a>
         </div>
         <div class="column">
             <a href="artpiece.php?artist=8&artnumber=1">
                 <div class =artistGroup>
-                    <img src="../images/artist8/artist8_1.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <img src="../images/artist8/artist8_1.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                 </div>
             </a>
         </div>
         <div class="column">
             <a href="artpiece.php?artist=11&artnumber=1">
                 <div class =artistGroup>
-                    <img src="../images/artist11/artist11_1.png" style= "border:rgb(68, 68, 68) solid"/>
+                    <img src="../images/artist11/artist11_1.jpeg" style= "border:rgb(68, 68, 68) solid"/>
                 </div>
             </a>
         </div>
