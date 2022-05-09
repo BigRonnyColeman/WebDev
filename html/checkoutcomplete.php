@@ -103,7 +103,7 @@ if(!empty($_GET["action"])) {
     <p> Thank you for Your Purchase </p>
         
     <div style="padding-top:5vw; text-align:center">
-                            <button class ="checkoutbtn"><a href="index.php">HOME</a></button> 
+                            <button class ="checkoutbtn" style="color:black"><a href="index.php">HOME</a></button> 
     </div> 
     <br>
     <br><br>
