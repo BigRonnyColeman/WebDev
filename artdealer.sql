@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 09, 2022 at 10:29 AM
+-- Generation Time: May 09, 2022 at 01:38 PM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -162,13 +162,7 @@ CREATE TABLE `customerorder` (
 --
 
 INSERT INTO `customerorder` (`orderID`, `name`, `mode`, `address`, `number`, `date`) VALUES
-(1, ' Jacqui Meacle', 'delivery', '1 Northcott Dr 123 ACT 2612', '0456962608', '2022-05-08 23:00:15'),
-(2, ' Jacqui Meacle', 'delivery', '1 Northcott Dr 123 ACT 2612', '0456962608', '2022-05-08 23:00:50'),
-(3, ' Jacqui Meacle', 'delivery', '1 Northcott Dr 123 ACT 2612', '0456962608', '2022-05-08 23:01:42'),
-(4, ' Jacqui Meacle', 'delivery', '1 Northcott Dr 123 ACT 2612', '0456962608', '2022-05-08 23:01:49'),
-(5, ' J Meacle', 'delivery', '1 Northcott Dr  ACT 2612', '0456962608', '2022-05-08 23:02:51'),
-(6, ' J Meacle', 'delivery', '1 Northcott Dr  ACT 2612', '0456962608', '2022-05-08 23:05:03'),
-(7, ' J Meacle', 'delivery', '1 Northcott Dr  ACT 2612', '0456962608', '2022-05-08 23:05:10');
+(8, ' Jacqui Meacle', 'delivery', '1 Northcott Dr 123 ACT 2612', '0456962608', '2022-05-09 03:27:09');
 
 -- --------------------------------------------------------
 
@@ -194,7 +188,8 @@ INSERT INTO `orderItem` (`orderID`, `artpieceID`, `quantity`, `orderItemID`) VAL
 (4, 3, 2, '2022-05-09 09:01:49'),
 (5, 3, 2, '2022-05-09 09:02:51'),
 (6, 3, 2, '2022-05-09 09:05:03'),
-(7, 3, 2, '2022-05-09 09:05:10');
+(7, 3, 2, '2022-05-09 09:05:10'),
+(8, 1, 2, '2022-05-09 13:27:09');
 
 --
 -- Indexes for dumped tables
@@ -239,7 +234,7 @@ ALTER TABLE `artpiece`
 -- AUTO_INCREMENT for table `customerorder`
 --
 ALTER TABLE `customerorder`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
