@@ -240,6 +240,32 @@ p{
     }
 }
 
+@media all and (max-width:30em){
+    a.button1{
+    display:block;
+    margin:0.4em auto;
+    }
+    }
+
+    a.button1{
+        width: 40%;
+        padding:0.35em 1.2em;
+        border:0.1em solid #ffffff;
+        margin:0 0.3em 0.3em 0;
+        border-radius:0.12em;
+        box-sizing: border-box;
+        text-decoration:none;
+        font-family:'Roboto',sans-serif;
+        font-weight:300;
+        color:#ffffff;
+        text-align:center;
+        transition: all 0.2s;
+        }
+        a.button1:hover{
+            border:0.1em solid rgb(68, 68, 68);
+            color:rgb(68, 68, 68);
+        }
+
        /*Artist Grid styling*/ 
        .row {
         display: -ms-flexbox; /* IE10 */
@@ -307,3 +333,5 @@ p{
         margin-bottom: 3vw;
         resize: vertical;
     }
+
+    

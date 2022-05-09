@@ -58,124 +58,8 @@ switch($_GET["action"]) {
     <title>Art Dealer | My Profile</title>
     <meta name="description" content="Art Dealer Home page">
     <style>
-        /*General Page Styling*/
-        *{
-            box-sizing: border-box;
-            margin:0;
-            padding:0;
-        }
-
         header{
             background-color:black;
-        }
-
-        .artistbox {
-
-        display: flex;
-        flex-direction: row;
-        font-family: sans-serif;
-        align-items:center;
-        }
-
-        .content {
-        padding: 20px;
-        }
-
-        .title {
-        font-size: 24px;
-        color: #222;
-        line-height: 24px;
-        }
-
-        .image {
-            width: 25%;
-        }
-
-        a.button1{
-            width: 40%;
-            padding:0.35em 1.2em;
-            border:0.1em solid #ffffff;
-            margin:0 0.3em 0.3em 0;
-            border-radius:0.12em;
-            box-sizing: border-box;
-            text-decoration:none;
-            font-family:'Roboto',sans-serif;
-            font-weight:300;
-            color:#ffffff;
-            text-align:center;
-            transition: all 0.2s;
-            }
-            a.button1:hover{
-                border:0.1em solid rgb(68, 68, 68);
-                color:rgb(68, 68, 68);
-                
-            }
-            @media all and (max-width:30em){
-            a.button1{
-            display:block;
-            margin:0.4em auto;
-            }
-            }
-
-
-        /*Artist Grid styling*/ 
-        .row {
-            display: -ms-flexbox; /* IE10 */
-            display: flex;
-            -ms-flex-wrap: wrap; /* IE10 */
-            flex-wrap: wrap;
-            padding: 0; 
-        }
-
-        .column { /* Create four equal columns that sits next to each other */
-            -ms-flex: 50%; /* IE10 */
-            flex: 50%;
-            max-width: 50%;
-            padding: 0 10px;
-        }
-
-        .column img {
-            margin-top: 0px;
-            vertical-align: middle;
-            width: 100%;
-        }
-
-        @media screen and (max-width: 800px) { /* Responsive layout - makes a two column-layout instead of four columns */
-            .column {
-                -ms-flex: 50%;
-                flex: 50%;
-                max-width: 50%;
-            }
-        }
-
-        .artistText {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Times New Roman', Times, serif;
-            font-size:2.5vw;
-            font-weight:100;
-            color: rgb(230, 230, 230);
-        }
-
-        .artistGroup {
-            position: relative;
-            cursor:pointer;
-        }
-        
-        .artistGroup:hover {
-            opacity: 0.8;
-        }
-
-        .btnStyle{
-            font-size: 2vw;
-            color: rgb(68, 68, 68);
-            border: 1px solid #818181;
-            background-color:transparent;
-            cursor: pointer;
-            text-decoration:none;
-            padding:3vw;
         }
 
         input[type=number], select, textarea {
@@ -188,6 +72,7 @@ switch($_GET["action"]) {
             margin-bottom: 16px;
             resize: vertical;
         }
+        
         input[type=submit], select, textarea {
             width: 80%;
             padding: 1vw;

@@ -59,13 +59,6 @@ switch($_GET["action"]) {
     <title>Art Dealer</title>
     <meta name="description" content="Art Dealer Home page">
     <style>
-        /*General Page Styling*/
-        *{
-            box-sizing: border-box;
-            margin:0;
-            padding:0;
-        }   
-
         /*Background Image at beginning of page + Fade In*/
         .backgroundImage{
             background-image: url("../images/frontPageImage.jpeg");

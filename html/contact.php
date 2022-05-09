@@ -57,24 +57,10 @@ switch($_GET["action"]) {
     <meta name="description" content="Art Dealer Home page">
     <style>
     /*General Page Styling*/
-        *{
-            box-sizing: border-box;
-            margin:0;
-            padding:0;
-        }
-
-        .sticky{
-            top: 0;
-            width: 100%;
-            z-index:999;
-        }
 
         header{
             background-color:black;
         }
-
-        body{font-family: Arial, Helvetica, sans-serif;}
-            * {box-sizing: border-box;}
 
         input[type=submit] {
             background-color: rgb(68, 68, 68);
@@ -87,12 +73,6 @@ switch($_GET["action"]) {
 
         input[type=submit]:hover {
             opacity:0.8;
-        }
-
-        .container {
-            border-radius: 5px;
-            background-color: #f2f2f2;
-            padding: 20px;
         }
     </style>
 </head>

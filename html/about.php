@@ -56,16 +56,8 @@ switch($_GET["action"]) {
     <title>About Us</title>
     <meta name="description" content="Art Dealer Home page">
     <style>
-
         header{
             background-color:black;
-        }
-
-        .btnStyle{
-            margin-left:auto;
-            margin-right:auto;
-            text-align:center;
-            display:block;
         }
     </style>  
 </head>
