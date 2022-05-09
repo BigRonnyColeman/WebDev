@@ -4,6 +4,7 @@ if(!empty($_GET["action"])) {
     switch($_GET["action"]) {
 	    case "checkout":
             require_once("../php/dbinsert.php");
+        unset($_SESSION["cart_item"]);
     }
 }
 ?>
