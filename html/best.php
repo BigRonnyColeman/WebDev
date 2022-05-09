@@ -11,12 +11,12 @@ switch($_GET["action"]) {
 			if(!empty($_SESSION["cart_item"])) {
 				if(in_array($productByCode[0]["artpieceID"],array_keys($_SESSION["cart_item"]))) {
                     foreach($_SESSION["cart_item"] as $k => $v) {
-							if($productByCode[0]["artpieceID"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
-								if(empty($_SESSION["cart_item"][$k]["quantity"])) {
-									$_SESSION["cart_item"][$k]["quantity"] = 0;
-								}
-								$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+						if($productByCode[0]["artpieceID"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
+							if(empty($_SESSION["cart_item"][$k]["quantity"])) {
+								$_SESSION["cart_item"][$k]["quantity"] = 0;
 							}
+							$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+						}
 					}
 				} else {
 					$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
