@@ -36,17 +36,6 @@ if(!empty($_GET["action"])) {
         body {font-family: Arial, Helvetica, sans-serif;}
             * {box-sizing: border-box;}
 
-        input[type=text], select, textarea {
-            width: 100%;
-            padding: 1vw;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-top: 6px;
-            margin-bottom: 3vw;
-            resize: vertical;
-        }
-
         input[type=submit] {
             background-color: rgb(68, 68, 68);
             color: white;

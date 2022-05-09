@@ -55,7 +55,6 @@ switch($_GET["action"]) {
 
 <head>
     <link rel ="stylesheet" href="../css/siteStyling.css">
-    <link rel="icon" href="../images/icon.png"/>
     <link rel="icon" href="../images/icon.jpeg"/>
     <title>Best Sellers</title>
     <meta name="description" content="Art Dealer Home page">
@@ -65,12 +64,6 @@ switch($_GET["action"]) {
             box-sizing: border-box;
             margin:0;
             padding:0;
-        }
-
-        .sticky {
-            top: 0;
-            width: 100%;
-            z-index:999;
         }
 
         header{
@@ -83,19 +76,6 @@ switch($_GET["action"]) {
         flex-direction: row;
         font-family: sans-serif;
         align-items:center;
-        }
-
-        .section {
-            padding: 20px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            margin: 50px;
-            background-color:rgba(255, 255, 255, 0.5)
-        }
-
-        .paragraph {
-        color: #555;
-        display: flex;
-        flex-direction: column;
         }
 
         .content {

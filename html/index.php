@@ -59,8 +59,8 @@ switch($_GET["action"]) {
     <title>Art Dealer</title>
     <meta name="description" content="Art Dealer Home page">
     <style>
-         /*General Page Styling*/
-         *{
+        /*General Page Styling*/
+        *{
             box-sizing: border-box;
             margin:0;
             padding:0;
@@ -81,9 +81,6 @@ switch($_GET["action"]) {
         }
 
         .sticky {
-            top: 0;
-            width: 100%;
-            z-index:999;
             position:fixed;
         }
 
@@ -110,80 +107,6 @@ switch($_GET["action"]) {
         @-ms-keyframes fadeIn {
             0% {opacity:0;}
             100% {opacity:1;}
-        }
-
-        /*Artist Grid styling*/ 
-        .row {
-            display: -ms-flexbox; /* IE10 */
-            display: flex;
-            -ms-flex-wrap: wrap; /* IE10 */
-            flex-wrap: wrap;
-            padding: 0 4px;
-            
-        }
-       
-        .column { /* Create four equal columns that sits next to each other */
-            -ms-flex: 25%; /* IE10 */
-            flex: 25%;
-            max-width: 25%;
-            padding: 0 4px;
-        }
-
-        .column img {
-            margin-top: 8px;
-            vertical-align: middle;
-            width: 100%;
-        }
-
-       
-        @media screen and (max-width: 800px) { /* Responsive layout - makes a two column-layout instead of four columns */
-            .column {
-                -ms-flex: 50%;
-                flex: 50%;
-                max-width: 50%;
-            }
-        }
-        
-        .artistText {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Times New Roman', Times, serif;
-            text-align:center;
-            font-size:2vw;
-            font-weight:100;
-            color: rgb(255, 255, 255);
-        }
-
-        .artistGroup {
-            position: relative;
-            cursor:pointer;
-        }
-         
-        .artistGroup:hover {
-            opacity: 0.8;
-        }
-
-        .btnStyle{
-            font-size: 2vw;
-            color: rgb(68, 68, 68);
-            border: 1px solid #818181;
-            background-color:transparent;
-            cursor: pointer;
-            text-decoration:none;
-            padding:3vw;
-        }
-
-        input[type=text], select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-top: 6px;
-            margin-bottom: 16px;
-            resize: vertical;
         }
     </style>  
 </head>

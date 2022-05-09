@@ -67,12 +67,6 @@ switch($_GET["action"]) {
             padding:0;
         }
 
-        .sticky {
-            top: 0;
-            width: 100%;
-            z-index:999;
-        }
-
         header{
             background-color:black;
         }
@@ -83,13 +77,6 @@ switch($_GET["action"]) {
         flex-direction: row;
         font-family: sans-serif;
         align-items:center;
-        }
-
-        .section {
-            padding: 20px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            margin: 50px;
-            background-color:rgba(255, 255, 255, 0.5)
         }
 
         .paragraph {

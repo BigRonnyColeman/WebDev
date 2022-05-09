@@ -52,7 +52,7 @@ switch($_GET["action"]) {
 <html>
 <head>
     <link rel ="stylesheet" href="../css/siteStyling.css">
-    <link rel="icon" href="../images/icon.png"/>
+    <link rel="icon" href="../images/icon.jpeg"/>
     <title>Contact Us</title>
     <meta name="description" content="Art Dealer Home page">
     <style>
@@ -63,36 +63,18 @@ switch($_GET["action"]) {
             padding:0;
         }
 
-        .sticky {
+        .sticky{
             top: 0;
             width: 100%;
             z-index:999;
-        }
-
-        .section {
-            padding: 20px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            margin: 50px;
-            background-color:rgba(255, 255, 255, 0.5)
         }
 
         header{
             background-color:black;
         }
 
-        body {font-family: Arial, Helvetica, sans-serif;}
+        body{font-family: Arial, Helvetica, sans-serif;}
             * {box-sizing: border-box;}
-
-        input[type=text], select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-top: 6px;
-            margin-bottom: 16px;
-            resize: vertical;
-        }
 
         input[type=submit] {
             background-color: rgb(68, 68, 68);
@@ -112,52 +94,13 @@ switch($_GET["action"]) {
             background-color: #f2f2f2;
             padding: 20px;
         }
-
-        /* The Modal (background) */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            padding-top: 100px; /* Location of the box */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-
-        /* Modal Content */
-        .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-
-        /* The Close Button */
-        .close {
-            color: #aaaaaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <div id="navbar">
         <header>
-            <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
+            <img class ="logo" src ="../images/logoWhite.jpeg" alt = "logo">
             <nav>
                 <ul class = "navLinks">
                     <li><a href="index.php">HOME</a></li>

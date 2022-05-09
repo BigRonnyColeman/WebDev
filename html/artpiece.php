@@ -65,12 +65,6 @@ switch($_GET["action"]) {
             padding:0;
         }
 
-        .sticky {
-            top: 0;
-            width: 100%;
-            z-index:999;
-        }
-
         header{
             background-color:black;
         }
@@ -81,19 +75,6 @@ switch($_GET["action"]) {
         flex-direction: row;
         font-family: sans-serif;
         align-items:center;
-        }
-
-        .section {
-            padding: 20px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            margin: 50px;
-            background-color:rgba(255, 255, 255, 0.5)
-        }
-
-        .paragraph {
-        color: #555;
-        display: flex;
-        flex-direction: column;
         }
 
         .content {
@@ -325,7 +306,7 @@ switch($_GET["action"]) {
                 <!-- https://www.w3schools.com/js/js_cookies.asp -->
                 
                 <form action="artpiece.php?artist=<?php echo $_GET['artist'] ?>&artnumber=<?php echo $_GET['artnumber'] ?>&action=add&artpieceID=<?php include '../php/getartpieceID.php';?>" method="post" style="text-align:center;">
-                    <input type="number" class="product-quantity" name="quantity" min="1" max="2"/>
+                    <input type="number" class="product-quantity" name="quantity" min="1"/>
                     <input type="submit" value="Add to Cart" class="btnAddAction" />
                 </form>
                 

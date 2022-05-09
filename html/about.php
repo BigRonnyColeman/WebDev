@@ -51,145 +51,21 @@ switch($_GET["action"]) {
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel ="stylesheet" href="../css/siteStyling.css">
-    <link rel="icon" href="../images/icon.png"/>
+<link rel ="stylesheet" href="../css/siteStyling.css">
+    <link rel="icon" href="../images/icon.jpeg"/>
     <title>About Us</title>
     <meta name="description" content="Art Dealer Home page">
     <style>
-         /*General Page Styling*/
-         *{
-            box-sizing: border-box;
-            margin:0;
-            padding:0;
-        }   
-
-        /*Background Image at beginning of page + Fade In*/
-        .backgroundImage{
-            background-image: url("../images/frontPageImage.jpeg");
-            height:70vw;
-            background-repeat: no-repeat;
-            width:100%;
-            background-size:cover;
-            animation: fadeIn 1s;
-            -webkit-animation: fadeIn 1s;
-            -moz-animation: fadeIn 1s;
-            -o-animation: fadeIn 1s;
-            -ms-animation: fadeIn 1s;
-        }
-
-        .sticky {
-            top: 0;
-            width: 100%;
-            z-index:999;
-        }
 
         header{
             background-color:black;
         }
 
-        @keyframes fadeIn {
-            0% {opacity:0;}
-            100% {opacity:1;}
-        }
-
-        @-moz-keyframes fadeIn {
-            0% {opacity:0;}
-            100% {opacity:1;}
-        }
-
-        @-webkit-keyframes fadeIn {
-            0% {opacity:0;}
-            100% {opacity:1;}
-        }
-
-        @-o-keyframes fadeIn {
-            0% {opacity:0;}
-            100% {opacity:1;}
-        }
-
-        @-ms-keyframes fadeIn {
-            0% {opacity:0;}
-            100% {opacity:1;}
-        }
-
-        /*Artist Grid styling*/ 
-        .row {
-            display: -ms-flexbox; /* IE10 */
-            display: flex;
-            -ms-flex-wrap: wrap; /* IE10 */
-            flex-wrap: wrap;
-            padding: 0 4px;
-            
-        }
-       
-        .column { /* Create four equal columns that sits next to each other */
-            -ms-flex: 25%; /* IE10 */
-            flex: 25%;
-            max-width: 25%;
-            padding: 0 4px;
-        }
-
-        .column img {
-            margin-top: 8px;
-            vertical-align: middle;
-            width: 100%;
-        }
-
-       
-        @media screen and (max-width: 800px) { /* Responsive layout - makes a two column-layout instead of four columns */
-            .column {
-                -ms-flex: 50%;
-                flex: 50%;
-                max-width: 50%;
-            }
-        }
-        
-        .artistText {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Times New Roman', Times, serif;
-            font-size:2.5vw;
-            font-weight:100;
-            color: rgb(230, 230, 230);
-        }
-
-        .artistGroup {
-            position: relative;
-            cursor:pointer;
-        }
-         
-        .artistGroup:hover {
-            opacity: 0.8;
-        }
-
         .btnStyle{
-            font-size: 2vw;
-            color: rgb(68, 68, 68);
-            border: 1px solid #818181;
-            background-color:transparent;
-            cursor: pointer;
-            text-decoration:none;
-            padding:3vw;
             margin-left:auto;
             margin-right:auto;
             text-align:center;
             display:block;
-        }
-
-        /*About Us Styling*/
-        .paragraph{
-            padding-left:5vw;
-            padding-right:5vw;
-            padding-bottom:5vw;
-        }
-
-        .center {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 50%;
         }
     </style>  
 </head>
@@ -198,7 +74,7 @@ switch($_GET["action"]) {
     <!-- Header -->
     <div id="navbar">
         <header>
-            <img class ="logo" src ="../images/logoWhite.png" alt = "logo">
+            <img class ="logo" src ="../images/logoWhite.jpeg" alt = "logo">
             <nav>
                 <ul class = "navLinks">
                     <li><a href="index.php">HOME</u></a></li>
@@ -236,7 +112,7 @@ switch($_GET["action"]) {
                             <td><?php echo $item["name"]; ?></td>
                             <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
                             <td style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?></td>
-                            <td style="text-align:center; "><a href="about.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.png" height="9vw"/></a></td>
+                            <td style="text-align:center; "><a href="about.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.jpeg" height="9vw"/></a></td>
                         </tr>
                         <?php
                             $total_quantity += $item["quantity"];
@@ -317,6 +193,5 @@ switch($_GET["action"]) {
     </footer>
     <!--JavaScript-->
     <script src ="../js/responsiveHeader"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </body>
 </html>
