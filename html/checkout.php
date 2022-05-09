@@ -208,6 +208,38 @@ switch($_GET["action"]) {
                             <td style="text-align:right; "><?php echo "$ ". number_format($item_price,2); ?></td>
                             <td style="text-align:center; "><a href="checkout.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction" style="font-family: Arial, Helvetica, sans-serif; width:1vw; colour:white;"><img src="../images/delete.jpeg" height="9vw"/></a></td>
                         </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                            <p style="font-size:40%">Total Items Sold on Art Dealer: 
+                            <?php
+                                $db_host = 'localhost';
+                                $db_user = 'root';
+                                $db_password = 'root';
+                                $db_db = 'artdealer';
+                                $mysqli = @new mysqli(
+                                    $db_host,
+                                    $db_user,
+                                    $db_password,
+                                    $db_db
+                                );
+                                $tempItem = $item["artpieceID"];
+                                $sql6 = "SELECT COUNT(*) FROM orderItem WHERE artpieceID = '$tempItem'";
+                                $result6 = $mysqli->query($sql6);
+
+                                if ($result6->num_rows > 0) {
+                                    // output data of each row
+                                    while($row6 = $result6->fetch_assoc()) {
+                                    echo $row6["COUNT(*)"];
+                                    }
+                                } else {
+                                    echo "<br>NO RESULTS";
+                                }
+                                $mysqli->close();
+                                ?> </p>
+                                <td>
+                        </tr>
                         <?php
                             $total_quantity += $item["quantity"];
                             $total_price += ($item["price"]*$item["quantity"]);
