@@ -293,6 +293,8 @@ has been maniupalted, the rest of the page can load. -->
                 <footer style ="text-align:center; opacity:50%; font-size:1vw;display:block;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
             </div>
             <br>
-        </div>            
+        </div>     
+        <!-- Javascript -->
+        <script src ="../js/responsiveHeader.js"></script>         
     </body>
 </html>

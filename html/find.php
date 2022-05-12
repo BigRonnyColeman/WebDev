@@ -90,8 +90,6 @@ has been maniupalted, the rest of the page can load. -->
             opacity:0.8;
         }
     </style>
-    <!-- Javascript -->
-    <script src ="../js/responsiveHeader"></script>  
 </head>
     <body>
         <!-- Navigation Header -->
@@ -202,6 +200,8 @@ has been maniupalted, the rest of the page can load. -->
                 </div>
             </div>
             <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
-        </footer> 
+        </footer>
+        <!-- Javascript -->
+        <script src ="../js/responsiveHeader.js"></script>  
     </body>
 </html>

@@ -81,9 +81,6 @@ has been maniupalted, the rest of the page can load. -->
         const artistvalue = urlParams.get('artist');
         const artistint = parseInt(artistvalue);
         console.log(artistvalue);
-
-        //Header Script
-        src ="../js/responsiveHeader" 
     </script>
 </head>
 <body>
@@ -250,6 +247,6 @@ has been maniupalted, the rest of the page can load. -->
         </div>
         <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
     </footer>
-    <script src ="../js/responsiveHeader"></script>
+    <script src ="../js/responsiveHeader.js"></script>
 </body>
 </html>

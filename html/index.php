@@ -115,9 +115,6 @@ has been maniupalted, the rest of the page can load. -->
                 100% {opacity:1;}
             }
         </style> 
-        <!--JavaScript-->
-        <script src ="../js/responsiveHeader"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     </head>
     <body>
         <!-- Header -->
@@ -292,5 +289,8 @@ has been maniupalted, the rest of the page can load. -->
             </div>
             <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
         </footer>
+        <!--JavaScript-->
+        <script src ="../js/responsiveHeader.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     </body>
 </html>

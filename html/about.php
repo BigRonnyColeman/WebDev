@@ -76,8 +76,6 @@ has been maniupalted, the rest of the page can load. -->
             background-color:black;
         }
     </style>  
-    <!--JavaScript-->
-    <script src ="../js/responsiveHeader"></script>
 </head>
 <body>
     <!-- Navigation Header -->
@@ -195,5 +193,7 @@ has been maniupalted, the rest of the page can load. -->
         </div>
         <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
     </footer>
+    <!-- Javascript -->
+    <script src ="../js/responsiveHeader.js"></script>  
 </body>
 </html>

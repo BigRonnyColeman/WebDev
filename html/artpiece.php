@@ -129,9 +129,6 @@ has been maniupalted, the rest of the page can load. -->
         const artpieceint = parseInt(artpiecenum);
         console.log(artistvalue);
         var cookiestring = "";
-
-        //Header Script
-        src ="../js/responsiveHeader" 
     </script>
 </head>
 <body>
@@ -258,6 +255,6 @@ has been maniupalted, the rest of the page can load. -->
         </div>
         <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
     </footer>
-    <script src ="../js/responsiveHeader"></script>
+    <script src ="../js/responsiveHeader.js"></script>
 </body>
 </html>
