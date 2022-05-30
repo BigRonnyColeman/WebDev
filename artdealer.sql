@@ -210,6 +210,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_email`, `user_password`, `user_name`, `role`) VALUES 
 ('test@gmail.com', MD5('testingpassword123'), 'Bob', 'admin');
+-- Uses an MD5 hash at the moment, this will convert it in the database, just not on visual studio code, looking into if it can be automated within MYySQL to make it easier
+
 
 --
 -- Indexes for table `artist`
