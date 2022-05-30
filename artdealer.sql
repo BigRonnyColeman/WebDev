@@ -191,9 +191,25 @@ INSERT INTO `orderItem` (`orderID`, `artpieceID`, `quantity`, `orderItemID`) VAL
 (7, 3, 2, '2022-05-09 09:05:10'),
 (8, 1, 2, '2022-05-09 13:27:09');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user_email` varchar(255) NOT NULL,
+  `user_password` varchar(255) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Indexes for dumped tables
 --
+
+INSERT INTO `users` (`user_email`, `user_password`, `user_name`, `role`) VALUES 
+('test@gmail.com', MD5('testingpassword123'), 'Bob', 'admin');
 
 --
 -- Indexes for table `artist`
