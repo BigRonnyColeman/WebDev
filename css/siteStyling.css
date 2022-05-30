@@ -73,8 +73,8 @@ p{
 
 .navLinks{
     list-style:none;
-    padding-left:5vw;
-    padding-right:5vw;
+    padding-left:2.5vw;
+    padding-right:2.5vw;
 }
 
 .navLinks li{
@@ -82,8 +82,9 @@ p{
     padding: 0px 0.5vw;
 }
 
+
 .navLinks li:nth-child(1){
-    padding: 0 10px 0 0;
+    padding: 0 4px 0 0;
 }
 
 .navLinks li a:hover{
@@ -199,6 +200,46 @@ p{
 .acountbtn:hover {
     opacity: 0.8;
 }
+
+.temp {
+    width: 60%;
+    align-items: center;
+    height: 60%;
+}
+
+form {
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+  }
+
+input {
+    all: unset;
+    font: 11px system-ui;
+    color: #fff;
+    width: 60%;
+    padding: 10px 10px;
+  }
+
+  ::placeholder {
+    color: #fff;
+    opacity: 0.7; 
+  }
+
+  button {
+    all: unset;
+    cursor: pointer;
+  }
+  
+  svg {
+    color: #fff;
+    fill: currentColor;
+    width: 3vw;
+    height: 3vw;
+    padding: 10px;
+  }
 
 /*footer*/
 .paragraph{

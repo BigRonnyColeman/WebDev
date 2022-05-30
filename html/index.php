@@ -129,13 +129,24 @@ has been maniupalted, the rest of the page can load. -->
                             <li><a href="best.php">BEST SELLERS</a></li>
                             <li><a href="about.php">ABOUT US</a></li>
                             <li><a href="contact.php">CONTACT US</a></li>
-                            <li><a href="login.php">LOGIN</a></li>
-                            <li><a href="signup.php">SIGN UP</a></li>
+                            <li>
+                                <div class="temp">
+                                    <form id="form" role="search">
+                                        <input type="search" id="query" name="q"
+                                        placeholder="Search..."
+                                        aria-label="Search through site content">
+                                        <button>
+                                        <svg viewBox="0 0 1024 1024"><path class="path1" d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path></svg>
+                                        </button>
+                                    </form>
+                                </div>
+                            </li>
                         </ul>
                     </nav>
                     <!-- Cart Items and Navigation -->
                     <!-- Uses global variabl $_Session and stores all relevant data to 
                     each session in the array $_Session["cart_item"] -->
+                    <!-- Need to change so only visible if signed in -->
                     <button class="acountbtn" onclick="window.location.href='account.php'"> <img src="../images/icon2.png" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
                     <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
                     <div id="mySidebar" class="sidebar">
