@@ -30,7 +30,7 @@ header{
 }
 
 nav{
-    order:1;
+    order:2;
 }
 
 h2{
@@ -65,24 +65,25 @@ p{
 
 .logo{
     width:21vw;
-    padding-right:1vw;
+    padding-left:1vw;
     height:4vw;
-    order:3;
-    margin-left:auto;
+    order:1;
+    margin-right:auto;
 }
 
 .navLinks{
     list-style:none;
     padding-left:5vw;
+    padding-right:5vw;
 }
 
 .navLinks li{
     display:inline-block;
-    padding: 0px 2vw;
+    padding: 0px 0.5vw;
 }
 
 .navLinks li:nth-child(1){
-    padding: 0 20px 0 0;
+    padding: 0 10px 0 0;
 }
 
 .navLinks li a:hover{
@@ -111,7 +112,7 @@ p{
     position: fixed;
     z-index: 1;
     top: 0;
-    left: 0;
+    right: 0;
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
@@ -180,9 +181,22 @@ p{
     background-color: transparent;
     border: none;
     cursor: pointer;
+    order: 3;
 }      
 
+.acountbtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    order: 2;
+    padding-right: 20px;
+}  
+
 .openbtn:hover {
+    opacity: 0.8;
+}
+
+.acountbtn:hover {
     opacity: 0.8;
 }
 
@@ -222,6 +236,20 @@ p{
 }
 
 .section {
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 50px;
+    background-color:rgba(255, 255, 255, 0.5)
+}
+
+.centerpage {
+    display: flex;
+    justify-content: center;
+}
+
+.section2 {
+    width: 45%;
+    
     padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 50px;
@@ -324,6 +352,23 @@ p{
         margin-right:auto;
         text-align:center;
         display:block;
+    }
+
+    .indexboxlink {
+        display: flex;
+    }
+
+    .indexbtnStyle{
+        flex: 1;
+        padding: 1vw;
+        margin: 0 10vw;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-sizing: border-box;
+        background-color: rgb(68, 68, 68);
+        color: white;
+        cursor: pointer;
+        text-align:center;
     }
 
     input[type=text], select, textarea {

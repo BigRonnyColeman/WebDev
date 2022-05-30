@@ -121,7 +121,7 @@ has been maniupalted, the rest of the page can load. -->
         <div class ="backgroundImage">
             <div id="navbar">
                 <header>
-                    <img class ="logo" src ="../images/logoWhite.jpeg" alt = "logo">
+                    <a href="index.php"><img class ="logo" src ="../images/logoWhite.jpeg" alt = "logo"></a>
                     <nav>
                         <ul class = "navLinks">
                             <li><a href="index.php"><u style="text-underline-offset: 0.7em";>HOME</u></a></li>
@@ -129,11 +129,14 @@ has been maniupalted, the rest of the page can load. -->
                             <li><a href="best.php">BEST SELLERS</a></li>
                             <li><a href="about.php">ABOUT US</a></li>
                             <li><a href="contact.php">CONTACT US</a></li>
+                            <li><a href="login.php">LOGIN</a></li>
+                            <li><a href="signup.php">SIGN UP</a></li>
                         </ul>
                     </nav>
                     <!-- Cart Items and Navigation -->
                     <!-- Uses global variabl $_Session and stores all relevant data to 
                     each session in the array $_Session["cart_item"] -->
+                    <button class="acountbtn" onclick="window.location.href='account.php'"> <img src="../images/icon2.png" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
                     <button class="openbtn" onclick="openNav()"> <img src="../images/cart.jpeg" style="width:3.2vw; height:3vw; cursor: pointer;"/></button>  
                     <div id="mySidebar" class="sidebar">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-family: Arial, Helvetica, sans-serif; font-size:3vw">x</a>
@@ -194,73 +197,71 @@ has been maniupalted, the rest of the page can load. -->
         <hr></hr>
         <!--Artists-->
         <h2 style = "padding-top:7vw; padding-bottom: 2vw;">SHOP BY ARTIST</h2>
-        <div class="row">
-            <div class="column">
-                <!-- Queries all artists in database, insert each into array
-                For Loop inputs required data to load correct image, and link image 
-                to matching artist page -->
-                <?php
-                    include('../php/getartistname.php');
-                    for ($k = 0 ; $k < 3; $k++) {
-                        echo
-                        ' <a href="artist.php?artist=' . $k+1 . '">
-                            <div class =artistGroup>
-                                <img src="../images/artist' . $k+1 . '/artist' . $k+1 . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                                <div class="artistText"><p style="text-transform: uppercase; color:white">' . $array[$k] . '</p></div>
-                            </div> 
-                        </a> ';
-                    }
-                ?>
-            </div>
-            <div class="column">
-                <?php
-                    include('../php/getartistname.php');
-                    for ($k = 3 ; $k < 6; $k++) {
-                        echo
-                        ' <a href="artist.php?artist=' . $k+1 . '">
-                            <div class =artistGroup>
-                                <img src="../images/artist' . $k+1 . '/artist' . $k+1 . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                                <div class="artistText"><p style="text-transform: uppercase; color:white">' . $array[$k] . '</p></div>
-                            </div> 
-                        </a> ';
-                    }
-                ?>
-            </div>
-            <div class="column">
-                <?php
-                    include('../php/getartistname.php');
-                    for ($k = 6 ; $k < 9; $k++) {
-                        echo
-                        ' <a href="artist.php?artist=' . $k+1 . '">
-                            <div class =artistGroup>
-                                <img src="../images/artist' . $k+1 . '/artist' . $k+1 . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                                <div class="artistText"><p style="text-transform: uppercase; color:white">' . $array[$k] . '</p></div>
-                            </div> 
-                        </a> ';
-                    }
-                ?>
-            </div>
-            <div class="column">
-                <?php
-                    include('../php/getartistname.php');
-                    for ($k = 9 ; $k < 12; $k++) {
-                        echo
-                        ' <a href="artist.php?artist=' . $k+1 . '">
-                            <div class =artistGroup>
-                                <img src="../images/artist' . $k+1 . '/artist' . $k+1 . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                                <div class="artistText"><p style="text-transform: uppercase; color:white">' . $array[$k] . '</p></div>
-                            </div> 
-                        </a> ';
-                    }
-                ?>
-            </div>
-            <div style="padding:8vw; margin:0 auto">
-                <a class = "btnStyle" href="../html/best.php">View Best Sellers</a>
-            </div>
-            <div style="padding:8vw; margin:0 auto">
-                <a class = "btnStyle" href="../html/find.php">Find Your Order</a>
+        <div class="section">
+            <div class="row">
+                <div class="column">
+                    <?php
+                        include('../php/getartistname.php');
+                        for ($k = 0 ; $k < 3; $k++) {
+                            echo
+                            ' <a href="artist.php?artist=' . $k+1 . '">
+                                <div class =artistGroup>
+                                    <img src="../images/artist' . $k+1 . '/artist' . $k+1 . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                                    <div class="artistText"><p style="text-transform: uppercase; color:white">' . $array[$k] . '</p></div>
+                                </div> 
+                            </a> ';
+                        }
+                    ?>
+                </div>
+                <div class="column">
+                    <?php
+                        include('../php/getartistname.php');
+                        for ($k = 3 ; $k < 6; $k++) {
+                            echo
+                            ' <a href="artist.php?artist=' . $k+1 . '">
+                                <div class =artistGroup>
+                                    <img src="../images/artist' . $k+1 . '/artist' . $k+1 . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                                    <div class="artistText"><p style="text-transform: uppercase; color:white">' . $array[$k] . '</p></div>
+                                </div> 
+                            </a> ';
+                        }
+                    ?>
+                </div>
+                <div class="column">
+                    <?php
+                        include('../php/getartistname.php');
+                        for ($k = 6 ; $k < 9; $k++) {
+                            echo
+                            ' <a href="artist.php?artist=' . $k+1 . '">
+                                <div class =artistGroup>
+                                    <img src="../images/artist' . $k+1 . '/artist' . $k+1 . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                                    <div class="artistText"><p style="text-transform: uppercase; color:white">' . $array[$k] . '</p></div>
+                                </div> 
+                            </a> ';
+                        }
+                    ?>
+                </div>
+                <div class="column">
+                    <?php
+                        include('../php/getartistname.php');
+                        for ($k = 9 ; $k < 12; $k++) {
+                            echo
+                            ' <a href="artist.php?artist=' . $k+1 . '">
+                                <div class =artistGroup>
+                                    <img src="../images/artist' . $k+1 . '/artist' . $k+1 . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
+                                    <div class="artistText"><p style="text-transform: uppercase; color:white">' . $array[$k] . '</p></div>
+                                </div> 
+                            </a> ';
+                        }
+                    ?>
+                </div>
             </div>
         </div>
+        <div class="indexboxlink" style="padding:1vw;">
+            <a class = "indexbtnStyle" href="../html/best.php">View Best Sellers</a>
+            <a class = "indexbtnStyle" href="../html/find.php">Find Your Order</a>
+        </div>
+        <br><br>
         <div class ="paragraph" style="padding-bottom:3vw">
             <p>Art Dealer is a Canberra-based online art-sharing emporium offering a unique selection of over 50+ handpicked high-quality posters and art prints from local underground artists. <br><br>With a strong focus on 20th-century modern style art, you'll be able to find historically rich art pieces that will transform the looks in your home. <br><br> Made to order & curated locally in Melbourne, Australia. We launched our premium giclee art print line in the hope to provide fellow humans looking to sprouce up their home the opportunity to do so at affordable pricing. <br><br>Here at Art Dealer we to focus mainly on high quality materials and sustainability. We're glad that you found us, and hope you’ll enjoy our unique art pieces as much as we do.</p>
         </div>
