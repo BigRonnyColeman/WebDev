@@ -131,8 +131,8 @@ has been maniupalted, the rest of the page can load. -->
                             <li><a href="contact.php">CONTACT US</a></li>
                             <li>
                                 <div class="temp">
-                                    <form id="form" role="search">
-                                        <input type="search" id="query" name="q"
+                                    <form id="form" role="search" action="search.php?search=" method="post">
+                                        <input type="search" id="search" name="search"
                                         placeholder="Search..."
                                         aria-label="Search through site content">
                                         <button>
