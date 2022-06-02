@@ -186,7 +186,7 @@ has been maniupalted, the rest of the page can load. -->
                     include('../php/getartistsearch.php');
 
                     foreach(as $k) {
-                        echo
+                          echo
                         ' <a href="artist.php?artist=' . $k . '">
                             <div class =artistGroup>
                                 <img src="../images/artist' . $k . '/artist' . $k . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
