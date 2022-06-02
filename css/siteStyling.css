@@ -67,9 +67,8 @@ p {
 }
 
 .logo {
-    width: 21vw;
-    padding-left: 1vw;
-    padding-right: 2vw;
+    width: 20vw;
+    padding-right: 1vw;
     height: 4vw;
     order: 1;
 }
@@ -193,7 +192,7 @@ p {
     border: none;
     cursor: pointer;
     order: 3;
-    padding-right: 20px;
+    padding-right: 1vw;
 }
 
 .openbtn:hover {
@@ -205,10 +204,9 @@ p {
 }
 
 .searchDiv {
-    width: 15vw;
+    width: 10vw;
     align-items: center;
     padding-left: 1vw;
-    padding-right: 1vw;
 }
 
 #form {
@@ -223,7 +221,8 @@ p {
     font: 0.8vw system-ui;
     color: #fff;
     width: 60%;
-    padding: 10px 10px;
+    padding: 0.7vw 0.7vw;
+    letter-spacing: 0vw;
 }
 
 #button {
@@ -235,7 +234,6 @@ svg {
     color: #fff;
     fill: currentColor;
     width: 3vw;
-    padding-left: 0;
     padding: 0.8vw;
 }
 
