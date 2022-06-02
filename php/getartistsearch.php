@@ -30,6 +30,7 @@
       array_push($array,$row["name"]);
     }
   } else {
+    echo $array;
     echo "<br>NO RESULTS";
   }
 

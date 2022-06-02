@@ -184,7 +184,7 @@ has been maniupalted, the rest of the page can load. -->
                     // artists
 
                     include('../php/getartistsearch.php');
-
+                    // k is now an associative array, so to get name, k["name"] ...
                     foreach($result as $k) {
                           echo
                         ' <a href="artist.php?artist=' . $k . '">
