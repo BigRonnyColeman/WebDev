@@ -20,7 +20,7 @@
     exit();
   }
 
-  $sql = "SELECT * FROM artist WHERE name LIKE '%$search%'";
+  $sql = "SELECT * FROM artpiece WHERE name OR description LIKE '%$search%'";
   $result = $mysqli->query($sql);
 
   $array = array();

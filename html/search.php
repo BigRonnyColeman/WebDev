@@ -3,77 +3,77 @@ messages from the user to the database. The first URL paramter that dictates whi
 of th switch is activated is 'action'. Once the switch case is run, and the relevant data
 has been maniupalted, the rest of the page can load. -->
 <?php
-    /* creates a session or resumes the current one based on a session identifier 
+/* creates a session or resumes the current one based on a session identifier 
     passed via a GET or POST request, or passed via a cookie. When session_start() 
     is called or when a session auto starts, PHP will call the open and read session
     save handlers. */
-    session_start();
-    require_once("../php/dbcontroller.php");
-    $db_handle = new DBController();
-    if(!empty($_GET["action"])) {
-        switch($_GET["action"]) {
+session_start();
+require_once("../php/dbcontroller.php");
+$db_handle = new DBController();
+if (!empty($_GET["action"])) {
+    switch ($_GET["action"]) {
             /* Insert's Message from user to contact database */
-            case "contact":
-                require_once("../php/dbinsertcontact.php");
+        case "contact":
+            require_once("../php/dbinsertcontact.php");
             break;
             /* Add's artpiece to cart, designated through URL Parameter set using the form on artpiece.php */
-            case "add":
-                if(!empty($_POST["quantity"])) {
-                    $productByCode = $db_handle->runQuery("SELECT * FROM artpiece WHERE artpieceID='" . $_GET["artpieceID"] . "'");
-                    $itemArray = array($productByCode[0]["artpieceID"]=>array('artpieceID'=>$productByCode[0]["artpieceID"], 'name'=>$productByCode[0]["name"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"]));
-                    if(!empty($_SESSION["cart_item"])) {
-                        if(in_array($productByCode[0]["artpieceID"],array_keys($_SESSION["cart_item"]))) {
-                            foreach($_SESSION["cart_item"] as $k => $v) {
-                                if($productByCode[0]["artpieceID"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
-                                    if(empty($_SESSION["cart_item"][$k]["quantity"])) {
-                                        $_SESSION["cart_item"][$k]["quantity"] = 0;
-                                    }
-                                    $_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+        case "add":
+            if (!empty($_POST["quantity"])) {
+                $productByCode = $db_handle->runQuery("SELECT * FROM artpiece WHERE artpieceID='" . $_GET["artpieceID"] . "'");
+                $itemArray = array($productByCode[0]["artpieceID"] => array('artpieceID' => $productByCode[0]["artpieceID"], 'name' => $productByCode[0]["name"], 'quantity' => $_POST["quantity"], 'price' => $productByCode[0]["price"]));
+                if (!empty($_SESSION["cart_item"])) {
+                    if (in_array($productByCode[0]["artpieceID"], array_keys($_SESSION["cart_item"]))) {
+                        foreach ($_SESSION["cart_item"] as $k => $v) {
+                            if ($productByCode[0]["artpieceID"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
+                                if (empty($_SESSION["cart_item"][$k]["quantity"])) {
+                                    $_SESSION["cart_item"][$k]["quantity"] = 0;
                                 }
+                                $_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
                             }
-                        } else {
-                            $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
                         }
                     } else {
-                        $_SESSION["cart_item"] = $itemArray;
+                        $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itemArray);
                     }
+                } else {
+                    $_SESSION["cart_item"] = $itemArray;
                 }
+            }
             break;
             /* Removes particular item from cart, designated by particular artpiece ID linked to the x clicked on by user */
-            case "remove":
-                if(!empty($_SESSION["cart_item"])) {
-                    foreach($_SESSION["cart_item"] as $k => $v) {
-                        if($_GET["code"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
-                            if($_SESSION["cart_item"][$k]["quantity"] == 1) {
-                                unset($_SESSION["cart_item"][$k]);
-                            }
-                            else if ($_SESSION["cart_item"][$k]["quantity"] > 1) {
-                                $_SESSION["cart_item"][$k]["quantity"] = $_SESSION["cart_item"][$k]["quantity"] - 1;
-                            }
+        case "remove":
+            if (!empty($_SESSION["cart_item"])) {
+                foreach ($_SESSION["cart_item"] as $k => $v) {
+                    if ($_GET["code"] == $_SESSION["cart_item"][$k]["artpieceID"]) {
+                        if ($_SESSION["cart_item"][$k]["quantity"] == 1) {
+                            unset($_SESSION["cart_item"][$k]);
+                        } else if ($_SESSION["cart_item"][$k]["quantity"] > 1) {
+                            $_SESSION["cart_item"][$k]["quantity"] = $_SESSION["cart_item"][$k]["quantity"] - 1;
                         }
-                        if(empty($_SESSION["cart_item"]))
-                                unset($_SESSION["cart_item"]);				
                     }
+                    if (empty($_SESSION["cart_item"]))
+                        unset($_SESSION["cart_item"]);
                 }
+            }
             break;
             /* Unset the array variable "cart_item". As this is the array that stores all elements of the
             shopping cart, all items are essentially deleted from the session */
-            case "empty":
-                unset($_SESSION["cart_item"]);
-            break;	
-        }
+        case "empty":
+            unset($_SESSION["cart_item"]);
+            break;
     }
+}
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-    <link rel ="stylesheet" href="../css/siteStyling.css">
-    <link rel="icon" href="../images/icon.jpeg"/>
+    <link rel="stylesheet" href="../css/siteStyling.css">
+    <link rel="icon" href="../images/icon.jpeg" />
     <title>Artists</title>
     <meta name="description" content="Art Dealer Artists">
     <style>
-        header{
-            background-color:black;
+        header {
+            background-color: black;
         }
     </style>
     <script>
@@ -82,6 +82,7 @@ has been maniupalted, the rest of the page can load. -->
         console.log(search);
     </script>
 </head>
+
 <body>
     <!-- Navigation Header -->
     <div id="navbar">
@@ -97,7 +98,7 @@ has been maniupalted, the rest of the page can load. -->
                     <li>
                         <div class="searchDiv">
                             <form id="form" role="search" action="search.php?search=" method="post">
-                                <input type="text" id="search" name="search" placeholder="Search..." aria-label="Search through site content">
+                                <input type="text" id="search" minlength="3" name="search" placeholder="Search..." aria-label="Search through site content">
                                 <button id="button">
                                     <svg viewBox="0 0 1024 1024">
                                         <path class="path1" d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path>
@@ -171,62 +172,86 @@ has been maniupalted, the rest of the page can load. -->
             </div>
         </header>
     </div>
-    <hr></hr>
+    <hr>
+    </hr>
     <!-- Artists Grid -->
-    <h2 style = "padding-top:4vw;">Results for <script> document.write(search)</script></h2>
+    <h2 style="padding-top:4vw;">SEARCH RESULTS<script>
+            document.write(search)
+        </script>
+    </h2>
     <div class="section">
-        <div class="row">
-            <div class="column">
-                <?php
-                    /* Query all entries with search parameters 
+        <?php
+        /* Query all entries with search parameters 
                     FOR EACH RESULT -> PRINT A LINK TO EITHER ARTPIECE OR ARTIST */
-                    
-                    // artists
-
-                    include('../php/getartistsearch.php');
-                    // k is now an associative array, so to get name, k["name"] ...
-                    foreach($result as $k) {
-                          echo
-                        ' <a href="artist.php?artist=' . $k . '">
-                            <div class =artistGroup>
-                                <img src="../images/artist' . $k . '/artist' . $k . '_overview.jpeg" style= "border:rgb(68, 68, 68) solid"/>
-                                <p>' . $k["name"] . '</p>
-                            </div> 
+        // artists
+        $nores1 = false;
+        include('../php/getartistsearch.php');
+        foreach ($result as $k) {
+            echo
+            ' <a href="artist.php?artist=' . $k["artistID"] . '">
+                            <p>' . $k["name"] . ' (ARTIST)</p>
                         </a> ';
-                    };
+        };
 
-                    //artpieces
+        if ($result->num_rows == 0) {
+            $nores1 = true;
+        }
+
+        //artpieces
+        $nores2 = false;
+        include('../php/getartpiecesearch.php');
+        foreach ($result as $k) {
+            echo
+            ' <a href="artpiece.php?artist=' . $k["artistID"] . '&artnumber=' . $k["artpieceNumber"] . '">
+                            <p style="font-size:2vw">' . $k["name"] . ' (ART PIECE)</p>
+                        </a> ';
+        };
+        if ($result->num_rows <= 0) {
+            $nores2 = true;
+        }
+        if ($nores1 && $nores2) {
+            echo "NO RESULTS";
+        }
+        ?>
 
 
-                ?>
-            </div>
-        </div>
     </div>
-    <hr></hr>
+    <hr>
+    </hr>
     <!-- Footer -->
-    <footer style ="text-align:center;font-size:1vw; padding:3vw;">
+    <footer style="text-align:center;font-size:1vw; padding:3vw;">
         <div class="row2" style="padding-bottom: 3vw;">
             <div class="column2">
-                <div class =infoGroup>
-                    <img src="../images/infoImage.webp" style= "width:100%; opacity: 75%;"/>
-                    <div class="infoText"><h2 style="font-size:2.8vw">Premium Quality</h2><br><p>Printed using water-based inks and professional 12-colour giclée printers, giving it colour vibrancy that’s protected for 80+ years.</p></div>
+                <div class=infoGroup>
+                    <img src="../images/infoImage.webp" style="width:100%; opacity: 75%;" />
+                    <div class="infoText">
+                        <h2 style="font-size:2.8vw">Premium Quality</h2><br>
+                        <p>Printed using water-based inks and professional 12-colour giclée printers, giving it colour vibrancy that’s protected for 80+ years.</p>
+                    </div>
                 </div>
             </div>
             <div class="column2">
-                <div class =infoGroup>
-                    <img src="../images/infoImage2.webp" style= "width:100%; opacity: 75%;"/>
-                    <div class="infoText"> <h2>We're Local</h2><br><p>Run and born out of Canbera, we launched our premium giclee art print line to promote and sell local talent to the nations capital.</p></div>
+                <div class=infoGroup>
+                    <img src="../images/infoImage2.webp" style="width:100%; opacity: 75%;" />
+                    <div class="infoText">
+                        <h2>We're Local</h2><br>
+                        <p>Run and born out of Canbera, we launched our premium giclee art print line to promote and sell local talent to the nations capital.</p>
+                    </div>
                 </div>
             </div>
             <div class="column2">
-                <div class =infoGroup>
-                    <img src="../images/infoImage3.webp" style= "width:100%; opacity: 75%;"/>
-                    <div class="infoText"><h2>Quick Delivery</h2><br><p>Fast & reliable delivery through our own employees.</p></div>
+                <div class=infoGroup>
+                    <img src="../images/infoImage3.webp" style="width:100%; opacity: 75%;" />
+                    <div class="infoText">
+                        <h2>Quick Delivery</h2><br>
+                        <p>Fast & reliable delivery through our own employees.</p>
+                    </div>
                 </div>
             </div>
         </div>
         <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
     </footer>
-    <script src ="../js/responsiveHeader.js"></script>
+    <script src="../js/responsiveHeader.js"></script>
 </body>
+
 </html>
