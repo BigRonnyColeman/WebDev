@@ -1,6 +1,3 @@
-<!-- Admin - admin@gmail.com , password
-User - user@gmail.com , password -->
-
 <!-- The PHP at the top of each page is used to add, remove or empty cart, as well as submit
 messages from the user to the database. The first URL paramter that dictates which part
 of th switch is activated is 'action'. Once the switch case is run, and the relevant data
@@ -10,7 +7,6 @@ has been maniupalted, the rest of the page can load. -->
     passed via a GET or POST request, or passed via a cookie. When session_start() 
     is called or when a session auto starts, PHP will call the open and read session
     save handlers. */
-session_start();
 require_once("../php/dbcontroller.php");
 $db_handle = new DBController();
 if (!empty($_GET["action"])) {
@@ -93,19 +89,6 @@ if (!empty($_GET["action"])) {
         input[type=submit]:hover {
             opacity: 0.8;
         }
-
-        .indexbtnStyle2 {
-            background-color: rgb(68, 68, 68);
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .indexbtnStyle2:hover {
-            opacity: 0.8;
-        }
     </style>
 </head>
 
@@ -117,10 +100,10 @@ if (!empty($_GET["action"])) {
             <nav>
                 <ul class="navLinks">
                     <li><a href="index.php">HOME</a></li>
-                    <li><a href="artists.php">ARTISTS</a></li>
+                    <li><a href="artists.php">ARTISTS</u></a></li>
                     <li><a href="best.php">BEST SELLERS</a></li>
-                    <li><a href="about.php">ABOUT US</a></li>
-                    <li><a href="contact.php">CONTACT US</a></li>
+                    <li><a href="about.php">ABOUT US</u></a></li>
+                    <li><a href="contact.php">CONTACT US</u></a></li>
                     <li>
                         <div class="searchDiv">
                             <form id="form" role="search" action="search.php?search=" method="post">
@@ -198,92 +181,31 @@ if (!empty($_GET["action"])) {
             </div>
         </header>
     </div>
-    <!-- Need to add php -->
-    <!-- visible if not signed in -->
-    <?php
-
-    if(!isset($_SESSION["loggedin"]) or !isset($_SESSION["id"]) or !isset($_SESSION["username"])) {
-        echo '
-        <div class="centerpage">
+    <h2 style="padding-top:4vw;">RESET PASSWORD</h2>
+    <div class="centerpage">
+        
         <div class="section2">
-        <h2 style="padding:2vw;">MY ACCOUNT</h2>
-            <div class="indexboxlink" style="padding-bottom:1vw;">
-                <a class="indexbtnStyle" href="../html/login.php">Login</a>
+            <?php 
+            require_once("../php/reset.php");  
+            ?>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
+            <div class="form-group">
+                <label>New Password</label>
+                <input type="password" name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
+                <span class="invalid-feedback"><?php echo $new_password_err; ?></span>
             </div>
-            <!-- Change to only show if admin credentials -->
-            <div class="indexboxlink" style="padding-bottom:3vw;">
-                <a class="indexbtnStyle" href="../html/signup.php">Sign Up</a>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
+                <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Submit">
+                <a class="btn btn-link ml-2" href="welcome.php">Cancel</a>
+            </div>
+        </form>
         </div>
     </div>
-        ';
-    }  else if(isset($_SESSION["loggedin"]) and isset($_SESSION["id"]) and isset($_SESSION["username"]) and ($_SESSION["type"] == "admin")) { 
-        echo '
-        <div class="centerpage">
-        <div class="section2">
-        <br>
-        <!-- Change to only show if admin credentials -->
-        <div class="indexboxlink" style="padding-bottom:1vw;">
-            <a class="indexbtnStyle" href="../html/adminshowcontact.php">Contact Portal</a>
-        </div>
-        <!-- Change to only show if admin credentials -->
-        <div class="indexboxlink" style="padding-bottom:1vw;">
-            <a class="indexbtnStyle" href="../html/adminshoworders.php">Show Current Order</a>
-        </div>
-        <br><div style="text-align:center;">
-            <a class="indexbtnStyle" href="./logout.php"">Sign Out</a></div>
-        </div>
-        </div>
-        ';
-    } else if (isset($_SESSION["loggedin"]) and isset($_SESSION["id"]) and isset($_SESSION["username"]) and ($_SESSION["type"] == "user")) {
-        echo '
-        <div class="centerpage">
-        <div class="section2">
-            <h2 style="padding:2vw;">ACCOUNT INFO</h2>
-            <div class="indexboxlink" style="padding-bottom:1vw;">
-                <a class="indexbtnStyle" href="../html/pastorders.php">View Past Orders</a>
-            </div>
-            
-            <br>
-            <br>
-            
-            <form>
-                <label for="logout">Log Out</label><br><br>
-                <a class="indexbtnStyle2" href="./logout.php">Sign Out</a>
-            </form>
-            
-            <br><br><br>
-            <form action="reset.php">
-                <label for="delete">Reset Password</label><br><br>
-                <input type="submit" id="myBtn" value="Reset Password">
-            </form>
-
-
-            <br><br><br>
-            <!-- Sends _POST varaiables to php on index, action=contact -->
-
-            <form action="../php/delete.php" method="post">
-                <label for="delete">Delete Account</label><br> ';
-                if (isset($_SESSION["login_err"])) {
-                    $temp = $_SESSION["login_err"];
-                    echo '
-                    <div class="invalid-feedback">' . $temp . '</div>
-                    ';
-                }
-                echo '
-                <input type="text" id="pass" name="pass" placeholder="Confirm Password to Proceed">
-                <input type="submit" id="myBtn" value="Delete Account">
-            </form>
-
-        </div>
-        </div>
-        ';
-    }
-
-    ?>
-
-
-    
     <hr>
     </hr>
     <!-- Footer -->

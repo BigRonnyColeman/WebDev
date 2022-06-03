@@ -8,6 +8,9 @@ has been maniupalted, the rest of the page can load. -->
     is called or when a session auto starts, PHP will call the open and read session
     save handlers. */
 session_start();
+if (!isset($_SESSION["loggedin"])){
+    $_SESSION["type"] = "public";
+}
 require_once("../php/dbcontroller.php");
 $db_handle = new DBController();
 if (!empty($_GET["action"])) {
