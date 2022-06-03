@@ -244,7 +244,7 @@ if (!empty($_GET["action"])) {
                 <br>
                 <!-- Add artpiece ID to global cookies?? Then Cart reads cookies and gets data from database -->
                 <form action="artpiece.php?artist=<?php echo $_GET['artist'] ?>&artnumber=<?php echo $_GET['artnumber'] ?>&action=add&artpieceID=<?php include '../php/getartpieceID.php'; ?>" method="post" style="text-align:center;">
-                    <input type="number" class="product-quantity" name="quantity" min="1" />
+                    <input type="number" class="product-quantity" name="quantity" min=0 max='<?php include '../php/getstocklevels.php'; ?>' />
                     <input type="submit" value="Add to Cart" class="btnAddAction" />
                 </form>
                 <br>
