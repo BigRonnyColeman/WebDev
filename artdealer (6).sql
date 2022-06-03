@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 09, 2022 at 01:38 PM
+-- Generation Time: Jun 03, 2022 at 07:33 AM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -64,62 +64,63 @@ CREATE TABLE `artpiece` (
   `description` varchar(128) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
   `artistID` int(11) DEFAULT NULL,
-  `artpieceNumber` int(11) NOT NULL
+  `artpieceNumber` int(11) NOT NULL,
+  `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `artpiece`
 --
 
-INSERT INTO `artpiece` (`artpieceID`, `name`, `description`, `price`, `artistID`, `artpieceNumber`) VALUES
-(1, 'Pink Hydrangeas Big Jug', 'A beautifully contrasted piece highlighting the vibrant colours with sharp tones.', '1400.00', 1, 1),
-(2, 'White Orchird Yellow Bowl', 'Stunning design showing the true beauty and feelings displayed by a white orchid.', '990.00', 1, 2),
-(3, 'Blue Night Hydrangea', 'Smooth outlines highlight the picturesque flowers amongst a cool background.', '990.00', 1, 3),
-(4, 'Green Farm', 'A cute piece which brings light and colour into a different perspective of a farm house.', '1400.00', 1, 4),
-(5, 'Cows on Pink', 'Warm undertones bring this piece to life with subtle shades underlying the true nature.', '760.00', 2, 1),
-(6, 'Autumn Falling', 'Sharp outlines draw the viewer into a different experience of autumn.', '680.00', 2, 2),
-(7, 'Grove of Trees', 'The vibrant colours highlight the beautiful scenery of local nature.', '890.00', 2, 3),
-(8, 'Poplars and Cows', 'Textures and shades harmonize together to highlight a delightful day in the meadow.', '830.00', 2, 4),
-(9, '\"I Wanna Hear You Roar\"', 'An extremely vibrant piece to show the true beauty and simplicity behind art.', '4400.00', 3, 1),
-(10, 'Pink Galahs', 'The subtle tones addresses the nature and beauty behind the birds on display.', '760.00', 3, 2),
-(11, 'There’s a visitor at the window!', 'Outlines and simplicity highlight the adventure in this piece.', '540.00', 3, 3),
-(12, 'Canberra Controversial Sky', 'Cool undertones help depict the sincerity of this piece and its view.', '2950.00', 3, 4),
-(13, 'Scattering of Light', 'The vibrant and bright colours of the piece bring it to life.', '4850.00', 4, 1),
-(14, 'Through the National Arboretum', 'Warm undertones with light and contrast show the viewer wonderful perspectives of the arboretum.', '2500.00', 4, 2),
-(15, 'Unspoken Question', 'The angles in this piece highlights the expressions of nature.', '3900.00', 4, 3),
-(16, 'Boundless Harmony', 'A beautiful landscape of Canberra and its scenery.', '4850.00', 4, 4),
-(17, 'Blue and Green', 'A simple yet elegent design.', '790.00', 5, 1),
-(18, 'Catelina on Candy Pink', 'The outlines and contrast highlight a unique perspective.', '300.00', 5, 2),
-(19, 'Lurid Fruit on Plate', 'The dark background with colour choice creates mystery for the viewer.', '300.00', 5, 3),
-(20, 'Sara di Sienna', 'Warm and cool undertones bring this piece to life.', '250.00', 5, 4),
-(21, 'Water Lilies no 87', 'The wonderful shades of blue mixed within the piece reveal the true beauty of the piece.', '1590.00', 6, 1),
-(22, 'Yarra Valley', 'Subtle and light colours of a beautiful landscape.', '440.00', 6, 2),
-(23, 'Water Lilies no 89', 'Light and cool shades of lilies amongst a body of water.', '690.00', 6, 3),
-(24, 'A Brand New Day', 'Beautiful warm tones of a beach at sunset.', '3300.00', 6, 4),
-(25, 'Singing Love Songs', 'A wonderful depiction of floral art.', '600.00', 7, 1),
-(26, 'Natures Palette', 'Simple yet artistic perspective on Australian landscape.', '400.00', 7, 2),
-(27, 'Symphony of Colour', 'A beautiful contrast of colours in a natural landscape.', '3900.00', 7, 3),
-(28, 'Torrent', 'Cool undertones and colours of some greenery.', '1980.00', 7, 4),
-(29, 'Boardwalk at Morning Light', 'A neat and artistic style of coast scenery.', '290.00', 8, 1),
-(30, 'Vogue 1974', 'A gorgeous piece showing a lady sitting by a pool reading.', '290.00', 8, 2),
-(31, 'Country Road', 'A simple view of a country road landscape.', '410.00', 8, 3),
-(32, 'Motley Crew', 'Fun and cute potrayal of cows clustering together.', '290.00', 8, 4),
-(33, 'Baayi', 'A vast display of colours highlighting natural beauty.', '610.00', 9, 1),
-(34, 'It Made Me Smile', 'A fine and delicate dot painting.', '750.00', 9, 2),
-(35, 'Bangal-buwu-rayi', 'Simplistic nature display with cool textures and colours.', '680.00', 9, 3),
-(36, 'Yadhaa', 'A wonderful piece highlighting the simple beauty at night time.', '650.00', 9, 4),
-(37, 'Erme', 'Stunning neutral colours showing a natural flow of beauty.', '3600.00', 10, 1),
-(38, 'Rainbow Sands 2', 'Warm undertoned colours to highlight the passion amongst sand.', '3400.00', 10, 2),
-(39, 'Oceans Reach 1', 'Cool undertones to display the effect oceans have on someone.', '3200.00', 10, 3),
-(40, 'Desert Trails', 'Light and warm texture highlighting the trails within a desert.', '3200.00', 10, 4),
-(41, 'Blue River Valley', 'A simplistic piece with light colours of a river landscape.', '960.00', 11, 1),
-(42, 'An Inch of Mercury', 'Vibrant and full of life, showing the scenery of some fields.', '420.00', 11, 2),
-(43, 'Chasing the Sun ', 'Warm undertones represent the suns gaze onto the scenery.', '600.00', 11, 3),
-(44, 'Poplar Plains', 'A mixture of neutral and cool tones to highlight the plains.', '1800.00', 11, 4),
-(45, 'Thank You', 'Natural and vibrant colours highlight the beauty of lilies in a body of water.', '3850.00', 12, 1),
-(46, 'Australian Rugged Outback', 'The mixture of scenery and colours depicts the beauty of Australian gorges.', '3450.00', 12, 2),
-(47, 'Sapphire Blue Clouds', 'A contrast of colours to showcase natural sunlight filtering through some clouds.', '2690.00', 12, 3),
-(48, 'Summer Breeze', 'An explosion of colours depicting paperbark trees amongst a landscape.', '2550.00', 12, 4);
+INSERT INTO `artpiece` (`artpieceID`, `name`, `description`, `price`, `artistID`, `artpieceNumber`, `stock`) VALUES
+(1, 'Pink Hydrangeas Big Jug', 'A beautifully contrasted piece highlighting the vibrant colours with sharp tones.', '1400.00', 1, 1, 4),
+(2, 'White Orchird Yellow Bowl', 'Stunning design showing the true beauty and feelings displayed by a white orchid.', '990.00', 1, 2, 3),
+(3, 'Blue Night Hydrangea', 'Smooth outlines highlight the picturesque flowers amongst a cool background.', '990.00', 1, 3, 2),
+(4, 'Green Farm', 'A cute piece which brings light and colour into a different perspective of a farm house.', '1400.00', 1, 4, 4),
+(5, 'Cows on Pink', 'Warm undertones bring this piece to life with subtle shades underlying the true nature.', '760.00', 2, 1, 5),
+(6, 'Autumn Falling', 'Sharp outlines draw the viewer into a different experience of autumn.', '680.00', 2, 2, 2),
+(7, 'Grove of Trees', 'The vibrant colours highlight the beautiful scenery of local nature.', '890.00', 2, 3, 3),
+(8, 'Poplars and Cows', 'Textures and shades harmonize together to highlight a delightful day in the meadow.', '830.00', 2, 4, 3),
+(9, '\"I Wanna Hear You Roar\"', 'An extremely vibrant piece to show the true beauty and simplicity behind art.', '4400.00', 3, 1, 4),
+(10, 'Pink Galahs', 'The subtle tones addresses the nature and beauty behind the birds on display.', '760.00', 3, 2, 2),
+(11, 'There’s a visitor at the window!', 'Outlines and simplicity highlight the adventure in this piece.', '540.00', 3, 3, 3),
+(12, 'Canberra Controversial Sky', 'Cool undertones help depict the sincerity of this piece and its view.', '2950.00', 3, 4, 4),
+(13, 'Scattering of Light', 'The vibrant and bright colours of the piece bring it to life.', '4850.00', 4, 1, 2),
+(14, 'Through the National Arboretum', 'Warm undertones with light and contrast show the viewer wonderful perspectives of the arboretum.', '2500.00', 4, 2, 1),
+(15, 'Unspoken Question', 'The angles in this piece highlights the expressions of nature.', '3900.00', 4, 3, 3),
+(16, 'Boundless Harmony', 'A beautiful landscape of Canberra and its scenery.', '4850.00', 4, 4, 4),
+(17, 'Blue and Green', 'A simple yet elegent design.', '790.00', 5, 1, 2),
+(18, 'Catelina on Candy Pink', 'The outlines and contrast highlight a unique perspective.', '300.00', 5, 2, 1),
+(19, 'Lurid Fruit on Plate', 'The dark background with colour choice creates mystery for the viewer.', '300.00', 5, 3, 5),
+(20, 'Sara di Sienna', 'Warm and cool undertones bring this piece to life.', '250.00', 5, 4, 3),
+(21, 'Water Lilies no 87', 'The wonderful shades of blue mixed within the piece reveal the true beauty of the piece.', '1590.00', 6, 1, 3),
+(22, 'Yarra Valley', 'Subtle and light colours of a beautiful landscape.', '440.00', 6, 2, 4),
+(23, 'Water Lilies no 89', 'Light and cool shades of lilies amongst a body of water.', '690.00', 6, 3, 2),
+(24, 'A Brand New Day', 'Beautiful warm tones of a beach at sunset.', '3300.00', 6, 4, 2),
+(25, 'Singing Love Songs', 'A wonderful depiction of floral art.', '600.00', 7, 1, 3),
+(26, 'Natures Palette', 'Simple yet artistic perspective on Australian landscape.', '400.00', 7, 2, 4),
+(27, 'Symphony of Colour', 'A beautiful contrast of colours in a natural landscape.', '3900.00', 7, 3, 5),
+(28, 'Torrent', 'Cool undertones and colours of some greenery.', '1980.00', 7, 4, 1),
+(29, 'Boardwalk at Morning Light', 'A neat and artistic style of coast scenery.', '290.00', 8, 1, 2),
+(30, 'Vogue 1974', 'A gorgeous piece showing a lady sitting by a pool reading.', '290.00', 8, 2, 3),
+(31, 'Country Road', 'A simple view of a country road landscape.', '410.00', 8, 3, 4),
+(32, 'Motley Crew', 'Fun and cute potrayal of cows clustering together.', '290.00', 8, 4, 5),
+(33, 'Baayi', 'A vast display of colours highlighting natural beauty.', '610.00', 9, 1, 2),
+(34, 'It Made Me Smile', 'A fine and delicate dot painting.', '750.00', 9, 2, 1),
+(35, 'Bangal-buwu-rayi', 'Simplistic nature display with cool textures and colours.', '680.00', 9, 3, 3),
+(36, 'Yadhaa', 'A wonderful piece highlighting the simple beauty at night time.', '650.00', 9, 4, 4),
+(37, 'Erme', 'Stunning neutral colours showing a natural flow of beauty.', '3600.00', 10, 1, 2),
+(38, 'Rainbow Sands 2', 'Warm undertoned colours to highlight the passion amongst sand.', '3400.00', 10, 2, 3),
+(39, 'Oceans Reach 1', 'Cool undertones to display the effect oceans have on someone.', '3200.00', 10, 3, 2),
+(40, 'Desert Trails', 'Light and warm texture highlighting the trails within a desert.', '3200.00', 10, 4, 1),
+(41, 'Blue River Valley', 'A simplistic piece with light colours of a river landscape.', '960.00', 11, 1, 3),
+(42, 'An Inch of Mercury', 'Vibrant and full of life, showing the scenery of some fields.', '420.00', 11, 2, 2),
+(43, 'Chasing the Sun ', 'Warm undertones represent the suns gaze onto the scenery.', '600.00', 11, 3, 1),
+(44, 'Poplar Plains', 'A mixture of neutral and cool tones to highlight the plains.', '1800.00', 11, 4, 2),
+(45, 'Thank You', 'Natural and vibrant colours highlight the beauty of lilies in a body of water.', '3850.00', 12, 1, 4),
+(46, 'Australian Rugged Outback', 'The mixture of scenery and colours depicts the beauty of Australian gorges.', '3450.00', 12, 2, 3),
+(47, 'Sapphire Blue Clouds', 'A contrast of colours to showcase natural sunlight filtering through some clouds.', '2690.00', 12, 3, 4),
+(48, 'Summer Breeze', 'An explosion of colours depicting paperbark trees amongst a landscape.', '2550.00', 12, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -140,7 +141,8 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`contactID`, `first`, `last`, `email`, `message`) VALUES
-('2022-05-08 18:43:49', 'J', 'M', 'jacq', 'mdbhd');
+('2022-05-08 18:43:49', 'J', 'M', 'jacq', 'mdbhd'),
+('2022-05-29 19:05:45', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -162,7 +164,8 @@ CREATE TABLE `customerorder` (
 --
 
 INSERT INTO `customerorder` (`orderID`, `name`, `mode`, `address`, `number`, `date`) VALUES
-(8, ' Jacqui Meacle', 'delivery', '1 Northcott Dr 123 ACT 2612', '0456962608', '2022-05-09 03:27:09');
+(8, ' Jacqui Meacle', 'delivery', '1 Northcott Dr 123 ACT 2612', '0456962608', '2022-05-09 03:27:09'),
+(9, ' Jacqui Meacle', 'delivery', '1 Northcott Dr 123 ACT 2612', '0456962608', '2022-05-11 16:21:16');
 
 -- --------------------------------------------------------
 
@@ -189,7 +192,9 @@ INSERT INTO `orderItem` (`orderID`, `artpieceID`, `quantity`, `orderItemID`) VAL
 (5, 3, 2, '2022-05-09 09:02:51'),
 (6, 3, 2, '2022-05-09 09:05:03'),
 (7, 3, 2, '2022-05-09 09:05:10'),
-(8, 1, 2, '2022-05-09 13:27:09');
+(8, 1, 2, '2022-05-09 13:27:09'),
+(9, 18, 1, '2022-05-12 02:21:16'),
+(9, 32, 1, '2022-05-12 02:21:16');
 
 -- --------------------------------------------------------
 
@@ -198,20 +203,26 @@ INSERT INTO `orderItem` (`orderID`, `artpieceID`, `quantity`, `orderItemID`) VAL
 --
 
 CREATE TABLE `users` (
-  `user_email` varchar(255) NOT NULL,
-  `user_password` varchar(255) NOT NULL,
-  `user_name` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `type` varchar(30) NOT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `type`, `created_at`) VALUES
+(1, '', '$2y$10$KTGSI2PtpBABt5qaw3Er2OvOCSPxcPjXAe4wvAYcVDJFvJJebSi1m', 'user', '2022-06-03 15:50:15'),
+(3, 'jacquim@gmail.com', '$2y$10$VDVlPnwUvk7TT8AKK34k5.UFExINASKyfyFIwhxDvcqzl9JR9ZUu6', 'user', '2022-06-03 15:52:14'),
+(5, 'jacquim5678@gmail.com', '$2y$10$qarw.XQYPbUGnkrs9.OU3u5G1wSYBSZlzpgCDbcBqvZqLkYgPA5fm', 'user', '2022-06-03 16:52:02'),
+(6, 'admin@gmail.com', '$2y$10$VDVlPnwUvk7TT8AKK34k5.UFExINASKyfyFIwhxDvcqzl9JR9ZUu6', 'admin', '2022-06-03 15:52:14');
 
 --
 -- Indexes for dumped tables
 --
-
-INSERT INTO `users` (`user_email`, `user_password`, `user_name`, `role`) VALUES 
-('test@gmail.com', MD5('testingpassword123'), 'Bob', 'admin');
--- Uses an MD5 hash at the moment, this will convert it in the database, just not on visual studio code, looking into if it can be automated within MYySQL to make it easier
-
 
 --
 -- Indexes for table `artist`
@@ -233,6 +244,13 @@ ALTER TABLE `customerorder`
   ADD PRIMARY KEY (`orderID`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -252,7 +270,13 @@ ALTER TABLE `artpiece`
 -- AUTO_INCREMENT for table `customerorder`
 --
 ALTER TABLE `customerorder`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
