@@ -7,7 +7,6 @@ has been maniupalted, the rest of the page can load. -->
     passed via a GET or POST request, or passed via a cookie. When session_start() 
     is called or when a session auto starts, PHP will call the open and read session
     save handlers. */
-session_start();
 require_once("../php/dbcontroller.php");
 $db_handle = new DBController();
 if (!empty($_GET["action"])) {
@@ -184,12 +183,31 @@ if (!empty($_GET["action"])) {
     </div>
     <h2 style="padding-top:4vw;">LOGIN</h2>
     <div class="centerpage">
+        
         <div class="section2">
+            <?php 
+            require_once("../php/login2.php");  
+            if(!empty($login_err)){
+                echo '<div class="invalid-feedback">' . $login_err . '</div>';
+            } 
+                 
+            ?>
             <!-- Sends _POST varaiables to php on index, action=contact -->
-            <form action="index.php?action=contact" method="post">
-                <input type="text" id="fname" name="fname" placeholder="Username">
-                <input type="text" id="lname" name="lname" placeholder="Password">
-                <input type="submit" id="myBtn" value="Submit">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="invalid-feedback"><?php echo $username_err; ?></div>
+            <div class="invalid-feedback"><?php echo $password_err; ?></div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                </div>    
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Login">
+                </div>
+                <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
             </form>
         </div>
     </div>
