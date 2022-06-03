@@ -179,10 +179,41 @@ if (!empty($_GET["action"])) {
         <img src="../images/aboutusimage.jpeg" style="width:75%; height:75%; margin-left:auto; display: block; margin-right:auto; opacity: 75%; border:rgb(68, 68, 68) solid" />
     </div>
     <div class=paragraph>
-        <h2 style="padding-bottom: 1vw;">TERMS AND CONDITIONS</h2>
         <div class="paragraph">
-            <p>Art Dealer is a Canberra-based online art-sharing emporium offering a unique selection of over 50+ handpicked high-quality posters and art prints from local underground artists. <br><br>With a strong focus on 20th-century modern style art, you'll be able to find historically rich art pieces that will transform the looks in your home. <br><br> Made to order & curated locally in Melbourne, Australia. We launched our premium giclee art print line in the hope to provide fellow humans looking to sprouce up their home the opportunity to do so at affordable pricing. <br><br>Here at Art Dealer we to focus mainly on high quality materials and sustainability. We're glad that you found us, and hope you’ll enjoy our unique art pieces as much as we do.</p><br>
-            <p>We have had a total of <?php include('../php/getsales.php') ?> sales, delivering quality Canberran Art to the Region.</p>
+            <h2>TERMS AND CONDITIONS</h2>
+            <h3 style="padding-top:3vw; padding-bottom: 1vw; text-align:center"><b>LICENSE</b></h3>
+            <p>Unless otherwise stated, Art Dealer and/or its licensors own the intellectual property rights for all material on this website. All intellectual property rights are reserved. You may access this from Art Dealer for your own personal use subjected to restrictions set in these terms and conditions.</p>
+            <br>
+            <p>You must not repbulish material, sell, rent or sub-license material, reproduce, duplicate or copy from Art Dealer, or redistribute content from Art Dealer</p>
+            <br>
+            <h3 style="padding-top:3vw; padding-bottom: 1vw; text-align:center"><b>SHIPPING POLICIES</b></h3>
+            <p>Australia wide, shipping is covered by Art Dealer. The price you see on the checkout is all inclusive and there are no additional costs required.</p>
+            <br>
+            <p>After ordering online, you will receive an email confirmation containing your order details, as well as an email directly from Art Dealer, to the email address you have specified on your account. We will normally confirm receipt of your order within the business day of your order.</p>
+            <br>
+            <p>We will attempt to have your artwork sent by the artist and associated freight provider within five (5) business days; and delivered within fourteen (14) business days.
+                Please allow longer for artworks coming from remote areas, or if you have chosen to have the work framed. We do NOT accept PO Box delivery options. If you wish to query a delivery please contact us.</p>
+            <br>
+            <h3 style="padding-top:3vw; padding-bottom: 1vw; text-align:center"><b>FREE RETURNS POLICY</b></h3>
+            <p>Free returns are designed to ensure you get an artwork you love, and one that fits your space at home or work. With that in mind Art Dealer will allow a customer to return up to two (2) artworks free of charge, with our company paying the return shipping. Returns above this quantity require written approval from Art Dealer.</p>
+            <br>
+            <p>Lay-By orders are subject to different returns policy due to the fact they take an extended time to complete payment.
+                In the event that the artwork from a Layby order is not suitable, Art Dealer reserves the right to void the returns policy with prior notice or allow the return and the buyer may return the artwork in exchange for a gift voucher to the equivalent value of the artwork purchased.
+                The gift voucher cannot be redeemed for cash, it can only be used to purchase an alternative artwork.</p>
+            <br>
+            <h3 style="padding-top:3vw; padding-bottom: 1vw; text-align:center"><b>INSURANCE</b></h3>
+            <p>Art Dealer insures all artworks in transit. In the rare case an artwork is damaged in transit, we have it fully covered. You can either be refunded in full, request the artist to create something unique for you or purchase any other piece from our website (store credit) immediately without having to wait for the insurance claim.</p>
+            <br>
+            <p>Insurance cases are handled by our professional team and artists are compensated in full as well (if damaged in transit due to courier handling).</p>
+            <br>
+            <p>If the artworks are returned directly by you, they must be returned via a trackable and insured shipping carrier, and the tracking information must be provided to Art Dealer.</p>
+            <br>
+            <p>Insurance is valid for the time the artwork is in transit only.</p>
+            <br>
+            <h3 style="padding-top:3vw; padding-bottom: 1vw; text-align:center"><b>COOKIES</b></h3>
+            <p>We employ the use of cookies. By accessing Art Dealer, you agreed to use cookies in agreement with the Company's Privacy Policy.</p>
+            <br>
+            <p>Most interactive websites use cookies to let us retrieve the user's details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>
         </div>
     </div>
     <h2>HAVE ANY QUESTIONS?</h2>
@@ -230,7 +261,7 @@ if (!empty($_GET["action"])) {
     <script src="../js/responsiveHeader.js"></script>
     <script>
         var dt = new Date();
-        document.getElementById('date-time').innerHTML=dt;
+        document.getElementById('date-time').innerHTML = dt;
     </script>
 </body>
 
