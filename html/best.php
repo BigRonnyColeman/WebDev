@@ -88,18 +88,18 @@ if (!empty($_GET["action"])) {
     <!-- Navigation Header -->
     <div id="navbar">
         <header>
-            <img class="logo" href="index.php" src="../images/logoWhite.jpeg" alt="logo">
+            <a href="index.php"><img class="logo" href="index.php" src="../images/logoWhite.jpeg" alt="logo"></a>
             <nav>
                 <ul class="navLinks">
                     <li><a href="index.php">HOME</a></li>
                     <li><a href="artists.php">ARTISTS</a></li>
-                    <li><a href="best.php"><u style ="text-underline-offset:0.7em";>BEST SELLERS</u></a></li>
+                    <li><a href="best.php"><u style="text-underline-offset:0.7em" ;>BEST SELLERS</u></a></li>
                     <li><a href="about.php">ABOUT US</u></a></li>
                     <li><a href="contact.php">CONTACT US</a></li>
                     <li>
                         <div class="searchDiv">
                             <form id="form" role="search" action="search.php?search=" method="post">
-                                <input type="text" id="search" name="search" placeholder="Search..." aria-label="Search through site content">
+                                <input type="text" id="search" name="search" minlength="3" required placeholder="Search..." aria-label="Search through site content">
                                 <button id="button">
                                     <svg viewBox="0 0 1024 1024">
                                         <path class="path1" d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path>
@@ -263,10 +263,15 @@ if (!empty($_GET["action"])) {
                 </div>
             </div>
         </div>
-        <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
+        <p style="opacity: 50%;">© Art Dealer Pty Ltd. ABN 98 427 123 056, <span id='date-time'></span></p>
+        <p style="opacity: 50%;">See our <a style="color: rgb(68, 68, 68); text-align: center; text-decoration:underline; font-size:1vw;" href="about.php">Terms and Conditions</a></p>
     </footer>
     <!-- Javascript -->
     <script src="../js/responsiveHeader.js"></script>
+    <script>
+        var dt = new Date();
+        document.getElementById('date-time').innerHTML = dt;
+    </script>
 </body>
 
 </html>

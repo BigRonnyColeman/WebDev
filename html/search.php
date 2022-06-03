@@ -87,7 +87,7 @@ if (!empty($_GET["action"])) {
     <!-- Navigation Header -->
     <div id="navbar">
         <header>
-            <img class="logo" href="index.php" src="../images/logoWhite.jpeg" alt="logo">
+            <a href="index.php"><img class="logo" href="index.php" src="../images/logoWhite.jpeg" alt="logo"></a>
             <nav>
                 <ul class="navLinks">
                     <li><a href="index.php">HOME</a></li>
@@ -98,7 +98,7 @@ if (!empty($_GET["action"])) {
                     <li>
                         <div class="searchDiv">
                             <form id="form" role="search" action="search.php?search=" method="post">
-                                <input type="text" id="search" minlength="3" name="search" placeholder="Search..." aria-label="Search through site content">
+                                <input type="text" id="search" minlength="3" required name="search" placeholder="Search..." aria-label="Search through site content">
                                 <button id="button">
                                     <svg viewBox="0 0 1024 1024">
                                         <path class="path1" d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path>
@@ -189,7 +189,7 @@ if (!empty($_GET["action"])) {
         foreach ($result as $k) {
             echo
             ' <a href="artist.php?artist=' . $k["artistID"] . '">
-                            <p>' . $k["name"] . ' (ARTIST)</p>
+                            <p style="font-size:2vw">' . $k["name"] . ' (ARTIST)</p>
                         </a> ';
         };
 
@@ -210,7 +210,7 @@ if (!empty($_GET["action"])) {
             $nores2 = true;
         }
         if ($nores1 && $nores2) {
-            echo "NO RESULTS";
+            echo "<p> NO RESULTS </p>";
         }
         ?>
 
@@ -249,9 +249,15 @@ if (!empty($_GET["action"])) {
                 </div>
             </div>
         </div>
-        <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
+        <p style="opacity: 50%;">© Art Dealer Pty Ltd. ABN 98 427 123 056, <span id='date-time'></span></p>
+        <p style="opacity: 50%;">See our <a style="color: rgb(68, 68, 68); text-align: center; text-decoration:underline; font-size:1vw;" href="about.php">Terms and Conditions</a></p>
     </footer>
+    <!-- Javascript -->
     <script src="../js/responsiveHeader.js"></script>
+    <script>
+        var dt = new Date();
+        document.getElementById('date-time').innerHTML = dt;
+    </script>
 </body>
 
 </html>
