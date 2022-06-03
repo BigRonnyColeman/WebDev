@@ -187,7 +187,11 @@ if (!empty($_GET["action"])) {
     </div>
     <!-- Need to add php -->
     <!-- visible if not signed in -->
-    <div class="centerpage">
+    <?php
+
+    if(!isset($_SESSION["loggedin"]) or !isset($_SESSION["id"]) or !isset($_SESSION["username"])) {
+        echo '
+        <div class="centerpage">
         <div class="section2">
         <h2 style="padding:2vw;">MY ACCOUNT</h2>
             <div class="indexboxlink" style="padding-bottom:1vw;">
@@ -199,22 +203,31 @@ if (!empty($_GET["action"])) {
             </div>
         </div>
     </div>
-
-    <!-- visible if signed in -->
-    <div class="centerpage">
+        ';
+    }  else if(isset($_SESSION["loggedin"]) and isset($_SESSION["id"]) and isset($_SESSION["username"]) and ($_SESSION["type"] == "admin")) { 
+        echo '
+        <div class="centerpage">
+        <div class="section2">
+        <!-- Change to only show if admin credentials -->
+        <div class="indexboxlink" style="padding-bottom:1vw;">
+            <a class="indexbtnStyle" href="../html/adminshowcontact.php">Contact Portal</a>
+        </div>
+        <!-- Change to only show if admin credentials -->
+        <div class="indexboxlink" style="padding-bottom:1vw;">
+            <a class="indexbtnStyle" href="../html/adminshoworders.php">Show Current Order</a>
+        </div>
+        </div>
+        </div>
+        ';
+    } else if (isset($_SESSION["loggedin"]) and isset($_SESSION["id"]) and isset($_SESSION["username"]) and ($_SESSION["type"] == "user")) {
+        echo '
+        <div class="centerpage">
         <div class="section2">
             <h2 style="padding:2vw;">ACCOUNT INFO</h2>
             <div class="indexboxlink" style="padding-bottom:1vw;">
                 <a class="indexbtnStyle" href="../html/pastorders.php">View Past Orders</a>
             </div>
-            <!-- Change to only show if admin credentials -->
-            <div class="indexboxlink" style="padding-bottom:1vw;">
-                <a class="indexbtnStyle" href="../html/adminshowcontact.php">Contact Portal</a>
-            </div>
-            <!-- Change to only show if admin credentials -->
-            <div class="indexboxlink" style="padding-bottom:1vw;">
-                <a class="indexbtnStyle" href="../html/adminshoworders.php">Show Current Order</a>
-            </div>
+            
             <br>
             <br>
             <form action="index.php?action=contact" method="post">
@@ -231,7 +244,14 @@ if (!empty($_GET["action"])) {
             </form>
 
         </div>
-    </div>
+        </div>
+        ';
+    }
+
+    ?>
+
+
+    
     <hr>
     </hr>
     <!-- Footer -->
