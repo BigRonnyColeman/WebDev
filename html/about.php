@@ -82,7 +82,7 @@ if (!empty($_GET["action"])) {
     <!-- Navigation Header -->
     <div id="navbar">
         <header>
-            <img class="logo" href="index.php" src="../images/logoWhite.jpeg" alt="logo">
+            <a href="index.php"><img class="logo" href="index.php" src="../images/logoWhite.jpeg" alt="logo"></a>
             <nav>
                 <ul class="navLinks">
                     <li><a href="index.php">HOME</a></li>
@@ -93,7 +93,7 @@ if (!empty($_GET["action"])) {
                     <li>
                         <div class="searchDiv">
                             <form id="form" role="search" action="search.php?search=" method="post">
-                                <input type="text" id="search" name="search" placeholder="Search..." aria-label="Search through site content">
+                                <input type="text" id="search" name="search" placeholder="Search..." minlength="3" required aria-label="Search through site content">
                                 <button id="button">
                                     <svg viewBox="0 0 1024 1024">
                                         <path class="path1" d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path>
@@ -178,9 +178,16 @@ if (!empty($_GET["action"])) {
         </div>
         <img src="../images/aboutusimage.jpeg" style="width:75%; height:75%; margin-left:auto; display: block; margin-right:auto; opacity: 75%; border:rgb(68, 68, 68) solid" />
     </div>
-    <h2 style="padding-bottom: 1vw;">Have any Questions?</h2>
+    <div class=paragraph>
+        <h2 style="padding-bottom: 1vw;">TERMS AND CONDITIONS</h2>
+        <div class="paragraph">
+            <p>Art Dealer is a Canberra-based online art-sharing emporium offering a unique selection of over 50+ handpicked high-quality posters and art prints from local underground artists. <br><br>With a strong focus on 20th-century modern style art, you'll be able to find historically rich art pieces that will transform the looks in your home. <br><br> Made to order & curated locally in Melbourne, Australia. We launched our premium giclee art print line in the hope to provide fellow humans looking to sprouce up their home the opportunity to do so at affordable pricing. <br><br>Here at Art Dealer we to focus mainly on high quality materials and sustainability. We're glad that you found us, and hope you’ll enjoy our unique art pieces as much as we do.</p><br>
+            <p>We have had a total of <?php include('../php/getsales.php') ?> sales, delivering quality Canberran Art to the Region.</p>
+        </div>
+    </div>
+    <h2>HAVE ANY QUESTIONS?</h2>
     <p>Feel free to contact us and leave any questions, queries or doubtful points with our polite team!</p>
-    <div style="padding:8vw;">
+    <div style="padding:4vw;">
         <a class="btnStyle" href="../html/contact.php">Get in Touch</a>
     </div>
     <hr>
@@ -216,10 +223,15 @@ if (!empty($_GET["action"])) {
                 </div>
             </div>
         </div>
-        <p style="opacity: 50%;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</p>
+        <p style="opacity: 50%;">© Art Dealer Pty Ltd. ABN 98 427 123 056, <span id='date-time'></span></p>
+        <p style="opacity: 50%;">See our <a style="color: rgb(68, 68, 68); text-align: center; text-decoration:underline; font-size:1vw;" href="about.php">Terms and Conditions</a></p>
     </footer>
     <!-- Javascript -->
     <script src="../js/responsiveHeader.js"></script>
+    <script>
+        var dt = new Date();
+        document.getElementById('date-time').innerHTML=dt;
+    </script>
 </body>
 
 </html>
