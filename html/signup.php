@@ -2,13 +2,17 @@
 messages from the user to the database. The first URL paramter that dictates which part
 of th switch is activated is 'action'. Once the switch case is run, and the relevant data
 has been maniupalted, the rest of the page can load. -->
+
 <?php
+
+require_once ("../php/register.php");
 /* creates a session or resumes the current one based on a session identifier 
     passed via a GET or POST request, or passed via a cookie. When session_start() 
     is called or when a session auto starts, PHP will call the open and read session
     save handlers. */
 session_start();
 require_once("../php/dbcontroller.php");
+
 $db_handle = new DBController();
 if (!empty($_GET["action"])) {
     switch ($_GET["action"]) {
@@ -87,8 +91,34 @@ if (!empty($_GET["action"])) {
             cursor: pointer;
         }
 
+        input[type=reset] {
+            background-color: white;
+            color: rgb(68, 68, 68);
+            padding: 12px 20px;
+            border: 1px solid rgb(68, 68, 68);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=password] {
+            width: 100%;
+            padding: 1vw;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 3vw;
+            resize: vertical;
+        }
+
         input[type=submit]:hover {
             opacity: 0.8;
+        }
+
+        input[type=reset]:hover {
+            opacity: 0.8;
+            background-color: rgb(68, 68, 68);
+            color: white
         }
     </style>
 </head>
@@ -185,24 +215,30 @@ if (!empty($_GET["action"])) {
     <h2 style="padding-top:4vw;">SIGN UP</h2>
     <div class="centerpage">
         <div class="section2">
+        <div class="invalid-feedback"><?php echo $username_err; ?></div>
+        <div class="invalid-feedback"><?php echo $password_err; ?></div>
+        <div class="invalid-feedback"><?php echo $confirm_password_err; ?></div>
             <!-- Sends _POST varaiables to php on index, action=contact -->
-            <form action="index.php?action=contact" method="post">
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="fname" placeholder="First">
-
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lname" placeholder="Last">
-
-                <label for="email">Email</label>
-                <input type="text" id="email" name="email" placeholder="Email">
-
-                <label for="email">Password</label>
-                <input type="text" id="pass" name="pass" placeholder="Password">
-
-                <label for="email">Confirm Password</label>
-                <input type="text" id="passconf" name="passconf" placeholder="Password">
-
-                <input type="submit" id="myBtn" value="Submit">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                    
+                </div>    
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                    <input type="reset" class="btn btn-secondary ml-2" value="Reset">
+                </div>
+                <br>
+                <p style="color:rgb(68, 68, 68)">Already have an account? <a href="login.php" style="color:rgb(68, 68, 68)">Login here</a>.</p>
             </form>
         </div>
     </div>
@@ -247,6 +283,7 @@ if (!empty($_GET["action"])) {
     <script>
         var dt = new Date();
         document.getElementById('date-time').innerHTML = dt;
+
     </script>
 </body>
 

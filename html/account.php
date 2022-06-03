@@ -1,3 +1,6 @@
+<!-- Admin - admin@gmail.com , password
+User - user@gmail.com , password -->
+
 <!-- The PHP at the top of each page is used to add, remove or empty cart, as well as submit
 messages from the user to the database. The first URL paramter that dictates which part
 of th switch is activated is 'action'. Once the switch case is run, and the relevant data

@@ -429,6 +429,17 @@ textarea {
     resize: vertical;
 }
 
+input[type=password] {
+    width: 100%;
+    padding: 1vw;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 3vw;
+    resize: vertical;
+}
+
 .cartHeader {
     color: rgb(230, 230, 230);
     padding-bottom: 1vw;
@@ -438,4 +449,9 @@ textarea {
     text-align: center;
     font-size: 1vw;
     padding: 3vw;
+}
+
+.invalid-feedback {
+    height:fit-content;
+    text-align: center;
 }
