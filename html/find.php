@@ -102,10 +102,24 @@ require_once ("../php/cart.php");
                             </tr>
                         </tbody>
                     </table>
-                    <div style="padding-top:5vw;">
-                        <button class="checkoutbtn"><a href="checkout.php">Checkout</a></button>
-                    </div>
-                    <a id="btnEmpty" href="index.php?action=empty" style="font-size:1vw;"><u>Empty Cart</u></a>
+                    <?php
+
+                        if (isset($_SESSION["loggedin"]) and isset($_SESSION["id"]) and isset($_SESSION["username"]) and ($_SESSION["type"] == "user")) {
+                            echo '
+                                <div style="padding-top:5vw;">
+                                    <button class="checkoutbtn"><a href="checkout.php">Checkout</a></button>
+                                </div>
+                                <a id="btnEmpty" href="index.php?action=empty" style="font-size:1vw;"><u>Empty Cart</u></a>
+                            ';
+                        }
+                        else {
+                            echo '
+                                <div style="padding-top:5vw;">
+                                    <button class="checkoutbtn"><a href="account.php" style="font-size:60%">Sign In/Register to Checkout</a></button>
+                                </div>
+                                <a id="btnEmpty" href="index.php?action=empty" style="font-size:1vw;"><u>Empty Cart</u></a>
+                            ';
+                        } ?>
                 <?php
                 } else {
                 ?>
