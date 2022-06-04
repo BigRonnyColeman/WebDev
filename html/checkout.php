@@ -126,13 +126,6 @@ if (!isset($_SESSION["loggedin"])) {
                     <input type="text" id="shipping" name="suburb" placeholder="Suburb.." style="font-size:1vw;">
                     <input type="text" id="shipping" name="postcode" placeholder="Postcode.." style="font-size:1vw;">
                 </div>
-                <label for="card">Payment Information</label>
-                <input type="text" id="cardname" name="cardname" placeholder="Name on Card.." style="font-size:1vw;">
-                <input type="text" id="cardnumber" name="cardnumber" placeholder="Card Number.." style="font-size:1vw;" maxlength="16">
-                <div style="display:flex;">
-                    <input type="month" id="expdate" name="expdate" placeholder="Expiry Date.." style="font-size:1vw;">
-                    <input type="text" id="shipping" name="suburb" placeholder="CVV.." style="font-size:1vw;" maxlength="3">
-                </div>
                 <input type="submit" id="myBtn" value="Submit" style="font-size:1vw;">
                 <a href="artists.php" style="color:black; font-size:1vw; text-decoration: underline; padding-left:1vw;">Return to Artists...</a>
             </form>
@@ -226,16 +219,16 @@ if (!isset($_SESSION["loggedin"])) {
                     . $_POST["number"] . "<br>"
                     . $_POST["address"] . " " . $_POST["suburb"] . " " . $_POST["State"] . " " . $_POST["postcode"] . "<br>";
                 ?>
-                    <!-- <form action="checkoutcomplete.php?action=checkout" method="POST">
-                        <input type="hidden" id="name" name="name" value=?php echo $_POST["fname"] . $_POST["lname"]; ?>>
-                        <input type="hidden" id="mode" name="mode" value=?php echo $_POST["mode"]; ?>>
-                        <input type="hidden" id="email" name="email" value=?php echo $_POST["email"]; ?>>
-                        <input type="hidden" id="number" name="number" value=?php echo $_POST["number"]; ?>>
-                        <input type="hidden" id="address" name="address" value=?php echo $_POST["address"] . " " . $_POST["suburb"] . " " . $_POST["State"] . " " . $_POST["postcode"]; ?>>
-                        <input type="submit" value="Checkout" style="font-size:1vw;"> -->
+                    <form action="checkoutcomplete.php?action=checkout" id="theform" method="POST">
+                        <input type="hidden" id="name" name="name" value=<?php echo $_POST["fname"] . $_POST["lname"]; ?>>
+                        <input type="hidden" id="mode" name="mode" value=<?php echo $_POST["mode"]; ?>>
+                        <input type="hidden" id="email" name="email" value=<?php echo $_POST["email"]; ?>>
+                        <input type="hidden" id="number" name="number" value=<?php echo $_POST["number"]; ?>>
+                        <input type="hidden" id="address" name="address" value=<?php echo $_POST["address"] . " " . $_POST["suburb"] . " " . $_POST["State"] . " " . $_POST["postcode"]; ?>>
+                </form>
                         <div style ="padding-top:2vw;"id="paypal-button-container"></div>
                         <!-- Sample PayPal credentials (client-id) are included -->
-                        <script src="https://www.paypal.com/sdk/js?client-id=Af92aFVBHtclFBG9bqoLN_5ZtUGP1dBHzJW1fvl9a5gAoMJXX8lBLO3KwLHmbBtYU3-P30T0ZiPQmZ90&currency=USD&intent=capture"></script>
+                        <script src="https://www.paypal.com/sdk/js?client-id=Af92aFVBHtclFBG9bqoLN_5ZtUGP1dBHzJW1fvl9a5gAoMJXX8lBLO3KwLHmbBtYU3-P30T0ZiPQmZ90&currency=AUD&intent=capture"></script>
 
                         <script>
                             const fundingSources = [
@@ -261,9 +254,13 @@ if (!isset($_SESSION["loggedin"])) {
                                         const createOrderPayload = {
                                             purchase_units: [{
                                                 amount: {
-                                                    value: '88',
+                                                    value: <?php echo $total_price ?>,
+                                                    
                                                 },
                                             }, ],
+                                            application_context: {
+                                                shipping_preference: 'NO_SHIPPING',
+                                            }
                                         }
 
                                         return actions.order.create(createOrderPayload)
@@ -271,7 +268,7 @@ if (!isset($_SESSION["loggedin"])) {
 
                                     // finalize the transaction
                                     onApprove: function(data, actions) {
-                                        actions.redirect('http://localhost:8888/html/checkoutcomplete.php?action=checkout'); // You can add optional success message for the subscriber here
+                                        document.getElementById("theform").submit();
                                     },
 
                                     // handle unrecoverable errors
