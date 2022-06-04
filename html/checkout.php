@@ -1,7 +1,7 @@
 <?php
-require_once ("../php/cart.php");
+require_once("../php/cart.php");
 // Check if user already logged in
-if(!isset($_SESSION["loggedin"])){
+if (!isset($_SESSION["loggedin"])) {
     header("location: index.php");
     exit;
 }
@@ -72,7 +72,7 @@ if(!isset($_SESSION["loggedin"])){
         /* Control the right side */
         .right {
             right: 0;
-            background-color:#e2dad5;
+            background-color: #e2dad5;
         }
 
         /* If you want the content centered horizontally and vertically */
@@ -97,7 +97,7 @@ if(!isset($_SESSION["loggedin"])){
 <body>
     <!-- Left Side of Page -->
     <div class="split left">
-        <header style="padding-top:6vw"><a class="logo" href = "index.php" style="height:3vw; margin-left:auto; margin-right:auto; display: block;"><img src="../images/logoBlack.jpeg" alt="logo"></a></header>
+        <header style="padding-top:6vw"><a class="logo" href="index.php" style="height:3vw; margin-left:auto; margin-right:auto; display: block;"><img src="../images/logoBlack.jpeg" alt="logo"></a></header>
         <div class="section">
             <form action="./checkout.php" style="text-align: left;" method="post">
                 <label for="contact">Contact Information</label>
@@ -165,7 +165,9 @@ if(!isset($_SESSION["loggedin"])){
                                     <td><?php echo $item["name"]; ?></td>
                                     <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
                                     <td style="text-align:right; "><?php echo "$ " . number_format($item_price, 2); ?></td>
-                                    <td style="text-align:center;"><a href="checkout.php?action=remove&code=<?php echo $item["artpieceID"]; ?>"class="btnRemoveAction"><p style = "border-color:black;">-</p></a></td>
+                                    <td style="text-align:center;"><a href="checkout.php?action=remove&code=<?php echo $item["artpieceID"]; ?>" class="btnRemoveAction">
+                                            <p style="border-color:black;">-</p>
+                                        </a></td>
                                 </tr>
                                 <tr>
                                     <td></td>
@@ -216,16 +218,83 @@ if(!isset($_SESSION["loggedin"])){
                 <br>
                 <?php
                 if (isset($_POST["fname"])) {
+
+                    echo 
+                    " <h2>Address</h2>" . 
+                    "<p>" . $_POST["fname"] . " " . $_POST["lname"] . "<br>"
+                    . $_POST["email"] . "<br>"
+                    . $_POST["number"] . "<br>"
+                    . $_POST["address"] . " " . $_POST["suburb"] . " " . $_POST["State"] . " " . $_POST["postcode"] . "<br>";
                 ?>
-                        <form action="checkoutcomplete.php?action=checkout" method="POST">
-                            <input type="hidden" id="name" name="name" value=<?php echo $_POST["fname"] . $_POST["lname"];?>>
-                            <input type="hidden" id="mode" name="mode" value=<?php echo $_POST["mode"]; ?>>
-                            <input type="hidden" id="email" name="email" value=<?php echo $_POST["email"] ;?>>
-                            <input type="hidden" id="number" name="number" value=<?php echo $_POST["number"];?>>
-                            <input type="hidden" id="address" name="address" value=<?php echo $_POST["address"] . " " . $_POST["suburb"] . " " . $_POST["State"] . " " . $_POST["postcode"]; ?>>
-                            <input type="submit" value="Checkout" style="font-size:1vw;">
-                        </form>
-                        
+                    <!-- <form action="checkoutcomplete.php?action=checkout" method="POST">
+                        <input type="hidden" id="name" name="name" value=?php echo $_POST["fname"] . $_POST["lname"]; ?>>
+                        <input type="hidden" id="mode" name="mode" value=?php echo $_POST["mode"]; ?>>
+                        <input type="hidden" id="email" name="email" value=?php echo $_POST["email"]; ?>>
+                        <input type="hidden" id="number" name="number" value=?php echo $_POST["number"]; ?>>
+                        <input type="hidden" id="address" name="address" value=?php echo $_POST["address"] . " " . $_POST["suburb"] . " " . $_POST["State"] . " " . $_POST["postcode"]; ?>>
+                        <input type="submit" value="Checkout" style="font-size:1vw;"> -->
+                        <div style ="padding-top:2vw;"id="paypal-button-container"></div>
+                        <!-- Sample PayPal credentials (client-id) are included -->
+                        <script src="https://www.paypal.com/sdk/js?client-id=Af92aFVBHtclFBG9bqoLN_5ZtUGP1dBHzJW1fvl9a5gAoMJXX8lBLO3KwLHmbBtYU3-P30T0ZiPQmZ90&currency=USD&intent=capture"></script>
+
+                        <script>
+                            const fundingSources = [
+                                paypal.FUNDING.PAYPAL,
+                                paypal.FUNDING.CARD
+                            ]
+
+                            for (const fundingSource of fundingSources) {
+                                const paypalButtonsComponent = paypal.Buttons({
+                                    fundingSource: fundingSource,
+
+                                    // optional styling for buttons
+                                    // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
+                                    style: {
+                                        shape: 'rect',
+                                        height: 40,
+                                    },
+
+                                    // set up the transaction
+                                    createOrder: (data, actions) => {
+                                        // pass in any options from the v2 orders create call:
+                                        // https://developer.paypal.com/api/orders/v2/#orders-create-request-body
+                                        const createOrderPayload = {
+                                            purchase_units: [{
+                                                amount: {
+                                                    value: '88',
+                                                },
+                                            }, ],
+                                        }
+
+                                        return actions.order.create(createOrderPayload)
+                                    },
+
+                                    // finalize the transaction
+                                    onApprove: function(data, actions) {
+                                        actions.redirect('http://localhost:8888/html/checkoutcomplete.php?action=checkout'); // You can add optional success message for the subscriber here
+                                    },
+
+                                    // handle unrecoverable errors
+                                    onError: (err) => {
+                                        console.error(
+                                            'An error prevented the buyer from checking out with PayPal',
+                                        )
+                                    },
+                                })
+
+                                if (paypalButtonsComponent.isEligible()) {
+                                    paypalButtonsComponent
+                                        .render('#paypal-button-container')
+                                        .catch((err) => {
+                                            console.error('PayPal Buttons failed to render')
+                                        })
+                                } else {
+                                    console.log('The funding source is ineligible')
+                                }
+                            }
+                        </script>
+                    </form>
+
                     </form>
                 <?php
                 } else {
