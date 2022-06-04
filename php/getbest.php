@@ -19,27 +19,30 @@
     exit();
   }
 
-  $sql = "SELECT artistID, artpieceNumber FROM artpiece WHERE artpieceID IN (3,5, 21,32,41,17, 13, 8)";
+  $sql = "SELECT artpieceID, COUNT(artpieceID) FROM orderItem GROUP BY artpieceID ORDER BY COUNT(artpieceID) DESC LIMIT 8";
   $result = $mysqli->query($sql);
   $array = array();
   if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-      $temp = $row["artistID"];
-      $temp2 = $row["artpieceNumber"];
-      $sql2 = "SELECT name FROM artist WHERE artistID = '$temp'";
+      $temp = $row["artpieceID"];
+      $sql2 = "SELECT artistID,artpieceNumber FROM artpiece WHERE artpieceID = '$temp'";
       $result2 = $mysqli->query($sql2);
       if ($result2->num_rows > 0) {
         // output data of each row
         while($row2 = $result2->fetch_assoc()) {
-          $temp3 = $row2["name"];
+          $tempnum = $row2["artpieceNumber"];
+          $tempart = $row2["artistID"];
         }
-      $array2 = array("x" => "$temp","y" => "$temp2","z" => "$temp3");
-      array_push($array,$array2);
+        $array2 = array("x" => "$tempart","y" => "$tempnum");
+        array_push($array,$array2);
+      } 
     }
   }
-}
 
+  for ($i = count($array); $i < 8;$i+=1) {
+    array_push($array,array("x" => "3","y" => "1"));
+  }
   
   $mysqli->close();
 ?>

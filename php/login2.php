@@ -1,12 +1,5 @@
 <?php
 
-session_start();
-
-// Check if user already logged in
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: index.php");
-    exit;
-}
 
 /* Database credentials. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
@@ -14,6 +7,12 @@ define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', 'root');
 define('DB_NAME', 'artdealer');
+
+// Check if user already logged in
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: index.php");
+    exit;
+}
  
 /* Attempt to connect to MySQL database */
 try{
@@ -74,7 +73,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         if(password_verify($password, $hashed_password)){
                             // Password is correct, so start a new session
                             
-                            
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
@@ -83,6 +81,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             
                             // Redirect user to welcome page
                             header("location: account.php");
+                            exit;
                         } else {
                             // Password is not valid, display a generic error message
                             $login_err = "Invalid email or password.";
