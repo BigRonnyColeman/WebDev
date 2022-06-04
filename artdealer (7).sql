@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 03, 2022 at 07:33 AM
+-- Generation Time: Jun 04, 2022 at 04:57 AM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -73,7 +73,7 @@ CREATE TABLE `artpiece` (
 --
 
 INSERT INTO `artpiece` (`artpieceID`, `name`, `description`, `price`, `artistID`, `artpieceNumber`, `stock`) VALUES
-(1, 'Pink Hydrangeas Big Jug', 'A beautifully contrasted piece highlighting the vibrant colours with sharp tones.', '1400.00', 1, 1, 4),
+(1, 'Pink Hydrangeas Big Jug', 'A beautifully contrasted piece highlighting the vibrant colours with sharp tones.', '1400.00', 1, 1, 3),
 (2, 'White Orchird Yellow Bowl', 'Stunning design showing the true beauty and feelings displayed by a white orchid.', '990.00', 1, 2, 3),
 (3, 'Blue Night Hydrangea', 'Smooth outlines highlight the picturesque flowers amongst a cool background.', '990.00', 1, 3, 2),
 (4, 'Green Farm', 'A cute piece which brings light and colour into a different perspective of a farm house.', '1400.00', 1, 4, 4),
@@ -81,7 +81,7 @@ INSERT INTO `artpiece` (`artpieceID`, `name`, `description`, `price`, `artistID`
 (6, 'Autumn Falling', 'Sharp outlines draw the viewer into a different experience of autumn.', '680.00', 2, 2, 2),
 (7, 'Grove of Trees', 'The vibrant colours highlight the beautiful scenery of local nature.', '890.00', 2, 3, 3),
 (8, 'Poplars and Cows', 'Textures and shades harmonize together to highlight a delightful day in the meadow.', '830.00', 2, 4, 3),
-(9, '\"I Wanna Hear You Roar\"', 'An extremely vibrant piece to show the true beauty and simplicity behind art.', '4400.00', 3, 1, 4),
+(9, '\"I Wanna Hear You Roar\"', 'An extremely vibrant piece to show the true beauty and simplicity behind art.', '4400.00', 3, 1, 2),
 (10, 'Pink Galahs', 'The subtle tones addresses the nature and beauty behind the birds on display.', '760.00', 3, 2, 2),
 (11, 'There’s a visitor at the window!', 'Outlines and simplicity highlight the adventure in this piece.', '540.00', 3, 3, 3),
 (12, 'Canberra Controversial Sky', 'Cool undertones help depict the sincerity of this piece and its view.', '2950.00', 3, 4, 4),
@@ -142,7 +142,11 @@ CREATE TABLE `contact` (
 
 INSERT INTO `contact` (`contactID`, `first`, `last`, `email`, `message`) VALUES
 ('2022-05-08 18:43:49', 'J', 'M', 'jacq', 'mdbhd'),
-('2022-05-29 19:05:45', '', '', '', '');
+('2022-05-29 19:05:45', '', '', '', ''),
+('2022-06-03 17:10:06', '', 'yukyuk', 'j@gmail.com', '5rjurtyj'),
+('2022-06-03 17:17:25', 'Jacqui', 'Meacle', 'jacqui@gmail.com', 'dsfrgdfsb'),
+('2022-06-03 17:18:32', 'J', 'M', 'j@gmail.com', 'drsgjbdfb\r\n'),
+('2022-06-03 17:20:17', 'yo8;', 'ti7l', 'j@fr.com', 'eththr');
 
 -- --------------------------------------------------------
 
@@ -156,16 +160,22 @@ CREATE TABLE `customerorder` (
   `mode` varchar(128) DEFAULT NULL,
   `address` varchar(256) DEFAULT NULL,
   `number` varchar(12) DEFAULT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `userID` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `customerorder`
 --
 
-INSERT INTO `customerorder` (`orderID`, `name`, `mode`, `address`, `number`, `date`) VALUES
-(8, ' Jacqui Meacle', 'delivery', '1 Northcott Dr 123 ACT 2612', '0456962608', '2022-05-09 03:27:09'),
-(9, ' Jacqui Meacle', 'delivery', '1 Northcott Dr 123 ACT 2612', '0456962608', '2022-05-11 16:21:16');
+INSERT INTO `customerorder` (`orderID`, `name`, `mode`, `address`, `number`, `date`, `userID`) VALUES
+(8, ' Jacqui Meacle', 'delivery', '1 Northcott Dr 123 ACT 2612', '0456962608', '2022-05-09 03:27:09', ''),
+(9, ' Jacqui Meacle', 'delivery', '1 Northcott Dr 123 ACT 2612', '0456962608', '2022-05-11 16:21:16', ''),
+(10, ' 1 Northcott Dr Meacle', 'delivery', '1 Northcott Dr  ACT 2612', '456962608', '2022-06-03 16:00:03', ''),
+(11, NULL, NULL, NULL, NULL, '2022-06-03 16:11:08', 'jacquim5678@gmail.com'),
+(12, NULL, 'delivery', '1', '456962608', '2022-06-03 16:41:47', 'jacquim5678@gmail.com'),
+(13, '1', 'delivery', '1', '456962608', '2022-06-03 16:42:30', 'jacquim5678@gmail.com'),
+(14, '1', 'delivery', '1', '456962608', '2022-06-03 16:42:55', 'jacquim5678@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -194,7 +204,9 @@ INSERT INTO `orderItem` (`orderID`, `artpieceID`, `quantity`, `orderItemID`) VAL
 (7, 3, 2, '2022-05-09 09:05:10'),
 (8, 1, 2, '2022-05-09 13:27:09'),
 (9, 18, 1, '2022-05-12 02:21:16'),
-(9, 32, 1, '2022-05-12 02:21:16');
+(9, 32, 1, '2022-05-12 02:21:16'),
+(10, 9, 1, '2022'),
+(14, 9, 1, '2022');
 
 -- --------------------------------------------------------
 
@@ -215,10 +227,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `type`, `created_at`) VALUES
-(1, '', '$2y$10$KTGSI2PtpBABt5qaw3Er2OvOCSPxcPjXAe4wvAYcVDJFvJJebSi1m', 'user', '2022-06-03 15:50:15'),
-(3, 'jacquim@gmail.com', '$2y$10$VDVlPnwUvk7TT8AKK34k5.UFExINASKyfyFIwhxDvcqzl9JR9ZUu6', 'user', '2022-06-03 15:52:14'),
-(5, 'jacquim5678@gmail.com', '$2y$10$qarw.XQYPbUGnkrs9.OU3u5G1wSYBSZlzpgCDbcBqvZqLkYgPA5fm', 'user', '2022-06-03 16:52:02'),
-(6, 'admin@gmail.com', '$2y$10$VDVlPnwUvk7TT8AKK34k5.UFExINASKyfyFIwhxDvcqzl9JR9ZUu6', 'admin', '2022-06-03 15:52:14');
+(6, 'admin@gmail.com', '$2y$10$VDVlPnwUvk7TT8AKK34k5.UFExINASKyfyFIwhxDvcqzl9JR9ZUu6', 'admin', '2022-06-03 15:52:14'),
+(13, 'jacquim5678@gmail.com', '$2y$10$ZvgOyr8h6R3x/3B5ltpHwOGtMUq5kVsRs/Jm2NbNxqdrk5eGtBTf2', 'user', '2022-06-04 10:14:53');
 
 --
 -- Indexes for dumped tables
@@ -270,13 +280,13 @@ ALTER TABLE `artpiece`
 -- AUTO_INCREMENT for table `customerorder`
 --
 ALTER TABLE `customerorder`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
