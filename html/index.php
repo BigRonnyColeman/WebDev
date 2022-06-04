@@ -253,9 +253,8 @@ require_once ("../php/cart.php");
             </div>
         </div>
     </div>
-    <div class="indexboxlink" style="padding:1vw;">
+    <div class="indexboxlink" style="padding:1vw;width:50%;margin:0 auto;">
         <a class="indexbtnStyle" href="../html/best.php">View Best Sellers</a>
-        <a class="indexbtnStyle" href="../html/find.php">Find Your Order</a>
     </div>
     <br><br>
     <div class="paragraph" style="padding-bottom:3vw">
