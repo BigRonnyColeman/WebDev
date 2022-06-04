@@ -15,14 +15,16 @@ if ($conn->connect_error) {
 
 
 
-$stmt = $conn->prepare("INSERT INTO customerorder (name, mode, address, number, date) VALUES (?, ?, ?, ?, ?)");
-$stmt->bind_param("sssis", $name, $mode, $address, $number, $timestamp);
+$stmt = $conn->prepare("INSERT INTO customerorder (name, mode, address, number, date, userID) VALUES (?, ?, ?, ?, ?,?)");
+$stmt->bind_param("sssiss", $name, $mode, $address, $number, $timestamp, $username);
 
-$name = $_GET['name'];
-$mode = $_GET['mode'];
-$address = $_GET['address'];
-$number = $_GET['number'];
+echo $name . $mode;
+$name = $_POST['name'];
+$mode = $_POST['mode'];
+$address = $_POST['address'];
+$number = $_POST['number'];
 $timestamp = date("Y-m-d H:i:s");
+$username = $_SESSION["username"];
 $stmt -> execute();
 
 $stmt->close();

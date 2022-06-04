@@ -99,7 +99,7 @@ if(!isset($_SESSION["loggedin"])){
     <div class="split left">
         <header style="padding-top:6vw"><a class="logo" href = "index.php" style="height:3vw; margin-left:auto; margin-right:auto; display: block;"><img src="../images/logoBlack.jpeg" alt="logo"></a></header>
         <div class="section">
-            <form style="text-align: left;">
+            <form action="./checkout.php" style="text-align: left;" method="post">
                 <label for="contact">Contact Information</label>
                 <div style="display:flex;">
                     <input type="text" id="shipping" name="fname" placeholder="First Name.." style="font-size:1vw;">
@@ -213,27 +213,23 @@ if(!isset($_SESSION["loggedin"])){
                 <?php
                 }
                 ?>
-                <?php
-                /* Only appears if user has inputed the required data */
-                if (isset($_GET["fname"])) {
-                    echo
-                    " <h2>Address</h2>" .
-                        "<p>" . $_GET["fname"] . " " . $_GET["lname"] . "<br>"
-                        . $_GET["email"] . "<br>"
-                        . $_GET["number"] . "<br>"
-                        . $_GET["address"] . " " . $_GET["suburb"] . " " . $_GET["State"] . " " . $_GET["postcode"] . "<br>";
-                } else {
-                    echo "<p> <b>Please Complete Customer Form</b> </p>";
-                }
-                ?>
                 <br>
                 <?php
-                if (isset($_GET["fname"])) {
+                if (isset($_POST["fname"])) {
                 ?>
-                    <form action="checkoutcomplete.php?action=checkout&name= <?php echo $_GET["fname"] . " " . $_GET["lname"] . "&mode=" . $_GET["mode"] . "&email=" . $_GET["email"] . "&number=" . $_GET["number"] . "&address=" . $_GET["address"] . " " . $_GET["suburb"] . " " . $_GET["State"] . " " . $_GET["postcode"] ?>" method="post" style="text-align:center;">
-                        <input type="submit" value="Checkout" style="font-size:1vw;" />
+                        <form action="checkoutcomplete.php?action=checkout" method="POST">
+                            <input type="hidden" id="name" name="name" value=<?php echo $_POST["fname"] . $_POST["lname"];?>>
+                            <input type="hidden" id="mode" name="mode" value=<?php echo $_POST["mode"]; ?>>
+                            <input type="hidden" id="email" name="email" value=<?php echo $_POST["email"] ;?>>
+                            <input type="hidden" id="number" name="number" value=<?php echo $_POST["number"];?>>
+                            <input type="hidden" id="address" name="address" value=<?php echo $_POST["address"] . " " . $_POST["suburb"] . " " . $_POST["State"] . " " . $_POST["postcode"]; ?>>
+                            <input type="submit" value="Checkout" style="font-size:1vw;">
+                        </form>
+                        
                     </form>
                 <?php
+                } else {
+                    echo "<p> <b>Please Complete Customer Form</b> </p>";
                 }
                 ?>
             </div>
