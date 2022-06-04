@@ -177,10 +177,10 @@ require_once ("../php/cart.php");
         </div>
         <!-- Change to only show if admin credentials -->
         <div class="indexboxlink" style="padding-bottom:1vw;">
-            <a class="indexbtnStyle" href="../html/adminshoworders.php">Show Current Order</a>
+            <a class="indexbtnStyle" href="../html/adminshoworders.php">Show Orders</a>
         </div>
         <br><div style="text-align:center;">
-            <a class="indexbtnStyle" href="./logout.php"">Sign Out</a></div>
+            <a class="indexbtnStyle" href="./logout.php"">Sign Out</a></div><br><br>
         </div>
         </div>
         ';

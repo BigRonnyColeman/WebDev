@@ -12,6 +12,7 @@
                 border: solid 2px;
                 width: 75%;
                 text-align: left;
+                margin: 0 auto;
             }
 
             .first {
