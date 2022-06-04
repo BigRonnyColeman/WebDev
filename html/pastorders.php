@@ -28,6 +28,39 @@ require_once ("../php/cart.php");
         input[type=submit]:hover {
             opacity: 0.8;
         }
+
+        table {
+                border: solid 2px;
+                width: 75%;
+                text-align: left;
+                margin: 0 auto;
+            }
+
+            .first {
+                border: solid 2px;
+                border-color: black;
+                width: 75%;
+                text-align: left;
+            }
+
+            .second {
+                border: dashed 2px;
+                border-color: grey;
+                width: 75%;
+                text-align: left;
+            }
+
+            tr, td .first{
+                padding: 10px;
+                border: dashed 2px;
+                border-color: black;
+            }
+
+            tr, td .second{
+                padding: 10px;
+                border: dashed 2px;
+                border-color: grey;
+            }
     </style>
 </head>
 
@@ -135,24 +168,15 @@ require_once ("../php/cart.php");
         </header>
     </div>
     <h2 style="padding-top:4vw;">PAST ORDERS</h2>
-    <div class="centerpage">
         <div class="section">
-            <?php include('../php/showdatainsert.php'); ?>
+            <?php include('../php/showuserpastorder.php'); ?>
 
             <br>
             <div class="indexboxlink" style="padding:1vw;">
                 <a class="indexbtnStyle" href="../html/account.php">Back to My Account</a>
             </div>
             <br>
-            <!-- Sends _POST varaiables to php on index, action=contact -->
-            <form action="index.php?action=contact" method="post">
-                <label for="delete">Delete Account</label>
-                <input type="text" id="pass" name="pass" placeholder="Confirm Password to Proceed">
-
-                <input type="submit" id="myBtn" value="Delete Account">
-            </form>
         </div>
-    </div>
     <hr>
     </hr>
     <!-- Footer -->

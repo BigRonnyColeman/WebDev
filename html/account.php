@@ -186,9 +186,11 @@ require_once ("../php/cart.php");
         ';
     } else if (isset($_SESSION["loggedin"]) and isset($_SESSION["id"]) and isset($_SESSION["username"]) and ($_SESSION["type"] == "user")) {
         echo '
+        <br><br>
+        <h2>ACCOUNT INFO</h2>
         <div class="centerpage">
         <div class="section2">
-            <h2 style="padding:2vw;">ACCOUNT INFO</h2>
+            <br><br>
             <div class="indexboxlink" style="padding-bottom:1vw;">
                 <a class="indexbtnStyle" href="../html/pastorders.php">View Past Orders</a>
             </div>
