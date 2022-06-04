@@ -1,11 +1,12 @@
 <?php
+require_once ("../php/cart.php");
 // Check if user already logged in
 if(!isset($_SESSION["loggedin"])){
     header("location: index.php");
     exit;
 }
 
-require_once ("../php/cart.php");
+
 
 
 
