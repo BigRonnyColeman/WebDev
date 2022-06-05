@@ -1,5 +1,7 @@
 <?php
 require_once ("../php/cart.php");
+require_once("../php/reset.php");  
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -138,9 +140,7 @@ require_once ("../php/cart.php");
     <div class="centerpage">
         
         <div class="section2">
-            <?php 
-            require_once("../php/reset.php");  
-            ?>
+            
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
             <div class="form-group">
                 <label>New Password</label>

@@ -32,12 +32,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Validate Username
     if (empty($_POST["username"])) {
-        $emailErr = "Email is required";
+        $username_err = "Email is required";
     } else {
-        $email = test_input($_POST["username"]);
         if(empty(trim($_POST["username"]))){
             $username_err = "Please enter a username.";
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        } elseif (!filter_var(test_input($_POST["username"]), FILTER_VALIDATE_EMAIL)) {
             $username_err = "Invalid email format";
         } else{
             $sql = "SELECT id FROM users WHERE username = :username";
@@ -64,8 +63,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate password
     if(empty(trim($_POST["password"]))){
         $password_err = "Please enter a password.";     
-    } elseif(strlen(trim($_POST["password"])) < 6){
-        $password_err = "Password must have atleast 6 characters.";
+    } elseif(!preg_match('@[A-Z]@', $_POST["password"]) or !preg_match('@[a-z]@', $_POST["password"]) or !preg_match('@[0-9]@', $_POST["password"]) or !preg_match('@[^\w]@', $_POST["password"]) or !strlen(trim($_POST["password"])) > 7){
+        $password_err = "Password must be at least 8 characters in length and must include at least one upper case letter, one lower case letter, one number, and one special character.";
     } else{
         $password = trim($_POST["password"]);
     }
