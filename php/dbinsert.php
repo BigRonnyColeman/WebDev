@@ -13,8 +13,6 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-
-
 $stmt = $conn->prepare("INSERT INTO customerorder (name, mode, address, number, date, userID) VALUES (?, ?, ?, ?, ?,?)");
 $stmt->bind_param("sssiss", $name, $mode, $address, $number, $timestamp, $username);
 

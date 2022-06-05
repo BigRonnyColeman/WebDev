@@ -120,7 +120,7 @@ require_once("../php/contactdbadd.php");
                         else {
                             echo '
                                 <div style="padding-top:5vw;">
-                                    <button class="checkoutbtn"><a href="account.php" style="font-size:60%">Sign In/Register to Checkout</a></button>
+                                    <button class="checkoutbtn"><a href="account.php" style="font-size:60%">Sign In/Register<br>to Checkout</a></button>
                                 </div>
                                 <a id="btnEmpty" href="index.php?action=empty" style="font-size:1vw;"><u>Empty Cart</u></a>
                             ';

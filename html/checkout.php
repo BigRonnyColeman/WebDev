@@ -212,12 +212,12 @@ if (!isset($_SESSION["loggedin"])) {
                 <?php
                 if (isset($_POST["fname"])) {
 
-                    echo 
-                    " <h2>Address</h2>" . 
-                    "<p>" . $_POST["fname"] . " " . $_POST["lname"] . "<br>"
-                    . $_POST["email"] . "<br>"
-                    . $_POST["number"] . "<br>"
-                    . $_POST["address"] . " " . $_POST["suburb"] . " " . $_POST["State"] . " " . $_POST["postcode"] . "<br>";
+                    echo
+                    " <h2>Address</h2>" .
+                        "<p>" . $_POST["fname"] . " " . $_POST["lname"] . "<br>"
+                        . $_POST["email"] . "<br>"
+                        . $_POST["number"] . "<br>"
+                        . $_POST["address"] . " " . $_POST["suburb"] . " " . $_POST["State"] . " " . $_POST["postcode"] . "<br>";
                 ?>
                     <form action="checkoutcomplete.php?action=checkout" id="theform" method="POST">
                         <input type="hidden" id="name" name="name" value=<?php echo $_POST["fname"] . $_POST["lname"]; ?>>
@@ -225,73 +225,72 @@ if (!isset($_SESSION["loggedin"])) {
                         <input type="hidden" id="email" name="email" value=<?php echo $_POST["email"]; ?>>
                         <input type="hidden" id="number" name="number" value=<?php echo $_POST["number"]; ?>>
                         <input type="hidden" id="address" name="address" value=<?php echo $_POST["address"] . " " . $_POST["suburb"] . " " . $_POST["State"] . " " . $_POST["postcode"]; ?>>
-                </form>
-                        <div style ="padding-top:2vw;"id="paypal-button-container"></div>
-                        <!-- Sample PayPal credentials (client-id) are included -->
-                        <script src="https://www.paypal.com/sdk/js?client-id=Af92aFVBHtclFBG9bqoLN_5ZtUGP1dBHzJW1fvl9a5gAoMJXX8lBLO3KwLHmbBtYU3-P30T0ZiPQmZ90&currency=AUD&intent=capture"></script>
-
-                        <script>
-                            const fundingSources = [
-                                paypal.FUNDING.PAYPAL,
-                                paypal.FUNDING.CARD
-                            ]
-
-                            for (const fundingSource of fundingSources) {
-                                const paypalButtonsComponent = paypal.Buttons({
-                                    fundingSource: fundingSource,
-
-                                    // optional styling for buttons
-                                    // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
-                                    style: {
-                                        shape: 'rect',
-                                        height: 40,
-                                    },
-
-                                    // set up the transaction
-                                    createOrder: (data, actions) => {
-                                        // pass in any options from the v2 orders create call:
-                                        // https://developer.paypal.com/api/orders/v2/#orders-create-request-body
-                                        const createOrderPayload = {
-                                            purchase_units: [{
-                                                amount: {
-                                                    value: <?php echo $total_price ?>,
-                                                    
-                                                },
-                                            }, ],
-                                            application_context: {
-                                                shipping_preference: 'NO_SHIPPING',
-                                            }
-                                        }
-
-                                        return actions.order.create(createOrderPayload)
-                                    },
-
-                                    // finalize the transaction
-                                    onApprove: function(data, actions) {
-                                        document.getElementById("theform").submit();
-                                    },
-
-                                    // handle unrecoverable errors
-                                    onError: (err) => {
-                                        console.error(
-                                            'An error prevented the buyer from checking out with PayPal',
-                                        )
-                                    },
-                                })
-
-                                if (paypalButtonsComponent.isEligible()) {
-                                    paypalButtonsComponent
-                                        .render('#paypal-button-container')
-                                        .catch((err) => {
-                                            console.error('PayPal Buttons failed to render')
-                                        })
-                                } else {
-                                    console.log('The funding source is ineligible')
-                                }
-                            }
-                        </script>
                     </form>
+                    <div style="padding-top:2vw;" id="paypal-button-container"></div>
+                    <!-- Sample PayPal credentials (client-id) are included -->
+                    <script src="https://www.paypal.com/sdk/js?client-id=Af92aFVBHtclFBG9bqoLN_5ZtUGP1dBHzJW1fvl9a5gAoMJXX8lBLO3KwLHmbBtYU3-P30T0ZiPQmZ90&currency=AUD&intent=capture"></script>
 
+                    <script>
+                        const fundingSources = [
+                            paypal.FUNDING.PAYPAL,
+                            paypal.FUNDING.CARD
+                        ]
+
+                        for (const fundingSource of fundingSources) {
+                            const paypalButtonsComponent = paypal.Buttons({
+                                fundingSource: fundingSource,
+
+                                // optional styling for buttons
+                                // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
+                                style: {
+                                    shape: 'rect',
+                                    height: 40,
+                                },
+
+                                // set up the transaction
+                                createOrder: (data, actions) => {
+                                    // pass in any options from the v2 orders create call:
+                                    // https://developer.paypal.com/api/orders/v2/#orders-create-request-body
+                                    const createOrderPayload = {
+                                        purchase_units: [{
+                                            amount: {
+                                                value: <?php echo $total_price ?>,
+
+                                            },
+                                        }, ],
+                                        application_context: {
+                                            shipping_preference: 'NO_SHIPPING',
+                                        }
+                                    }
+
+                                    return actions.order.create(createOrderPayload)
+                                },
+
+                                // finalize the transaction
+                                onApprove: function(data, actions) {
+                                    document.getElementById("theform").submit();
+                                },
+
+                                // handle unrecoverable errors
+                                onError: (err) => {
+                                    console.error(
+                                        'An error prevented the buyer from checking out with PayPal',
+                                    )
+                                },
+                            })
+
+                            if (paypalButtonsComponent.isEligible()) {
+                                paypalButtonsComponent
+                                    .render('#paypal-button-container')
+                                    .catch((err) => {
+                                        console.error('PayPal Buttons failed to render')
+                                    })
+                            } else {
+                                console.log('The funding source is ineligible')
+                            }
+                        }
+                    </script>
+                    </form>
                     </form>
                 <?php
                 } else {
@@ -300,12 +299,20 @@ if (!isset($_SESSION["loggedin"])) {
                 ?>
             </div>
             <!-- Footer -->
-            <footer style="text-align:center; opacity:50%; font-size:1vw;display:block;">© 2022 Art Dealer Pty Ltd. ABN 98 427 123 056</footer>
+            <footer style="text-align:center; opacity:50%; font-size:1vw;display:block;">
+            <p>© Art Dealer Pty Ltd. ABN 98 427 123 056</p>
+            <p id='date-time'></p>
+            <p>See our <a style="color: rgb(68, 68, 68); text-align: center; text-decoration:underline; font-size:1vw;" href="about.php">Terms and Conditions</a></p>
+            </footer>
         </div>
         <br>
     </div>
     <!-- Javascript -->
     <script src="../js/responsiveHeader.js"></script>
+    <script>
+        var dt = new Date();
+        document.getElementById('date-time').innerHTML = dt;
+    </script>
 </body>
 
 </html>

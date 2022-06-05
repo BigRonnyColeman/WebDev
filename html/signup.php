@@ -144,7 +144,7 @@ require_once ("../php/register.php");
                         else {
                             echo '
                                 <div style="padding-top:5vw;">
-                                    <button class="checkoutbtn"><a href="account.php" style="font-size:60%">Sign In/Register to Checkout</a></button>
+                                    <button class="checkoutbtn"><a href="account.php" style="font-size:60%">Sign In/Register<br>to Checkout</a></button>
                                 </div>
                                 <a id="btnEmpty" href="index.php?action=empty" style="font-size:1vw;"><u>Empty Cart</u></a>
                             ';
@@ -187,7 +187,7 @@ require_once ("../php/register.php");
                     <input type="reset" class="btn btn-secondary ml-2" value="Reset">
                 </div>
                 <br>
-                <p style="color:rgb(68, 68, 68)">Already have an account? <a href="login.php" style="color:rgb(68, 68, 68)">Login here</a>.</p>
+                <p style="color:rgb(68, 68, 68);">Already have an account? <a href="login.php" style="color:rgb(68, 68, 68); font-family:Arial, Helvetica, serif; font-size:1.5vw; text-decoration:underline;">Login here</a>.</p>
             </form>
         </div>
     </div>

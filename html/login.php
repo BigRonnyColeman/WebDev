@@ -118,7 +118,7 @@ require_once("../php/login2.php");
                         else {
                             echo '
                                 <div style="padding-top:5vw;">
-                                    <button class="checkoutbtn"><a href="account.php" style="font-size:60%">Sign In/Register to Checkout</a></button>
+                                    <button class="checkoutbtn"><a href="account.php" style="font-size:60%">Sign In/Register<br>to Checkout</a></button>
                                 </div>
                                 <a id="btnEmpty" href="index.php?action=empty" style="font-size:1vw;"><u>Empty Cart</u></a>
                             ';
@@ -160,7 +160,7 @@ require_once("../php/login2.php");
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Login">
                 </div>
-                <p>Don't have an account? <a href="signup.php">Sign up now</a>.</p>
+                <p>Don't have an account? <a style="color:rgb(68, 68, 68); font-family:Arial, Helvetica, serif; font-size:1.5vw; text-decoration:underline" href="signup.php">Sign up now</a>.</p>
             </form>
         </div>
     </div>
