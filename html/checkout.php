@@ -6,7 +6,71 @@ if (!isset($_SESSION["loggedin"])) {
     exit;
 }
 
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
 
+$status = 0;
+
+$number_err = $first_err = $last_err = $address_err = $state_err = $postcode_err = $suburb_err = "";
+$number = $first = $last = $address = $state = $postcode = $suburb = "";
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $number = test_input($_POST["number"]);
+    // Check if username is empty
+    if(empty(trim($_POST["number"]))){
+        $number_err = "Please enter a Phone Number.";
+    } elseif (!(preg_match('/^[0-9]{10}+$/', $number))) {
+        $number_err = "Invalid Number format";
+    } else{
+        $number = trim($_POST["number"]);
+    }
+
+    if(empty(trim($_POST["fname"]))){
+        $first_err = "Please enter your First Name.";
+    } else{
+        $first = trim($_POST["fname"]);
+    }
+
+    if(empty(trim($_POST["lname"]))){
+        $last_err = "Please enter your Last Name.";
+    } else{
+        $last = trim($_POST["lname"]);
+    }
+
+    if(empty(trim($_POST["address"]))){
+        $address_err = "Please enter your Adress";
+    } else{
+        $address = trim($_POST["address"]);
+    }
+
+    if(empty(trim($_POST["State"]))){
+        $state_err = "Please enter a State.";
+    } else{
+        $state = trim($_POST["State"]);
+    }
+
+    if(empty(trim($_POST["postcode"]))){
+        $postcode_err = "Please enter a postcode";
+    } elseif (!(preg_match('/^[0-9]{4}+$/', $_POST["postcode"]))) {
+        $postcode_err = "Invalid Postcode format";
+    } else{
+        $postcode = trim($_POST["postcode"]);
+    }
+
+    if(empty(trim($_POST["suburb"]))){
+        $suburb_err = "Please enter a Suburb";
+    } else{
+        $suburb = trim($_POST["suburb"]);
+    }
+
+    if ($number_err == "" and $first_err == "" and $last_err == "" and $address_err == "" and $state_err == "" and $postcode_err == "" and $suburb_err == "") {
+        $status = 1;
+    }
+}
 
 
 
@@ -95,16 +159,27 @@ if (!isset($_SESSION["loggedin"])) {
 </head>
 
 <body>
+
     <!-- Left Side of Page -->
     <div class="split left">
         <header style="padding-top:6vw"><a class="logo" href="index.php" style="height:3vw; margin-left:auto; margin-right:auto; display: block;"><img src="../images/logoBlack.jpeg" alt="logo"></a></header>
         <div class="section">
+        <div class="invalid-feedback"><?php echo $first_err; ?></div>
+        <div class="invalid-feedback"><?php echo $last_err; ?></div>
+        <div class="invalid-feedback"><?php echo $number_err; ?></div>
+        <div class="invalid-feedback"><?php echo $address_err; ?></div>
+        <div class="invalid-feedback"><?php echo $state_err; ?></div>
+        <div class="invalid-feedback"><?php echo $suburb_err; ?></div>
+        <div class="invalid-feedback"><?php echo $postcode_err; ?></div>
+        <br>
+
             <form action="./checkout.php" style="text-align: left;" method="post">
                 <label for="contact">Contact Information</label>
                 <div style="display:flex;">
                     <input type="text" id="shipping" name="fname" placeholder="First Name.." style="font-size:1vw;">
                     <input type="text" id="shipping" name="lname" placeholder="Last Name.." style="font-size:1vw;">
                 </div>
+                <input type="text" id="email" name="language" value=<?php echo $_SESSION["username"];?> readonly>
                 <input type="text" id="contact" name="number" placeholder="Mobile Phone Number.." style="font-size:1vw;">
                 <select id="shipping" name="mode" style="font-size:1vw;">
                     <option value="delivery">Delivery</option>
@@ -209,7 +284,7 @@ if (!isset($_SESSION["loggedin"])) {
                 ?>
                 <br>
                 <?php
-                if (isset($_POST["fname"])) {
+                if ($status == 1) {
 
                     echo
                     " <h2>Address</h2>" .
