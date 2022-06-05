@@ -105,7 +105,6 @@ if (!isset($_SESSION["loggedin"])) {
                     <input type="text" id="shipping" name="fname" placeholder="First Name.." style="font-size:1vw;">
                     <input type="text" id="shipping" name="lname" placeholder="Last Name.." style="font-size:1vw;">
                 </div>
-                <input type="text" id="contact" name="email" placeholder="Email.." style="font-size:1vw;">
                 <input type="text" id="contact" name="number" placeholder="Mobile Phone Number.." style="font-size:1vw;">
                 <select id="shipping" name="mode" style="font-size:1vw;">
                     <option value="delivery">Delivery</option>
@@ -215,14 +214,12 @@ if (!isset($_SESSION["loggedin"])) {
                     echo
                     " <h2>Address</h2>" .
                         "<p>" . $_POST["fname"] . " " . $_POST["lname"] . "<br>"
-                        . $_POST["email"] . "<br>"
                         . $_POST["number"] . "<br>"
                         . $_POST["address"] . " " . $_POST["suburb"] . " " . $_POST["State"] . " " . $_POST["postcode"] . "<br>";
                 ?>
                     <form action="checkoutcomplete.php?action=checkout" id="theform" method="POST">
                         <input type="hidden" id="name" name="name" value=<?php echo $_POST["fname"] . $_POST["lname"]; ?>>
                         <input type="hidden" id="mode" name="mode" value=<?php echo $_POST["mode"]; ?>>
-                        <input type="hidden" id="email" name="email" value=<?php echo $_POST["email"]; ?>>
                         <input type="hidden" id="number" name="number" value=<?php echo $_POST["number"]; ?>>
                         <input type="hidden" id="address" name="address" value=<?php echo $_POST["address"] . " " . $_POST["suburb"] . " " . $_POST["State"] . " " . $_POST["postcode"]; ?>>
                     </form>
