@@ -12,13 +12,16 @@ require_once ("../php/cart.php");
     <style>
         header {
             background-color: black;
+            position: fixed;
+            z-index: 100;
+            width:100%;
         }
     </style>
 </head>
 
 <body>
     <!-- Navigation Header -->
-    <div id="navbar">
+    <div id="navbar" style="padding-bottom:10vw;">
         <header>
             <a href="index.php"><img class="logo" href="index.php" src="../images/logoWhite.jpeg" alt="logo"></a>
             <nav>

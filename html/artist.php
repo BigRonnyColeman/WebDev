@@ -1,5 +1,5 @@
 <?php
-require_once ("../php/cart.php");
+require_once("../php/cart.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,6 +12,9 @@ require_once ("../php/cart.php");
     <style>
         header {
             background-color: black;
+            position: fixed;
+            z-index: 100;
+            width: 100%;
         }
     </style>
     <script>
@@ -24,7 +27,7 @@ require_once ("../php/cart.php");
 
 <body>
     <!-- Navigation Header -->
-    <div id="navbar">
+    <div id="navbar" style="padding-bottom:10vw;">
         <header>
             <a href="index.php"><img class="logo" href="index.php" src="../images/logoWhite.jpeg" alt="logo"></a>
             <nav>
@@ -97,22 +100,21 @@ require_once ("../php/cart.php");
                     </table>
                     <?php
 
-                        if (isset($_SESSION["loggedin"]) and isset($_SESSION["id"]) and isset($_SESSION["username"]) and ($_SESSION["type"] == "user")) {
-                            echo '
+                    if (isset($_SESSION["loggedin"]) and isset($_SESSION["id"]) and isset($_SESSION["username"]) and ($_SESSION["type"] == "user")) {
+                        echo '
                                 <div style="padding-top:5vw;">
                                     <button class="checkoutbtn"><a href="checkout.php">Checkout</a></button>
                                 </div>
                                 <a id="btnEmpty" href="index.php?action=empty" style="font-size:1vw;"><u>Empty Cart</u></a>
                             ';
-                        }
-                        else {
-                            echo '
+                    } else {
+                        echo '
                                 <div style="padding-top:5vw;">
                                     <button class="checkoutbtn"><a href="account.php" style="font-size:60%">Sign In/Register<br>to Checkout</a></button>
                                 </div>
                                 <a id="btnEmpty" href="index.php?action=empty" style="font-size:1vw;"><u>Empty Cart</u></a>
                             ';
-                        } ?>
+                    } ?>
                 <?php
                 } else {
                 ?>

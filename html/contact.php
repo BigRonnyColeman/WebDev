@@ -17,6 +17,9 @@ require_once("../php/contactdbadd.php");
 
         header {
             background-color: black;
+            position: fixed;
+            z-index: 100;
+            width: 100%;
         }
 
         input[type=submit] {
@@ -36,7 +39,7 @@ require_once("../php/contactdbadd.php");
 
 <body>
     <!-- Navigation Header -->
-    <div id="navbar">
+    <div id="navbar" style="padding-bottom:10vw">
         <header>
             <a href="index.php"><img class="logo" href="index.php" src="../images/logoWhite.jpeg" alt="logo"></a>
             <nav>
