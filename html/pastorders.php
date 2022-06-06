@@ -32,38 +32,34 @@ require_once ("../php/cart.php");
             opacity: 0.8;
         }
 
-        table {
-                border: solid 2px;
-                width: 75%;
-                text-align: left;
-                margin: 0 auto;
+        * {
+            box-sizing: border-box;
             }
 
-            .first {
-                border: solid 2px;
-                border-color: black;
-                width: 75%;
-                text-align: left;
+            table {
+            border-spacing: 0px;
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 90%;
+            margin: 0 auto;
+            margin-bottom: 15px;
+            background-color: transparent; /* Change the background-color of table here */
+            text-align: left; /* Change the text-alignment of table here */
             }
 
-            .second {
-                border: dashed 2px;
-                border-color: grey;
-                width: 75%;
-                text-align: left;
+            th {
+            font-weight: bold;
+            border: 1px solid #cccccc; /* Change the border-color of heading here */
+            padding: 8px;
             }
 
-            tr, td .first{
-                padding: 10px;
-                border: dashed 2px;
-                border-color: black;
+            td {
+            border: 1px solid #cccccc; /* Change the border-color of cells here */
+            padding: 8px;
             }
 
-            tr, td .second{
-                padding: 10px;
-                border: dashed 2px;
-                border-color: grey;
-            }
+            tr:hover {background-color: #D6EEEE;}
+
     </style>
 </head>
 

@@ -19,7 +19,7 @@ $stmt->bind_param("sssiss", $name, $mode, $address, $number, $timestamp, $userna
 echo $name . $mode;
 $name = $_POST['name'];
 $mode = $_POST['mode'];
-$address = $_POST['address'];
+$address = $_POST['address2'];
 $number = $_POST['number'];
 $timestamp = date("Y-m-d H:i:s");
 $username = $_SESSION["username"];

@@ -293,10 +293,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         . $_POST["address"] . " " . $_POST["suburb"] . " " . $_POST["State"] . " " . $_POST["postcode"] . "<br>";
                 ?>
                     <form action="checkoutcomplete.php?action=checkout" id="theform" method="POST">
-                        <input type="hidden" id="name" name="name" value=<?php echo $_POST["fname"] . $_POST["lname"]; ?>>
+                        <input type="hidden" id="name" name="name" value="<?php echo $_POST["fname"] . " " . $_POST["lname"]; ?>">
                         <input type="hidden" id="mode" name="mode" value=<?php echo $_POST["mode"]; ?>>
                         <input type="hidden" id="number" name="number" value=<?php echo $_POST["number"]; ?>>
-                        <input type="hidden" id="address" name="address" value=<?php echo $_POST["address"] . " " . $_POST["suburb"] . " " . $_POST["State"] . " " . $_POST["postcode"]; ?>>
+                        <input type="hidden" id="address2" name="address2" value="<?php echo $_POST["address"] . " " . $_POST["suburb"] . " " . $_POST["State"] . " " . $_POST["postcode"]; ?>">
                     </form>
                     <div style="padding-top:2vw;" id="paypal-button-container"></div>
                     <!-- Sample PayPal credentials (client-id) are included -->
