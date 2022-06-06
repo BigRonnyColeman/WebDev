@@ -7,9 +7,10 @@ has been maniupalted, the rest of the page can load. -->
     passed via a GET or POST request, or passed via a cookie. When session_start() 
     is called or when a session auto starts, PHP will call the open and read session
     save handlers. */
-$_SESSION['start'] = time();
-$_SESSION['expire'] = $_SESSION['start'] + (40 * 60);
+
 session_start();
+$_SESSION['start'] = time();
+$_SESSION['expire'] = $_SESSION['start'] + (60 * 60);
 
 $currentTime = time();
 
@@ -19,11 +20,6 @@ session_destroy();
 header('location:index.php');
 }
 
-// server should keep session data for AT LEAST 1 hour
-ini_set('session.gc_maxlifetime', 3600);
-
-// each client should remember their session id for EXACTLY 1 hour
-session_set_cookie_params(3600); 
 require_once("../php/dbcontroller.php");
 $db_handle = new DBController();
 if (!empty($_GET["action"])) {
