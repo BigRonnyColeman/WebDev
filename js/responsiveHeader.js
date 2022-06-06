@@ -28,7 +28,7 @@ var navbar = document.getElementById("navbar");
 var sticky = navbar.offsetTop;
 
 function stickyFunction() {
-    if(document >= 0){ 
+    if(document.URL.indexOf("index.php") >= 0){ 
         if (window.pageYOffset >= sticky) {
             navbar.classList.add("sticky");
         } else {
