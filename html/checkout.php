@@ -307,18 +307,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             paypal.FUNDING.PAYPAL,
                             paypal.FUNDING.CARD
                         ]
-
                         for (const fundingSource of fundingSources) {
                             const paypalButtonsComponent = paypal.Buttons({
                                 fundingSource: fundingSource,
-
                                 // optional styling for buttons
                                 // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
                                 style: {
                                     shape: 'rect',
                                     height: 40,
                                 },
-
                                 // set up the transaction
                                 createOrder: (data, actions) => {
                                     // pass in any options from the v2 orders create call:
@@ -334,15 +331,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                             shipping_preference: 'NO_SHIPPING',
                                         }
                                     }
-
                                     return actions.order.create(createOrderPayload)
                                 },
-
                                 // finalize the transaction
                                 onApprove: function(data, actions) {
-                                    document.getElementById("theform").submit();
+                                    document.getElementById("theform").submit(); //submit hidden form above to db
                                 },
-
                                 // handle unrecoverable errors
                                 onError: (err) => {
                                     console.error(
@@ -350,7 +344,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     )
                                 },
                             })
-
                             if (paypalButtonsComponent.isEligible()) {
                                 paypalButtonsComponent
                                     .render('#paypal-button-container')
