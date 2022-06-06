@@ -7,18 +7,21 @@ has been maniupalted, the rest of the page can load. -->
     passed via a GET or POST request, or passed via a cookie. When session_start() 
     is called or when a session auto starts, PHP will call the open and read session
     save handlers. */
-
-session_start();
-$_SESSION['start'] = time();
-$_SESSION['expire'] = $_SESSION['start'] + (60 * 60);
-
 $currentTime = time();
 
-if($currentTime > $_SESSION['expire']) {
-session_unset();
-session_destroy();
-header('location:index.php');
+session_start();
+
+if(isset($_SESSION['expire']) and $currentTime > $_SESSION['expire']) {
+    session_unset();
+    session_destroy();
+    header('location:index.php');
 }
+
+$_SESSION['start'] = time();
+$_SESSION['expire'] = $_SESSION['start'] + (40 * 60); //40 minute expiry wihout refresh
+
+
+
 
 require_once("../php/dbcontroller.php");
 $db_handle = new DBController();
