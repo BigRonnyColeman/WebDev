@@ -14,6 +14,9 @@ require_once ("../php/cart.php");
 
         header {
             background-color: black;
+            position: fixed;
+            z-index: 100;
+            width:100%;
         }
 
         input[type=submit] {
@@ -46,7 +49,7 @@ require_once ("../php/cart.php");
 
 <body>
     <!-- Navigation Header -->
-    <div id="navbar">
+    <div id="navbar" style="padding-bottom:10vw;">
         <header>
             <a href="index.php" ><img class="logo" href="index.php" src="../images/logoWhite.jpeg" alt="logo"></a>
             <nav>
@@ -130,7 +133,7 @@ require_once ("../php/cart.php");
                         else {
                             echo '
                                 <div style="padding-top:5vw;">
-                                    <button class="checkoutbtn"><a href="account.php" style="font-size:60%">Sign In/Register</a></button>
+                                    <button class="checkoutbtn"><a href="account.php" style="font-size:60%">Sign In/Register<br>to Checkout</a></button>
                                 </div>
                                 <a id="btnEmpty" href="index.php?action=empty" style="font-size:1vw;"><u>Empty Cart</u></a>
                             ';
@@ -150,7 +153,6 @@ require_once ("../php/cart.php");
     <!-- Need to add php -->
     <!-- visible if not signed in -->
     <?php
-
     if(!isset($_SESSION["loggedin"]) or !isset($_SESSION["id"]) or !isset($_SESSION["username"])) {
         echo '
         <div class="centerpage">
