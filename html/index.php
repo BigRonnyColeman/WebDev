@@ -1,8 +1,9 @@
 <?php
+require_once ("../php/cart.php");
+
 if (!isset($_SESSION["loggedin"])){
     $_SESSION["type"] = "public";
 }
-require_once ("../php/cart.php");
 ?>
 <!DOCTYPE html>
 <html>
